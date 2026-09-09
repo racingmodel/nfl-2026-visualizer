@@ -41,14 +41,16 @@ function playerRows(players, type) {
   if (!list.length) return '<p class="muted">No meaningful eligible projections in this view.</p>';
   return list.map(player => {
     const value = type === 'td' ? `${pct(player.reconciled_td_probability)} • Fair ${num(player.model_fair_odds,2)}` : type === 'rush' ? `${num(player.expected_carries)} carries • ${num(player.expected_rush_yards,0)} yd • ${num(player.rush_yards_low,0)}–${num(player.rush_yards_high,0)}` : `${num(player.expected_targets)} targets • ${num(player.expected_receiving_yards,0)} yd • ${num(player.receiving_yards_low,0)}–${num(player.receiving_yards_high,0)}`;
-    const flag = player.availability_status === 'QUESTIONABLE' ? ' · Questionable' : player.role_status === 'ROLE_UNCERTAIN' ? ' · Role uncertain' : player.role_status === 'EXPECTED_STARTER' ? ' · Expected starter' : '';
+    const depth = Number(player.depth_order);
+    const role = player.role_status === 'EXPECTED_STARTER' ? 'Expected starter' : player.role_status === 'ROLE_UNCERTAIN' ? 'Role uncertain' : Number.isFinite(depth) ? (depth > 2 ? `Depth ${depth} / reserve` : `Depth ${depth}`) : '';
+    const flag = player.availability_status === 'QUESTIONABLE' ? ' · Questionable' : role ? ` · ${role}` : '';
     return `<div class="projection-row"><div><strong>${esc(player.player_name)}</strong><br><small>${esc(player.team)} • ${esc(player.position)}${esc(flag)}</small>${type === 'td' ? `<div class="bar"><i style="width:${Math.min(100, Number(player.reconciled_td_probability || 0) * 100)}%"></i></div>` : ''}</div><span>${value}</span></div>`;
   }).join('');
 }
 
 function valueCompact(rows) {
   if (!rows?.length) return '<p class="muted">Market data unavailable for this game.</p>';
-  return rows.slice(0,5).map(value => `<div class="projection-row"><div><strong>${esc(value.selection)}</strong><br><small>${esc(value.market_type.replaceAll('_',' '))} · ${esc(value.bookmaker)} · ${esc(value.value_confidence)} confidence</small></div><span>${value.line == null ? '' : `${value.side} ${num(value.line)} · `}${pct(value.model_probability)} · ${num(value.book_odds,2)} · ${Number(value.ev_pct) >= 0 ? '+' : ''}${num(value.ev_pct,1)}% EV<br><b>${esc(value.value_class.replaceAll('_',' '))}</b></span></div>`).join('');
+  return rows.slice(0,5).map(value => `<div class="projection-row"><div><strong>${esc(value.selection)}</strong><br><small>${esc(value.market_type.replaceAll('_',' '))} · ${esc(value.bookmaker)} · ${esc(value.value_confidence)} confidence${value.role_label && value.role_label !== 'Team market' ? ` · ${esc(value.role_label)}` : ''}</small></div><span>${value.line == null ? '' : `${value.side} ${num(value.line)} · `}${pct(value.model_probability)} · ${num(value.book_odds,2)} · ${Number(value.ev_pct) >= 0 ? '+' : ''}${num(value.ev_pct,1)}% EV<br><b>${esc(value.value_class.replaceAll('_',' '))}</b></span></div>`).join('');
 }
 
 function gameCard(game, index, valueRows = [], market = null) {
@@ -96,7 +98,8 @@ async function gamesPage() {
 }
 
 function playerCard(player) {
-  const useful = player.availability_status === 'QUESTIONABLE' ? 'Questionable' : player.role_status === 'EXPECTED_STARTER' ? 'Expected starter' : player.role_status === 'ROLE_UNCERTAIN' ? 'Role uncertain' : 'Active';
+  const depth = Number(player.depth_order);
+  const useful = player.availability_status === 'QUESTIONABLE' ? 'Questionable' : player.role_status === 'EXPECTED_STARTER' ? 'Expected starter' : player.role_status === 'ROLE_UNCERTAIN' ? 'Role uncertain' : Number.isFinite(depth) ? (depth > 2 ? `Depth ${depth} / reserve` : `Depth ${depth}`) : 'Active';
   return `<article class="player-card"><div class="player-top"><div><h2>${esc(player.player_name)}</h2><p class="muted">${esc(player.team)} • ${esc(player.position)} vs ${esc(player.opponent)}</p></div><span class="pill">${pct(player.reconciled_td_probability)} TD</span></div><div class="player-stats"><div><span>CARRIES</span><b>${num(player.expected_carries)}</b></div><div><span>RUSH YD</span><b>${num(player.expected_rush_yards,0)}</b></div><div><span>TARGETS</span><b>${num(player.expected_targets)}</b></div><div><span>REC YD</span><b>${num(player.expected_receiving_yards,0)}</b></div><div><span>ROLE CONF.</span><b>${esc(player.role_confidence_label || pct(player.role_confidence))}</b></div><div><span>STATUS</span><b>${esc(useful)}</b></div></div></article>`;
 }
 
@@ -146,7 +149,9 @@ async function performancePage() {
 function valueCard(value) {
   const line = value.line == null ? '' : `<span>${esc(value.side)} ${num(value.line)}</span>`;
   const captured = value.market_timestamp_utc ? ` · Captured ${when(value.market_timestamp_utc)}` : '';
-  return `<article class="value-card"><div class="value-card-head"><div><small>${esc(value.market_type.replaceAll('_',' '))} · ${esc(value.bookmaker)}</small><h2>${esc(value.selection)}</h2></div><span class="pill">${esc(value.value_class.replaceAll('_',' '))}</span></div><div class="value-stats">${line}<span>Model ${pct(value.model_probability)}</span><span>Fair ${num(value.model_fair_odds,2)}</span><span>Book ${num(value.book_odds,2)}</span><span>Market ${pct(value.no_vig_probability ?? value.book_implied_probability)}</span><span>Edge ${Number(value.edge_pp) >= 0 ? '+' : ''}${num(value.edge_pp,1)}pp</span><span>EV ${Number(value.ev_pct) >= 0 ? '+' : ''}${num(value.ev_pct,1)}%</span></div><p class="muted">${esc(value.team || '')} · ${esc(value.value_confidence)} confidence · Score ${num(value.value_score,0)}${esc(captured)}</p></article>`;
+  const role = value.role_label && value.role_label !== 'Team market' ? ` · ${esc(value.role_label)}` : '';
+  const caution = value.confidence_notes ? `<p class="value-caution">${esc(value.confidence_notes)}</p>` : '';
+  return `<article class="value-card"><div class="value-card-head"><div><small>${esc(value.market_type.replaceAll('_',' '))} · ${esc(value.bookmaker)}</small><h2>${esc(value.selection)}</h2></div><span class="pill">${esc(value.value_class.replaceAll('_',' '))}</span></div><div class="value-stats">${line}<span>Model ${pct(value.model_probability)}</span><span>Fair ${num(value.model_fair_odds,2)}</span><span>Book ${num(value.book_odds,2)}</span><span>Market ${pct(value.no_vig_probability ?? value.book_implied_probability)}</span><span>Edge ${Number(value.edge_pp) >= 0 ? '+' : ''}${num(value.edge_pp,1)}pp</span><span>EV ${Number(value.ev_pct) >= 0 ? '+' : ''}${num(value.ev_pct,1)}%</span></div><p class="muted">${esc(value.team || '')}${role} · ${esc(value.value_confidence)} confidence · Score ${num(value.value_score,0)}${esc(captured)}</p>${caution}</article>`;
 }
 
 async function valuePage() {
