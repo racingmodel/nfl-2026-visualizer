@@ -1,0 +1,20 @@
+{
+  "historical": {
+    "team_score_mae": 7.458,
+    "margin_mae": 10.345,
+    "total_mae": 10.355,
+    "winner_accuracy": 0.6356,
+    "rushing_yards_mae": 7.873,
+    "receiving_yards_mae": 15.633,
+    "td_brier": 0.1496
+  },
+  "live_2026": {
+    "status": "No completed evaluated games",
+    "weeks": []
+  },
+  "market_value": {
+    "status": "No settled ledger selections",
+    "rows": []
+  },
+  "model_version": "phase2-v2"
+}

@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "created_at_utc": "2026-09-09T12:47:38.464432+00:00",
+    "file_hashes": {
+      "market_quotes.csv": "cf8747dfe7d956cee99d243db5b032b41d66403d1bb5268bc7cbc111785f4b57",
+      "qa_report.csv": "9d95e2b8cd3de86318da6b50e6c4fbd3fc28761203972ad8490457918ba32959",
+      "value_bets.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_moneyline.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_receiving.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_rushing.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_spreads.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_td.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc",
+      "value_totals.csv": "4e3b34d392bcf679baa1fb9d17344a4e29513219afa434c0d19c3a83356033cc"
+    },
+    "flat_hypothetical_stake": 1.0,
+    "market_provider": "the_odds_api",
+    "market_quote_count": 0,
+    "market_snapshot_id": "20260909T124738Z",
+    "mode": "dry-run",
+    "prediction_bundle_modified": false,
+    "prediction_lock_id": "lock-2026-w01-9e9b093485bdccea",
+    "prediction_model_ids": {
+      "player": {
+        "hash": "8cf9feab02334146eb677c73715e414103e01f24d34777b6eef7b7a3cdf9507c",
+        "name": "player_opportunity_model",
+        "version": "phase2-v2"
+      },
+      "td": {
+        "hash": "530313ab8d23d642906943342d88541e27369515f1e0a87c35ad706b94d8011f",
+        "name": "player_td_model",
+        "version": "phase2-v2"
+      },
+      "team": {
+        "hash": "92ffb4952c002318f731396ee90a0039b7ebe62a43c76faf41eb2d6aa5ab5277",
+        "name": "team_score_model",
+        "version": "phase2-v2"
+      }
+    },
+    "prediction_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+    "prediction_timestamp_utc": "2026-09-09T12:46:38.527032+00:00",
+    "qualifying_value_count": 0,
+    "season": 2026,
+    "status": "MARKET_DATA_UNAVAILABLE",
+    "value_run_id": "phase4-dry-run-20260909T124738Z-0daefea3",
+    "week": 1
+  },
+  "values": [],
+  "all_quote_count": 0,
+  "message": "Market data unavailable"
+}
