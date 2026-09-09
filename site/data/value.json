@@ -26174,6 +26174,184 @@
       "status": "ACTIVE"
     }
   ],
+  "market_game_context": {
+    "2026_01_NE_SEA": {
+      "market_home_spread": -3.0,
+      "market_total": 44.5,
+      "market_margin": 3.0,
+      "market_home_points": 23.8,
+      "market_away_points": 20.8,
+      "market_spread_label": "SEA -3",
+      "spread_book_count": 9,
+      "total_book_count": 16,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_SF_LA": {
+      "market_home_spread": -3.5,
+      "market_total": 48.5,
+      "market_margin": 3.5,
+      "market_home_points": 26.0,
+      "market_away_points": 22.5,
+      "market_spread_label": "LA -3.5",
+      "spread_book_count": 10,
+      "total_book_count": 10,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_CHI_CAR": {
+      "market_home_spread": 3.0,
+      "market_total": 47.0,
+      "market_margin": -3.0,
+      "market_home_points": 22.0,
+      "market_away_points": 25.0,
+      "market_spread_label": "CHI -3",
+      "spread_book_count": 10,
+      "total_book_count": 12,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_TB_CIN": {
+      "market_home_spread": -4.0,
+      "market_total": 50.5,
+      "market_margin": 4.0,
+      "market_home_points": 27.2,
+      "market_away_points": 23.2,
+      "market_spread_label": "CIN -4",
+      "spread_book_count": 7,
+      "total_book_count": 15,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_NO_DET": {
+      "market_home_spread": -7.0,
+      "market_total": 50.0,
+      "market_margin": 7.0,
+      "market_home_points": 28.5,
+      "market_away_points": 21.5,
+      "market_spread_label": "DET -7",
+      "spread_book_count": 9,
+      "total_book_count": 10,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_BUF_HOU": {
+      "market_home_spread": 1.0,
+      "market_total": 44.5,
+      "market_margin": -1.0,
+      "market_home_points": 21.8,
+      "market_away_points": 22.8,
+      "market_spread_label": "BUF -1",
+      "spread_book_count": 7,
+      "total_book_count": 10,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_BAL_IND": {
+      "market_home_spread": 3.5,
+      "market_total": 48.0,
+      "market_margin": -3.5,
+      "market_home_points": 22.2,
+      "market_away_points": 25.8,
+      "market_spread_label": "BAL -3.5",
+      "spread_book_count": 12,
+      "total_book_count": 11,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_CLE_JAX": {
+      "market_home_spread": -8.5,
+      "market_total": 40.5,
+      "market_margin": 8.5,
+      "market_home_points": 24.5,
+      "market_away_points": 16.0,
+      "market_spread_label": "JAX -8.5",
+      "spread_book_count": 8,
+      "total_book_count": 16,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_ATL_PIT": {
+      "market_home_spread": -3.5,
+      "market_total": 41.5,
+      "market_margin": 3.5,
+      "market_home_points": 22.5,
+      "market_away_points": 19.0,
+      "market_spread_label": "PIT -3.5",
+      "spread_book_count": 13,
+      "total_book_count": 11,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_NYJ_TEN": {
+      "market_home_spread": -1.5,
+      "market_total": 39.5,
+      "market_margin": 1.5,
+      "market_home_points": 20.5,
+      "market_away_points": 19.0,
+      "market_spread_label": "TEN -1.5",
+      "spread_book_count": 8,
+      "total_book_count": 14,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_ARI_LAC": {
+      "market_home_spread": -9.5,
+      "market_total": 47.0,
+      "market_margin": 9.5,
+      "market_home_points": 28.2,
+      "market_away_points": 18.8,
+      "market_spread_label": "LAC -9.5",
+      "spread_book_count": 10,
+      "total_book_count": 11,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_MIA_LV": {
+      "market_home_spread": -3.5,
+      "market_total": 40.5,
+      "market_margin": 3.5,
+      "market_home_points": 22.0,
+      "market_away_points": 18.5,
+      "market_spread_label": "LV -3.5",
+      "spread_book_count": 13,
+      "total_book_count": 11,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_GB_MIN": {
+      "market_home_spread": -1.5,
+      "market_total": 46.0,
+      "market_margin": 1.5,
+      "market_home_points": 23.8,
+      "market_away_points": 22.2,
+      "market_spread_label": "MIN -1.5",
+      "spread_book_count": 9,
+      "total_book_count": 10,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_WAS_PHI": {
+      "market_home_spread": -4.5,
+      "market_total": 44.5,
+      "market_margin": 4.5,
+      "market_home_points": 24.5,
+      "market_away_points": 20.0,
+      "market_spread_label": "PHI -4.5",
+      "spread_book_count": 6,
+      "total_book_count": 14,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_DAL_NYG": {
+      "market_home_spread": 3.0,
+      "market_total": 48.0,
+      "market_margin": -3.0,
+      "market_home_points": 22.5,
+      "market_away_points": 25.5,
+      "market_spread_label": "DAL -3",
+      "spread_book_count": 9,
+      "total_book_count": 10,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    },
+    "2026_01_DEN_KC": {
+      "market_home_spread": -2.5,
+      "market_total": 43.5,
+      "market_margin": 2.5,
+      "market_home_points": 23.0,
+      "market_away_points": 20.5,
+      "market_spread_label": "KC -2.5",
+      "spread_book_count": 12,
+      "total_book_count": 14,
+      "method": "CONSENSUS_MAIN_LINE_MODE"
+    }
+  },
   "all_quote_count": 9417,
   "message": "Model Value compares independently generated NFL probabilities with current market prices. Market prices were not used to create the model prediction."
 }

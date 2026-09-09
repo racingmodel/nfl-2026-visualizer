@@ -2,6 +2,12 @@ const $ = (q, root = document) => root.querySelector(q);
 const esc = value => String(value ?? '—').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const num = (value, digits = 1) => Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : '—';
 const pct = value => Number.isFinite(Number(value)) ? `${Math.round(Number(value) * 100)}%` : '—';
+const TEAM_NAMES = {
+  ARI:'Cardinals',ATL:'Falcons',BAL:'Ravens',BUF:'Bills',CAR:'Panthers',CHI:'Bears',CIN:'Bengals',CLE:'Browns',
+  DAL:'Cowboys',DEN:'Broncos',DET:'Lions',GB:'Packers',HOU:'Texans',IND:'Colts',JAX:'Jaguars',KC:'Chiefs',
+  LAC:'Chargers',LA:'Rams',LV:'Raiders',MIA:'Dolphins',MIN:'Vikings',NE:'Patriots',NO:'Saints',NYG:'Giants',
+  NYJ:'Jets',PHI:'Eagles',PIT:'Steelers',SEA:'Seahawks',SF:'49ers',TB:'Buccaneers',TEN:'Titans',WAS:'Commanders'
+};
 
 async function loadJSON(path) {
   const response = await fetch(path);
@@ -33,14 +39,16 @@ function valueCompact(rows) {
   return rows.slice(0,5).map(value => `<div class="projection-row"><div><strong>${esc(value.selection)}</strong><br><small>${esc(value.market_type.replaceAll('_',' '))} · ${esc(value.bookmaker)} · ${esc(value.value_confidence)} confidence</small></div><span>${value.line == null ? '' : `${value.side} ${num(value.line)} · `}${pct(value.model_probability)} · ${num(value.book_odds,2)} · ${Number(value.ev_pct) >= 0 ? '+' : ''}${num(value.ev_pct,1)}% EV<br><b>${esc(value.value_class.replaceAll('_',' '))}</b></span></div>`).join('');
 }
 
-function gameCard(game, index, valueRows = []) {
+function gameCard(game, index, valueRows = [], market = null) {
   const winner = Number(game.home_win_probability) >= .5 ? game.home_team : game.away_team;
   const winProbability = Math.max(Number(game.home_win_probability || 0), Number(game.away_win_probability || 0));
   const margin = Number(game.model_margin || 0);
   const spread = margin >= 0 ? `${game.home_team} -${num(Math.abs(margin))}` : `${game.away_team} -${num(Math.abs(margin))}`;
   const factors = (() => { try { return JSON.parse(game.main_factors || '[]'); } catch { return []; } })();
   const warning = game.data_quality_warnings ? `<p class="muted"><b>Data note:</b> ${esc(game.data_quality_warnings)}</p>` : '';
-  return `<article class="game-card"><div class="game-head"><span>${when(game.kickoff_utc)}</span><span>${esc(game.stadium || 'Venue TBC')}</span></div><div class="matchup"><div class="team"><span class="team-badge">${esc(game.away_team)}</span>${esc(game.away_team)}</div><div class="score">${esc(game.display_away_score)}<small>–</small>${esc(game.display_home_score)}</div><div class="team"><span class="team-badge">${esc(game.home_team)}</span>${esc(game.home_team)}</div></div><div class="quick-stats"><div><span>MODEL SPREAD</span><strong>${esc(spread)}</strong></div><div><span>MODEL TOTAL</span><strong>${num(game.model_total)}</strong></div><div><span>WIN PROB.</span><strong>${esc(winner)} ${pct(winProbability)}</strong></div></div><details><summary>Explore forecast <span>＋</span></summary><div class="details-body"><div class="tabbar" role="tablist"><button class="active" data-tab="overview-${index}">Overview</button><button data-tab="td-${index}">TD scorers</button><button data-tab="rush-${index}">Rushing</button><button data-tab="receive-${index}">Receiving</button><button data-tab="value-${index}">Value</button><button data-tab="insight-${index}">Insight</button></div><div id="overview-${index}" class="tab-panel active"><p><b>Expected:</b> ${esc(game.away_team)} ${num(game.away_expected_points)} – ${num(game.home_expected_points)} ${esc(game.home_team)}</p><p><b>Confidence:</b> ${esc(game.confidence_rating)} · <span class="muted">${esc(game.data_quality_status)}</span></p><p class="muted"><b>Weather:</b> ${esc(game.weather_summary || 'Forecast unavailable')} · Context only</p>${warning}</div><div id="td-${index}" class="tab-panel">${playerRows(game.players,'td')}</div><div id="rush-${index}" class="tab-panel">${playerRows(game.players,'rush')}</div><div id="receive-${index}" class="tab-panel">${playerRows(game.players,'receive')}</div><div id="value-${index}" class="tab-panel"><p class="muted">Downstream comparison. Market prices did not create this prediction.</p>${valueCompact(valueRows)}</div><div id="insight-${index}" class="tab-panel"><h3>Model leans ${esc(winner)}</h3><ul>${factors.map(x => `<li>${esc(x)}</li>`).join('')}</ul>${warning}</div></div></details></article>`;
+  const marketPanel = market ? `<div class="market-strip"><div class="market-title"><span>MARKET-IMPLIED SCORE</span><small>Consensus main spread + total</small></div><div class="market-score"><b>${esc(game.away_team)} ${num(market.market_away_points,0)}</b><i>—</i><b>${num(market.market_home_points,0)} ${esc(game.home_team)}</b></div><div class="market-lines"><span>${esc(market.market_spread_label)}</span><span>O/U ${num(market.market_total)}</span><span>${Math.min(market.spread_book_count,market.total_book_count)}+ books</span></div></div>` : `<div class="market-strip unavailable"><span>Market-implied score unavailable</span></div>`;
+  const scoreRange = Number.isFinite(Number(game.away_score_p25)) && Number.isFinite(Number(game.home_score_p25)) ? `<p><b>Middle 50% score range:</b> ${esc(game.away_team)} ${num(game.away_score_p25,0)}–${num(game.away_score_p75,0)} · ${esc(game.home_team)} ${num(game.home_score_p25,0)}–${num(game.home_score_p75,0)}</p>` : '';
+  return `<article class="game-card"><div class="game-head"><span><b>WEEK ${esc(game.week)}</b> · ${when(game.kickoff_utc)}</span><span>${esc(game.stadium || 'Venue TBC')}</span></div><div class="matchup scoreboard"><div class="team"><span class="field-label">AWAY</span><span class="team-badge" aria-label="${esc(TEAM_NAMES[game.away_team] || game.away_team)}">${esc(game.away_team)}</span><span class="team-name">${esc(TEAM_NAMES[game.away_team] || game.away_team)}</span><strong class="team-score">${esc(game.display_away_score)}</strong></div><div class="fixture-at"><span>@</span><small>MODEL<br>SCORE</small></div><div class="team"><span class="field-label">HOME</span><span class="team-badge" aria-label="${esc(TEAM_NAMES[game.home_team] || game.home_team)}">${esc(game.home_team)}</span><span class="team-name">${esc(TEAM_NAMES[game.home_team] || game.home_team)}</span><strong class="team-score">${esc(game.display_home_score)}</strong></div></div><div class="quick-stats"><div><span>MODEL LINE</span><strong>${esc(spread)}</strong></div><div><span>MODEL O/U</span><strong>${num(game.model_total)}</strong></div><div><span>WIN CHANCE</span><strong>${esc(winner)} ${pct(winProbability)}</strong></div></div>${marketPanel}<details><summary>Open matchup board <span>＋</span></summary><div class="details-body"><div class="tabbar" role="tablist"><button class="active" data-tab="overview-${index}">Overview</button><button data-tab="td-${index}">TD scorers</button><button data-tab="rush-${index}">Rushing</button><button data-tab="receive-${index}">Receiving</button><button data-tab="value-${index}">Value</button><button data-tab="insight-${index}">Insight</button></div><div id="overview-${index}" class="tab-panel active"><p><b>Model mean:</b> ${esc(game.away_team)} ${num(game.away_expected_points)} — ${num(game.home_expected_points)} ${esc(game.home_team)}</p>${scoreRange}<p><b>Confidence:</b> ${esc(game.confidence_rating)} · <span class="muted">${esc(game.data_quality_status)}</span></p><p class="muted"><b>Weather:</b> ${esc(game.weather_summary || 'Forecast unavailable')} · Context only</p>${warning}</div><div id="td-${index}" class="tab-panel">${playerRows(game.players,'td')}</div><div id="rush-${index}" class="tab-panel">${playerRows(game.players,'rush')}</div><div id="receive-${index}" class="tab-panel">${playerRows(game.players,'receive')}</div><div id="value-${index}" class="tab-panel"><p class="muted">Downstream comparison. Market prices did not create this prediction.</p>${valueCompact(valueRows)}</div><div id="insight-${index}" class="tab-panel"><h3>Model leans ${esc(winner)}</h3><ul>${factors.map(x => `<li>${esc(x)}</li>`).join('')}</ul>${warning}</div></div></details></article>`;
 }
 
 function wireTabs() {
@@ -58,12 +66,13 @@ async function gamesPage() {
     const [data, value] = await Promise.all([loadJSON('data/current_week.json'), loadOptionalJSON('data/value.json', {values:[],metadata:{status:'MARKET_DATA_UNAVAILABLE'}})]);
     const meta = data.metadata || {};
     const byGame = (value.values || []).reduce((grouped, row) => ((grouped[row.game_id] ??= []).push(row), grouped), {});
+    const marketByGame = value.market_game_context || {};
     $('#week-title').textContent = `NFL ${meta.season || 2026} · Week ${meta.week ?? '—'}`;
     $('#status-panel').classList.remove('skeleton');
     $('#status-panel').innerHTML = `<span class="status-dot"></span><b>Current data: ${esc(meta.data_quality_result)}</b><br>Model updated ${when(meta.created_at_utc)}<br>Market updated ${value.metadata?.created_at_utc ? when(value.metadata.created_at_utc) : 'unavailable'}<br>Stage ${esc(meta.weekly_stage || '—')} · ${esc(meta.run_status)}`;
-    if (meta.data_quality_result === 'READY_WITH_WARNINGS') notice('Official early-week forecast: some club injury reports are not yet due. Current depth, roster and QB checks passed.');
+    if (meta.data_quality_result === 'READY_WITH_WARNINGS') notice('Official Week 1 forecast: some club injury reports are not yet due. Current depth, roster and QB checks passed.');
     if (meta.data_quality_result === 'BLOCKED') notice('Publication blocked: one or more critical current-data checks failed.');
-    $('#games').innerHTML = (data.games || []).map((game,index) => gameCard(game,index,byGame[game.game_id] || [])).join('') || '<p class="empty">No fixtures are available.</p>';
+    $('#games').innerHTML = (data.games || []).map((game,index) => gameCard(game,index,byGame[game.game_id] || [],marketByGame[game.game_id] || null)).join('') || '<p class="empty">No fixtures are available.</p>';
   } catch (error) { notice(`Unable to load the locked prediction bundle: ${error.message}`); }
 }
 
@@ -98,7 +107,7 @@ async function playersPage() {
     };
     ['#player-search','#game-filter','#team-filter','#position-filter','#player-sort'].forEach(selector => $(selector).addEventListener('input',render));
     render();
-    if (data.metadata?.data_quality_result === 'READY_WITH_WARNINGS') notice('Early-week injury reports are still pending for some clubs; exact depth roles are used where available and model-inferred roles are labelled.');
+    if (data.metadata?.data_quality_result === 'READY_WITH_WARNINGS') notice('Some club injury reports are not yet due; exact depth roles are used where available and model-inferred roles are labelled.');
   } catch (error) { notice(`Unable to load player projections: ${error.message}`); }
 }
 
