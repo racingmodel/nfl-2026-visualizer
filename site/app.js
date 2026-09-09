@@ -131,7 +131,9 @@ async function valuePage() {
   const render = () => {
     const market = $('#value-market').value, team = $('#value-team').value.toLowerCase(), confidence = $('#value-confidence').value, book = $('#value-book').value.toLowerCase();
     const rows = all.filter(value => (!market || value.market_type === market) && (!team || String(value.team || '').toLowerCase().includes(team)) && (!confidence || value.value_confidence === confidence) && (!book || String(value.bookmaker || '').toLowerCase().includes(book)));
-    $('#value-list').innerHTML = rows.map(valueCard).join('') || '<p class="empty">No active qualifying market comparisons are available.</p>';
+    const visible = rows.slice(0,60);
+    if (data.metadata?.status !== 'MARKET_DATA_UNAVAILABLE') status.textContent = `${data.message || 'Current timestamped market comparison.'} Showing top ${visible.length} of ${rows.length} matching qualifying selections.`;
+    $('#value-list').innerHTML = visible.map(valueCard).join('') || '<p class="empty">No active qualifying market comparisons are available.</p>';
   };
   ['#value-market','#value-team','#value-confidence','#value-book'].forEach(selector => $(selector).addEventListener('input',render));
   render();
