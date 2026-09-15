@@ -9,8 +9,21 @@
     "td_brier": 0.1496
   },
   "live_2026": {
-    "status": "No completed evaluated games",
-    "weeks": []
+    "status": "Live results available",
+    "weeks": [
+      {
+        "season": 2026,
+        "week": 1,
+        "model_version": "phase2-v2",
+        "games": 16,
+        "score_mae": 9.393810070723925,
+        "margin_mae": 11.652821928136571,
+        "total_mae": 13.744013895224848,
+        "winner_accuracy": 0.5625,
+        "win_probability_brier": 0.2280875843749999,
+        "interval_80_coverage": 0.5625
+      }
+    ]
   },
   "market_value": {
     "status": "No settled ledger selections",
