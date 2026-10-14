@@ -1,0 +1,28 @@
+{
+  "release_id": "frontend-v3-8d4f2016cb182cc6",
+  "prediction_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+  "ui_sha256": {
+    "index.html": "99be32f460449f199f9f958ef2234ea50f74340e331fe249887898c162cae57d",
+    "players.html": "5b8b9fdce05a4a595e716a33f5efbe57bfb8e031e620f10c3523346b31b00e6c",
+    "value.html": "5ed2030269e385de2e153d94f8f41520d82b42ba43a5de58c01ec2d53b60d14a",
+    "performance.html": "e1fc57d6d83b5ab5b9037b827350d26a972946b16bcf5d489f4f0bd05be6b2c7",
+    "model.html": "7bc6859338549c9c7eed9e894b905d5fd3d1a067d67b35b109f528e6af07f368",
+    "phase7.js": "3ac2a89cfaeaf755468e9998ff9faf0b0d35eb5bf32f067f35a2155f5ed39119",
+    "boards.js": "7bfaa39c48fb053d3f6e36c4b34b7c49398c64df6847d44aecccd543329c5933",
+    "phase7.css": "83b6d53d39ee3916c3745142090aef683be9a6169e343a38b1a2af8baf9bb7d3"
+  },
+  "data_sha256": {
+    "data/current_week.json": "47cdd47f28e89016e88ad2538b5f16aa4dd44f271a26f58afe15d4c6feaef802",
+    "data/frontend_contract.json": "9df8a0612638c65c7db2bc72d1f5a124169bfc74010bed185365d297f3861d5c",
+    "data/performance.json": "488d136c86293f334aa722ec6846adc3f90588ed73503e4ff2476ded2d21e754",
+    "data/phase7_lab.json": "e9e6b3c4cd6f3c3e7572f3565935582373b8687fdc419397ac75699cbe5c6697",
+    "data/phase7_performance.json": "91a4df4bd64e3f193c8337aec4b137ec7582d4a6738f5acc26ba72cc6f679869",
+    "data/phase7_source_health.json": "da2796de5c32d9f163121c9407d6c429798b47e86a9ba73df3f2c751c77c3cbf",
+    "data/value.json": "ed4c2f6b4b76b4aba8959eb59d21e888c9d6f922ffa5600a4bf2061ce8c388ab",
+    "data/week_01.json": "0dbdf3d73e873e8010bcf8113031d1a8a750771b96361b43ab5ad05b684e18e0",
+    "data/week_02.json": "1e6c4577b1223c3e91f5f69349859dd4abc26b538648c608b904bb2f2bfce970",
+    "data/week_03.json": "552bfdb715af5bbf0e8f381bfbfa1797aec36695d0eb4c6c79fe72a6ba4303c4",
+    "data/week_04.json": "15d69bcaed62b9b1e46c4f2a68d55c2a9c625c6bd8c0646cb35b5b9cc04387ac",
+    "data/week_05.json": "9b0b4da38ab793bc656a3538fb9c8f9bc6fae8ea58340b93b78839f204f5bd52"
+  }
+}

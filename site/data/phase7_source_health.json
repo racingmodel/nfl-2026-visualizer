@@ -1,0 +1,95 @@
+{
+  "forecast_sources": [
+    {
+      "source": "schedule",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "roster",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:52:11+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": "1 player-team states reconciled from point-in-time current depth; 18 current eligibility transactions could not be matched to roster identity"
+    },
+    {
+      "source": "injuries",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "snap_history",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "participation_history",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-09-08T22:18:31.161618+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "depth",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:51:31+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "quarterbacks",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "transactions",
+      "source_state": "VALID",
+      "data_status": "READY_WITH_WARNINGS",
+      "known_at_utc": "2026-05-19T15:28:21+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": "official NFL current-month transaction pages incomplete for reserve-list, signings, waivers; matched records are still overlaid, NFLverse trades alone are supplemental"
+    },
+    {
+      "source": "weather",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "exact_player_pregame_universe_features",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T13:07:12.057330+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:12.057330+00:00",
+      "quality_warnings": "Numerical features unchanged; archived for future replay"
+    },
+    {
+      "source": "exact_historical_team_features",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T13:07:12.057330+00:00",
+      "retrieved_at_utc": "2026-10-14T13:07:12.057330+00:00",
+      "quality_warnings": "Numerical features unchanged; archived for future replay"
+    }
+  ],
+  "scope": "frozen input states at original prediction cutoff, not a new live refresh",
+  "game_max_age_minutes": 120,
+  "prop_max_age_minutes": 60
+}

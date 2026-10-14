@@ -1,0 +1,913 @@
+{
+  "status": "VALIDATED_RELEASE_CANDIDATE_NOT_PUBLISHED",
+  "release_id": "frontend-v3-8d4f2016cb182cc6",
+  "content_sha256": "8d4f2016cb182cc67f148c49e4fee91bba1322db72d1782832b73a928bd70781",
+  "prediction_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+  "created_at_utc": "2026-10-14T18:27:09.867409+00:00",
+  "files": {
+    "app.js": "a26491455d908d252eccc6ad1749c6c5a420eb1495fe33684b97bef8f05d3479",
+    "boards.js": "7bfaa39c48fb053d3f6e36c4b34b7c49398c64df6847d44aecccd543329c5933",
+    "index.html": "99be32f460449f199f9f958ef2234ea50f74340e331fe249887898c162cae57d",
+    "model.html": "7bc6859338549c9c7eed9e894b905d5fd3d1a067d67b35b109f528e6af07f368",
+    "performance.html": "e1fc57d6d83b5ab5b9037b827350d26a972946b16bcf5d489f4f0bd05be6b2c7",
+    "phase7.css": "83b6d53d39ee3916c3745142090aef683be9a6169e343a38b1a2af8baf9bb7d3",
+    "phase7.js": "3ac2a89cfaeaf755468e9998ff9faf0b0d35eb5bf32f067f35a2155f5ed39119",
+    "players.html": "5b8b9fdce05a4a595e716a33f5efbe57bfb8e031e620f10c3523346b31b00e6c",
+    "styles.css": "bca3cb593334f0b64a6d26c6cc3fc04504025378c5e7cf289d7f8e3effbd2e65",
+    "value.html": "5ed2030269e385de2e153d94f8f41520d82b42ba43a5de58c01ec2d53b60d14a",
+    "assets/stadium-night.jpg": "9663c08feaf03dc9bdf669fd4489ee588c78cfd3ecc09e44f3352ce5ee6b4a23",
+    "data/current_week.json": "47cdd47f28e89016e88ad2538b5f16aa4dd44f271a26f58afe15d4c6feaef802",
+    "data/frontend_contract.json": "9df8a0612638c65c7db2bc72d1f5a124169bfc74010bed185365d297f3861d5c",
+    "data/frontend_release.json": "0cf692a7d50d76fcf369cd13bf3d0506b55011df5ce7849a527bb96b3a61a862",
+    "data/performance.json": "488d136c86293f334aa722ec6846adc3f90588ed73503e4ff2476ded2d21e754",
+    "data/phase7_lab.json": "e9e6b3c4cd6f3c3e7572f3565935582373b8687fdc419397ac75699cbe5c6697",
+    "data/phase7_performance.json": "91a4df4bd64e3f193c8337aec4b137ec7582d4a6738f5acc26ba72cc6f679869",
+    "data/phase7_source_health.json": "da2796de5c32d9f163121c9407d6c429798b47e86a9ba73df3f2c751c77c3cbf",
+    "data/value.json": "ed4c2f6b4b76b4aba8959eb59d21e888c9d6f922ffa5600a4bf2061ce8c388ab",
+    "data/week_01.json": "0dbdf3d73e873e8010bcf8113031d1a8a750771b96361b43ab5ad05b684e18e0",
+    "data/week_02.json": "1e6c4577b1223c3e91f5f69349859dd4abc26b538648c608b904bb2f2bfce970",
+    "data/week_03.json": "552bfdb715af5bbf0e8f381bfbfa1797aec36695d0eb4c6c79fe72a6ba4303c4",
+    "data/week_04.json": "15d69bcaed62b9b1e46c4f2a68d55c2a9c625c6bd8c0646cb35b5b9cc04387ac",
+    "data/week_05.json": "9b0b4da38ab793bc656a3538fb9c8f9bc6fae8ea58340b93b78839f204f5bd52",
+    "assets/team-logos/ari.png": "f870b58b43585a5b7717d578dd433b0b1e0c462d64ef4bea2aeb8c03f4ae7854",
+    "assets/team-logos/atl.png": "fe566e9da6f7986b2bac321571bd751247ff93af15c51ae555486fb1bee90c91",
+    "assets/team-logos/bal.png": "67796023c172c9aeab5bcdac9204823d3590097246ad1cb92971134b5f26dcc0",
+    "assets/team-logos/buf.png": "79b71e2f536ee29f9d23834e89828883af2d95bf6968cbd07a505444229cdd20",
+    "assets/team-logos/car.png": "2cebc1bbdcfd89f28c1578b397f440d229d93fa9a30bfa1193cc286482c82298",
+    "assets/team-logos/chi.png": "fd7b5a207b9ad443f950b384d43dba6cb367c5737ad50a51a15e3893fa31753b",
+    "assets/team-logos/cin.png": "8e549c0ecac92453140370b2aef3e4a140139b50d16e92507532e8ee49930d4e",
+    "assets/team-logos/cle.png": "9b286fc4286dc39b1b5a6a08aab042b456ba5fdce99e45e49a4d1e2672411fa2",
+    "assets/team-logos/dal.png": "f4ea9a2ec7d7d500f08db94c8c6f1b23f75361ffe39c4d4b480a684a511ce61e",
+    "assets/team-logos/den.png": "c98bec2be32e27b19f79f5da86ac6ef133c78d75ab78aadb28ef36696c3213e8",
+    "assets/team-logos/det.png": "9776b567ebab0bd3640165e915d948d8e736e35967dfc19ce62b967cfe7b4eb1",
+    "assets/team-logos/gb.png": "7ea8154cdbff5db84d248f235c1f1c78a1a8b4cb8c14335b5886ec10ee20b00e",
+    "assets/team-logos/hou.png": "54b0fe559761860e4953851c197d995b2f9c0c4e278164edda7b608ffd64f39b",
+    "assets/team-logos/ind.png": "f1f5222a876f810956aa8d4e75d4e6b47bcb3a6d11f876642b674010233c8a97",
+    "assets/team-logos/jax.png": "15cb9a1c77ebfaea885d0d3a34f33dabc4e6a00eb7d5462148fceed641d49397",
+    "assets/team-logos/kc.png": "3d77958dc6373768919bb2681cbe1b143f56c07a1f013460def665a5026a7f3d",
+    "assets/team-logos/lac.png": "5400f85bd93129c056717a771da57a97225e15f39c0022107ce89ef993f15bb0",
+    "assets/team-logos/lar.png": "e289b738a5e1259cccea921bee02eec881d35b4241761a8c4e12fe5964cab75c",
+    "assets/team-logos/lv.png": "25fbb03e972ae872fa024026b73c7b63ef9f23c2f2c51f87d1614d800dcee6e7",
+    "assets/team-logos/mia.png": "b9631269a82abda39bd748afc82390679ca67bfc167bc3581665e237407de8e0",
+    "assets/team-logos/min.png": "72759956b149bc1c9496ea6ebb9a6ae34093dfed371cc6abb425c13f14f53448",
+    "assets/team-logos/ne.png": "dac19aa9a573dcf9075e2422bee3e35a4955b9ab494bb3191ab3bacfd3609729",
+    "assets/team-logos/no.png": "68ddfdf1d7ee8317f1af083a0c6d59142a11e8af4dad73c3c50bbafc338e0a94",
+    "assets/team-logos/nyg.png": "62e361850e7ba3a50dfd09cbb38429e994d1c23b0f999c74421f10e37c7067e7",
+    "assets/team-logos/nyj.png": "5de8d029f3602c97ffe02bd636eb2630e55d019d1a37cf819d3b9e39a219487b",
+    "assets/team-logos/phi.png": "2875f50f8b756ed5ea3866105b4683f5c603aa542e2c7f7870287e1d3d006100",
+    "assets/team-logos/pit.png": "806bcb72e75ed184a99bea34df458e6cd87145fc9a863945f3356b01122aeb6f",
+    "assets/team-logos/sea.png": "2546b1d4fe5cf6c2d75cda53d3fb56bbc4dd43c6b00200586dab5a85df8fa492",
+    "assets/team-logos/sf.png": "82ae812f6c15718ce5abdd402863e8b4553fa9971e4baa5d45ff585c52948a45",
+    "assets/team-logos/tb.png": "bcc5d267024650938c9f35558077fe00a31913b89c61768d4ebb63d1ea31fbfd",
+    "assets/team-logos/ten.png": "27cf283fca5b2e9e1c5e995a465a54223424c157d2013b603a6491f99333cf45",
+    "assets/team-logos/wsh.png": "2f67805ef9e385a4c67adb0a9320706bd481a52e3aa0e0faea995dad2b501112"
+  },
+  "data_parity": {
+    "status": "PASS",
+    "bundles": 6,
+    "games": [
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_SEA_DEN",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_HOU_JAX",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 29,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_BAL_CLE",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_CAR_PHI",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_CHI_ATL",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_NO_NYG",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_NYJ_NE",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_PIT_TB",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_TEN_IND",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_ARI_LA",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_BUF_LV",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_LAC_KC",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_DAL_GB",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_06_WAS_SF",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_NE_SEA",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 30,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_SF_LA",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_ATL_PIT",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_BAL_IND",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_BUF_HOU",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_CHI_CAR",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_CLE_JAX",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 30,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_NO_DET",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_NYJ_TEN",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_TB_CIN",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_ARI_LAC",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_GB_MIN",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_MIA_LV",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 29,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_WAS_PHI",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_DAL_NYG",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_01.json",
+        "game_id": "2026_01_DEN_KC",
+        "source_run_id": "phase3_5-production-20260909T124638Z-a7dd832e",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_DET_BUF",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 18,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_CAR_ATL",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 15,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_CIN_HOU",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 16,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_CLE_TB",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 18,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_GB_NYJ",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 17,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_MIN_CHI",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_NO_BAL",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_PHI_TEN",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 20,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_PIT_NE",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_JAX_DEN",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_LV_LAC",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 19,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_MIA_SF",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 18,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_SEA_ARI",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 19,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_WAS_DAL",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 15,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_IND_KC",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 18,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_02.json",
+        "game_id": "2026_02_NYG_LA",
+        "source_run_id": "phase3_5-production-20260915T085832Z-fa57a532",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 20,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_ATL_GB",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_CAR_CLE",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_CIN_PIT",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_HOU_IND",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_KC_MIA",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_LAC_BUF",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_NE_JAX",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 29,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_NYJ_DET",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_SEA_WAS",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_TEN_NYG",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_ARI_SF",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_MIN_TB",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_BAL_DAL",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_LV_NO",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_LA_DEN",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_03.json",
+        "game_id": "2026_03_PHI_CHI",
+        "source_run_id": "phase3_5-production-20260924T222021Z-afba4733",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_PIT_CLE",
+        "source_run_id": "phase3_5-production-20260929T110120Z-259e9b48",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_IND_WAS",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_ARI_NYG",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_DAL_HOU",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_GB_TB",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_JAX_CIN",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_LA_PHI",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_NE_BUF",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_NYJ_CHI",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_TEN_BAL",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_MIA_MIN",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_DEN_SF",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_KC_LV",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 20,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_LAC_SEA",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_DET_CAR",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_04.json",
+        "game_id": "2026_04_ATL_NO",
+        "source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_TB_DAL",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_PHI_JAX",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_CHI_GB",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_CIN_MIA",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 28,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_CLE_NYJ",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_HOU_TEN",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_IND_PIT",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_LV_NE",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_MIN_NO",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_NYG_WAS",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 29,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_DEN_LAC",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_DET_ARI",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 19,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_SF_SEA",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_BAL_ATL",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_05.json",
+        "game_id": "2026_05_BUF_LA",
+        "source_run_id": "phase3_5-production-20261008T170405Z-8017e8e9",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      }
+    ],
+    "current_week_byte_identical": true,
+    "value_byte_identical": true,
+    "historical_results_only_from_validated_actuals": true
+  },
+  "research_forecasts_included": false,
+  "official_pointer_updated": false
+}

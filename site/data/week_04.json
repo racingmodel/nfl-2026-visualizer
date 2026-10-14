@@ -1098,7 +1098,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20260929T110120Z-259e9b48",
       "prediction_source_run_id": "phase3_5-production-20260929T110120Z-259e9b48",
-      "prediction_cutoff_utc": "2026-09-29T11:01:20.942181+00:00"
+      "prediction_cutoff_utc": "2026-09-29T11:01:20.942181+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 27,
+      "actual_away_score": 24,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_IND_WAS",
@@ -2181,7 +2185,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 13,
+      "actual_away_score": 30,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_ARI_NYG",
@@ -3135,7 +3143,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 36,
+      "actual_away_score": 24,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_DAL_HOU",
@@ -4218,7 +4230,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 30,
+      "actual_away_score": 34,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_GB_TB",
@@ -5258,7 +5274,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 14,
+      "actual_away_score": 17,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_JAX_CIN",
@@ -6470,7 +6490,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 17,
+      "actual_away_score": 22,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_LA_PHI",
@@ -7467,7 +7491,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 20,
+      "actual_away_score": 24,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_NE_BUF",
@@ -8593,7 +8621,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 26,
+      "actual_away_score": 29,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_NYJ_CHI",
@@ -9633,7 +9665,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 23,
+      "actual_away_score": 12,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_TEN_BAL",
@@ -10716,7 +10752,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 24,
+      "actual_away_score": 18,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_MIA_MIN",
@@ -11842,7 +11882,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 15,
+      "actual_away_score": 10,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_DEN_SF",
@@ -12839,7 +12883,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 24,
+      "actual_away_score": 14,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_KC_LV",
@@ -13750,7 +13798,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 27,
+      "actual_away_score": 30,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_LAC_SEA",
@@ -14876,7 +14928,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 30,
+      "actual_away_score": 23,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_DET_CAR",
@@ -15873,7 +15929,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 32,
+      "actual_away_score": 26,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     },
     {
       "game_id": "2026_04_ATL_NO",
@@ -16827,7 +16887,11 @@
       ],
       "prediction_run_id": "phase3_5-production-20261003T202140Z-13981e47",
       "prediction_source_run_id": "phase3_5-production-20261003T202140Z-13981e47",
-      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00"
+      "prediction_cutoff_utc": "2026-10-03T20:21:40.990546+00:00",
+      "result_status": "FINAL",
+      "actual_home_score": 24,
+      "actual_away_score": 45,
+      "result_source": "validated completed-week nflverse ingestion; presentation only"
     }
   ]
 }
