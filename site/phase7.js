@@ -9,10 +9,17 @@ function fail(error){query('#message').textContent=`Unable to load this view. ${
 const names={ARI:'Cardinals',ATL:'Falcons',BAL:'Ravens',BUF:'Bills',CAR:'Panthers',CHI:'Bears',CIN:'Bengals',CLE:'Browns',DAL:'Cowboys',DEN:'Broncos',DET:'Lions',GB:'Packers',HOU:'Texans',IND:'Colts',JAX:'Jaguars',KC:'Chiefs',LAC:'Chargers',LA:'Rams',LV:'Raiders',MIA:'Dolphins',MIN:'Vikings',NE:'Patriots',NO:'Saints',NYG:'Giants',NYJ:'Jets',PHI:'Eagles',PIT:'Steelers',SEA:'Seahawks',SF:'49ers',TB:'Buccaneers',TEN:'Titans',WAS:'Commanders'};
 function teamLogo(team){const code={LA:'lar',WAS:'wsh'}[team]||String(team).toLowerCase();return Object.hasOwn(names,team)?`<img class="team-logo" src="assets/team-logos/${code}.png" alt="" loading="lazy">`:'';}
 let freshnessPolicy={game_max_age_minutes:120,prop_max_age_minutes:60};
+function valueWithFixture(value,current,valueMetadata={}){
+ const games=(current.games||[]).filter(g=>g.game_id===value.game_id),game=games.length===1?games[0]:null;
+ const source=game&&(game.prediction_source_run_id||game.prediction_run_id||current.metadata.run_id);
+ const anchor=value.prediction_anchor_run_id||valueMetadata.prediction_run_id;
+ return {...value,_prediction_current:!!game&&(value.prediction_run_id||valueMetadata.prediction_run_id)===source&&anchor===current.metadata.run_id,_game_kickoff_utc:game?.kickoff_utc};
+}
 function quoteFreshness(v,now=Date.now()){
  const time=Date.parse(v.market_timestamp_utc);
  if(!Number.isFinite(time)||time>now)return 'UNKNOWN TIMESTAMP';
  if(v._prediction_current===false)return 'DIFFERENT FORECAST';
+ if(Number.isFinite(Date.parse(v._game_kickoff_utc))&&Date.parse(v._game_kickoff_utc)<=now)return 'GAME STARTED · ARCHIVED';
  const limit=/RUSH|RECEIV|TD|RECEPTION/.test(v.market_type||'')?freshnessPolicy.prop_max_age_minutes:freshnessPolicy.game_max_age_minutes;
  return (now-time)/60000>limit?'STALE · ARCHIVED':'CAPTURED QUOTE · VERIFY PRICE';
 }
@@ -36,7 +43,7 @@ async function games(){
   freshnessPolicy=await json('data/phase7_source_health.json');
   query('#source-health').innerHTML='<p class="muted">'+escapeHTML(freshnessPolicy.scope)+'. Missing source information never implies healthy. This panel describes the current-week frozen lock.</p>'+(freshnessPolicy.forecast_sources||[]).map(s=>'<div class="row"><span><b>'+escapeHTML(s.source)+'</b><small>Known '+ukTime(s.known_at_utc)+' · Captured '+ukTime(s.retrieved_at_utc)+'</small><small class="warning">'+escapeHTML(s.quality_warnings||'')+'</small></span><span>'+escapeHTML(s.source_state||'UNKNOWN')+'<small>'+escapeHTML(s.data_status||'Unknown coverage')+'</small></span></div>').join('');
  }catch{query('#message').textContent='Frozen source-health details unavailable. Original forecasts remain available.';}
- try{const v=await json('data/value.json');values=(v.values||[]).map(row=>({...row,_prediction_current:(row.prediction_run_id||v.metadata?.prediction_run_id)===current.metadata.run_id}));contexts=v.market_game_context||{};}
+ try{const v=await json('data/value.json');values=(v.values||[]).map(row=>valueWithFixture(row,current,v.metadata));contexts=v.market_game_context||{};}
  catch{query('#message').textContent='Market source unavailable. Independent forecasts remain available.';}
  const available=current.metadata.available_weeks||[current.metadata.week], week=query('#week');
  week.innerHTML=available.map(w=>'<option value="'+Number(w)+'">Week '+Number(w)+(Number(w)===Number(current.metadata.week)?' · current':'')+'</option>').join('');

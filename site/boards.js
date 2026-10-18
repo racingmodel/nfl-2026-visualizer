@@ -16,7 +16,7 @@ function filterValues(all,f){return all.filter(v=>(!f.market||v.market_type===f.
 async function marketBoard(){
  const current=await json('data/current_week.json');let data={metadata:{status:'MARKET_DATA_UNAVAILABLE'},values:[]};try{freshnessPolicy=await json('data/phase7_source_health.json');data=await json('data/value.json');}catch{query('#message').textContent='Market source unavailable. Independent forecasts remain available.';}
  query('#source-state').innerHTML=sourceLabel(current)+`<br>Market captured ${ukTime(data.metadata?.created_at_utc)}`;
- const all=(data.values||[]).map(v=>({...v,_prediction_current:(v.prediction_run_id||data.metadata?.prediction_run_id)===current.metadata.run_id}));
+ const all=(data.values||[]).map(v=>valueWithFixture(v,current,data.metadata));
  function render(){const list=filterValues(all,{market:query('#value-market').value,team:query('#value-team').value,confidence:query('#value-confidence').value,book:query('#value-book').value});query('#value-count').textContent=`Showing top ${Math.min(list.length,60)} of ${list.length} matching captured selections`;query('#value-list').innerHTML=list.slice(0,60).map(valueCard).join('')||'<p>No comparable captured market selections.</p>';}
  for(const id of ['value-market','value-team','value-confidence','value-book'])query('#'+id).addEventListener('input',render);render();
 }

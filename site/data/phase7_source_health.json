@@ -1,92 +1,116 @@
 {
   "forecast_sources": [
     {
+      "source": "team_feature_state",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T10:37:06.407995+00:00",
+      "retrieved_at_utc": "2026-10-14T10:37:06.407995+00:00",
+      "quality_warnings": "Copied byte-identically; no feature recalculation"
+    },
+    {
+      "source": "team_feature_state_manifest",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-14T10:37:06.407995+00:00",
+      "retrieved_at_utc": "2026-10-14T10:37:06.407995+00:00",
+      "quality_warnings": "Original source manifest copied byte-identically"
+    },
+    {
       "source": "schedule",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
       "quality_warnings": ""
     },
     {
       "source": "roster",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:52:11+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
-      "quality_warnings": "1 player-team states reconciled from point-in-time current depth; 18 current eligibility transactions could not be matched to roster identity"
+      "known_at_utc": "2026-10-18T06:03:40+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "quality_warnings": ""
     },
     {
       "source": "injuries",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
-      "quality_warnings": ""
-    },
-    {
-      "source": "snap_history",
-      "source_state": "VALID",
-      "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
-      "quality_warnings": ""
-    },
-    {
-      "source": "participation_history",
-      "source_state": "VALID",
-      "data_status": "READY",
-      "known_at_utc": "2026-09-08T22:18:31.161618+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
       "quality_warnings": ""
     },
     {
       "source": "depth",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:51:31+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "known_at_utc": "2026-10-18T06:02:04+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
       "quality_warnings": ""
     },
     {
       "source": "quarterbacks",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
       "quality_warnings": ""
     },
     {
       "source": "transactions",
       "source_state": "VALID",
-      "data_status": "READY_WITH_WARNINGS",
+      "data_status": "READY",
       "known_at_utc": "2026-05-19T15:28:21+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
-      "quality_warnings": "official NFL current-month transaction pages incomplete for reserve-list, signings, waivers; matched records are still overlaid, NFLverse trades alone are supplemental"
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "quality_warnings": ""
     },
     {
       "source": "weather",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T12:55:59.627489+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:09.748932+00:00",
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
       "quality_warnings": ""
     },
     {
-      "source": "exact_player_pregame_universe_features",
+      "source": "pregame_player_features",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T13:07:12.057330+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:12.057330+00:00",
-      "quality_warnings": "Numerical features unchanged; archived for future replay"
+      "known_at_utc": "2026-10-14T13:06:56.589621+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "quality_warnings": "Effective timestamps verified before first target-week kickoff"
     },
     {
-      "source": "exact_historical_team_features",
+      "source": "pit_team_schedule_context",
       "source_state": "VALID",
       "data_status": "READY",
-      "known_at_utc": "2026-10-14T13:07:12.057330+00:00",
-      "retrieved_at_utc": "2026-10-14T13:07:12.057330+00:00",
-      "quality_warnings": "Numerical features unchanged; archived for future replay"
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "quality_warnings": "Week W and future results are excluded"
+    },
+    {
+      "source": "historical_team_features",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "retrieved_at_utc": "2026-10-18T09:26:05.581822+00:00",
+      "quality_warnings": "Current and future seasons excluded"
+    },
+    {
+      "source": "game_eligibility",
+      "source_state": "",
+      "data_status": "READY",
+      "known_at_utc": "",
+      "retrieved_at_utc": "",
+      "quality_warnings": ""
+    },
+    {
+      "source": "fixture_gate_audit",
+      "source_state": "",
+      "data_status": "READY",
+      "known_at_utc": "",
+      "retrieved_at_utc": "",
+      "quality_warnings": ""
     }
   ],
   "scope": "frozen input states at original prediction cutoff, not a new live refresh",
