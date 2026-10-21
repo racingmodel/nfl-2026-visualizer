@@ -20,7 +20,8 @@ async function marketBoard(){
  function render(){const list=filterValues(all,{market:query('#value-market').value,team:query('#value-team').value,confidence:query('#value-confidence').value,book:query('#value-book').value});query('#value-count').textContent=`Showing top ${Math.min(list.length,60)} of ${list.length} matching captured selections`;query('#value-list').innerHTML=list.slice(0,60).map(valueCard).join('')||'<p>No comparable captured market selections.</p>';}
  for(const id of ['value-market','value-team','value-confidence','value-book'])query('#'+id).addEventListener('input',render);render();
 }
-async function modelBoard(){const data=await json('data/current_week.json');query('#source-state').innerHTML=sourceLabel(data);query('#model-contract').textContent=`Frozen model versions: ${Object.entries(data.metadata.model_ids||{}).map(([kind,m])=>`${kind}: ${m.version}`).join(' · ')}. Feature version: ${data.metadata.feature_version}. Original run: ${data.metadata.run_id}.`;}
+function modelIdentifier(value){return '<span class="model-identifier">'+escapeHTML(value).replace(/([-_])/g,'$1<wbr>')+'</span>';}
+async function modelBoard(){const data=await json('data/current_week.json');query('#source-state').innerHTML=sourceLabel(data);query('#model-contract').innerHTML=`Frozen model versions: ${Object.entries(data.metadata.model_ids||{}).map(([kind,m])=>`${escapeHTML(kind)}: ${modelIdentifier(m.version)}`).join(' · ')}. Feature version: ${modelIdentifier(data.metadata.feature_version)}. Original run: ${modelIdentifier(data.metadata.run_id)}.`;}
 if(document.body.dataset.page==='players')playersBoard().catch(fail);
 if(document.body.dataset.page==='value')marketBoard().catch(fail);
 if(document.body.dataset.page==='model')modelBoard().catch(fail);

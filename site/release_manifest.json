@@ -1,37 +1,38 @@
 {
   "status": "VALIDATED_RELEASE_CANDIDATE_NOT_PUBLISHED",
-  "release_id": "frontend-v3-1-303ab092f6361881",
-  "content_sha256": "303ab092f636188195beee74c92fc25565a8d3f659c25821774c140ec9c6b4ff",
-  "prediction_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-  "created_at_utc": "2026-10-18T12:24:53.562306+00:00",
+  "release_id": "frontend-v3-1-57e41c99d7a69eb1",
+  "content_sha256": "57e41c99d7a69eb1db587d1e091be97243e37c7080e437028c1897ac4a72f3cb",
+  "prediction_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+  "created_at_utc": "2026-10-21T22:28:35.690612+00:00",
   "files": {
     "app.js": "a26491455d908d252eccc6ad1749c6c5a420eb1495fe33684b97bef8f05d3479",
-    "boards.js": "57e7277e589cb5eb71a411841744d407d610c5f39c9d3ba4b46d5e243930157f",
-    "index.html": "76126aa31e25afd89e2e82d2699c141e130bc31fb9ac9f2e48e1a9c5a7435bc8",
-    "model.html": "abbe4d860ff05ee4028d7480ca52d2abac2b06c81ab723ad2a0fe93767611f02",
-    "performance.html": "07e0409185a12eb443fbcd967070dc4722aad6ed42e3fefe25eca1b17c8b8db0",
-    "phase7.css": "b2bb6eabcdd4eaf1d53b1d9cef879ae5a8859924ce31b30f11d306200bfc2b85",
-    "phase7.js": "c8eb77416b42a6d7b14c5371299cc4a7af4fcf323c59501c7f057027e6fceba9",
-    "players.html": "99d7915490f5d35d80f24883fd61927261afcde29dbaf6bf71e91fb43430d35c",
+    "boards.js": "4193d67338dabb102c0228b52088c119ce3191e6a1c201994e3bf3b0a23466d3",
+    "index.html": "f176b98778e76712ef66366816a0c481852a8bf8cb9177a6907ad47626c87e95",
+    "model.html": "7ced91c904da48a6826aba95b8482191d7ca1dcdbe7fc4f1760c3f09b9301a9e",
+    "performance.html": "423668b8871bbc2e425b3a016cb26d5269e5097d36c2acab92f3765f16c45f7a",
+    "phase7.css": "4e7e187df2eb562efdaf14ea0a56af22362779da054f395d6652b7a872b04686",
+    "phase7.js": "fc3ab7ba722bf364f1ff74fbcea72a6b247f9917754aab1421daf3c9581de342",
+    "players.html": "b1cedd6ee14693c5255272b90f321562f15806e557d19c4eb9b4e526c953e3cd",
     "styles.css": "bca3cb593334f0b64a6d26c6cc3fc04504025378c5e7cf289d7f8e3effbd2e65",
     "v31.js": "cbdc5adf164c64128256fd29dcf61c9ae8d546b68de291f4b4f1407b93f5921a",
-    "value.html": "9d8c53f8dc9e48090beb5fa93abe418c30202e61f5641491a8cc3ffa9d7b64ad",
+    "value.html": "c116bc55d5fbd1550e8554094ebf318efcf9124c9ae154431bf7307436d96a69",
     "assets/stadium-night.jpg": "9663c08feaf03dc9bdf669fd4489ee588c78cfd3ecc09e44f3352ce5ee6b4a23",
-    "data/current_week.json": "2378e479c54290e9e0947f2112df6c1f3c6955c48f505b81a627a64a378f8589",
+    "data/current_week.json": "acd3ca52da407a3fe59a9c890eaca815af24865d5b9ffe31d77c54287ab24fe4",
     "data/frontend_contract.json": "9df8a0612638c65c7db2bc72d1f5a124169bfc74010bed185365d297f3861d5c",
-    "data/frontend_release.json": "01f9fd72e576f44387d8857a94020fb58b65ac8e741be259959b3fefcba5ccf4",
+    "data/frontend_release.json": "2fdc0582d52603503db3d3c1e4563aab3eb1d67edce8a43fc2b17383a1f81657",
     "data/passing_projections.json": "edd6d6f5ae47d22bd33a630f8a1876ecaac9b5bc64f430bdf3a631e51437f792",
-    "data/performance.json": "488d136c86293f334aa722ec6846adc3f90588ed73503e4ff2476ded2d21e754",
+    "data/performance.json": "41ff2c968d0162bd638d3d026cd10368242a5de8d60e2fd4b9836b2c931aa324",
     "data/phase7_lab.json": "e9e6b3c4cd6f3c3e7572f3565935582373b8687fdc419397ac75699cbe5c6697",
-    "data/phase7_performance.json": "91a4df4bd64e3f193c8337aec4b137ec7582d4a6738f5acc26ba72cc6f679869",
-    "data/phase7_source_health.json": "ebb25da7ce926a091f7579471ddcc612e8752481ae326f6d89806fd8b7f5e167",
-    "data/player_presentation.json": "fa110a53cdaf70da8c3b5ee3b75a695aa3c8107fa4547af943e319643c05c5c7",
-    "data/value.json": "e993e135dbca1e5fb2bf328d76da395418a902e5718adec3df5297bacce97bc2",
+    "data/phase7_performance.json": "93cf22e190473dc274b2f97c679c8b9ff564880af207ddd07beedb3ace682e9b",
+    "data/phase7_source_health.json": "24bc0dcc6a2964db73f94773dcff0291b87ad594942964c069b7447355ef86c6",
+    "data/player_presentation.json": "a7a562bc7425c651dea529725591da8528e347bb4fb9d247e8ba42cd527ac5c9",
+    "data/value.json": "cc28a19ea203d4247f855c5839632c667fa969e50aa7ade3b030cd6bbc8d1ccf",
     "data/week_01.json": "0dbdf3d73e873e8010bcf8113031d1a8a750771b96361b43ab5ad05b684e18e0",
     "data/week_02.json": "1e6c4577b1223c3e91f5f69349859dd4abc26b538648c608b904bb2f2bfce970",
     "data/week_03.json": "552bfdb715af5bbf0e8f381bfbfa1797aec36695d0eb4c6c79fe72a6ba4303c4",
     "data/week_04.json": "e850700ddc15918eb227631fbbe7c0312fa5969e6b6cbaee05bae4ec3aff6f9d",
     "data/week_05.json": "9b0b4da38ab793bc656a3538fb9c8f9bc6fae8ea58340b93b78839f204f5bd52",
+    "data/week_06.json": "20935fd505e36eba26492528e4e303f406e51b8445c146dbf57ed5d7cf92be81",
     "assets/team-logos/ari.png": "f870b58b43585a5b7717d578dd433b0b1e0c462d64ef4bea2aeb8c03f4ae7854",
     "assets/team-logos/atl.png": "fe566e9da6f7986b2bac321571bd751247ff93af15c51ae555486fb1bee90c91",
     "assets/team-logos/bal.png": "67796023c172c9aeab5bcdac9204823d3590097246ad1cb92971134b5f26dcc0",
@@ -67,93 +68,12 @@
   },
   "data_parity": {
     "status": "PASS",
-    "bundles": 6,
+    "bundles": 7,
     "games": [
       {
         "bundle": "current_week.json",
-        "game_id": "2026_06_SEA_DEN",
-        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 26,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_HOU_JAX",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 29,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_BAL_CLE",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 25,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_CAR_PHI",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 25,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_NO_NYG",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 22,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_NYJ_NE",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 26,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_PIT_TB",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 20,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_TEN_IND",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 26,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_ARI_LA",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 23,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_BUF_LV",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "game_id": "2026_07_NE_CHI",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
         "forecast_fields_verified": true,
         "all_fields_equal": true,
         "players": 24,
@@ -161,17 +81,8 @@
       },
       {
         "bundle": "current_week.json",
-        "game_id": "2026_06_LAC_KC",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
-        "forecast_fields_verified": true,
-        "all_fields_equal": true,
-        "players": 19,
-        "results_separate": true
-      },
-      {
-        "bundle": "current_week.json",
-        "game_id": "2026_06_CHI_ATL",
-        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "game_id": "2026_07_PIT_NO",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
         "forecast_fields_verified": true,
         "all_fields_equal": true,
         "players": 21,
@@ -179,8 +90,8 @@
       },
       {
         "bundle": "current_week.json",
-        "game_id": "2026_06_DAL_GB",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "game_id": "2026_07_CIN_BAL",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
         "forecast_fields_verified": true,
         "all_fields_equal": true,
         "players": 25,
@@ -188,11 +99,101 @@
       },
       {
         "bundle": "current_week.json",
-        "game_id": "2026_06_WAS_SF",
-        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "game_id": "2026_07_CLE_TEN",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_IND_MIN",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_MIA_NYJ",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
         "forecast_fields_verified": true,
         "all_fields_equal": true,
         "players": 27,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_NYG_HOU",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_SF_ATL",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_TB_CAR",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_DEN_ARI",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_GB_DET",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_LA_LV",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_KC_SEA",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "current_week.json",
+        "game_id": "2026_07_DAL_PHI",
+        "source_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
         "results_separate": true
       },
       {
@@ -905,13 +906,139 @@
         "all_fields_equal": true,
         "players": 24,
         "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_SEA_DEN",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_HOU_JAX",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 29,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_BAL_CLE",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_CAR_PHI",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_NO_NYG",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 22,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_NYJ_NE",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_PIT_TB",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 20,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_TEN_IND",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 26,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_ARI_LA",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 23,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_BUF_LV",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 24,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_LAC_KC",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 19,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_CHI_ATL",
+        "source_run_id": "phase3_5-production-20261014T130712Z-5aba9259",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 21,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_DAL_GB",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 25,
+        "results_separate": true
+      },
+      {
+        "bundle": "week_06.json",
+        "game_id": "2026_06_WAS_SF",
+        "source_run_id": "phase3_5-production-20261018T110604Z-164c9096",
+        "forecast_fields_verified": true,
+        "all_fields_equal": true,
+        "players": 27,
+        "results_separate": true
       }
     ],
     "current_week_byte_identical": true,
     "value_byte_identical": true,
     "historical_results_only_from_validated_actuals": true,
-    "market_snapshot_id": "20261018T114806Z-96195fa0",
-    "value_run_id": "phase4-official-20261018T114806Z-48c5352c",
+    "market_snapshot_id": "20261021T212301Z-58b6b03b",
+    "value_run_id": "phase4-official-20261021T212411Z-0703c911",
     "fixture_market_lineage_verified": true
   },
   "research_forecasts_included": false,
