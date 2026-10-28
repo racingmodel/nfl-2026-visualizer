@@ -1,0 +1,399 @@
+from __future__ import annotations
+
+from dataclasses import replace
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+from typing import Any
+
+import joblib
+import numpy as np
+import pandas as pd
+
+from nfl2026.config import Settings
+from nfl2026.live.providers.depth import infer_missing_roles
+from nfl2026.models.player_advanced import reconcile_td_probabilities
+from nfl2026.models.team_advanced import simulate_games
+from nfl2026.registry.core import append_run, load_registered_model
+from nfl2026.utilities.io import sha256_file, write_csv_json
+
+
+SOURCE_SPECS = {
+    "schedule": {"file":"games.csv", "url":"https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv", "critical":True, "max_age_hours":168, "reliability":"EXACT_POINT_IN_TIME"},
+    "roster": {"file":"weekly_roster_{season}.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_{season}.csv", "critical":True, "max_age_hours":72, "reliability":"WEEKLY_ASSUMED_PREGAME"},
+    "injuries": {"file":"injuries_{season}.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_{season}.csv", "critical":True, "max_age_hours":36, "reliability":"STRUCTURED_CURRENT_REPORTS"},
+    "snap_history": {"file":"snap_counts_2025.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv", "critical":False, "max_age_hours":8760, "reliability":"EXACT_POSTGAME_LAGGED"},
+    "participation_history": {"file":"participation_2025.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/pbp_participation/pbp_participation_2025.csv", "critical":False, "max_age_hours":8760, "reliability":"EXACT_POSTGAME_LAGGED"},
+    "depth": {"file":"depth_charts_{season}.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/depth_charts/depth_charts_{season}.csv", "critical":False, "max_age_hours":36, "reliability":"EXACT_CURRENT_DEPTH_WITH_MODEL_FALLBACK"},
+    "quarterbacks": {"file":"qb_status_{season}_w{week:02d}.csv", "url":"nflverse schedule + depth_charts + weekly_rosters", "critical":True, "max_age_hours":36, "reliability":"CORROBORATED_EXPECTED_STARTER"},
+    "transactions": {"file":"transactions_{season}.csv", "url":"https://github.com/nflverse/nflverse-data/releases/download/trades/trades.csv", "critical":False, "max_age_hours":8760, "reliability":"SUPPLEMENTAL_TRADES_ONLY"},
+    "weather": {"file":"weather_{season}_w{week:02d}.csv", "url":"https://api.open-meteo.com/v1/forecast", "critical":False, "max_age_hours":6, "reliability":"PRELOCK_FORECAST_CONTEXT_ONLY"},
+}
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _timestamp(value: datetime) -> str:
+    return value.strftime("%Y%m%dT%H%M%SZ")
+
+
+def _schema_hash(frame: pd.DataFrame) -> str:
+    text="|".join(f"{c}:{frame[c].dtype}" for c in frame.columns)
+    return hashlib.sha256(text.encode()).hexdigest()
+
+
+def detect_current_week(settings: Settings, season: int, as_of: datetime | None = None) -> int:
+    """Return the earliest regular-season week with an unplayed future fixture."""
+    as_of = as_of or utc_now()
+    schedule = pd.read_csv(settings.root/"data"/"phase2_external"/"games.csv", low_memory=False)
+    candidates = schedule[(schedule.season.eq(season)) & schedule.game_type.eq("REG")].copy()
+    local = pd.to_datetime(candidates.gameday.astype(str)+" "+candidates.gametime.fillna("13:00"), errors="coerce")
+    candidates["kickoff_utc"] = local.dt.tz_localize("America/New_York", ambiguous="NaT", nonexistent="shift_forward").dt.tz_convert("UTC")
+    future = candidates[(candidates.kickoff_utc > pd.Timestamp(as_of)) & candidates.home_score.isna() & candidates.away_score.isna()]
+    if future.empty:
+        raise ValueError(f"No upcoming unplayed regular-season fixtures for {season}")
+    return int(future.sort_values("kickoff_utc").week.iloc[0])
+
+
+def build_qb_status(schedule: pd.DataFrame, roster: pd.DataFrame, week: int, cutoff_utc: str) -> pd.DataFrame:
+    active_qbs=set(roster[(roster.week.eq(week))&roster.status.eq("ACT")&roster.position.eq("QB")].gsis_id.dropna().astype(str))
+    rows=[]
+    for game in schedule.itertuples(index=False):
+        for side in ("away","home"):
+            player_id=str(getattr(game,f"{side}_qb_id")); player_name=getattr(game,f"{side}_qb_name")
+            valid=bool(player_id and player_id!="nan" and pd.notna(player_name) and player_id in active_qbs)
+            rows.append({"game_id":game.game_id,"team":getattr(game,f"{side}_team"),"projected_qb_id":player_id,"projected_qb":player_name,"source":"locked nflverse schedule + weekly roster","status":"VALIDATED" if valid else "FLAGGED","confidence":"MEDIUM" if valid else "LOW","known_at_utc":cutoff_utc})
+    return pd.DataFrame(rows)
+
+
+def filter_current_candidates(candidate: pd.DataFrame, roster: pd.DataFrame, injuries: pd.DataFrame, week: int) -> pd.DataFrame:
+    active=set(roster[(roster.week.eq(week))&roster.status.eq("ACT")].gsis_id.dropna().astype(str))
+    filtered=candidate[candidate.player_id.astype(str).isin(active)].copy()
+    idcol="gsis_id" if "gsis_id" in injuries else "player_id" if "player_id" in injuries else None
+    statuscol="game_status" if "game_status" in injuries else "normalized_status" if "normalized_status" in injuries else "report_status" if "report_status" in injuries else "practice_status" if "practice_status" in injuries else None
+    if idcol and statuscol:
+        unavailable=set(injuries[injuries[statuscol].astype(str).str.upper().isin(["OUT","IR","PUP"])][idcol].dropna().astype(str))
+        filtered=filtered[~filtered.player_id.astype(str).isin(unavailable)]
+    return filtered.reset_index(drop=True)
+
+
+def redistribute_unavailable_opportunity(candidate: pd.DataFrame, expected: dict[str,np.ndarray], unavailable_ids: set[str]) -> tuple[pd.DataFrame,dict[str,np.ndarray]]:
+    """Remove explicitly unavailable players and redistribute through modelled team opportunity shares."""
+    keep=~candidate.player_id.astype(str).isin(unavailable_ids)
+    kept=candidate[keep].reset_index(drop=True)
+    adjusted={name:np.asarray(values)[keep.to_numpy()].copy() for name,values in expected.items()}
+    original_teams=candidate.team.reset_index(drop=True)
+    kept_teams=kept.team.reset_index(drop=True)
+    for name in ("carries","targets","rushing_yards","receiving_yards"):
+        values=np.asarray(expected[name])
+        for team in kept_teams.unique():
+            original_total=float(values[original_teams.eq(team)].sum())
+            mask=kept_teams.eq(team).to_numpy()
+            remaining=float(adjusted[name][mask].sum())
+            if original_total>remaining>0:
+                # A finite cap prevents a single late scratch from creating implausible volume.
+                adjusted[name][mask]*=min(original_total/remaining,1.5)
+    return kept,adjusted
+
+
+def ingest_snapshots(settings: Settings, season: int, week: int, retrieved_at: datetime | None=None) -> tuple[Path,pd.DataFrame]:
+    retrieved_at=retrieved_at or utc_now(); stamp=_timestamp(retrieved_at)
+    destination=settings.root/"data"/"snapshots"/str(season)/f"week_{week:02d}"/stamp
+    if destination.exists(): raise FileExistsError(f"Snapshot is immutable: {destination}")
+    destination.mkdir(parents=True)
+    source_root=settings.root/"data"/"phase2_external"; rows=[]
+    scheduled_teams:set[str]=set()
+    schedule_source=source_root/"games.csv"
+    if schedule_source.exists():
+        all_games=pd.read_csv(schedule_source,low_memory=False)
+        target=all_games[(all_games.season.eq(season))&(all_games.week.eq(week))&all_games.game_type.eq("REG")]
+        scheduled_teams=set(target.home_team)|set(target.away_team)
+    provider_path=source_root/f"live_provider_manifest_{season}_w{week:02d}.csv"
+    provider_manifest=pd.read_csv(provider_path,low_memory=False).set_index("source") if provider_path.exists() else pd.DataFrame()
+    for name,spec in SOURCE_SPECS.items():
+        filename=spec["file"].format(season=season,week=week) if spec["file"] else None
+        source=source_root/filename if filename else None
+        exists=bool(source and source.exists())
+        target_path=destination/filename if exists else None
+        frame=pd.read_csv(source,low_memory=False) if exists else pd.DataFrame()
+        if exists: shutil.copy2(source,target_path)
+        warnings=[]; status="READY"; source_modified=""; age_hours=""
+        provider=provider_manifest.loc[name] if len(provider_manifest) and name in provider_manifest.index else None
+        source_url=str(provider.source_url) if provider is not None else spec["url"]
+        known_at=pd.to_datetime(provider.source_known_at_utc,utc=True).to_pydatetime() if provider is not None else retrieved_at
+        reliability=str(provider.reliability) if provider is not None else spec["reliability"]
+        if provider is not None:
+            status=str(provider.data_status)
+            if pd.notna(provider.quality_warnings) and str(provider.quality_warnings): warnings.append(str(provider.quality_warnings))
+        if not exists:
+            status="BLOCKED" if spec["critical"] else "READY_WITH_WARNINGS"; warnings.append("source unavailable")
+        else:
+            source_modified=datetime.fromtimestamp(source.stat().st_mtime,tz=timezone.utc)
+            if provider is None: known_at=min(source_modified,retrieved_at)
+            age_hours=max(0.0,(retrieved_at-known_at).total_seconds()/3600)
+            if age_hours>spec["max_age_hours"]:
+                status="BLOCKED" if spec["critical"] else "READY_WITH_WARNINGS"
+                warnings.append(f"staged source age {age_hours:.1f}h exceeds {spec['max_age_hours']}h")
+        if exists and name=="schedule":
+            target=frame[(frame.season.eq(season))&(frame.week.eq(week))&frame.game_type.eq("REG")]
+            if target.empty: status="BLOCKED"; warnings.append("requested week has no fixtures")
+            if not target.game_id.is_unique: status="BLOCKED"; warnings.append("duplicate game IDs")
+            if target[["home_score","away_score"]].notna().any().any(): status="BLOCKED"; warnings.append("target-week result present")
+        elif exists and name=="roster":
+            target=frame[(frame.season.eq(season))&(frame.week.eq(week))&frame.game_type.eq("REG")]
+            coverage=len(set(target.team)&scheduled_teams)
+            if coverage<len(scheduled_teams): status="BLOCKED"; warnings.append(f"team coverage {coverage}/{len(scheduled_teams)}")
+        elif exists and name=="injuries":
+            coverage_file=source_root/f"injuries_coverage_{season}_w{week:02d}.csv"
+            if coverage_file.exists():
+                assessed=pd.read_csv(coverage_file)
+                if set(assessed.team)!=scheduled_teams: status="BLOCKED"; warnings.append("not every scheduled team has an injury coverage assessment")
+                missing=int(assessed.coverage_status.eq("SOURCE_MISSING").sum())
+                not_yet=int(assessed.coverage_status.eq("NOT_YET_PUBLISHED").sum())
+                if missing: status="BLOCKED"; warnings.append(f"{missing} team reports missing after normal deadline")
+                elif not_yet: status="READY_WITH_WARNINGS"; warnings.append(f"{not_yet} team reports verified not yet due")
+            else:
+                teams=set(frame.team.dropna()) if "team" in frame else set(); coverage=len(teams&scheduled_teams)
+                if coverage<len(scheduled_teams): status="BLOCKED"; warnings.append(f"league-wide coverage incomplete: {coverage}/{len(scheduled_teams)} teams")
+        date_columns=[c for c in frame if any(k in c.lower() for k in ("date","time","dt"))]
+        dates=pd.concat([pd.to_datetime(frame[c],errors="coerce",utc=True) for c in date_columns],ignore_index=True) if date_columns else pd.Series(dtype="datetime64[ns, UTC]")
+        rows.append({"source":name,"source_url":source_url,"retrieved_at_utc":retrieved_at.isoformat(),"source_modified_at_utc":source_modified.isoformat() if source_modified else "","source_age_hours":round(age_hours,2) if age_hours != "" else "","max_age_hours":spec["max_age_hours"],"known_at_utc":known_at.isoformat(),"valid_from":known_at.isoformat(),"valid_to":"","season":season,"week":week,"snapshot_path":str(target_path.relative_to(settings.root)) if target_path else "","sha256":sha256_file(target_path) if target_path else "","row_count":len(frame),"schema_version":_schema_hash(frame) if len(frame) else "","minimum_date":dates.min() if dates.notna().any() else "","maximum_date":dates.max() if dates.notna().any() else "","freshness_status":status,"data_status":status,"critical":spec["critical"],"reliability":reliability,"quality_warnings":"; ".join(dict.fromkeys(warnings))})
+    manifest=pd.DataFrame(rows)
+    write_csv_json(manifest,destination/"snapshot_manifest.csv",destination/"snapshot_manifest.json")
+    write_csv_json(manifest,settings.report_root/"phase3_source_status.csv")
+    history_path=settings.artifact_root/"data_manifest.csv"
+    if history_path.exists():
+        history=pd.read_csv(history_path,low_memory=False)
+        additions=[]
+        for row in manifest[manifest.snapshot_path.ne("")].itertuples(index=False):
+            additions.append({"source":"phase3_weekly_snapshot","season":season,"data_type":row.source,"file_path":row.snapshot_path,"row_count":row.row_count,"column_count":"","schema_fingerprint":row.schema_version,"minimum_date":row.minimum_date,"maximum_date":row.maximum_date,"minimum_week":week,"maximum_week":week,"duplicate_status":"immutable_snapshot","canonical_path":row.snapshot_path,"last_modified_utc":row.retrieved_at_utc,"sha256":row.sha256})
+        if additions:
+            pd.concat([history,pd.DataFrame(additions)],ignore_index=True).to_csv(history_path,index=False,lineterminator="\n")
+    return destination,manifest
+
+
+def latest_snapshot_before(settings: Settings,season:int,week:int,cutoff:datetime) -> tuple[Path,pd.DataFrame]:
+    root=settings.root/"data"/"snapshots"/str(season)/f"week_{week:02d}"
+    choices=[]
+    for manifest_path in root.glob("*/snapshot_manifest.csv") if root.exists() else []:
+        frame=pd.read_csv(manifest_path)
+        retrieved=pd.to_datetime(frame.retrieved_at_utc.iloc[0],utc=True).to_pydatetime()
+        if retrieved<=cutoff: choices.append((retrieved,manifest_path.parent,frame))
+    if not choices: raise FileNotFoundError("No snapshot exists at or before cutoff")
+    _,path,frame=max(choices,key=lambda x:x[0]); return path,frame
+
+
+def create_week_lock(settings:Settings,season:int,week:int,cutoff:datetime,run_type:str) -> tuple[Path,pd.DataFrame,dict[str,Any]]:
+    if cutoff.tzinfo is None: raise ValueError("Cutoff must include UTC timezone")
+    snapshot,manifest=latest_snapshot_before(settings,season,week,cutoff.astimezone(timezone.utc))
+    if (pd.to_datetime(manifest.known_at_utc,utc=True,format="mixed")>cutoff).any(): raise ValueError("Post-cutoff snapshot selected")
+    digest=hashlib.sha256((f"{season}|{week}|{cutoff.isoformat()}|"+"|".join(manifest.sha256.fillna(""))).encode()).hexdigest()[:16]
+    lock_id=f"lock-{season}-w{week:02d}-{digest}"
+    destination=settings.root/"locks"/str(season)/f"week_{week:02d}"/lock_id
+    if destination.exists(): raise FileExistsError(f"Lock is immutable: {destination}")
+    inputs=destination/"inputs"; inputs.mkdir(parents=True)
+    selected=[]
+    for row in manifest.itertuples(index=False):
+        copied=""
+        if isinstance(row.snapshot_path,str) and row.snapshot_path:
+            source=settings.root/row.snapshot_path; target=inputs/source.name; shutil.copy2(source,target); copied=str(target.relative_to(settings.root))
+        selected.append({**row._asdict(),"locked_path":copied,"selected_for_lock":True})
+    lock_manifest=pd.DataFrame(selected)
+    write_csv_json(lock_manifest,destination/"lock_manifest.csv",destination/"lock_manifest.json")
+    schedule_file=inputs/"games.csv"
+    schedule=pd.read_csv(schedule_file,low_memory=False)
+    target=schedule[(schedule.season.eq(season))&(schedule.week.eq(week))&schedule.game_type.eq("REG")].copy()
+    local=pd.to_datetime(target.gameday.astype(str)+" "+target.gametime.fillna("13:00"),errors="coerce")
+    target["kickoff_utc"]=local.dt.tz_localize("America/New_York",ambiguous="NaT",nonexistent="shift_forward").dt.tz_convert("UTC")
+    game_errors=[]
+    if target.empty or not target.game_id.is_unique: game_errors.append("target fixtures missing or duplicated")
+    if target[["home_team","away_team"]].isna().any().any(): game_errors.append("fixture teams missing")
+    if target.kickoff_utc.isna().any(): game_errors.append("fixture kickoff missing")
+    if target.kickoff_utc.le(pd.Timestamp(cutoff)).any(): game_errors.append("one or more target games already started")
+    for file in inputs.glob("*.csv"):
+        frame=pd.read_csv(file,low_memory=False)
+        for column in ("known_at_utc","source_known_at_utc"):
+            if column in frame and pd.to_datetime(frame[column],utc=True,errors="coerce").gt(pd.Timestamp(cutoff)).any():
+                game_errors.append(f"post-cutoff row in {file.name}:{column}")
+    production_blockers=lock_manifest[(lock_manifest.critical.astype(bool))&lock_manifest.data_status.eq("BLOCKED")].source.tolist()
+    if game_errors: production_blockers.append("lock_time_fixture_or_cutoff_validation")
+    lock_status="BLOCKED" if production_blockers else ("READY_WITH_WARNINGS" if lock_manifest.data_status.ne("READY").any() else "READY")
+    metadata={"lock_id":lock_id,"created_at_utc":utc_now().isoformat(),"cutoff_utc":cutoff.isoformat(),"season":season,"week":week,"run_type":run_type,"snapshot_id":snapshot.name,"lock_status":lock_status,"production_blockers":production_blockers,"fixture_cutoff_validation":"PASS" if not game_errors else "FAIL", "fixture_cutoff_reasons":game_errors,"feature_version":settings.phase2_feature_version,"model_version":settings.phase2_model_version,"manifest_sha256":sha256_file(destination/"lock_manifest.csv"),"architecture":"single explicit weekly cutoff; every displayed prediction must predate its game kickoff"}
+    (destination/"data_lock.json").write_text(json.dumps(metadata,indent=2,sort_keys=True),encoding="utf-8")
+    report=lock_manifest[["source","data_status","critical","reliability","row_count","sha256","quality_warnings"]].copy(); report.insert(0,"lock_id",lock_id)
+    write_csv_json(report,settings.report_root/"phase3_data_lock_report.csv")
+    return destination,lock_manifest,metadata
+
+
+def verify_lock(lock:Path) -> list[str]:
+    manifest=pd.read_csv(lock/"lock_manifest.csv"); errors=[]
+    for row in manifest.itertuples(index=False):
+        if isinstance(row.locked_path,str) and row.locked_path:
+            path=lock.parents[3]/row.locked_path if False else Path(lock.anchor)/Path(row.locked_path)
+            # Stored paths are workspace-relative; infer workspace from locks/<season>/week/run.
+            workspace=lock.parents[3]; path=workspace/row.locked_path
+            if not path.exists() or sha256_file(path)!=row.sha256: errors.append(f"hash mismatch: {row.source}")
+    return errors
+
+
+def _git_version(root:Path)->str:
+    try:return subprocess.check_output(["git","rev-parse","HEAD"],cwd=root,text=True).strip()+("+dirty" if subprocess.check_output(["git","status","--porcelain"],cwd=root,text=True).strip() else "")
+    except Exception:return "unavailable"
+
+
+def _build_preview(games:pd.DataFrame,players:pd.DataFrame,metadata:dict)->dict:
+    fixtures=[]
+    game_records=json.loads(games.sort_values("kickoff_utc").to_json(orient="records",date_format="iso"))
+    for game in game_records:
+        gp=players[players.game_id.eq(game["game_id"])]
+        display=gp[(gp.expected_carries.ge(3))|gp.expected_targets.ge(2.5)|gp.reconciled_td_probability.ge(.08)].copy()
+        game["players"]=json.loads(display.sort_values("reconciled_td_probability",ascending=False).to_json(orient="records",date_format="iso"))
+        fixtures.append(game)
+    return {"metadata":metadata,"games":fixtures}
+
+
+def generate_bundle(settings:Settings,lock:Path,mode:str="dry-run",seed:int|None=None,weekly_stage:str="EARLY_WEEK")->tuple[Path,pd.DataFrame]:
+    lock_meta=json.loads((lock/"data_lock.json").read_text()); cutoff=pd.Timestamp(lock_meta["cutoff_utc"])
+    if mode=="production" and lock_meta["lock_status"]=="BLOCKED": raise RuntimeError(f"Production blocked by: {lock_meta['production_blockers']}")
+    if verify_lock(lock): raise ValueError("Lock hash verification failed")
+    schedule_path=next((lock/"inputs").glob("games.csv")); schedule=pd.read_csv(schedule_path,low_memory=False)
+    schedule=schedule[(schedule.season.eq(lock_meta["season"]))&(schedule.week.eq(lock_meta["week"]))&schedule.game_type.eq("REG")].copy()
+    local=pd.to_datetime(schedule.gameday.astype(str)+" "+schedule.gametime.fillna("13:00"),errors="coerce")
+    schedule["kickoff_utc"]=local.dt.tz_localize("America/New_York",ambiguous="NaT",nonexistent="shift_forward").dt.tz_convert("UTC")
+    if (schedule.kickoff_utc<=cutoff).any(): raise ValueError("Cutoff is not before every target kickoff")
+    if schedule[["home_score","away_score"]].notna().any().any(): raise ValueError("Target-week result leakage")
+    registry=settings.artifact_root/"registry"/"model_registry.csv"
+    team_path,team_reg=load_registered_model(registry,"team_score_model",settings.phase2_model_version,settings.phase2_feature_version)
+    player_path,player_reg=load_registered_model(registry,"player_opportunity_model",settings.phase2_model_version,settings.phase2_feature_version)
+    td_path,td_reg=load_registered_model(registry,"player_td_model",settings.phase2_model_version,settings.phase2_feature_version)
+    from scripts.build_phase2 import _current_team_matrix
+    historical=pd.read_csv(settings.artifact_root/"phase2"/"team_advanced_matrix.csv"); historical["kickoff_utc"]=pd.to_datetime(historical.kickoff_utc,utc=True)
+    tmodel=joblib.load(team_path); features=tmodel["features"]; current=_current_team_matrix(schedule,historical,features)
+    home=np.clip(tmodel["home"].predict(current[features]),0,60); away=np.clip(tmodel["away"].predict(current[features]),0,60)
+    original_seed=settings.random_seed
+    point=pd.DataFrame({"game_id":current.game_id,"home_expected_points":home,"away_expected_points":away})
+    simulation_settings=replace(settings,random_seed=seed if seed is not None else original_seed)
+    simulated=simulate_games(simulation_settings,point)
+    games=current.merge(simulated,on="game_id").merge(schedule[["game_id","stadium","roof","surface"]],on="game_id",how="left")
+    injury_files=list((lock/"inputs").glob(f"injuries_{lock_meta['season']}.csv"))
+    injuries=pd.read_csv(injury_files[0],low_memory=False) if injury_files else pd.DataFrame()
+    depth_files=list((lock/"inputs").glob(f"depth_charts_{lock_meta['season']}.csv"))
+    depth=pd.read_csv(depth_files[0],low_memory=False) if depth_files else pd.DataFrame()
+    weather_files=list((lock/"inputs").glob(f"weather_{lock_meta['season']}_w{lock_meta['week']:02d}.csv"))
+    weather=pd.read_csv(weather_files[0],low_memory=False) if weather_files else pd.DataFrame()
+    qb_files=list((lock/"inputs").glob(f"qb_status_{lock_meta['season']}_w{lock_meta['week']:02d}.csv"))
+    qbs=pd.read_csv(qb_files[0],low_memory=False) if qb_files else pd.DataFrame()
+    injury_coverage=injuries[injuries.get("record_type",pd.Series(index=injuries.index,dtype=object)).eq("TEAM_COVERAGE")][["team","coverage_status"]].drop_duplicates("team") if len(injuries) and "record_type" in injuries else pd.DataFrame(columns=["team","coverage_status"])
+    injury_lookup=injury_coverage.set_index("team").coverage_status.to_dict()
+    weather_lookup=weather.set_index("game_id").to_dict("index") if len(weather) else {}
+    game_status=[]; game_warnings=[]; weather_summaries=[]
+    for row in games.itertuples(index=False):
+        reasons=[]; blockers=[]
+        for team in (row.away_team,row.home_team):
+            value=injury_lookup.get(team,"SOURCE_MISSING")
+            if value=="SOURCE_MISSING": blockers.append(f"{team} injury report missing")
+            elif value=="NOT_YET_PUBLISHED": reasons.append(f"{team} report not yet due")
+        wx=weather_lookup.get(row.game_id,{})
+        wx_status=wx.get("forecast_status","FAILED_RETRIEVAL")
+        if wx_status=="AVAILABLE":
+            weather_summaries.append(f"{wx.get('weather_condition','Forecast')} · {float(wx.get('temperature_f')):.0f}°F · wind {float(wx.get('wind_speed_mph')):.0f} mph")
+            if wx.get("roof_status")=="RETRACTABLE_UNKNOWN": reasons.append("retractable roof status unknown; forecast is context only")
+        elif wx_status=="ROOF_SUPPRESSED": weather_summaries.append("Indoor / closed-roof context")
+        else:
+            weather_summaries.append("Forecast unavailable")
+            reasons.append("weather unavailable; not used by registered model")
+        game_status.append("BLOCKED" if blockers else ("READY_WITH_WARNINGS" if reasons else "READY"))
+        game_warnings.append("; ".join(blockers+reasons))
+    games["display_home_score"]=games.home_expected_points.round().astype(int); games["display_away_score"]=games.away_expected_points.round().astype(int)
+    games["predicted_winner"]=np.where(games.home_win_probability>=.5,games.home_team,games.away_team)
+    games["model_margin"]=games.margin_mean; games["model_total"]=games.total_mean
+    games["confidence_rating"]=["LOW" if value=="BLOCKED" else ("MEDIUM" if value=="READY_WITH_WARNINGS" else "HIGH") for value in game_status]
+    games["data_quality_status"]=game_status; games["data_quality_warnings"]=game_warnings; games["weather_summary"]=weather_summaries
+    games["weather_model_use"]="DISPLAY_CONTEXT_ONLY"
+    games["main_factors"]=[json.dumps(["rolling team efficiency and opponent matchup","registered QB context","rest and venue context"]) for _ in range(len(games))]
+    keep_games=["game_id","season","week","kickoff_utc","away_team","home_team","stadium","roof","surface","away_expected_points","home_expected_points","display_away_score","display_home_score","predicted_winner","home_win_probability","away_win_probability","model_margin","model_total",*[f"home_score_p{q}" for q in (10,25,50,75,90)],*[f"away_score_p{q}" for q in (10,25,50,75,90)],*[f"margin_p{q}" for q in (10,25,50,75,90)],*[f"total_p{q}" for q in (10,25,50,75,90)],"confidence_rating","data_quality_status","data_quality_warnings","weather_summary","weather_model_use","main_factors"]
+    games=games[keep_games]
+    roster=pd.read_csv(next((lock/"inputs").glob(f"weekly_roster_{lock_meta['season']}.csv")),low_memory=False)
+    if qbs.empty:
+        qbs=build_qb_status(schedule,roster,lock_meta["week"],lock_meta["cutoff_utc"])
+        qbs=qbs.rename(columns={"projected_qb_id":"qb_player_id","projected_qb":"qb_name"})
+    candidate=pd.read_csv(settings.artifact_root/"phase2"/"player_pregame_universe_features.csv")
+    candidate=candidate[(candidate.season.eq(lock_meta["season"]))&candidate.week.eq(lock_meta["week"])&candidate.status_eligible.astype(str).str.lower().isin(["true","1"])].reset_index(drop=True)
+    candidate=filter_current_candidates(candidate,roster,pd.DataFrame(),lock_meta["week"])
+    candidate = candidate[
+        candidate.position.isin(["QB","RB","FB","WR","TE"])
+    ].reset_index(drop=True)
+    pmodel=joblib.load(player_path); expected={}
+    for target,model in pmodel["models"].items(): expected[target]=np.clip(candidate[f"prior_{target}"].fillna(0).to_numpy() if isinstance(model,dict) else model.predict(candidate[pmodel["features"]]),0,None)
+    idcol="player_id" if "player_id" in injuries else "gsis_id" if "gsis_id" in injuries else None
+    statuscol="game_status" if "game_status" in injuries else "report_status" if "report_status" in injuries else None
+    unavailable=set(injuries[injuries[statuscol].astype(str).str.upper().isin(["OUT","IR","PUP"])][idcol].dropna().astype(str)) if idcol and statuscol else set()
+    candidate,expected=redistribute_unavailable_opportunity(candidate,expected,unavailable)
+    tdmodel=joblib.load(td_path); raw=np.clip(tdmodel["model"].predict_proba(candidate[tdmodel["features"]])[:,1],.001,.999); reconciled=np.zeros(len(candidate))
+    score_lookup={(r.game_id,r.home_team):r.home_expected_points for r in games.itertuples()}; score_lookup.update({(r.game_id,r.away_team):r.away_expected_points for r in games.itertuples()})
+    for _,idx in candidate.groupby(["game_id","team"]).groups.items():
+        loc=np.asarray(list(idx)); target=float(np.clip(score_lookup[(candidate.loc[loc[0],"game_id"],candidate.loc[loc[0],"team"])]/7*.72,.35,4.25)); reconciled[loc]=reconcile_td_probabilities(raw[loc],target)
+    def band(mean,kind):
+        sd=np.sqrt(np.maximum(mean,0)+1) if kind=="count" else 8+np.sqrt(np.maximum(mean,0))*3
+        return np.maximum(0,mean-1.282*sd),np.maximum(0,mean+1.282*sd)
+    c_lo,c_hi=band(expected["carries"],"count");t_lo,t_hi=band(expected["targets"],"count");r_lo,r_hi=band(expected["rushing_yards"],"yards");y_lo,y_hi=band(expected["receiving_yards"],"yards")
+    rush_sd=8+np.sqrt(np.maximum(expected["rushing_yards"],0))*3
+    receiving_sd=8+np.sqrt(np.maximum(expected["receiving_yards"],0))*3
+    history=np.minimum(candidate.player_games_before.fillna(0)/8,1)
+    player_injuries=injuries[injuries.get("record_type",pd.Series(index=injuries.index,dtype=object)).eq("PLAYER_REPORT")].drop_duplicates("player_id",keep="last").set_index("player_id") if len(injuries) and "record_type" in injuries else pd.DataFrame()
+    injury_status=[str(player_injuries.loc[str(pid),"game_status"]) if len(player_injuries) and str(pid) in player_injuries.index else "NOT_LISTED" for pid in candidate.player_id]
+    practice_status=[str(player_injuries.loc[str(pid),"practice_status_normalized"]) if len(player_injuries) and str(pid) in player_injuries.index else "" for pid in candidate.player_id]
+    players=pd.DataFrame({"game_id":candidate.game_id,"player_id":candidate.player_id,"player_name":candidate.player_name,"team":candidate.team,"opponent":candidate.opponent,"position":candidate.position,"roster_status":candidate.status,"availability_status":["QUESTIONABLE" if x in ("QUESTIONABLE","DOUBTFUL") else "ACTIVE_ROSTER" for x in injury_status],"injury_status":injury_status,"practice_status":practice_status,"expected_carries":expected["carries"],"carries_low":c_lo,"carries_high":c_hi,"expected_targets":expected["targets"],"targets_low":t_lo,"targets_high":t_hi,"expected_rush_yards":expected["rushing_yards"],"rush_yards_low":r_lo,"rush_yards_high":r_hi,"rush_distribution_mean":expected["rushing_yards"],"rush_distribution_sd":rush_sd,"expected_receiving_yards":expected["receiving_yards"],"receiving_yards_low":y_lo,"receiving_yards_high":y_hi,"receiving_distribution_mean":expected["receiving_yards"],"receiving_distribution_sd":receiving_sd,"yard_distribution_family":"NORMAL_TRUNCATED_AT_ZERO","yard_distribution_interval":"CENTRAL_80_PERCENT","raw_td_probability":raw,"reconciled_td_probability":reconciled,"model_fair_odds":1/np.clip(reconciled,.001,1),"data_confidence":.75,"explanation":[json.dumps(["lagged individual usage","current-team opportunity context","team scoring environment"]) for _ in range(len(candidate))]})
+    if len(depth):
+        d=depth[["player_id","team","depth_order","depth_role","depth_source"]].drop_duplicates(["player_id","team"],keep="last")
+        players=players.merge(d,on=["player_id","team"],how="left")
+    else:
+        players["depth_order"]=np.nan; players["depth_role"]=""; players["depth_source"]=""
+    players=infer_missing_roles(players)
+    base=np.where(players.depth_source.eq("NFLVERSE_CURRENT"),np.where(players.depth_order.eq(1),.85,np.where(players.depth_order.eq(2),.7,.5)),.4)
+    penalty=np.where(players.injury_status.eq("QUESTIONABLE"),.2,np.where(players.practice_status.eq("DNP"),.15,0))
+    players["role_confidence"]=np.clip(base+.1*history.to_numpy()-penalty,.1,.95)
+    players["role_confidence_label"]=pd.cut(players.role_confidence,bins=[0,.49,.74,1],labels=["LOW","MEDIUM","HIGH"],include_lowest=True).astype(str)
+    players["role_status"]=np.where((players.depth_role.eq("STARTER"))&players.position.isin(["QB","RB","WR","TE"]),"EXPECTED_STARTER",np.where(players.depth_source.eq("MODEL_INFERRED"),"ROLE_UNCERTAIN",""))
+    players["warnings"]=["; ".join(x for x in ["Questionable availability" if inj in ("QUESTIONABLE","DOUBTFUL") else "","Role inferred from modelled opportunity" if src=="MODEL_INFERRED" else ""] if x) for inj,src in zip(players.injury_status,players.depth_source)]
+    run_id=f"phase3_5-{mode}-{_timestamp(cutoff.to_pydatetime())}-{hashlib.sha256((lock_meta['lock_id']+str(seed or original_seed)).encode()).hexdigest()[:8]}"
+    destination=settings.prediction_root/str(lock_meta["season"])/f"week_{lock_meta['week']:02d}"/run_id
+    if destination.exists(): raise FileExistsError(f"Prediction bundle is immutable: {destination}")
+    destination.mkdir(parents=True)
+    games.to_csv(destination/"games.csv",index=False,lineterminator="\n"); players.to_csv(destination/"players.csv",index=False,lineterminator="\n")
+    qbs.to_csv(destination/"qb_status.csv",index=False,lineterminator="\n")
+    weather.to_csv(destination/"weather.csv",index=False,lineterminator="\n")
+    shutil.copy2(lock/"lock_manifest.csv",destination/"source_provenance.csv")
+    players.sort_values(["game_id","team","reconciled_td_probability"],ascending=[True,True,False]).groupby(["game_id","team"]).head(6).to_csv(destination/"td_scorers.csv",index=False,lineterminator="\n")
+    players[(players.expected_carries>=1)|(players.expected_rush_yards>=5)].sort_values(["game_id","expected_rush_yards"],ascending=[True,False]).to_csv(destination/"rushing.csv",index=False,lineterminator="\n")
+    players[(players.expected_targets>=1)|(players.expected_receiving_yards>=8)].sort_values(["game_id","expected_receiving_yards"],ascending=[True,False]).to_csv(destination/"receiving.csv",index=False,lineterminator="\n")
+    shutil.copy2(lock/"data_lock.json",destination/"data_lock.json")
+    model_versions={"team":{"name":"team_score_model","version":settings.phase2_model_version,"hash":team_reg["artifact_sha256"]},"player":{"name":"player_opportunity_model","version":settings.phase2_model_version,"hash":player_reg["artifact_sha256"]},"td":{"name":"player_td_model","version":settings.phase2_model_version,"hash":td_reg["artifact_sha256"]}}
+    (destination/"model_versions.json").write_text(json.dumps(model_versions,indent=2,sort_keys=True),encoding="utf-8")
+    qb_good=qbs.status.astype(str).isin(["VALIDATED","EXPECTED","CONFIRMED"])
+    validations=[("fixture_count",len(games)==len(schedule),f"{len(games)}/{len(schedule)}"),("game_id_unique",games.game_id.is_unique,len(games)),("player_key_unique",not players.duplicated(["game_id","player_id"]).any(),len(players)),("qb_coverage",len(qbs)==2*len(games) and qb_good.all(),f"{qb_good.sum()}/{2*len(games)}"),("pregame_cutoff",(pd.to_datetime(games.kickoff_utc,utc=True)>cutoff).all(),cutoff.isoformat()),("probability_bounds",games.home_win_probability.between(0,1).all() and players.reconciled_td_probability.between(0,1).all(),"bounded"),("source_known_at_cutoff",not any(pd.to_datetime(pd.read_csv(p).get("known_at_utc",pd.Series(dtype=object)),utc=True,errors="coerce").gt(cutoff).any() for p in (lock/"inputs").glob("*.csv")),cutoff.isoformat()),("no_bookmaker_fields",not any(any(token in c.lower() for token in ("moneyline","bookmaker","spread_line")) for c in list(games)+list(players)),"model_fair_odds is reciprocal model probability only")]
+    validation=pd.DataFrame(validations,columns=["check","passed","details"]); validation.to_csv(destination/"validation_report.csv",index=False,lineterminator="\n")
+    status="DRY_RUN" if mode=="dry-run" else "OFFICIAL_PRODUCTION"
+    deployment=bool(mode=="production" and validation.passed.all() and lock_meta["lock_status"]!="BLOCKED")
+    metadata={"run_id":run_id,"lock_id":lock_meta["lock_id"],"model_ids":model_versions,"feature_version":settings.phase2_feature_version,"code_version":_git_version(settings.root),"created_at_utc":cutoff.isoformat(),"cutoff_utc":cutoff.isoformat(),"season":lock_meta["season"],"week":lock_meta["week"],"run_status":status,"weekly_stage":weekly_stage,"official_selection_policy":"latest valid production prediction created before each game kickoff","simulation_seed":seed or original_seed,"simulation_count":settings.simulation_draws,"data_quality_result":lock_meta["lock_status"],"validation_result":"PASS" if validation.passed.all() else "FAIL","deployment_eligible":deployment,"bookmaker_data_used":False}
+    preview=_build_preview(games,players,metadata); (destination/"game_preview.json").write_text(json.dumps(preview,indent=2,default=str),encoding="utf-8")
+    validation.to_json(destination/"validation_report.json",orient="records",indent=2)
+    file_hashes={p.name:sha256_file(p) for p in destination.iterdir() if p.is_file()}; metadata["file_hashes"]=file_hashes
+    (destination/"metadata.json").write_text(json.dumps(metadata,indent=2,sort_keys=True),encoding="utf-8")
+    report=validation.copy(); report.insert(0,"run_id",run_id); write_csv_json(report,settings.report_root/"phase3_current_week_validation.csv")
+    append_run(settings.artifact_root/"registry"/"run_registry.csv",{"run_id":run_id,"timestamp_utc":cutoff.isoformat(),"season":lock_meta["season"],"week":lock_meta["week"],"data_cutoff_utc":cutoff.isoformat(),"data_manifest_sha256":lock_meta["manifest_sha256"],"feature_version":settings.phase2_feature_version,"team_model_version":settings.phase2_model_version,"player_model_versions":settings.phase2_model_version,"code_version":metadata["code_version"],"prediction_output_locations":[str(destination)]})
+    return destination,validation
+
+
+def validate_bundle(bundle:Path)->pd.DataFrame:
+    rows=[]; meta=json.loads((bundle/"metadata.json").read_text())
+    for name,expected in meta["file_hashes"].items():
+        path=bundle/name; rows.append({"check":f"hash_{name}","passed":path.exists() and sha256_file(path)==expected,"details":name})
+    games=pd.read_csv(bundle/"games.csv"); players=pd.read_csv(bundle/"players.csv")
+    rows += [{"check":"games_unique","passed":games.game_id.is_unique,"details":len(games)},{"check":"players_unique","passed":not players.duplicated(["game_id","player_id"]).any(),"details":len(players)},{"check":"dry_not_deployable","passed":meta["run_status"]!="DRY_RUN" or not meta["deployment_eligible"],"details":meta["run_status"]}]
+    return pd.DataFrame(rows)

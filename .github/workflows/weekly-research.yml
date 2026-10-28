@@ -1,0 +1,136 @@
+name: Weekly research forecast lifecycle
+on:
+  workflow_dispatch:
+    inputs:
+      first_bootstrap:
+        description: First cloud run only (restore immutable Week8 seed)
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0,15,30,45 * * * *'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nfl-weekly-research
+  cancel-in-progress: false
+jobs:
+  refresh:
+    # Repository variable defaults to absent/disabled. No remote enablement here.
+    if: vars.RESEARCH_MONITOR_ENABLED == 'true' && github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    environment: research-execution
+    outputs:
+      publication_ready: ${{ steps.publish_gate.outputs.ready }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Require reviewed deployment controls before private execution
+        env:
+          RESEARCH_DEPLOYMENT_CONTROL_SHA256: ${{ vars.RESEARCH_DEPLOYMENT_CONTROL_SHA256 }}
+        run: python -c "from pathlib import Path; from scripts.weekly_publication import verify_controls; verify_controls(Path('config/research_deployment_controls.json'))"
+      - name: Exact inference runtime
+        run: python -m pip install numpy==2.2.2 pandas==2.2.3 scikit-learn==1.7.1 joblib==1.4.2 lxml==5.3.0 pyarrow==20.0.0
+      - name: Download private pinned bootstrap (never public model assets)
+        env:
+          GH_TOKEN: ${{ secrets.RESEARCH_BUNDLE_READ_TOKEN }}
+          BUNDLE_REPO: ${{ vars.RESEARCH_PRIVATE_BUNDLE_REPO }}
+          BUNDLE_TAG: ${{ vars.RESEARCH_BUNDLE_TAG }}
+          BUNDLE_SHA: ${{ vars.RESEARCH_BUNDLE_SHA256 }}
+        run: |
+          gh release download "$BUNDLE_TAG" --repo "$BUNDLE_REPO" --pattern bootstrap.tar.gz --dir private-download
+          python -c "from scripts.weekly_cloud import safe_unpack; import os; safe_unpack('private-download/bootstrap.tar.gz','bundle',os.environ['BUNDLE_SHA'])"
+      - name: Restore last accepted state (completed failures included)
+        env:
+          GH_TOKEN: ${{ secrets.RESEARCH_STATE_TOKEN }}
+          RESEARCH_PRIVATE_STATE_REPO: ${{ vars.RESEARCH_PRIVATE_STATE_REPO }}
+          RESEARCH_STATE_HMAC_KEY: ${{ secrets.RESEARCH_STATE_HMAC_KEY }}
+        run: python scripts/weekly_cloud_state.py restore --out state --bootstrap '${{ inputs.first_bootstrap }}'
+      - name: Actual refresh with receipt
+        run: python scripts/weekly_cloud.py --bundle bundle --state state --out execution ${{ github.event_name == 'workflow_dispatch' && '--manual' || '' }} ${{ inputs.first_bootstrap && '--first-bootstrap' || '' }}
+      - name: Observable failure alert and bounded-retry receipt
+        if: failure()
+        run: |
+          python -c "from pathlib import Path; from nfl2026.weekly_research.core import Store,load,clock,canonical; import os; p=Path('state'); w=load(p/'active_period.json')['week'] if (p/'active_period.json').exists() else 8; s=Store(p/f'2026-w{w:02d}'); r=s.receipt(dict(status='CLOUD_EXECUTION_FAILED',github_run_id=os.environ['GITHUB_RUN_ID'],logs_url=os.environ['GITHUB_SERVER_URL']+'/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],last_known_good_retained=True)); Path('execution').mkdir(exist_ok=True); Path('execution/cloud_failure_receipt.json').write_bytes(canonical(r))"
+          echo 'Research refresh FAILED. Last-known-good state retained; inspect execution receipt. No deployment permitted.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve immutable state even if a later release step fails
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.RESEARCH_STATE_TOKEN }}
+          RESEARCH_PRIVATE_STATE_REPO: ${{ vars.RESEARCH_PRIVATE_STATE_REPO }}
+          RESEARCH_STATE_HMAC_KEY: ${{ secrets.RESEARCH_STATE_HMAC_KEY }}
+        run: |
+          if test -d state; then python scripts/weekly_cloud_state.py save --out state; fi
+      - name: Preserve short-lived operational diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-state-${{ github.run_id }}-${{ github.run_attempt }}
+          path: execution/execution_receipt.json
+          retention-days: 7
+          include-hidden-files: false
+      - name: Preserve execution and failure evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-execution-${{ github.run_id }}-${{ github.run_attempt }}
+          path: execution/*.json
+          retention-days: 7
+      - name: Require separate unattended approval after verified initial publication
+        id: publish_gate
+        if: vars.RESEARCH_PUBLISH_ENABLED == 'true' && vars.RESEARCH_AUTOMATION_APPROVED == 'true' && vars.RESEARCH_INITIAL_PUBLICATION_VERIFIED == 'true' && hashFiles('execution/site/release_receipt.json') != ''
+        env:
+          RESEARCH_DEPLOYMENT_CONTROL_SHA256: ${{ vars.RESEARCH_DEPLOYMENT_CONTROL_SHA256 }}
+          RESEARCH_APPROVED_POLICY_SHA256: ${{ vars.RESEARCH_APPROVED_POLICY_SHA256 }}
+          RESEARCH_POLICY_HMAC_KEY: ${{ secrets.RESEARCH_POLICY_HMAC_KEY }}
+        run: |
+          python scripts/weekly_publication.py preserve --site execution/site --template initial_release/site --policy config/weekly_research_publication_policy.json
+          python scripts/weekly_publication.py unattended-verify --live config/initial_live_verification.json --site execution/site --policy config/weekly_research_publication_policy.json --approval config/weekly_research_publication_approval.json --bundle bundle --state state --out execution/publication_gate.json
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - name: Upload atomic Pages artifact (no private sources/models)
+        if: vars.RESEARCH_PUBLISH_ENABLED == 'true' && vars.RESEARCH_AUTOMATION_APPROVED == 'true' && vars.RESEARCH_INITIAL_PUBLICATION_VERIFIED == 'true' && hashFiles('execution/publication_gate.json') != ''
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: execution/site
+      - name: Preserve approved public candidate for propagation checks
+        if: steps.publish_gate.outputs.ready == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: approved-research-site
+          path: execution/site
+          retention-days: 7
+  publish:
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    needs: refresh
+    if: vars.RESEARCH_PUBLISH_ENABLED == 'true' && vars.RESEARCH_AUTOMATION_APPROVED == 'true' && vars.RESEARCH_INITIAL_PUBLICATION_VERIFIED == 'true' && needs.refresh.outputs.publication_ready == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy already validated whole artifact
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: approved-research-site
+          path: approved-site
+      - name: Verify Pages assets actually propagated
+        run: python scripts/weekly_release.py propagation --site approved-site --out propagation_receipt.json
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pages-propagation-${{ github.run_id }}
+          path: propagation_receipt.json
+          retention-days: 30
