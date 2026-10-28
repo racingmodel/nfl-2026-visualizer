@@ -1,0 +1,17 @@
+{
+  "schema": "manual-original-TD-global-review-v1",
+  "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+  "release_id": "frontend-original-td-cb659b1cfe683de3",
+  "deployment_manifest_sha256": "4a2ef1853d79cc6419f4a76b1317f154be81675a8fdd3d5fda26263501b73922",
+  "policy_sha256": "74fd2e38914a26a1e410fd70a38d1898960b4a9707fad3c7ed9301fc8289434e",
+  "created_at_utc": "2026-10-28T23:44:47.064403+00:00",
+  "review_expires_at_utc": "2026-10-29T23:44:47.064403+00:00",
+  "approval": "PENDING",
+  "published": false,
+  "initial_publication_grant_reusable": false,
+  "unattended_authorized": false,
+  "existing_workflows_must_remain_disabled": true,
+  "required_approval_scope": "One manual exact classic-dashboard release adding only409 original-model participation-conditional experimental TD estimates across13fixtures, original top-six-per-team views; BAL-BUF withheld; 14 original score forecasts,409 yardage/opportunity records and27 passing estimates unchanged; no betting certification/fair odds, no model change or unattended publication",
+  "required_fresh_checks": "Exact hashes, current fixture cutoffs, approved owner-only one-use manual guard,374-asset last-known-good verification, independent post-deployment verification and unconditional publisher disabling",
+  "technical_global_review_sha256": "86c0952c426be8f764c71abdbe068bc2bcb54a7e3ed5025188a0e95d129036d4"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "exact-one-time-original-TD-controls-v1",
+  "files": {
+    "scripts/manual_original_td.py": "015cf1094f639222706e23bf84c5af5932f3e168ad53ee3a68659b0656f383c8",
+    "scripts/weekly_publication.py": "362f886b65b07096cb291a8d2e75612696f4bf068dcca99c41c264c78f42fd68",
+    "nfl2026/weekly_research/core.py": "2f53028cff3ab48422d7c754bce8d015f7f2c43d335f6da03ecb5132d0f167f5",
+    "nfl2026/__init__.py": "a3f90df9372c65821d2ad19162b751e850f62591493e0eedcf7121d96cda002e",
+    "nfl2026/weekly_research/__init__.py": "63c9bf3473cebff5ca5cf82efb29a2a63aa83a8b43817fbc874cfc6313531fac",
+    "original_td_release/approval.json": "bc1a8926f2f92dd077a339bd9a342de9cf415bb1684c12a452d283234652de07",
+    "original_td_release/last_known_good/manifest.json": "a81736677a12c34e7d356fffb2f52092e0edd142f7a3e8131b664953b87b4170"
+  },
+  "approval_pending": false
+}

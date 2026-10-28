@@ -1,0 +1,15 @@
+{
+  "decision": "APPROVED",
+  "authorization_method": "EXPLICIT_USER_APPROVAL_AUTHENTICATED_OWNER_MANUAL_DISPATCH",
+  "grant": {
+    "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+    "release_id": "frontend-original-td-cb659b1cfe683de3",
+    "deployment_manifest_sha256": "4a2ef1853d79cc6419f4a76b1317f154be81675a8fdd3d5fda26263501b73922",
+    "request_sha256": "1acc51f2eed8b9402b9e31844e80b3f9d8301d3cdd42be39d7c1e208b142fa1a",
+    "policy_sha256": "74fd2e38914a26a1e410fd70a38d1898960b4a9707fad3c7ed9301fc8289434e",
+    "approved_at_utc": "2026-10-28T23:58:00.597549+00:00",
+    "expires_at_utc": "2026-10-29T01:58:00.597549+00:00",
+    "explicit_human_approval_reference": "Direct user message APPROVED \u2014 ONE-TIME ORIGINAL ANYTIME TD RESTORATION PUBLICATION, observed28Oct2026at23:55UTC in this chat. Exact release cb659b1cfe683de3 / manifest4a2ef1853d79cc6419f4a76b1317f154be81675a8fdd3d5fda26263501b73922. One supervised manual publication,409conditionalTD/13fixtures, BAL-BUFwithheld, original14scores/409players/27passing preserved. No unattended publication/model changes/paidodds/fairodds/betting/official replacement. Publisher must be disabled immediately after one dispatch.",
+    "unattended_authorized": false
+  }
+}
