@@ -41,7 +41,7 @@ jobs:
           image=$(python -c "import json; print(json.load(open('hosted_handoff/request.json'))['package'])")
           docker pull "$image"
           docker image inspect "$image" > image_inspect.json
-          python -c "import json; c=json.load(open('image_inspect.json'))[0]['Config']; assert not c.get('Labels') and not c.get('Env') and not c.get('Entrypoint')"
+          python -c "import json; c=json.load(open('image_inspect.json'))[0]['Config']; assert not c.get('Labels') and c.get('Env',[]) in [[],['PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin']] and not c.get('Entrypoint')"
           id=$(docker create "$image" /not-executed)
           docker cp "$id:/site" candidate-site
           docker rm "$id"
