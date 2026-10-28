@@ -1,0 +1,15 @@
+{
+  "decision": "APPROVED",
+  "authorization_method": "EXPLICIT_USER_APPROVAL_AUTHENTICATED_OWNER_MANUAL_DISPATCH",
+  "grant": {
+    "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+    "release_id": "frontend-prediction-first-6b92212669a57916",
+    "deployment_manifest_sha256": "51ee2ae0f6f8bd80b8b8ec3aee383d00d22df05fa4ee72ba8189d78b5925f95e",
+    "request_sha256": "e8e683d39ba4fe48484a7757c0c7fc4ee978acb3bdb1c495d32a0039437572ec",
+    "policy_sha256": "569fca7d4b75f4da07167fde7b08d9b6cdcc229049b2de41943f402417be0aed",
+    "approved_at_utc": "2026-10-28T22:37:15.478113+00:00",
+    "expires_at_utc": "2026-10-29T00:37:15.482107+00:00",
+    "explicit_human_approval_reference": "User message APPROVED \u2014 ONE-TIME NFL PREDICTION-FIRST DASHBOARD PUBLICATION in this chat, observed28Oct2026; exact6b92212669a57916release and51ee2ae0manifest. One manual release only,27conditional passing,14display scenarios,409original records. No routine publication/model promotion/paid requests/official replacement.",
+    "unattended_authorized": false
+  }
+}

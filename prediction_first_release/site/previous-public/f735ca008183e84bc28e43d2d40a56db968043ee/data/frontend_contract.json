@@ -1,0 +1,6 @@
+{
+  "schema": "frontend-v3-release-v2",
+  "forecast_authority": "original immutable production runs",
+  "new_models_promoted": false,
+  "public_verification": "exact run ID plus frontend release ID and UI/data hashes"
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "exact-one-time-prediction-first-controls-v1",
+  "files": {
+    "scripts/manual_prediction_first.py": "48c1f79aba210856a9f5ca8b57897dbd920fe3be432b0d0694e4dfb33fa09613",
+    "scripts/weekly_publication.py": "362f886b65b07096cb291a8d2e75612696f4bf068dcca99c41c264c78f42fd68",
+    "nfl2026/weekly_research/core.py": "2f53028cff3ab48422d7c754bce8d015f7f2c43d335f6da03ecb5132d0f167f5",
+    "nfl2026/__init__.py": "a3f90df9372c65821d2ad19162b751e850f62591493e0eedcf7121d96cda002e",
+    "nfl2026/weekly_research/__init__.py": "63c9bf3473cebff5ca5cf82efb29a2a63aa83a8b43817fbc874cfc6313531fac",
+    "prediction_first_release/approval.json": "b0ed8b915eca2abf511c34d3a03a1521a52cadbbe98f02d766c14be56a756d67",
+    "prediction_first_release/last_known_good/manifest.json": "27c0578e93019c73206cbbd81447ab9e35839bdfa179cd2dc51a24cc3660c624"
+  }
+}

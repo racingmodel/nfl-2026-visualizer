@@ -1,0 +1,17 @@
+/* Small extensions to the verified V3.1 layout, not a replacement theme. */
+.research-label{margin:5px 14px 16px;color:var(--amber);font-size:11px;text-align:center;font-weight:700;letter-spacing:.3px}
+.research-card .score{font-size:clamp(38px,4vw,58px);letter-spacing:-2px;font-variant-numeric:tabular-nums}
+.research-card .team-name{font-size:12px;color:var(--muted)}
+.research-card .scoreboard{gap:8px;padding-inline:14px}.research-card .quick strong{font-size:17px}
+.forecast-audit,.source-record{overflow-wrap:anywhere}.forecast-audit .row{align-items:start}.forecast-audit .row b{white-space:nowrap}
+.receiving-controls{display:flex;gap:5px;flex-wrap:wrap;margin-block:10px}.receiving-controls button{font-size:11px;padding:7px 9px}
+.projection-number{font-size:30px;font-weight:800;color:var(--mint);margin:10px 0}.radar-control{display:block;font-size:12px;color:var(--muted);margin-block:14px}
+#player-tabs{max-width:650px}#player-panel{min-height:150px}.conditional-player[hidden]{display:none!important}
+.source-record{padding-block:8px;border-bottom:1px solid var(--line)}
+.player-filter-panel{border:1px solid var(--line);border-radius:10px;margin-bottom:12px}.player-filter-panel>.controls,.player-filter-panel>.radar-control{margin:12px}.player-filter-panel>summary{padding:12px}
+#research-model-identity{overflow-wrap:anywhere}body[data-page="integrated-model"] .metric{overflow-wrap:anywhere;min-width:0}
+@media(max-width:420px){body[data-page="integrated-performance"] .metric-grid,body[data-page="integrated-model"] .metric-grid{grid-template-columns:minmax(0,1fr)}body[data-page="integrated-performance"] .metric,body[data-page="integrated-model"] .metric{padding:18px}}
+@media(max-width:360px){.research-card .score{font-size:38px}.research-card .at{font-size:21px}.research-card .team-name{font-size:10px}.research-card .quick strong{font-size:14px}.research-card .quick .muted{font-size:10px}}
+@media(max-width:600px){.research-card .score{font-size:44px}.forecast-audit .row{flex-wrap:wrap}.controls[aria-label="Player filters"]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:8px}.controls[aria-label="Player filters"] label{min-width:0!important}.controls[aria-label="Player filters"] input,.controls[aria-label="Player filters"] select{width:100%;min-width:0}.week-nav{flex-wrap:wrap}.preview-label{max-width:140px}}
+@media(max-width:600px){.availability-notice{font-size:12px;line-height:1.4;padding:10px;margin:8px 0 14px}body[data-page="integrated-index"] .week-nav{display:none}.hero aside{font-size:10px;line-height:1.35}.hero{margin-bottom:14px}.player-filter-panel>.controls{width:auto}.player-filter-panel:not([open])>summary{font-size:12px}.source-panel{margin-bottom:12px}.source-panel>summary{padding:9px;font-size:11px}main{padding-top:16px}.research-card .scoreboard{padding-top:14px}}
+@media(max-width:360px){.research-card .score{font-size:38px}}
