@@ -1,0 +1,146 @@
+name: One supervised hosted Week 8 Pages handoff
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Isolated failure proof first; then the one approved publication
+        type: choice
+        options: [failure_test, publish]
+        default: failure_test
+        required: true
+      reviewed_head:
+        description: Exact reviewed installed public commit
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+env:
+  REQUESTED_HEAD: ${{ inputs.reviewed_head }}
+  REQUEST_SHA: 660f39dcbf544199d67529287023b7e8616315b3662e7faf6bbd2e2c4184fbbb
+  RESEARCH_AUTOMATION_APPROVED: ${{ vars.RESEARCH_AUTOMATION_APPROVED }}
+  RESEARCH_PUBLISH_ENABLED: ${{ vars.RESEARCH_PUBLISH_ENABLED }}
+  INITIAL_RESEARCH_RELEASE_ENABLED: ${{ vars.INITIAL_RESEARCH_RELEASE_ENABLED }}
+jobs:
+  review:
+    if: github.actor == 'racingmodel' && github.triggering_actor == 'racingmodel' && github.ref == 'refs/heads/main' && github.repository == 'racingmodel/nfl-2026-visualizer'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Anonymous pull of the exact reviewed public-safe digest
+        run: |
+          export DOCKER_CONFIG=$(mktemp -d)
+          image=$(python -c "import json; print(json.load(open('hosted_handoff/request.json'))['package'])")
+          docker pull "$image"
+          docker image inspect "$image" > image_inspect.json
+          python -c "import json; c=json.load(open('image_inspect.json'))[0]['Config']; assert not c.get('Labels') and not c.get('Env') and not c.get('Entrypoint')"
+          id=$(docker create "$image" /not-executed)
+          docker cp "$id:/site" candidate-site
+          docker rm "$id"
+      - name: Independent publication safety regressions
+        run: python -B -m unittest discover -s tests_hosted -v
+      - name: Validate owner approval, data, current fixtures and last-known-good release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TEST_MODE: ${{ inputs.mode }}
+        run: python -B scripts/supervised_hosted_publication.py verify --mode "$TEST_MODE"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: reviewed-hosted-site
+          path: candidate-site
+          include-hidden-files: true
+          retention-days: 1
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: hosted-review-${{ github.run_id }}
+          path: handoff-evidence/
+          retention-days: 7
+  publish:
+    needs: review
+    if: inputs.mode == 'publish'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          name: reviewed-hosted-site
+          path: candidate-site
+      - name: Recheck exact source and cutoff immediately before artifact creation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -B scripts/supervised_hosted_publication.py verify --mode publish
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: candidate-site
+          include-hidden-files: true
+          retention-days: 1
+      - name: Deploy reviewed hosted site
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+        with:
+          timeout: 120000
+      - name: Verify every served asset after propagation
+        run: python -B scripts/supervised_hosted_publication.py live
+      - name: Install fixed browser verification library
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright@1.62.1
+      - name: Verify actual live classic dashboard on desktop and mobile
+        run: node scripts/verify_supervised_live.cjs candidate-site handoff-evidence
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: hosted-publication-${{ github.run_id }}
+          path: handoff-evidence/
+          retention-days: 7
+  rollback:
+    needs: [review, publish]
+    if: always() && inputs.mode == 'publish' && needs.review.result == 'success' && needs.publish.result == 'failure'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          name: github-pages-rollback
+          path: correction_release/site
+          include-hidden-files: true
+          retention-days: 1
+      - name: Restore the exact last-known-good classic release
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+        with:
+          artifact_name: github-pages-rollback
+          timeout: 120000
+      - run: python -B scripts/supervised_hosted_publication.py rollback-live
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: hosted-rollback-${{ github.run_id }}
+          path: handoff-evidence/
+          retention-days: 7

@@ -1,0 +1,32 @@
+{
+  "schema": "one-supervised-hosted-publication-request-v1",
+  "purpose": "ONE_SUPERVISED_HOSTED_WEEK8_PUBLICATION",
+  "decision": "APPROVED_ONE_TIME",
+  "explicit_human_approval_reference": "User message APPROVED \u2014 ONE SUPERVISED NFL HOSTED PUBLICATION TEST, observed in this chat 28 October 2026",
+  "not_before_utc": "2026-10-28T19:26:00Z",
+  "expires_at_utc": "2026-10-29T00:00:00Z",
+  "unattended_authorized": false,
+  "scope": {
+    "season": 2026,
+    "week": 8,
+    "fixtures": 14,
+    "conditional_players": 409,
+    "numerical_revisions": false,
+    "model_changes": false,
+    "paid_requests": false,
+    "design_changes": false,
+    "official_replacement": false
+  },
+  "candidate_release_id": "hosted-classic-276f9c25324e88b3",
+  "candidate_receipt_sha256": "eaa5e38b539d8cd4ba3a761cee8f6a8eaebcc5ddf31d9380afa309061e2d0ef1",
+  "package": "ghcr.io/racingmodel/nfl-2026-classic-public-data@sha256:1974256b81e5b84509a0b30b82c1ed42fd72f491bc4417f74789d871a778ada8",
+  "implementation_files": {
+    "scripts/supervised_hosted_publication.py": "a3c9363163b17bfa65dccbc290332a3dabcdd295e1a3db538a18a6d888bc572e",
+    "scripts/supervised_release_data_gate.py": "819430b621f66d62e4c062d24acf0966ab231376d422f8aa80a146f28d998c9d",
+    "scripts/verify_supervised_live.cjs": "ac287e836588b66cc0ab8115477b54951ceda6e676fbb62a6abe4054c3a32c41",
+    "hosted_handoff/data_policy.json": "fb17a2747eba865d71ae903d816f58333d46e464b214f128e4c64449d7b32e9b",
+    "correction_release/deployment_manifest.json": "50c40e4435b10a65ad375f0e3ef2402dc685dbcbd24988c60709282493dc5e9d",
+    "correction_release/site/data/weekly_research.json": "b196e9dad4f55f716e222aa939d2d88445eab7b84149f776e76ea2a7f99afdc3"
+  },
+  "failure_proof": "One isolated corrupt-artifact preflight run, no deployment; then at most one real deployment attempt. Restore LKG on post-deploy verification failure."
+}
