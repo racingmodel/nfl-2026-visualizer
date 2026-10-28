@@ -1,0 +1,17 @@
+{
+  "schema": "manual-frontend-scoreline-quality-review-v1",
+  "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+  "release_id": "frontend-prediction-first-6b92212669a57916",
+  "deployment_manifest_sha256": "51ee2ae0f6f8bd80b8b8ec3aee383d00d22df05fa4ee72ba8189d78b5925f95e",
+  "policy_sha256": "569fca7d4b75f4da07167fde7b08d9b6cdcc229049b2de41943f402417be0aed",
+  "technical_global_review_sha256": "5ea6e93620035fd58306872acfde5b9f45b8b4e10b3e161871db833325e63016",
+  "created_at_utc": "2026-10-28T22:02:56.826954+00:00",
+  "review_expires_at_utc": "2026-10-29T22:02:56.826954+00:00",
+  "approval": "PENDING",
+  "published": false,
+  "initial_publication_grant_reusable": false,
+  "unattended_authorized": false,
+  "existing_workflows_must_remain_disabled": true,
+  "required_approval_scope": "Exact classic prediction-first frontend, empirically final-tie-adjusted display scenarios and Toss-up labels; existing27conditional passing point estimates preserved; TD/quarter/win/market probabilities withheld",
+  "evidence_manifest_sha256": "de5e78d1b43e73bbfc8179f32b9dcab59d12bf45a7fab792d2bece446b772d09"
+}

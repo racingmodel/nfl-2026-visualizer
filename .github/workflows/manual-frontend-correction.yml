@@ -10,6 +10,10 @@ on:
         description: Exact externally pinned correction request
         required: true
         type: string
+      installation_head:
+        description: Exact reviewed installation commit
+        required: true
+        type: string
 permissions:
   contents: read
 concurrency:
@@ -17,6 +21,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   review:
+    permissions:
+      contents: read
+      actions: read
     if: vars.RESEARCH_AUTOMATION_APPROVED == 'false' && vars.RESEARCH_PUBLISH_ENABLED == 'false' && vars.INITIAL_RESEARCH_RELEASE_ENABLED == 'false' && github.actor == 'racingmodel' && github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-24.04
     steps:
@@ -28,24 +35,28 @@ jobs:
           python-version: '3.12'
       - name: Verify exact owner-approved manual correction
         env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_HEAD: ${{ inputs.installation_head }}
           REQUESTED_RELEASE: ${{ inputs.release_id }}
           REQUESTED_SHA: ${{ inputs.review_request_sha256 }}
-          CORRECTION_CONTROL_SHA256: 421545cc8488fd940cd9704539f306f253b99af0f8f0a5419972e3f28844d20a
-          CORRECTION_APPROVAL_SHA256: e1ac8217bcd39e53f6a997eb874cd72625feb23e3354d8b8bf01610a6f52c1e6
+          CORRECTION_CONTROL_SHA256: f6b76050d40f64fbc337eb9585247dad5c8f58e05bc17ff50ef6903d97c80ed1
+          CORRECTION_APPROVAL_SHA256: b0ed8b915eca2abf511c34d3a03a1521a52cadbbe98f02d766c14be56a756d67
           RESEARCH_AUTOMATION_APPROVED: ${{ vars.RESEARCH_AUTOMATION_APPROVED }}
           RESEARCH_PUBLISH_ENABLED: ${{ vars.RESEARCH_PUBLISH_ENABLED }}
           INITIAL_RESEARCH_RELEASE_ENABLED: ${{ vars.INITIAL_RESEARCH_RELEASE_ENABLED }}
-        run: python scripts/manual_frontend_correction.py verify --out correction_gate.json
+        run: python scripts/manual_prediction_first.py verify --out correction_gate.json
       - name: Upload exact whole-site candidate including hidden archive markers
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
-          path: correction_release/site
+          path: prediction_first_release/site
           include-hidden-files: true
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: correction-gate-${{ github.run_id }}-${{ github.run_attempt }}
-          path: correction_gate.json
+          path: |
+            correction_gate.json
+            prediction_first_schedule.csv
           retention-days: 90
   publish:
     needs: review
@@ -68,10 +79,46 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify every served asset against approved manifest
-        run: python scripts/manual_frontend_correction.py live --out correction_live_verification.json
+        run: python scripts/manual_prediction_first.py live --out correction_live_verification.json
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: correction-live-${{ github.run_id }}-${{ github.run_attempt }}
           path: correction_live_verification.json
+          retention-days: 90
+
+  restore_last_known_good:
+    needs: [review, publish]
+    if: always() && needs.review.result == 'success' && needs.publish.result == 'failure'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Restore exact previous reviewed whole-site artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          name: prediction-first-last-known-good
+          path: prediction_first_release/last_known_good/site
+          include-hidden-files: true
+      - name: Restore previous live release after deployment verification failure
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+        with:
+          artifact_name: prediction-first-last-known-good
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Verify restored last-known-good assets
+        run: python scripts/manual_prediction_first.py rollback-live --out prediction_first_rollback.json
+      - if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: prediction-first-rollback-${{ github.run_id }}
+          path: prediction_first_rollback.json
           retention-days: 90
