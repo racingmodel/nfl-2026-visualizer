@@ -1,0 +1,95 @@
+{
+  "forecast_sources": [
+    {
+      "source": "schedule",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "roster",
+      "source_state": "VALID",
+      "data_status": "READY_WITH_WARNINGS",
+      "known_at_utc": "2026-10-21T12:56:32+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": "current authoritative transactions overlaid on 105 roster row(s); IR/released/practice-squad exclusions=72; 23 current eligibility transactions could not be matched to roster identity; 1 roster transaction contradictions retained; production blocks any affected offensive candidate: [{\"gsis_id\": \"00-0034807\", \"full_name\": \"Ogbo Okoronkwo\", \"position\": \"DL\", \"team\": \"SF\", \"transaction_reconciliation_error\": \"Active roster conflicts with latest inactive transaction\"}]"
+    },
+    {
+      "source": "injuries",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "snap_history",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "participation_history",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-09-08T22:18:31.161618+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "depth",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T12:53:27+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "quarterbacks",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "transactions",
+      "source_state": "VALID",
+      "data_status": "READY_WITH_WARNINGS",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": "official NFL current-month transaction pages incomplete for reserve-list, signings, waivers; matched records are still overlaid, NFLverse trades alone are supplemental"
+    },
+    {
+      "source": "weather",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:04:50.705287+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:36.666593+00:00",
+      "quality_warnings": ""
+    },
+    {
+      "source": "exact_player_pregame_universe_features",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:06:39.388219+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:39.388219+00:00",
+      "quality_warnings": "Numerical features unchanged; archived for future replay"
+    },
+    {
+      "source": "exact_historical_team_features",
+      "source_state": "VALID",
+      "data_status": "READY",
+      "known_at_utc": "2026-10-21T21:06:39.388219+00:00",
+      "retrieved_at_utc": "2026-10-21T21:06:39.388219+00:00",
+      "quality_warnings": "Numerical features unchanged; archived for future replay"
+    }
+  ],
+  "scope": "frozen input states at original prediction cutoff, not a new live refresh",
+  "game_max_age_minutes": 120,
+  "prop_max_age_minutes": 60
+}
