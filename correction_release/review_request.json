@@ -1,0 +1,16 @@
+{
+  "schema": "manual-frontend-correction-review-v1",
+  "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+  "release_id": "frontend-classic-week8-974591f0e1ca648d",
+  "deployment_manifest_sha256": "50c40e4435b10a65ad375f0e3ef2402dc685dbcbd24988c60709282493dc5e9d",
+  "candidate_manifest_sha256": "046dcf56ea4e8ebc8e69ff6f3ff330605c07ffa67a21851c0d4a322751181ac8",
+  "policy_sha256": "5f220f9519c9e9b14bbababec3b1e7fd4c83f80ae57c2988a5ec7513e0fcfc96",
+  "created_at_utc": "2026-10-28T17:21:07.680180+00:00",
+  "review_expires_at_utc": "2026-10-29T17:21:07.680180+00:00",
+  "approval": "PENDING",
+  "published": false,
+  "initial_publication_grant_reusable": false,
+  "unattended_authorized": false,
+  "existing_workflows_must_remain_disabled": true,
+  "source_release": "weekly-research-a65362b5afe69672"
+}

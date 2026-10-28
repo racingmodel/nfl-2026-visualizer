@@ -1,0 +1,19 @@
+{
+  "schema": "certified-extensions-v32",
+  "passing": {
+    "status": "NOT_CERTIFIED",
+    "predictions": [],
+    "reason": "The passing challenger has not passed production and calibration gates."
+  },
+  "quarters": {
+    "status": "NOT_CERTIFIED",
+    "rows": [],
+    "reason": "A certified regulation-score parent and quarter allocation approval are required."
+  },
+  "value": {
+    "schema": "certified-value-feed-v2",
+    "selections": [],
+    "actionable_count": 0,
+    "reason": "No current grading-compatible quote and approved calibrated probability package."
+  }
+}

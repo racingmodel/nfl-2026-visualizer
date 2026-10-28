@@ -1,0 +1,11 @@
+{
+  "schema": "one-time-frontend-correction-controls-v2-no-new-remote-settings",
+  "files": {
+    "scripts/manual_frontend_correction.py": "3efbf8c6193bf545351ddea91852a112e6ff129f0f9ca9768cb2ad76a4e4d3d0",
+    "scripts/weekly_publication.py": "362f886b65b07096cb291a8d2e75612696f4bf068dcca99c41c264c78f42fd68",
+    "nfl2026/weekly_research/core.py": "2f53028cff3ab48422d7c754bce8d015f7f2c43d335f6da03ecb5132d0f167f5",
+    "nfl2026/__init__.py": "a3f90df9372c65821d2ad19162b751e850f62591493e0eedcf7121d96cda002e",
+    "nfl2026/weekly_research/__init__.py": "63c9bf3473cebff5ca5cf82efb29a2a63aa83a8b43817fbc874cfc6313531fac",
+    "correction_release/approval.json": "e1ac8217bcd39e53f6a997eb874cd72625feb23e3354d8b8bf01610a6f52c1e6"
+  }
+}

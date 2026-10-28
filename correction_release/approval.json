@@ -1,0 +1,15 @@
+{
+  "decision": "APPROVED",
+  "authorization_method": "EXPLICIT_USER_APPROVAL_AUTHENTICATED_OWNER_MANUAL_DISPATCH",
+  "grant": {
+    "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+    "release_id": "frontend-classic-week8-974591f0e1ca648d",
+    "deployment_manifest_sha256": "50c40e4435b10a65ad375f0e3ef2402dc685dbcbd24988c60709282493dc5e9d",
+    "request_sha256": "9eee117d77b66fc4da9317aea92b9622ad41bc1a9ba1a4f75deb7f64081a2fc0",
+    "policy_sha256": "5f220f9519c9e9b14bbababec3b1e7fd4c83f80ae57c2988a5ec7513e0fcfc96",
+    "approved_at_utc": "2026-10-28T17:53:46.308066+00:00",
+    "expires_at_utc": "2026-10-28T19:53:46.308066+00:00",
+    "explicit_human_approval_reference": "User explicitly approved this exact release and manifest in this chat on 2026-10-28. One manual publication only; no unattended updates, model promotion, paid requests or official replacement.",
+    "unattended_authorized": false
+  }
+}
