@@ -1,0 +1,15 @@
+{
+  "decision": "APPROVED",
+  "authorization_method": "EXPLICIT_USER_APPROVAL_AUTHENTICATED_OWNER_MANUAL_DISPATCH",
+  "grant": {
+    "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+    "release_id": "frontend-independent-quarters-c4cd6926e32ecae2",
+    "deployment_manifest_sha256": "f1cfba80bc899942ccec0848c5a609c89bcff02cbab96beaf1bc53543749c688",
+    "request_sha256": "21ada75de9de43dc499f34c40cd95a010aa3306054546c3936de7a9f1191bace",
+    "policy_sha256": "4024f7981cfb7c0a78c8e8439ae89cfcbfb2ca185152935c39310b40ab70dea6",
+    "approved_at_utc": "2026-10-29T17:01:40.660390+00:00",
+    "expires_at_utc": "2026-10-29T19:01:40.660390+00:00",
+    "explicit_human_approval_reference": "Direct user attachment57c72f8a-3683-430e-a5fa-3bf094179113, read29Oct2026at16:56:11UTC, explicitly approves one supervised exact ModelBpublication releasec4cd6926e32ecae2/manifestf1cfba80bc899942ccec0848c5a609c89bcff02cbab96beaf1bc53543749c688. Preserve all predictions and markets; no model promotion, private package permission changes, paid odds, new bookmaker artifact or unattended publication. No fresh inference.",
+    "unattended_authorized": false
+  }
+}

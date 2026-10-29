@@ -1,0 +1,13 @@
+{
+  "schema": "manual-independent-quarters-global-review-v1",
+  "purpose": "ONE_TIME_EXACT_FRONTEND_CORRECTION",
+  "release_id": "frontend-independent-quarters-c4cd6926e32ecae2",
+  "deployment_manifest_sha256": "f1cfba80bc899942ccec0848c5a609c89bcff02cbab96beaf1bc53543749c688",
+  "policy_sha256": "4024f7981cfb7c0a78c8e8439ae89cfcbfb2ca185152935c39310b40ab70dea6",
+  "created_at_utc": "2026-10-29T17:01:40.660390+00:00",
+  "review_expires_at_utc": "2026-10-29T19:01:40.660390+00:00",
+  "initial_publication_grant_reusable": false,
+  "unattended_authorized": false,
+  "technical_global_review_sha256": "f4217dfc0acbec3be4d6cf701ed4e4ff009c405ea26e59e6037252bffcc9072e",
+  "quarter_research_HOLD_does_not_imply_promotion": true
+}

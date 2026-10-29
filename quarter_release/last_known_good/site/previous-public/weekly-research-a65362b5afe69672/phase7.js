@@ -1,0 +1,110 @@
+"use strict";
+const query=s=>document.querySelector(s);
+const escapeHTML=v=>String(v??'Unavailable').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const number=(v,d=1)=>v!==null&&v!==''&&v!==undefined&&Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
+const percent=v=>v===null||v===undefined||v===''||!Number.isFinite(Number(v))?'—':`${number(Number(v)*100,0)}%`;
+const ukTime=v=>{if(v===null||v===undefined||v==='')return 'Time unavailable';const d=new Date(v);return Number.isNaN(d.valueOf())?'Time unavailable':new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(d);};
+async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(`Source unavailable (${r.status})`);return r.json();}
+function fail(error){query('#message').textContent=`Unable to load this view. ${error.message}. Existing forecasts have not been changed.`;}
+const names={ARI:'Cardinals',ATL:'Falcons',BAL:'Ravens',BUF:'Bills',CAR:'Panthers',CHI:'Bears',CIN:'Bengals',CLE:'Browns',DAL:'Cowboys',DEN:'Broncos',DET:'Lions',GB:'Packers',HOU:'Texans',IND:'Colts',JAX:'Jaguars',KC:'Chiefs',LAC:'Chargers',LA:'Rams',LV:'Raiders',MIA:'Dolphins',MIN:'Vikings',NE:'Patriots',NO:'Saints',NYG:'Giants',NYJ:'Jets',PHI:'Eagles',PIT:'Steelers',SEA:'Seahawks',SF:'49ers',TB:'Buccaneers',TEN:'Titans',WAS:'Commanders'};
+function teamLogo(team){const code={LA:'lar',WAS:'wsh'}[team]||String(team).toLowerCase();return Object.hasOwn(names,team)?`<img class="team-logo" src="assets/team-logos/${code}.png" alt="" loading="lazy">`:'';}
+let freshnessPolicy={game_max_age_minutes:120,prop_max_age_minutes:60};
+function valueWithFixture(value,current,valueMetadata={}){
+ const games=(current.games||[]).filter(g=>g.game_id===value.game_id),game=games.length===1?games[0]:null;
+ const source=game&&(game.prediction_source_run_id||game.prediction_run_id||current.metadata.run_id);
+ const anchor=value.prediction_anchor_run_id||valueMetadata.prediction_run_id;
+ return {...value,_prediction_current:!!game&&(value.prediction_run_id||valueMetadata.prediction_run_id)===source&&anchor===current.metadata.run_id,_game_kickoff_utc:game?.kickoff_utc};
+}
+function quoteFreshness(v,now=Date.now()){
+ const time=Date.parse(v.market_timestamp_utc);
+ if(!Number.isFinite(time)||time>now)return 'UNKNOWN TIMESTAMP';
+ if(v._prediction_current===false)return 'DIFFERENT FORECAST';
+ if(Number.isFinite(Date.parse(v._game_kickoff_utc))&&Date.parse(v._game_kickoff_utc)<=now)return 'GAME STARTED · ARCHIVED';
+ const limit=/RUSH|RECEIV|TD|RECEPTION/.test(v.market_type||'')?freshnessPolicy.prop_max_age_minutes:freshnessPolicy.game_max_age_minutes;
+ return (now-time)/60000>limit?'STALE · ARCHIVED':'CAPTURED QUOTE · VERIFY PRICE';
+}
+function role(p){const availability=p.injury_status||p.availability_status||'UNKNOWN';const depth=p.role_status==='EXPECTED_STARTER'?'Expected starter':p.depth_role==='STARTER'?'Depth starter (unconfirmed)':p.depth_role==='PRIMARY_BACKUP'?'Depth backup':p.depth_role||p.role_status||'Role unknown';return `${p.position} · ${depth} · ${availability}`;}
+function rows(players,kind){const data=[...players].filter(p=>kind==='td'?Number(p.reconciled_td_probability)>=.05:kind==='rush'?Number(p.expected_carries)>=1||Number(p.expected_rush_yards)>=5:Number(p.expected_targets)>=1||Number(p.expected_receiving_yards)>=8).sort((a,b)=>Number(b[kind==='td'?'reconciled_td_probability':kind==='rush'?'expected_rush_yards':'expected_receiving_yards'])-Number(a[kind==='td'?'reconciled_td_probability':kind==='rush'?'expected_rush_yards':'expected_receiving_yards']));
+return data.length?`<div class="rows">${data.slice(0,8).map(p=>`<div class="row"><span><b>${escapeHTML(p.player_name)}</b><small>${escapeHTML(p.team)} · ${escapeHTML(role(p))}</small></span><span>${kind==='td'?`${percent(p.reconciled_td_probability)}<small>Fair decimal ${number(p.model_fair_odds,2)}</small>`:kind==='rush'?`${number(p.expected_rush_yards,0)} yards<small>${number(p.expected_carries)} carries · ${number(p.rush_yards_low,0)}–${number(p.rush_yards_high,0)}</small>`:`${number(p.expected_receiving_yards,0)} yards<small>${number(p.expected_targets)} targets · ${number(p.receiving_yards_low,0)}–${number(p.receiving_yards_high,0)}</small>`}</span></div>`).join('')}</div>`:'<p class="muted">No eligible projections in this category.</p>';}
+function marketRows(values){return values.length?values.slice(0,5).map(v=>`<div class="row"><span><b>${escapeHTML(v.selection)}</b><small>${escapeHTML(v.bookmaker)} · ${escapeHTML(v.market_type)}</small><small class="warning">${escapeHTML(quoteFreshness(v))}</small><small>Captured ${ukTime(v.market_timestamp_utc)}</small><small>Margin: ${escapeHTML(v.no_vig_status||'Unqualified')} · Basis: ${escapeHTML(v.comparison_basis||'Unknown')}</small></span><span>${percent(v.model_probability)} model<small>Book ${number(v.book_odds,2)} · Fair ${number(v.model_fair_odds,2)}</small><small>Line ${number(v.line)}</small></span></div>`).join(''):'<p class="muted">No comparable qualified market quotes. No prices invented.</p>';}
+function factorList(g){let factors=[];try{factors=typeof g.main_factors==='string'?JSON.parse(g.main_factors):g.main_factors||[];}catch{}return Array.isArray(factors)?factors.map(f=>`<li>${escapeHTML(f)}</li>`).join(''):'';}
+function marketContext(m,values){if(!m)return '<p class="muted">Market-implied score unavailable. No consensus invented.</p>';const archived=!values.length||values.some(v=>quoteFreshness(v)!=='CAPTURED QUOTE · VERIFY PRICE');return `<div class="market-context"><small>${archived?'ARCHIVED ':''}MARKET-IMPLIED SCORE · CONSENSUS MAIN LINE</small><p><b>${number(m.market_away_points,0)} – ${number(m.market_home_points,0)}</b></p><span>${escapeHTML(m.market_spread_label)} · O/U ${number(m.market_total)} · ${number(Math.min(m.spread_book_count,m.total_book_count),0)}+ books</span><p class="muted">Market-derived context, never the model forecast. ${archived?'Quote freshness is unverified or expired; not a current price.':'Verify availability before use.'}</p></div>`;}
+function card(g,values,market=null){const validWin=g.home_win_probability!==null&&g.home_win_probability!==undefined&&Number.isFinite(Number(g.home_win_probability));const winner=validWin?(Number(g.home_win_probability)>=.5?g.home_team:g.away_team):'Unavailable';const spread=g.model_margin===null||g.model_margin===undefined?'Unavailable':g.model_margin>0?`${g.home_team} -${number(g.model_margin)}`:g.model_margin<0?`${g.away_team} -${number(-g.model_margin)}`:"PICK'EM";const p=g.players||[];const lead=[...p].sort((a,b)=>Number(b.reconciled_td_probability)-Number(a.reconciled_td_probability))[0];
+return `<article class="card"><div class="game-meta"><b>${escapeHTML(g.away_team)} @ ${escapeHTML(g.home_team)}</b><span>${ukTime(g.kickoff_utc)}</span><span>${escapeHTML(g.stadium||'Stadium unavailable')}</span></div><div class="scoreboard"><div><div class="team-code">${teamLogo(g.away_team)}${escapeHTML(g.away_team)}</div><div class="score">${escapeHTML(g.display_away_score)}</div><div>${escapeHTML(names[g.away_team])}</div></div><span class="at" aria-label="at">@</span><div><div class="team-code">${teamLogo(g.home_team)}${escapeHTML(g.home_team)}</div><div class="score">${escapeHTML(g.display_home_score)}</div><div>${escapeHTML(names[g.home_team])}</div></div></div><p class="forecast-label">FROZEN MODEL SCORE · ROUNDED EXPECTATION</p><p class="winner">Model winner ${escapeHTML(winner)} · ${validWin?percent(Math.max(Number(g.home_win_probability),Number(g.away_win_probability))):'—'} win chance</p><div class="quick"><div><small>MODEL SPREAD</small><strong>${escapeHTML(spread)}</strong></div><div><small>MODEL TOTAL</small><strong>${number(g.model_total)}</strong></div><div><small>CONFIDENCE</small><strong>${escapeHTML(g.confidence_rating||'Unavailable')}</strong></div></div>${g.result_status==='FINAL'?`<div class="final"><small>FINAL SCORE</small><b>${escapeHTML(g.away_team)} ${escapeHTML(g.actual_away_score)} – ${escapeHTML(g.actual_home_score)} ${escapeHTML(g.home_team)}</b></div>`:''}${marketContext(market,values)}<p class="insight">${lead?`Highest model TD chance: <b>${escapeHTML(lead.player_name)}</b> · ${percent(lead.reconciled_td_probability)}`:'Player insights unavailable'}</p><details><summary>Player forecasts & matchup context</summary><div class="expanded"><h3>Anytime offensive touchdown</h3>${rows(p,'td')}<h3>Rushing</h3>${rows(p,'rush')}<h3>Receiving</h3>${rows(p,'receive')}<p class="muted">Passing/reception/fantasy forecasts are not validated production outputs yet.</p><details><summary>Model insights</summary><div class="expanded"><ul>${factorList(g)}</ul></div></details><h3>Model versus archived market</h3>${marketRows(values)}<p class="muted">Price timestamps/freshness are shown on the full Markets page. Archived prices are not treated as current. Margin/commission adjustments require comparable two-sided quotes.</p><details><summary>Advanced: uncertainty & provenance</summary><div class="expanded"><p>Precise expectation: ${escapeHTML(g.away_team)} ${number(g.away_expected_points,2)} – ${number(g.home_expected_points,2)} ${escapeHTML(g.home_team)}</p><p class="muted">Headline score is the existing rounded mean, not a certified most-likely exact score. Spread and total retain their continuous/simulation authority.</p><p>Middle 50% score interval: ${escapeHTML(g.away_team)} ${number(g.away_score_p25,0)}–${number(g.away_score_p75,0)} · ${escapeHTML(g.home_team)} ${number(g.home_score_p25,0)}–${number(g.home_score_p75,0)}</p><p class="muted">Player yardage bands retain the incumbent heuristic; they are not empirically certified. Missing availability never implies healthy.</p><p class="warning">${escapeHTML(g.data_quality_warnings||'No game-specific warning in frozen artifact.')}</p><p class="muted">Prediction cutoff: ${ukTime(g.prediction_cutoff_utc)}<br>Original run: ${escapeHTML(g.prediction_source_run_id||g.prediction_run_id)}<br>Weather: ${escapeHTML(g.weather_summary||'Unavailable')} · context only</p></div></details></div></details></article>`;}
+async function games(){
+ await loadAvailabilityOverlay();
+ if(document.body.dataset.frontendVersion==='3.1'&&typeof cardV31!=='function')throw Error('Player Props module unavailable; legacy unfiltered presentation withheld');
+ const current=await json('data/current_week.json');
+ if(typeof cardV31==='function'){
+  try{const proof=await json('data/player_presentation.json');starterEvidence=proof.players||{};}catch{query('#message').textContent='Starter evidence unavailable. Player Props safely withheld.';}
+  try{passingContract=await json('data/passing_projections.json');}catch{passingContract={schema:'certified-passing-v1',status:'NOT_CERTIFIED',predictions:[]};}
+ }
+ let bundle=current, values=[], contexts={}, requestToken=0;
+ try{
+  freshnessPolicy=await json('data/phase7_source_health.json');
+  query('#source-health').innerHTML='<p class="muted">'+escapeHTML(freshnessPolicy.scope)+'. Missing source information never implies healthy. This panel describes the current-week frozen lock.</p>'+(freshnessPolicy.forecast_sources||[]).map(s=>'<div class="row"><span><b>'+escapeHTML(s.source)+'</b><small>Known '+ukTime(s.known_at_utc)+' · Captured '+ukTime(s.retrieved_at_utc)+'</small><small class="warning">'+escapeHTML(s.quality_warnings||'')+'</small></span><span>'+escapeHTML(s.source_state||'UNKNOWN')+'<small>'+escapeHTML(s.data_status||'Unknown coverage')+'</small></span></div>').join('');
+ }catch{query('#message').textContent='Frozen source-health details unavailable. Original forecasts remain available.';}
+ try{const v=await json('data/value.json');values=(v.values||[]).map(row=>valueWithFixture(row,current,v.metadata));contexts=v.market_game_context||{};}
+ catch{query('#message').textContent='Market source unavailable. Independent forecasts remain available.';}
+ const available=current.metadata.available_weeks||[current.metadata.week], week=query('#week');
+ week.innerHTML=available.map(w=>'<option value="'+Number(w)+'">Week '+Number(w)+(Number(w)===Number(current.metadata.week)?' · current':'')+'</option>').join('');
+ function render(){
+  const search=query('#search').value.trim().toLowerCase(),code=search.toUpperCase();
+  const selected=bundle.games.filter(g=>Object.hasOwn(names,code)?g.away_team===code||g.home_team===code:(''+g.away_team+' '+g.home_team+' '+names[g.away_team]+' '+names[g.home_team]).toLowerCase().includes(search));
+  const sort=query('#sort').value;
+  selected.sort((a,b)=>sort==='confidence'?Math.max(b.home_win_probability,b.away_win_probability)-Math.max(a.home_win_probability,a.away_win_probability):sort==='total'?b.model_total-a.model_total:new Date(a.kickoff_utc)-new Date(b.kickoff_utc));
+  const currentView=Number(bundle.metadata.week)===Number(current.metadata.week);
+  query('#games').innerHTML=selected.length?selected.map(g=>(typeof cardV31==='function'?cardV31:card)(g,currentView?values.filter(v=>v.game_id===g.game_id):[],currentView?contexts[g.game_id]:null)).join(''):'<p>No games match your filter.</p>';
+  query('#title').textContent='Week '+bundle.metadata.week+' · Every matchup, one clear view';
+  query('#count').textContent=selected.length+' of '+bundle.games.length+' games';
+  query('#source-state').innerHTML='<b>Original production forecasts</b><br>Updated '+ukTime(bundle.metadata.created_at_utc)+'<br>Quality: '+escapeHTML(bundle.metadata.data_quality_result||'Unknown')+'<br><span class="warning">No Phase 7 candidate is active.</span>';
+  week.value=bundle.metadata.week;
+  const index=available.map(Number).indexOf(Number(bundle.metadata.week));
+  query('#previous-week').disabled=index<=0; query('#next-week').disabled=index<0||index>=available.length-1;
+  query('#week-nav-label').textContent='Week '+bundle.metadata.week+(currentView?' · Current':' · Frozen history');
+ }
+ async function selectWeek(value){
+  const token=++requestToken,selected=Number(value);
+  try{
+   if(!available.map(Number).includes(selected))throw Error('Requested week unavailable');
+   const data=selected===Number(current.metadata.week)?current:await json('data/week_'+String(selected).padStart(2,'0')+'.json');
+   if(token!==requestToken)return;
+   bundle=data;query('#message').textContent='';render();
+   const url=new URL(location.href);if(selected===Number(current.metadata.week))url.searchParams.delete('week');else url.searchParams.set('week',selected);history.replaceState(null,'',url);
+  }catch(error){week.value=bundle.metadata.week;fail(error);}
+ }
+ week.onchange=()=>selectWeek(week.value);
+ query('#previous-week').onclick=()=>selectWeek(available[available.map(Number).indexOf(Number(bundle.metadata.week))-1]);
+ query('#next-week').onclick=()=>selectWeek(available[available.map(Number).indexOf(Number(bundle.metadata.week))+1]);
+ query('#search').oninput=render;query('#sort').onchange=render;
+ const requested=Number(new URLSearchParams(location.search).get('week'));
+ if(requested&&requested!==Number(current.metadata.week))await selectWeek(requested);else render();
+}
+function officialEvaluationStatus(m){
+ const team=m.team_status==='EVALUATED'?'Official team evaluated':'Team pending';
+ const td=m.td_brier!=null&&m.td_rows>0?'TD evaluated':'TD pending';
+ const player=m.player_status?.includes('SUBGROUP_PENDING')?'All-player yardage evaluated; opportunity subgroups pending':m.player_status?.startsWith('EVALUATED')?'Player evaluation complete':'Player evaluation pending';
+ return `${team}; ${td}; ${player}`;
+}
+async function performance(){
+ await loadAvailabilityOverlay();
+ const data=await json('data/phase7_performance.json');
+ const all=data.metrics.find(m=>m.segment==='ALL');
+ const pending=[...new Set(data.cohorts.filter(c=>c.pending_games>0).map(c=>c.week))];
+ query('#source-state').textContent=`${data.games} evaluated final games · ${data.offensive_player_rows} original offensive player forecasts · ${pending.length?`Week ${pending.join(', ')} pending finality/evaluation`:'All official team cohorts evaluated'}.`;
+ const weeks=key=>(all[key]||[]).join(', ');
+ const cards=[['Score MAE',all.team_score_mae,`${all.rows*2} team scores`],['Margin MAE',all.margin_mae,`${all.rows} games`],['Total MAE',all.total_mae,`${all.rows} games`],['Winner accuracy',percent(all.winner_accuracy),`${all.winner_correct??'—'}/${all.winner_games??'—'} final non-tied games`],['Win Brier',number(all.win_brier,4),'Lower is better'],['Anytime TD Brier',number(all.td_brier,4),`${all.td_rows??all.offensive_player_rows} evaluated offensive forecasts`],['Rush MAE',all.rush_mae,`${all.rush_rows} meaningful projections${all.rush_weeks?' · weeks '+weeks('rush_weeks'):''}`],['Receiving MAE',all.receiving_mae,`${all.receiving_rows} meaningful projections${all.receiving_weeks?' · weeks '+weeks('receiving_weeks'):''}`]];
+ query('#metrics').innerHTML=cards.map(([label,value,n])=>`<article class="metric"><span>${label}</span><strong>${typeof value==='string'?value:number(value,2)}</strong><small>${n}</small></article>`).join('');
+ const weekly=data.metrics.filter(m=>m.segment!=='ALL');
+ const pendingRows=[...new Set(data.cohorts.filter(c=>c.pending_games>0).map(c=>c.week))];
+ query('#weekly').innerHTML=`<table><caption class="muted">Original forecasts only. Yardage columns use the same opportunity filter; unavailable subgroups remain pending.</caption><thead><tr><th scope="col">Week</th><th scope="col">Games</th><th scope="col">Score MAE</th><th scope="col">Margin MAE</th><th scope="col">Total MAE</th><th scope="col">Winner</th><th scope="col">Win Brier</th><th scope="col">TD Brier</th><th scope="col">Rush MAE</th><th scope="col">Receiving MAE</th><th scope="col">Evaluation</th></tr></thead><tbody>${weekly.map(m=>`<tr><th scope="row">${escapeHTML(m.segment.replace('WEEK_',''))}</th><td>${m.rows}</td><td>${number(m.team_score_mae,3)}</td><td>${number(m.margin_mae,3)}</td><td>${number(m.total_mae,3)}</td><td>${percent(m.winner_accuracy)} (${m.winner_correct}/${m.winner_games})</td><td>${number(m.win_brier,5)}</td><td>${number(m.td_brier,5)}</td><td>${m.rush_mae==null?'Pending subgroup':number(m.rush_mae,2)}</td><td>${m.receiving_mae==null?'Pending subgroup':number(m.receiving_mae,2)}</td><td>${escapeHTML(officialEvaluationStatus(m))}</td></tr>`).join('')}${pendingRows.map(w=>`<tr><th scope="row">${w}</th><td colspan="10">Pending finality/evaluation — no outcomes assumed</td></tr>`).join('')}</tbody></table>`;
+ const reported=weekly.filter(m=>m.reported_player_evaluation);
+ query('#qualifications').innerHTML=data.qualifications.map(q=>`<li>${escapeHTML(q)}</li>`).join('')+reported.map(m=>{const p=m.reported_player_evaluation;return `<li>Week ${escapeHTML(m.segment.replace('WEEK_',''))} official all-offensive evaluation: ${p.players} forecasts; rushing MAE <span class="metric-number">${number(p.rush_yards_mae,3)}</span>, receiving MAE <span class="metric-number">${number(p.receiving_yards_mae,3)}</span>. These certified all-player averages are separate from opportunity-filtered cumulative yardage.</li>`;}).join('');
+ const blocked=data.settlements;
+ if(blocked){query('#blocked-settlements').innerHTML=`<h3>Unresolved historical settlements</h3><p class="warning">${number(blocked.blocked_count,0)} SETTLEMENT_BLOCKED · ${escapeHTML(blocked.policy)}</p><ul>${blocked.blocked.map(row=>`<li>${escapeHTML(row.player_name||row.selection||row.player_id)} · ${escapeHTML(row.market_type)} · ${escapeHTML(row.game_id)} · SETTLEMENT_BLOCKED</li>`).join('')}</ul>`;}
+ try{const archived=await json('data/performance.json');const labels={team_score_mae:'Team score MAE',margin_mae:'Margin MAE',total_mae:'Total MAE',winner_accuracy:'Winner accuracy',rushing_yards_mae:'Rush yards MAE',receiving_yards_mae:'Receiving yards MAE',td_brier:'TD Brier'};query('#historical').innerHTML=Object.entries(archived.historical||{}).map(([key,value])=>`<article class="metric"><span>${escapeHTML(labels[key]||key)}</span><strong>${key.includes('accuracy')?percent(value):number(value,3)}</strong></article>`).join('')||'<p>Historical backtest unavailable.</p>';query('#market-performance-status').textContent=archived.market_value?.status||'No settled ledger selections';query('#market-performance').innerHTML=(archived.market_value?.rows||[]).map(row=>`<div class="row"><b>${escapeHTML(row.market_type)}</b><span><span class="metric-number">${number(row.selections,0)}</span> selections · <span class="metric-number">${number(row.roi==null?null:row.roi*100)}% ROI</span></span></div>`).join('')||'<p class="muted">No settled ledger selections. Market returns are separate from forecast accuracy.</p>';}catch{query('#historical').textContent='Archived backtest unavailable.';query('#market-performance-status').textContent='Settled ledger unavailable.';}
+ const lab=await json('data/phase7_lab.json');
+ const captures=Array.isArray(lab.shadow_outputs)?lab.shadow_outputs:[];
+ query('#lab').innerHTML=`<p>Research-only challengers are excluded from official performance. Champions: team ${escapeHTML(lab.champions.team)} · TD ${escapeHTML(lab.champions.TD)} · player ${escapeHTML(lab.champions.player)}</p><p>${lab.challengers.length} isolated research artifacts. No automatic promotion.</p>${captures.map(c=>`<p class="tag">Week ${c.week} · ${escapeHTML(c.status)} · ${c.players} players · archived ${ukTime(c.cutoff)}</p>`).join('')}<p class="warning">Historical eligibility remains uncertified. Current transaction coverage warnings remain visible. Candidate results are not proof of a betting edge.</p>`;
+}
+if(document.body.dataset.page==='games')games().catch(fail);else if(document.body.dataset.page==='performance')performance().catch(fail);
