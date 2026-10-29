@@ -1,0 +1,13 @@
+{
+  "schema": "exact-one-time-independent-quarters-controls-v1",
+  "files": {
+    "scripts/manual_independent_quarters.py": "92166f85021cfceabc03508776fc821ae2e607ccf538cc30c79eb1dd4c8c9c03",
+    "scripts/weekly_publication.py": "362f886b65b07096cb291a8d2e75612696f4bf068dcca99c41c264c78f42fd68",
+    "nfl2026/weekly_research/core.py": "2f53028cff3ab48422d7c754bce8d015f7f2c43d335f6da03ecb5132d0f167f5",
+    "nfl2026/__init__.py": "a3f90df9372c65821d2ad19162b751e850f62591493e0eedcf7121d96cda002e",
+    "nfl2026/weekly_research/__init__.py": "63c9bf3473cebff5ca5cf82efb29a2a63aa83a8b43817fbc874cfc6313531fac",
+    "quarter_release/approval.json": "101f7ca4434ceb2500980fa6f2e4161ac6c1a3d7f72bad7643d820b222ed15ca",
+    "quarter_release/last_known_good/manifest.json": "6bd9f4496990ac13868ffe4906da60f655ed77a242990849fdd11bd553a48d72"
+  },
+  "approval_pending": false
+}
