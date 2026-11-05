@@ -3,6 +3,11 @@ const PlayerRoles = (() => {
   const records = new Map();
   const key = player => [player.game_id, player.team, player.player_id].join('|');
   const rowFor = player => records.get(key(player));
+  const displayRanks = {
+    td: ['QB1', 'RB1', 'RB2', 'WR1', 'WR2'],
+    receive: ['WR1', 'WR2', 'TE1'],
+    rush: ['RB1', 'RB2', 'QB1'],
+  };
   const escape = value => escapeHTML(String(value ?? ''));
   const options = (label, values) => '<option value="">' + escape(label) + '</option>' +
     values.map(value => '<option>' + escape(value) + '</option>').join('');
@@ -19,6 +24,10 @@ const PlayerRoles = (() => {
 
   function rankOf(role) {
     return roleStatus(role) === 'Verified' ? role.depth_role : null;
+  }
+
+  function eligible(player, kind) {
+    return !displayRanks[kind] || displayRanks[kind].includes(rankOf(rowFor(player)));
   }
 
   function name(player) {
@@ -52,28 +61,28 @@ const PlayerRoles = (() => {
       '<small class="role-detail">' + escape('Game-day starter ' + role.starter.toLowerCase()) + '</small></details>';
   }
 
-  function controls(kind, fixture = false) {
-    const receiving = ['WR1','WR2','WR3','WR4+','TE1','TE2','TE3+','RB1','RB2','RB3','RB4+'];
-    const quarterbacks = ['QB1','QB2','QB3','QB4'];
-    const roles = kind === 'pass' ? quarterbacks : kind === 'receive' ? receiving : [...receiving, ...quarterbacks];
+  function controls(kind, fixture = false, hasMoreTD = false) {
+    const roles = displayRanks[kind] ?? ['QB1','QB2','QB3','QB4'];
     const yards = kind === 'receive' || kind === 'rush';
     return '<div class="role-controls" ' + (fixture ? 'data-role-fixture' : 'id="role-global"') + '>' +
       '<label>Depth rank<select data-role-rank>' + options('All ranks', roles) + '</select></label>' +
-      '<label>Role evidence<select data-role-status><option value="">All statuses</option>' +
+      (displayRanks[kind] ? '' : '<label>Role evidence<select data-role-status><option value="">All statuses</option>' +
       '<option value="Verified">Verified rank</option><option value="Uncertain">Role uncertain</option>' +
-      '<option value="Unavailable">Role unverified</option></select></label>' +
+      '<option value="Unavailable">Role unverified</option></select></label>') +
       (fixture ? '<label>Team<select data-role-team><option value="">Both teams</option></select></label>' : '') +
       '<label>Opponent<select data-role-opponent><option value="">All opponents</option></select></label>' +
       (fixture && yards ? '<label>Projected yards<select data-role-sort><option value="desc">High to low</option><option value="asc">Low to high</option></select></label>' : '') +
-      (fixture && kind === 'td' ? '<label class="role-show-all"><input type="checkbox" data-role-show-all> Show all eligible TD players</label>' : '') +
-      '<small class="role-legend">Badges show captured depth rank. Usage and starter status are separate.</small></div>';
+      (fixture && hasMoreTD ? '<label class="role-show-all"><input type="checkbox" data-role-show-all> Show all eligible TD players</label>' : '') +
+      '<small class="role-legend">' + (displayRanks[kind] ? 'Only verified ' + roles.join(', ') + ' roles are shown. ' : '') +
+      'Usage and starter status are separate.</small>' +
+      (fixture ? '<small class="role-legend" data-role-count aria-live="polite"></small>' : '') + '</div>';
   }
 
   function matches(player, controlsNode) {
     if (!controlsNode) return true;
     const role = rowFor(player);
     const rank = controlsNode.querySelector('[data-role-rank]').value;
-    const status = controlsNode.querySelector('[data-role-status]').value;
+    const status = controlsNode.querySelector('[data-role-status]')?.value;
     const opponent = controlsNode.querySelector('[data-role-opponent]').value;
     return (!rank || rank === rankOf(role)) && (!status || status === roleStatus(role))
       && (!opponent || opponent === player.opponent);
@@ -111,9 +120,9 @@ const PlayerRoles = (() => {
       const sort = controlsNode.querySelector('[data-role-sort]');
       controlsNode.querySelector('[data-role-team]').innerHTML = options('Both teams', [...new Set(rows.map(row => row.dataset.team))]);
       controlsNode.querySelector('[data-role-opponent]').innerHTML = options('All opponents', [...new Set(rows.map(row => row.dataset.roleOpponentValue))]);
-      controlsNode.addEventListener('change', () => {
+      function apply() {
         const rank = controlsNode.querySelector('[data-role-rank]').value;
-        const status = controlsNode.querySelector('[data-role-status]').value;
+        const status = controlsNode.querySelector('[data-role-status]')?.value;
         const team = controlsNode.querySelector('[data-role-team]').value;
         const opponent = controlsNode.querySelector('[data-role-opponent]').value;
         const expandTD = showAll?.checked || rank || status || team || opponent;
@@ -124,14 +133,18 @@ const PlayerRoles = (() => {
             (showAll && !expandTD && row.dataset.featured === 'false')));
         }
         const container = panel.querySelector('.rows');
-        if (sort) {
+        if (sort && container) {
           for (const row of sort.value === 'asc' ? [...rows].reverse() : rows) container.append(row);
         }
         const empty = panel.querySelector('.role-empty');
-        if (empty) empty.hidden = rows.some(row => !row.classList.contains('role-hidden'));
-      });
+        const count = rows.filter(row => !row.classList.contains('role-hidden')).length;
+        if (empty) empty.hidden = count > 0;
+        controlsNode.querySelector('[data-role-count]').textContent = count + ' of ' + rows.length + ' eligible players shown';
+      }
+      controlsNode.addEventListener('change', apply);
+      apply();
     }
   }
 
-  return {load, name, details, controls, globalControls, matches, attributes, initializeFixtures};
+  return {load, eligible, name, details, controls, globalControls, matches, attributes, initializeFixtures};
 })();
