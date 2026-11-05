@@ -1,7 +1,7 @@
 {
-  "schema": "week9-exact-static-postmerge-approval-v1",
+  "schema": "week9-tidy-exact-postmerge-approval-v1",
   "files": {
-    "scripts/verify_week9_publication.py": "d40e76e13e6a827ee1bd2cd1691a98bbb3c9fb4fea8a185fd0f236fb4bb67374",
-    "week9_release/review_request.json": "89e7ae9f184be69a9112b50695c294a476ad58bdff703007fe2048336cb60674"
+    "scripts/verify_week9_publication.py": "72cfa94ed7cb27e56a96876acdc911237f2feeb3032f344349844af25159518d",
+    "week9_release/review_request.json": "da043cb7c5e918b7a60de5498ebbaa2f625b2d1c208c9bc07f43664b32f50a06"
   }
 }
