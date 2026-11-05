@@ -1,0 +1,21 @@
+{
+  "schema": "controlled-week9-review-request-v1",
+  "created_at_utc": "2026-11-05T20:00:35.783667+00:00",
+  "release_id": "frontend-week9-controlled-d8e54a744381d172",
+  "manifest_sha256": "55b8d973c665eb324310ce2a4db69782a62b8aeb95439d6e8cc4e30348c7fb48",
+  "repository": "racingmodel/nfl-2026-visualizer",
+  "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
+  "scope": "WEEK9_EXACT_STATIC_ONCE",
+  "unattended": false,
+  "status": "PENDING_OWNER_APPROVAL",
+  "workflow_id": 399724330,
+  "install_path": ".github/workflows/manual-frontend-correction.yml",
+  "maximum_approval_duration_minutes": 120,
+  "latest_expiry_utc": "2026-11-06T01:14:00+00:00",
+  "archive_sha256": "efc5b22e50f1009269f26e6f812a1d6f995025b16ec7412c353467140d177c34",
+  "unsigned_draft_files": {
+    "integration_draft/manual-frontend-correction.yml.proposed": "884c2eacafd242800a9a9e2bbd19df8fce322fa99a1c72b5de9c9ed26d4c9026",
+    "integration_draft/test_guard.py": "c6c5f2f06c5b5f6e0f41c6a043964985340beef2b494cfc745771ce4cd46f491",
+    "integration_draft/verify_week9_publication.py": "dd9ce6e41f05136211c88d2c1e0228bee7c0d0eeeba2f54f67051c00ef47e3ca"
+  }
+}

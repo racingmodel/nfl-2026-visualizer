@@ -1,0 +1,12 @@
+{
+  "8": {
+    "path": "data/quarter_simulation_week8.json",
+    "sha256": "2174aa14331dc5970d29ba55e5348ac2e97612f9f0113323294d421d888bc87e",
+    "fixtures": 14
+  },
+  "9": {
+    "path": "data/quarter_simulation_week9.json",
+    "sha256": "11c5da73a91433601939a3f0dd9e3da467bd151ae182948faa584012ca6e7461",
+    "fixtures": 15
+  }
+}
