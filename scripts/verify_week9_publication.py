@@ -1,4 +1,4 @@
-"""Proposed Week 9 manual guard. This file is a local review draft."""
+"""Exact Week 9 tidy release guard for the supervised Pages workflow."""
 
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
@@ -20,6 +20,12 @@ BASE = Path("week9_release")
 SITE = "https://racingmodel.github.io/nfl-2026-visualizer/"
 SCHEDULE = "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
 WORKFLOW_ID = "399724330"
+RELEASE_ID = 'frontend-week9-tidy-29466c12d79894cf'
+MANIFEST_SHA256 = '471ade754b7ac785d88a4ed1f57c8a1d4921f36bbdac7771f769c94e7ca5fee9'
+PARENT_ASSETS_SHA256 = '8c37b193b4729e6b110f4e0046314fec8802a7c9f7b32b39f86d288e85b006d9'
+REVIEW_BRANCH = 'codex/week9-tidy-controls-29466c12d79894cf'
+APPROVAL_SCOPE = 'WEEK9_TIDY_EXACT_STATIC_ONCE'
+TIDY_HASHES = {'classic_research.js': '3b7123b76efb7bc03a49cb82388d1250f84c17b25d13bba6d02a9074e1a0baef', 'local_week9.css': '54d45c33472bd99047acf8dcdbfe7ef4731f7486c75de87a4d9d0badb854954d', 'local_week9.js': 'c0265148acef4f2c210f4c8825b67fedc067c4530183066eb0ad709c0bdda2a9', 'player_roles.js': '77d580e443eb30f8b23f897359c0b13f5102eebed9330c5e55702360a85cfe42'}
 FLAGS = ("RESEARCH_AUTOMATION_APPROVED", "RESEARCH_PUBLISH_ENABLED", "INITIAL_RESEARCH_RELEASE_ENABLED", "RESEARCH_MONITOR_ENABLED")
 
 
@@ -67,15 +73,33 @@ def inventory(site):
     return {p.relative_to(site).as_posix(): sha(p) for p in site.rglob("*") if p.is_file()}
 
 
+def exact_site_scope(manifest):
+    parent = manifest["previous_live_release"]
+    before, after = parent["files"], manifest["files"]
+    require(digest(json.dumps(before, sort_keys=True, separators=(",", ":")).encode("utf-8"))
+            == PARENT_ASSETS_SHA256, "Wrong pinned Week 9 parent inventory")
+    require(before.keys() == after.keys(), "Candidate file set differs from parent")
+    changed = {name: after[name] for name in after if after[name] != before[name]}
+    require(changed == manifest["changed_site_files"] == TIDY_HASHES, "Candidate is outside the exact four-file scope")
+    require(sum(name.startswith("data/") for name in after) == 60, "Frozen data inventory differs")
+    require(after["release_receipt.json"] == before["release_receipt.json"]
+            == manifest["inherited_site_receipt_sha256"], "Inherited site receipt hash differs")
+
+
 def package(base=BASE):
-    manifest = read(base / "publication_manifest.json")
-    require(manifest["schema"] == "controlled-week9-static-publication-v1", "Wrong manifest contract")
+    path = base / "publication_manifest.json"
+    require(sha(path) == MANIFEST_SHA256, "Pinned tidy manifest differs")
+    manifest = read(path)
+    require(manifest["schema"] == "controlled-week9-static-tidy-v1" and manifest["release_id"] == RELEASE_ID,
+            "Wrong tidy manifest contract")
     require(manifest["repository"] == REPO and manifest["destination"] == SITE, "Wrong publication destination")
     require(manifest["production_certified"] is False and manifest["publication_authorized"] is False
             and manifest["research_only_shadow_models_excluded"] is True, "Research scope differs")
     require(len(manifest["files"]) == manifest["file_count"] == 417, "Candidate inventory size differs")
     require(inventory(base / "site") == manifest["files"], "Candidate bytes differ")
-    require(read(base / "site/release_receipt.json")["release_id"] == manifest["release_id"], "Release receipt differs")
+    exact_site_scope(manifest)
+    require(read(base / "site/release_receipt.json")["release_id"] == manifest["previous_live_release"]["release_id"],
+            "Inherited Week 9 site receipt differs")
     require(len(manifest["fixture_cutoffs"]) == 15 and min(manifest["fixture_cutoffs"].values()) == manifest["first_cutoff_utc"],
             "Fixture cutoff contract differs")
     return manifest
@@ -96,7 +120,7 @@ def approval_document(env, base=BASE):
     pr = api("pulls/" + issue_url[len(prefix):])
     require(pr.get("merged") is True and pr.get("merge_commit_sha") == env["GITHUB_SHA"]
             and pr["base"]["ref"] == "main" and pr["base"]["repo"]["full_name"] == REPO
-            and pr["head"]["ref"] == "codex/week9-controlled-d8e54a744381d172"
+            and pr["head"]["ref"] == REVIEW_BRANCH
             and pr["head"]["repo"]["full_name"] == REPO, "Approval must be on the exact merged Week 9 installation PR")
     observed = clock(comment["created_at"])
     require(clock(pr["merged_at"]) <= observed, "Approval comment predates the merge")
@@ -128,7 +152,7 @@ def authority(manifest, env, instant, base=BASE):
     grant = approval_document(env, base)
     for doc in (request, grant):
         require(doc["release_id"] == manifest["release_id"] and doc["manifest_sha256"] == manifest_sha
-                and doc["repository"] == REPO and doc["destination"] == SITE and doc["scope"] == "WEEK9_EXACT_STATIC_ONCE"
+                and doc["repository"] == REPO and doc["destination"] == SITE and doc["scope"] == APPROVAL_SCOPE
                 and doc["unattended"] is False, "Grant or request scope differs")
     require(grant["decision"] == "APPROVED" and grant["request_sha256"] == request_sha
             and bool(grant["human_approval_reference"]), "Fresh explicit grant missing")
@@ -178,6 +202,28 @@ def live_check(files, attempts, nonce):
     return results
 
 
+def check_first_dispatch(env, request_created):
+    runs = api(f"actions/workflows/{WORKFLOW_ID}/runs", event="workflow_dispatch",
+               created=">=" + request_created, per_page=100)
+    require(runs["total_count"] <= 100, "Run history incomplete")
+    require(not any(str(run["id"]) != env["GITHUB_RUN_ID"] and run["head_sha"] == env["GITHUB_SHA"]
+                    for run in runs["workflow_runs"]), "One-time dispatch already attempted for this commit")
+
+
+def verify_live_parent(manifest, phase, run_id):
+    prior = manifest["previous_live_release"]["files"]
+    if phase == "review":
+        expected = prior
+    else:
+        paths = ("release_receipt.json", "index.html", "data/research/2026-w08.json", "data/research/2026-w09.json", *TIDY_HASHES)
+        expected = {name: prior[name] for name in paths}
+    result = live_check(expected, 2 if phase == "review" else 1, f"{phase}-week9-parent-{run_id}")
+    served = {name: value for name, value in expected.items() if Path(name).name != ".nojekyll"}
+    require(len(result) == len(served) and {row["path"]: row.get("actual") for row in result} == served,
+            "Last-known-good Week 9 website drifted")
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("phase", choices=["review", "pre-deploy", "live"])
@@ -190,27 +236,16 @@ def main():
               "run_id": env.get("GITHUB_RUN_ID"), "observed_at_utc": now().isoformat()}
     if args.phase == "live":
         results = live_check(manifest["files"], 5, str(env["GITHUB_RUN_ID"]))
-        result.update(files=results, status="PASS" if all(row["match"] for row in results) else "FAIL")
+        result.update(files=results, status="PASS" if len(results) == 412 and all(row["match"] for row in results) else "FAIL")
     else:
-        approved, expires = authority(manifest, env, now())
+        _, expires = authority(manifest, env, now())
         require(api("git/ref/heads/main")["object"]["sha"] == env["GITHUB_SHA"], "main moved after review")
         active = []
         for state in ("queued", "in_progress", "requested", "waiting", "pending"):
             active.extend(api("actions/runs", status=state, per_page=100)["workflow_runs"])
         require(not any(str(r["id"]) != env["GITHUB_RUN_ID"] for r in active), "Other repository workflow activity")
-        duplicate = api(f"actions/workflows/{WORKFLOW_ID}/runs", event="workflow_dispatch",
-                        created=">=" + approved.isoformat(), per_page=100)
-        require(duplicate["total_count"] <= 100, "Run history incomplete")
-        require(not any(str(r["id"]) != env["GITHUB_RUN_ID"] and r["head_sha"] == env["GITHUB_SHA"]
-                        for r in duplicate["workflow_runs"]), "One-time dispatch already attempted")
-        if args.phase == "review":
-            prior = manifest["previous_live_release"]["files"]
-            prior_check = live_check(prior, 2, "parent-" + str(env["GITHUB_RUN_ID"]))
-        else:
-            prior = manifest["previous_live_release"]["files"]
-            prior_check = live_check({name: prior[name] for name in ("release_receipt.json", "index.html", "data/research/2026-w08.json")},
-                                     1, "pre-deploy-" + str(env["GITHUB_RUN_ID"]))
-        require(all(row["match"] for row in prior_check), "Last-known-good website drifted")
+        check_first_dispatch(env, read(BASE / "review_request.json")["created_at_utc"])
+        prior_check = verify_live_parent(manifest, args.phase, env["GITHUB_RUN_ID"])
         schedule = download(SCHEDULE)
         observed = now()
         games = {g["game_id"]: g for g in read(BASE / "site/data/research/2026-w09.json")["games"]}
