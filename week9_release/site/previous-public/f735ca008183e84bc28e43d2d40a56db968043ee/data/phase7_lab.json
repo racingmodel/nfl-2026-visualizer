@@ -1,0 +1,415 @@
+{
+  "champions": {
+    "team": "phase2-v2",
+    "TD": "phase2-v2",
+    "player": "phase2-v3-rush-et"
+  },
+  "challengers": [
+    {
+      "model_id": "player-v4-extra_trees-train-through-2022",
+      "training_cutoff": "2023-01-09T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2023
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "player-v4-extra_trees-train-through-2023",
+      "training_cutoff": "2024-01-08T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2024
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "player-v4-extra_trees-train-through-2024",
+      "training_cutoff": "2025-01-06T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2025
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "player-v4-ridge-train-through-2022",
+      "training_cutoff": "2023-01-09T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2023
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "player-v4-ridge-train-through-2023",
+      "training_cutoff": "2024-01-08T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2024
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "player-v4-ridge-train-through-2024",
+      "training_cutoff": "2025-01-06T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE"
+      ],
+      "validation_periods": [
+        2025
+      ],
+      "metrics": "reports/phase7_player_v4_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "conditional-residual-research-v1",
+      "training_cutoff": "2025-01-06T01:20:00+00:00",
+      "feature_schema": [
+        "predicted_mean",
+        "position"
+      ],
+      "validation_periods": [
+        2025
+      ],
+      "metrics": "reports/phase7_threshold_distribution_backtest.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "time_ordered",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    },
+    {
+      "model_id": "qb-passing-roster-research-v1",
+      "training_cutoff": "2025-01-06T01:20:00+00:00",
+      "feature_schema": [
+        "prior_carries",
+        "prior_targets",
+        "prior_rushing_yards",
+        "prior_receiving_yards",
+        "prior_anytime_offensive_td",
+        "recent_red_zone_carries",
+        "recent_inside_10_carries",
+        "recent_inside_5_carries",
+        "recent_red_zone_targets",
+        "recent_inside_10_targets",
+        "recent_inside_5_targets",
+        "recent_snap_pct",
+        "recent_team_carries",
+        "recent_team_targets",
+        "recent_yards_per_carry",
+        "recent_yards_per_target",
+        "player_games_before",
+        "rookie_or_no_history",
+        "position_QB",
+        "position_RB",
+        "position_FB",
+        "position_WR",
+        "position_TE",
+        "lag_pass_attempts",
+        "lag_passing_yards",
+        "lag_passing_tds",
+        "passing_games_before"
+      ],
+      "validation_periods": [
+        2025
+      ],
+      "metrics": "reports/phase7_qb_passing_metrics.csv",
+      "provenance_certified": false,
+      "promotion_decision": {
+        "decision": "DO_NOT_PROMOTE",
+        "blocked_gates": [
+          "pit_provenance",
+          "time_ordered",
+          "primary_improvement",
+          "cross_season_stability",
+          "calibration_noninferiority",
+          "bias_acceptable",
+          "uncertainty_quality",
+          "reproducible_inference",
+          "runtime_acceptable",
+          "reliable_current_inputs",
+          "production_tests"
+        ],
+        "automatic_activation": false
+      }
+    }
+  ],
+  "automatic_promotion": false,
+  "shadow_outputs": [
+    {
+      "week": 6,
+      "season": 2026,
+      "status": "PROSPECTIVE_SHADOW",
+      "players": 435,
+      "candidate_id": "player-v4-extra_trees-train-through-2024",
+      "cutoff": "2026-10-14T17:06:23.359954+00:00"
+    }
+  ],
+  "health": {
+    "frozen_integrity": "VERIFIED",
+    "current_transactions": "READY_WITH_WARNINGS",
+    "transaction_warnings": [
+      "official NFL current-month transaction pages incomplete for reserve-list, signings, waivers; matched records are still overlaid, NFLverse trades alone are supplemental"
+    ],
+    "historical_eligibility": "BLOCKED",
+    "calibration_certification": "PARTIAL",
+    "research_evidence_not_live_promoted": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "release_id": "frontend-week9-controlled-d8e54a744381d172",
+  "parent_release_id": "frontend-week9-prop-roles-f03ccbadb2bb42bf",
+  "content_sha256": "d8e54a744381d172f33397585ee394eac82b8dba50016b46b6fc2eec25c31582",
+  "assembled_at_utc": "2026-11-05T19:54:51.147229+00:00",
+  "classification": "Experimental/NotProductionCertified",
+  "actionable": false,
+  "publication_receipt": null
+}

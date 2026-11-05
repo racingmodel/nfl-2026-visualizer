@@ -1,0 +1,36 @@
+{
+  "release_id": "frontend-v3-1-0aa9d638d7215e81",
+  "prediction_run_id": "phase3_5-production-20261021T210639Z-e0207002",
+  "ui_sha256": {
+    "index.html": "0ebed554d0f0fafefe33a97108904a2fcb1b8ad95b8010fbfe8c4dc68b99fa4e",
+    "players.html": "582c302927ee47672ac2f7645a2d99ac34195223042cf174d426a6ec08c6b78c",
+    "value.html": "2837b0fc76f28f7c91e09b083031a02932939474334d96c5fcaa70aab0bf3698",
+    "performance.html": "ac61351552fe6fb5d79a7836a63540b75dc1e6c1d668d2cf26a94da23e94fa5e",
+    "model.html": "98d46a9a01aaa7b3c7b15ebaf7c244b5447af83a4ec96fca5728ced470428936",
+    "phase7.js": "a2500bd7a379a7315f195fa520f8eaf0ca2b4ff3ebc501a9ce871e7ef6509ef2",
+    "boards.js": "302fbc8e576baa58f46a0ff3cdd9adc7c1242779a89c6942bb5c64957102ebf5",
+    "phase7.css": "ab0dd180416b89cfd598decc550938e3d0f905f6dc33bd435aaeb8088c5ac867",
+    "v31.js": "cbdc5adf164c64128256fd29dcf61c9ae8d546b68de291f4b4f1407b93f5921a",
+    "receiver_discovery_v2.js": "1d9c13ec43774716b8f5d6a86d6ad45d844a8132ee532ea905f4e6a30c53dda6",
+    "availability_overlay.js": "b266c897f5e426e4471f74f802915929571338f74109a366d4f4a3710154ecd1"
+  },
+  "data_sha256": {
+    "data/current_availability.json": "b4f9875d0d1ea483401a7d8badf578938af32c90126153dede8a21a05ddd1ce7",
+    "data/current_week.json": "acd3ca52da407a3fe59a9c890eaca815af24865d5b9ffe31d77c54287ab24fe4",
+    "data/frontend_contract.json": "9df8a0612638c65c7db2bc72d1f5a124169bfc74010bed185365d297f3861d5c",
+    "data/passing_projections.json": "edd6d6f5ae47d22bd33a630f8a1876ecaac9b5bc64f430bdf3a631e51437f792",
+    "data/performance.json": "41ff2c968d0162bd638d3d026cd10368242a5de8d60e2fd4b9836b2c931aa324",
+    "data/phase7_lab.json": "e9e6b3c4cd6f3c3e7572f3565935582373b8687fdc419397ac75699cbe5c6697",
+    "data/phase7_performance.json": "93cf22e190473dc274b2f97c679c8b9ff564880af207ddd07beedb3ace682e9b",
+    "data/phase7_source_health.json": "24bc0dcc6a2964db73f94773dcff0291b87ad594942964c069b7447355ef86c6",
+    "data/player_presentation.json": "a7a562bc7425c651dea529725591da8528e347bb4fb9d247e8ba42cd527ac5c9",
+    "data/receiver_discovery.json": "7a475e06921342976fcbae54df9ff5d3a936f3ec4c97f3bb2421ee13e39731ae",
+    "data/value.json": "cc28a19ea203d4247f855c5839632c667fa969e50aa7ade3b030cd6bbc8d1ccf",
+    "data/week_01.json": "0dbdf3d73e873e8010bcf8113031d1a8a750771b96361b43ab5ad05b684e18e0",
+    "data/week_02.json": "1e6c4577b1223c3e91f5f69349859dd4abc26b538648c608b904bb2f2bfce970",
+    "data/week_03.json": "552bfdb715af5bbf0e8f381bfbfa1797aec36695d0eb4c6c79fe72a6ba4303c4",
+    "data/week_04.json": "e850700ddc15918eb227631fbbe7c0312fa5969e6b6cbaee05bae4ec3aff6f9d",
+    "data/week_05.json": "9b0b4da38ab793bc656a3538fb9c8f9bc6fae8ea58340b93b78839f204f5bd52",
+    "data/week_06.json": "20935fd505e36eba26492528e4e303f406e51b8445c146dbf57ed5d7cf92be81"
+  }
+}

@@ -1,0 +1,3782 @@
+{
+  "schema": "independent-quarter-simulation-public-v1",
+  "created_at_utc": "2026-11-04T20:08:11.148733+00:00",
+  "model_version": "model-b-independent-semi-markov-v1.2.1",
+  "model_sha256": "5366e741e8f662a2999eac51e451417a68532c918568c8ed6168e215da5e349a",
+  "engine_sha256": "12cdecd6707d3762080a125d05d51952d28599050d3b3babbd58866649aa8254",
+  "model_A_reference_release": "NEW_LOCAL_WEEK9_CANDIDATE",
+  "model_A_reference_sha256": "4535564b485c19d515dea0dcc5ead7280fa5a505d72b5c4c5e4c0c7bc74aca2e",
+  "schedule_observed_at_utc": "2026-11-04T20:04:20.404599+00:00",
+  "fixture_count": 15,
+  "actionable": false,
+  "production_certified": false,
+  "probabilities_exposed": false,
+  "fixtures": [
+    {
+      "game_id": "2026_09_JAX_BAL",
+      "away_team": "JAX",
+      "home_team": "BAL",
+      "kickoff_utc": "2026-11-06T01:15:00+00:00",
+      "fixture_cutoff_utc": "2026-11-06T01:14:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:04:34.855853+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            7,
+            6
+          ],
+          [
+            3,
+            7,
+            6,
+            6
+          ]
+        ],
+        "regulation": [
+          23,
+          22
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          23,
+          22
+        ],
+        "draw_id": 18236,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "BAL",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 441.0,
+          "score_away": 0,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "JAX",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 743.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "JAX",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 1156.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "JAX",
+          "event": "PAT",
+          "elapsed_seconds": 1156.0,
+          "score_away": 10,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "BAL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1459.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "BAL",
+          "event": "PAT",
+          "elapsed_seconds": 1459.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "JAX",
+          "event": "FG_MISS",
+          "elapsed_seconds": 1755.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "JAX",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2058.0,
+          "score_away": 16,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "JAX",
+          "event": "PAT",
+          "elapsed_seconds": 2058.0,
+          "score_away": 17,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "BAL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2515.0,
+          "score_away": 17,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "BAL",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 2515.0,
+          "score_away": 17,
+          "score_home": 16
+        },
+        {
+          "quarter": 4,
+          "team": "BAL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2912.0,
+          "score_away": 17,
+          "score_home": 22
+        },
+        {
+          "quarter": 4,
+          "team": "BAL",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 2912.0,
+          "score_away": 17,
+          "score_home": 22
+        },
+        {
+          "quarter": 4,
+          "team": "JAX",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3211.0,
+          "score_away": 20,
+          "score_home": 22
+        },
+        {
+          "quarter": 4,
+          "team": "JAX",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3494.0,
+          "score_away": 23,
+          "score_home": 22
+        }
+      ],
+      "selected_trace_sha256": "86d6b79fe4d269d87a834c6358db9738b1892f57a338af1063bdd2fc5d5c91cb",
+      "expected_final": [
+        23.58575,
+        20.9845
+      ],
+      "expected_quarters": [
+        [
+          4.81995,
+          6.78515,
+          5.0525,
+          6.7999
+        ],
+        [
+          4.2347,
+          6.0523,
+          4.47875,
+          6.1049
+        ]
+      ],
+      "expected_overtime": [
+        0.12825,
+        0.11385
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.5182500000000001,
+            "defensive_special_td": 0.03555,
+            "field_goals": 0.32205
+          },
+          {
+            "offensive_td": 0.71785,
+            "defensive_special_td": 0.04355,
+            "field_goals": 0.49425
+          },
+          {
+            "offensive_td": 0.54465,
+            "defensive_special_td": 0.03294999999999999,
+            "field_goals": 0.34465
+          },
+          {
+            "offensive_td": 0.74015,
+            "defensive_special_td": 0.04255,
+            "field_goals": 0.446
+          },
+          {
+            "offensive_td": 0.013750000000000002,
+            "defensive_special_td": 0.0007999999999999999,
+            "field_goals": 0.0113
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.44355,
+            "defensive_special_td": 0.02205,
+            "field_goals": 0.3303
+          },
+          {
+            "offensive_td": 0.6184499999999999,
+            "defensive_special_td": 0.02735,
+            "field_goals": 0.51845
+          },
+          {
+            "offensive_td": 0.4738,
+            "defensive_special_td": 0.01985,
+            "field_goals": 0.3473
+          },
+          {
+            "offensive_td": 0.6642,
+            "defensive_special_td": 0.026549999999999997,
+            "field_goals": 0.4294
+          },
+          {
+            "offensive_td": 0.0121,
+            "defensive_special_td": 0.00055,
+            "field_goals": 0.01055
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          26,
+          20
+        ],
+        "expected": [
+          25.773224007860613,
+          20.398108146314488
+        ],
+        "raw": {
+          "away_expected_points": 25.773224007860613,
+          "home_expected_points": 20.398108146314488,
+          "model_margin": -5.375115861546124,
+          "model_total": 46.171332154175104
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_CIN_ATL",
+      "away_team": "CIN",
+      "home_team": "ATL",
+      "kickoff_utc": "2026-11-08T14:30:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T14:29:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:04:47.879101+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            7,
+            7
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          24,
+          20
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          24,
+          20
+        ],
+        "draw_id": 16193,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "ATL",
+          "event": "FG_MISS",
+          "elapsed_seconds": 262.0,
+          "score_away": 0,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "CIN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 566.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "ATL",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 883.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "ATL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1353.0,
+          "score_away": 3,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "ATL",
+          "event": "PAT",
+          "elapsed_seconds": 1353.0,
+          "score_away": 3,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "CIN",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1513.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "CIN",
+          "event": "PAT",
+          "elapsed_seconds": 1513.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "ATL",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2253.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "CIN",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2668.0,
+          "score_away": 16,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "CIN",
+          "event": "PAT",
+          "elapsed_seconds": 2668.0,
+          "score_away": 17,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "CIN",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3454.0,
+          "score_away": 23,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "CIN",
+          "event": "PAT",
+          "elapsed_seconds": 3454.0,
+          "score_away": 24,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "ATL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3558.0,
+          "score_away": 24,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "ATL",
+          "event": "PAT",
+          "elapsed_seconds": 3558.0,
+          "score_away": 24,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "ebe59a3d036c937f76d2167b3de634a2b8e75116ddae82560d9e2a384ab2cb24",
+      "expected_final": [
+        22.9352,
+        22.24195
+      ],
+      "expected_quarters": [
+        [
+          4.7165,
+          6.60125,
+          4.98575,
+          6.5038
+        ],
+        [
+          4.58005,
+          6.3805,
+          4.7531,
+          6.4111
+        ]
+      ],
+      "expected_overtime": [
+        0.1279,
+        0.1172
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.5123000000000001,
+            "defensive_special_td": 0.02995,
+            "field_goals": 0.31255
+          },
+          {
+            "offensive_td": 0.70445,
+            "defensive_special_td": 0.03405,
+            "field_goals": 0.48365
+          },
+          {
+            "offensive_td": 0.5434,
+            "defensive_special_td": 0.0293,
+            "field_goals": 0.3314
+          },
+          {
+            "offensive_td": 0.71265,
+            "defensive_special_td": 0.032900000000000006,
+            "field_goals": 0.429
+          },
+          {
+            "offensive_td": 0.0147,
+            "defensive_special_td": 0.0007000000000000001,
+            "field_goals": 0.0094
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.48605,
+            "defensive_special_td": 0.032850000000000004,
+            "field_goals": 0.32125
+          },
+          {
+            "offensive_td": 0.6624,
+            "defensive_special_td": 0.0408,
+            "field_goals": 0.49465
+          },
+          {
+            "offensive_td": 0.5073,
+            "defensive_special_td": 0.02945,
+            "field_goals": 0.3376
+          },
+          {
+            "offensive_td": 0.6922,
+            "defensive_special_td": 0.044,
+            "field_goals": 0.42475
+          },
+          {
+            "offensive_td": 0.01235,
+            "defensive_special_td": 0.0008500000000000001,
+            "field_goals": 0.0103
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          24,
+          22
+        ],
+        "expected": [
+          23.88428188700359,
+          22.201134995359322
+        ],
+        "raw": {
+          "away_expected_points": 23.88428188700359,
+          "home_expected_points": 22.201134995359322,
+          "model_margin": -1.6831468916442667,
+          "model_total": 46.08541688236291
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_DEN_CAR",
+      "away_team": "DEN",
+      "home_team": "CAR",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:05:00.249258+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            3,
+            7
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          20,
+          20
+        ],
+        "overtime": [
+          3,
+          0
+        ],
+        "final": [
+          23,
+          20
+        ],
+        "draw_id": 11865,
+        "overtime_reached": true
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "DEN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 214.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "CAR",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 550.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "CAR",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1141.0,
+          "score_away": 3,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "CAR",
+          "event": "PAT",
+          "elapsed_seconds": 1141.0,
+          "score_away": 3,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "DEN",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1369.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "DEN",
+          "event": "PAT",
+          "elapsed_seconds": 1369.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "DEN",
+          "event": "FG_MISS",
+          "elapsed_seconds": 1561.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "CAR",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2373.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "DEN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2643.0,
+          "score_away": 13,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "DEN",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3042.0,
+          "score_away": 19,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "DEN",
+          "event": "PAT",
+          "elapsed_seconds": 3042.0,
+          "score_away": 20,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "CAR",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3370.0,
+          "score_away": 20,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "CAR",
+          "event": "PAT",
+          "elapsed_seconds": 3370.0,
+          "score_away": 20,
+          "score_home": 20
+        },
+        {
+          "quarter": 5,
+          "team": "DEN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3782.0,
+          "score_away": 23,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "44ccc052af4a000c865a7736328a322288ce5d4c80343c0c1eb265ec92e07335",
+      "expected_final": [
+        22.40185,
+        21.37635
+      ],
+      "expected_quarters": [
+        [
+          4.57095,
+          6.39125,
+          4.84905,
+          6.471
+        ],
+        [
+          4.3579,
+          6.19465,
+          4.55265,
+          6.1516
+        ]
+      ],
+      "expected_overtime": [
+        0.1196,
+        0.11955
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.48915000000000003,
+            "defensive_special_td": 0.0285,
+            "field_goals": 0.3219
+          },
+          {
+            "offensive_td": 0.6625000000000001,
+            "defensive_special_td": 0.035,
+            "field_goals": 0.5112
+          },
+          {
+            "offensive_td": 0.5146000000000001,
+            "defensive_special_td": 0.025900000000000003,
+            "field_goals": 0.36175
+          },
+          {
+            "offensive_td": 0.6970000000000001,
+            "defensive_special_td": 0.03775,
+            "field_goals": 0.44895
+          },
+          {
+            "offensive_td": 0.0138,
+            "defensive_special_td": 0.0004,
+            "field_goals": 0.0092
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.45765,
+            "defensive_special_td": 0.02635,
+            "field_goals": 0.3285
+          },
+          {
+            "offensive_td": 0.63415,
+            "defensive_special_td": 0.03165,
+            "field_goals": 0.5193
+          },
+          {
+            "offensive_td": 0.48084999999999994,
+            "defensive_special_td": 0.0218,
+            "field_goals": 0.34935
+          },
+          {
+            "offensive_td": 0.66295,
+            "defensive_special_td": 0.0281,
+            "field_goals": 0.44265
+          },
+          {
+            "offensive_td": 0.012750000000000001,
+            "defensive_special_td": 0.00085,
+            "field_goals": 0.0106
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          22,
+          23
+        ],
+        "expected": [
+          21.786284909836986,
+          23.158183921943643
+        ],
+        "raw": {
+          "away_expected_points": 21.786284909836986,
+          "home_expected_points": 23.158183921943643,
+          "model_margin": 1.371899012106656,
+          "model_total": 44.944468831780625
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_DAL_IND",
+      "away_team": "DAL",
+      "home_team": "IND",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:05:14.230855+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            7,
+            7
+          ],
+          [
+            3,
+            7,
+            6,
+            7
+          ]
+        ],
+        "regulation": [
+          24,
+          23
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          24,
+          23
+        ],
+        "draw_id": 12524,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "DAL",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 455.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "IND",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 719.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "DAL",
+          "event": "FG_MISS",
+          "elapsed_seconds": 876.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "DAL",
+          "event": "FG_MISS",
+          "elapsed_seconds": 1242.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "IND",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1607.0,
+          "score_away": 3,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "IND",
+          "event": "PAT",
+          "elapsed_seconds": 1607.0,
+          "score_away": 3,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "DAL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1667.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "DAL",
+          "event": "PAT",
+          "elapsed_seconds": 1667.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "IND",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2002.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "IND",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2471.0,
+          "score_away": 10,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "DAL",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2581.0,
+          "score_away": 16,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "DAL",
+          "event": "PAT",
+          "elapsed_seconds": 2581.0,
+          "score_away": 17,
+          "score_home": 16
+        },
+        {
+          "quarter": 4,
+          "team": "IND",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2715.0,
+          "score_away": 17,
+          "score_home": 22
+        },
+        {
+          "quarter": 4,
+          "team": "IND",
+          "event": "PAT",
+          "elapsed_seconds": 2715.0,
+          "score_away": 17,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "DAL",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3235.0,
+          "score_away": 23,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "DAL",
+          "event": "PAT",
+          "elapsed_seconds": 3235.0,
+          "score_away": 24,
+          "score_home": 23
+        }
+      ],
+      "selected_trace_sha256": "4937bb8f6d5339079561f554b1cab21f7c152296c7cfb3b71f66de4957319ca1",
+      "expected_final": [
+        23.30155,
+        21.71485
+      ],
+      "expected_quarters": [
+        [
+          4.7911,
+          6.7378,
+          5.07605,
+          6.56495
+        ],
+        [
+          4.469,
+          6.23645,
+          4.6956,
+          6.19675
+        ]
+      ],
+      "expected_overtime": [
+        0.13165,
+        0.11705
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.51975,
+            "defensive_special_td": 0.03025,
+            "field_goals": 0.3203
+          },
+          {
+            "offensive_td": 0.7167499999999999,
+            "defensive_special_td": 0.03635,
+            "field_goals": 0.49915
+          },
+          {
+            "offensive_td": 0.55125,
+            "defensive_special_td": 0.026350000000000002,
+            "field_goals": 0.35055
+          },
+          {
+            "offensive_td": 0.72585,
+            "defensive_special_td": 0.029800000000000004,
+            "field_goals": 0.4297
+          },
+          {
+            "offensive_td": 0.01525,
+            "defensive_special_td": 0.00075,
+            "field_goals": 0.0095
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.4793,
+            "defensive_special_td": 0.0234,
+            "field_goals": 0.32145
+          },
+          {
+            "offensive_td": 0.6567,
+            "defensive_special_td": 0.02785,
+            "field_goals": 0.48845
+          },
+          {
+            "offensive_td": 0.5085999999999999,
+            "defensive_special_td": 0.021650000000000003,
+            "field_goals": 0.33365
+          },
+          {
+            "offensive_td": 0.6804,
+            "defensive_special_td": 0.027300000000000005,
+            "field_goals": 0.4195
+          },
+          {
+            "offensive_td": 0.0134,
+            "defensive_special_td": 0.00035,
+            "field_goals": 0.0093
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          24,
+          22
+        ],
+        "expected": [
+          24.22498937761746,
+          22.068175781682726
+        ],
+        "raw": {
+          "away_expected_points": 24.22498937761746,
+          "home_expected_points": 22.068175781682726,
+          "model_margin": -2.156813595934736,
+          "model_total": 46.29316515930019
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_NYJ_KC",
+      "away_team": "NYJ",
+      "home_team": "KC",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:05:26.947818+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            3,
+            6
+          ],
+          [
+            6,
+            7,
+            7,
+            6
+          ]
+        ],
+        "regulation": [
+          19,
+          26
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          19,
+          26
+        ],
+        "draw_id": 17014,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "KC",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 282.0,
+          "score_away": 0,
+          "score_home": 6
+        },
+        {
+          "quarter": 1,
+          "team": "KC",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 282.0,
+          "score_away": 0,
+          "score_home": 6
+        },
+        {
+          "quarter": 1,
+          "team": "NYJ",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 790.0,
+          "score_away": 3,
+          "score_home": 6
+        },
+        {
+          "quarter": 2,
+          "team": "KC",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 1100.0,
+          "score_away": 3,
+          "score_home": 12
+        },
+        {
+          "quarter": 2,
+          "team": "KC",
+          "event": "PAT",
+          "elapsed_seconds": 1100.0,
+          "score_away": 3,
+          "score_home": 13
+        },
+        {
+          "quarter": 2,
+          "team": "NYJ",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 1623.0,
+          "score_away": 9,
+          "score_home": 13
+        },
+        {
+          "quarter": 2,
+          "team": "NYJ",
+          "event": "PAT",
+          "elapsed_seconds": 1623.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "NYJ",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2156.0,
+          "score_away": 13,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "KC",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2403.0,
+          "score_away": 13,
+          "score_home": 19
+        },
+        {
+          "quarter": 3,
+          "team": "KC",
+          "event": "PAT",
+          "elapsed_seconds": 2403.0,
+          "score_away": 13,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "KC",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3179.0,
+          "score_away": 13,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "NYJ",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3413.0,
+          "score_away": 16,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "KC",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3518.0,
+          "score_away": 16,
+          "score_home": 26
+        },
+        {
+          "quarter": 4,
+          "team": "NYJ",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3552.0,
+          "score_away": 19,
+          "score_home": 26
+        }
+      ],
+      "selected_trace_sha256": "5e3e59c370f3c13604ac6a901432b12fbb79d590617354a7f704e1beff72a025",
+      "expected_final": [
+        20.9417,
+        22.70675
+      ],
+      "expected_quarters": [
+        [
+          4.2896,
+          6.0046,
+          4.45575,
+          6.07025
+        ],
+        [
+          4.65045,
+          6.59755,
+          4.89875,
+          6.4325
+        ]
+      ],
+      "expected_overtime": [
+        0.1215,
+        0.1275
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.45239999999999997,
+            "defensive_special_td": 0.020599999999999997,
+            "field_goals": 0.3308
+          },
+          {
+            "offensive_td": 0.6092500000000001,
+            "defensive_special_td": 0.027800000000000002,
+            "field_goals": 0.52095
+          },
+          {
+            "offensive_td": 0.46565,
+            "defensive_special_td": 0.0226,
+            "field_goals": 0.35135
+          },
+          {
+            "offensive_td": 0.6537000000000001,
+            "defensive_special_td": 0.026350000000000002,
+            "field_goals": 0.438
+          },
+          {
+            "offensive_td": 0.01345,
+            "defensive_special_td": 0.0006000000000000001,
+            "field_goals": 0.0103
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.50375,
+            "defensive_special_td": 0.0226,
+            "field_goals": 0.32745
+          },
+          {
+            "offensive_td": 0.6964,
+            "defensive_special_td": 0.02995,
+            "field_goals": 0.51305
+          },
+          {
+            "offensive_td": 0.5316,
+            "defensive_special_td": 0.0216,
+            "field_goals": 0.34805
+          },
+          {
+            "offensive_td": 0.6994,
+            "defensive_special_td": 0.02785,
+            "field_goals": 0.45275
+          },
+          {
+            "offensive_td": 0.01485,
+            "defensive_special_td": 0.00039999999999999996,
+            "field_goals": 0.0096
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          20,
+          24
+        ],
+        "expected": [
+          19.79505387770334,
+          24.621566886036184
+        ],
+        "raw": {
+          "away_expected_points": 19.79505387770334,
+          "home_expected_points": 24.621566886036184,
+          "model_margin": 4.826513008332846,
+          "model_total": 44.41662076373952
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_DET_MIA",
+      "away_team": "DET",
+      "home_team": "MIA",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:05:39.278396+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            6,
+            7,
+            3,
+            6
+          ],
+          [
+            3,
+            7,
+            7,
+            7
+          ]
+        ],
+        "regulation": [
+          22,
+          24
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          22,
+          24
+        ],
+        "draw_id": 1308,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "MIA",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 281.0,
+          "score_away": 0,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "DET",
+          "event": "PASS_TD",
+          "elapsed_seconds": 663.0,
+          "score_away": 6,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "DET",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 663.0,
+          "score_away": 6,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "DET",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1376.0,
+          "score_away": 12,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "DET",
+          "event": "PAT",
+          "elapsed_seconds": 1376.0,
+          "score_away": 13,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "DET",
+          "event": "FG_MISS",
+          "elapsed_seconds": 1634.0,
+          "score_away": 13,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "MIA",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1756.0,
+          "score_away": 13,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "MIA",
+          "event": "PAT",
+          "elapsed_seconds": 1756.0,
+          "score_away": 13,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "DET",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2085.0,
+          "score_away": 16,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "MIA",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2374.0,
+          "score_away": 16,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "MIA",
+          "event": "PAT",
+          "elapsed_seconds": 2374.0,
+          "score_away": 16,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "MIA",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3052.0,
+          "score_away": 16,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "MIA",
+          "event": "PAT",
+          "elapsed_seconds": 3052.0,
+          "score_away": 16,
+          "score_home": 24
+        },
+        {
+          "quarter": 4,
+          "team": "DET",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3308.0,
+          "score_away": 22,
+          "score_home": 24
+        },
+        {
+          "quarter": 4,
+          "team": "DET",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3308.0,
+          "score_away": 22,
+          "score_home": 24
+        }
+      ],
+      "selected_trace_sha256": "bf80dec042951b966fcef158026ba47ae3956ff1f9f23e18562a56338d9eb9b1",
+      "expected_final": [
+        23.208,
+        22.1419
+      ],
+      "expected_quarters": [
+        [
+          4.7153,
+          6.74965,
+          5.0081,
+          6.59685
+        ],
+        [
+          4.5015,
+          6.33505,
+          4.74585,
+          6.4375
+        ]
+      ],
+      "expected_overtime": [
+        0.1381,
+        0.122
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.51875,
+            "defensive_special_td": 0.023100000000000002,
+            "field_goals": 0.314
+          },
+          {
+            "offensive_td": 0.7263499999999999,
+            "defensive_special_td": 0.029300000000000003,
+            "field_goals": 0.4952
+          },
+          {
+            "offensive_td": 0.5553499999999999,
+            "defensive_special_td": 0.01845,
+            "field_goals": 0.3371
+          },
+          {
+            "offensive_td": 0.72805,
+            "defensive_special_td": 0.028249999999999997,
+            "field_goals": 0.4397
+          },
+          {
+            "offensive_td": 0.01525,
+            "defensive_special_td": 0.0008,
+            "field_goals": 0.0111
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.4833,
+            "defensive_special_td": 0.022949999999999998,
+            "field_goals": 0.32515
+          },
+          {
+            "offensive_td": 0.6618999999999999,
+            "defensive_special_td": 0.0295,
+            "field_goals": 0.506
+          },
+          {
+            "offensive_td": 0.5116499999999999,
+            "defensive_special_td": 0.0211,
+            "field_goals": 0.34425
+          },
+          {
+            "offensive_td": 0.7110500000000001,
+            "defensive_special_td": 0.026699999999999995,
+            "field_goals": 0.43065
+          },
+          {
+            "offensive_td": 0.01395,
+            "defensive_special_td": 0.0006500000000000001,
+            "field_goals": 0.00905
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          24,
+          20
+        ],
+        "expected": [
+          24.551832394371935,
+          19.685250462131417
+        ],
+        "raw": {
+          "away_expected_points": 24.551832394371935,
+          "home_expected_points": 19.685250462131417,
+          "model_margin": -4.866581932240518,
+          "model_total": 44.23708285650335
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_CLE_NO",
+      "away_team": "CLE",
+      "home_team": "NO",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:05:52.918287+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            3,
+            6
+          ],
+          [
+            3,
+            6,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          19,
+          19
+        ],
+        "overtime": [
+          6,
+          0
+        ],
+        "final": [
+          25,
+          19
+        ],
+        "draw_id": 13089,
+        "overtime_reached": true
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "CLE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 605.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "NO",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 849.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "CLE",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1475.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "CLE",
+          "event": "PAT",
+          "elapsed_seconds": 1475.0,
+          "score_away": 10,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "NO",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 1755.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "NO",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 1755.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 3,
+          "team": "CLE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2124.0,
+          "score_away": 13,
+          "score_home": 9
+        },
+        {
+          "quarter": 3,
+          "team": "NO",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2542.0,
+          "score_away": 13,
+          "score_home": 12
+        },
+        {
+          "quarter": 4,
+          "team": "CLE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3018.0,
+          "score_away": 16,
+          "score_home": 12
+        },
+        {
+          "quarter": 4,
+          "team": "NO",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3535.0,
+          "score_away": 16,
+          "score_home": 18
+        },
+        {
+          "quarter": 4,
+          "team": "NO",
+          "event": "PAT",
+          "elapsed_seconds": 3535.0,
+          "score_away": 16,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "CLE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3578.0,
+          "score_away": 19,
+          "score_home": 19
+        },
+        {
+          "quarter": 5,
+          "team": "CLE",
+          "event": "PASS_TD",
+          "elapsed_seconds": 4093.0,
+          "score_away": 25,
+          "score_home": 19
+        }
+      ],
+      "selected_trace_sha256": "a3fa8be220fdfbbade67dee0c6aa8c91e72a2201268fb35dada8ee5a86ffc503",
+      "expected_final": [
+        21.8102,
+        21.52135
+      ],
+      "expected_quarters": [
+        [
+          4.5105,
+          6.27695,
+          4.66035,
+          6.2335
+        ],
+        [
+          4.38485,
+          6.21955,
+          4.59885,
+          6.19265
+        ]
+      ],
+      "expected_overtime": [
+        0.1289,
+        0.12545
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.4803,
+            "defensive_special_td": 0.0211,
+            "field_goals": 0.33985
+          },
+          {
+            "offensive_td": 0.6504,
+            "defensive_special_td": 0.02805,
+            "field_goals": 0.51675
+          },
+          {
+            "offensive_td": 0.49269999999999997,
+            "defensive_special_td": 0.021099999999999997,
+            "field_goals": 0.3604
+          },
+          {
+            "offensive_td": 0.67315,
+            "defensive_special_td": 0.02615,
+            "field_goals": 0.44965
+          },
+          {
+            "offensive_td": 0.01475,
+            "defensive_special_td": 0.0007000000000000001,
+            "field_goals": 0.0097
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.45964999999999995,
+            "defensive_special_td": 0.0266,
+            "field_goals": 0.33255
+          },
+          {
+            "offensive_td": 0.6348,
+            "defensive_special_td": 0.0335,
+            "field_goals": 0.5207
+          },
+          {
+            "offensive_td": 0.48224999999999996,
+            "defensive_special_td": 0.027,
+            "field_goals": 0.35095
+          },
+          {
+            "offensive_td": 0.66295,
+            "defensive_special_td": 0.034,
+            "field_goals": 0.4422
+          },
+          {
+            "offensive_td": 0.01365,
+            "defensive_special_td": 0.00085,
+            "field_goals": 0.01045
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          20,
+          23
+        ],
+        "expected": [
+          20.204163016575556,
+          22.882071347044345
+        ],
+        "raw": {
+          "away_expected_points": 20.204163016575556,
+          "home_expected_points": 22.882071347044345,
+          "model_margin": 2.6779083304687887,
+          "model_total": 43.0862343636199
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_NYG_PHI",
+      "away_team": "NYG",
+      "home_team": "PHI",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:06:05.585388+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            6,
+            7,
+            3,
+            7
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          23,
+          20
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          23,
+          20
+        ],
+        "draw_id": 15798,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "NYG",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 306.0,
+          "score_away": 6,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "NYG",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 306.0,
+          "score_away": 6,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "PHI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 540.0,
+          "score_away": 6,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "PHI",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1333.0,
+          "score_away": 6,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "PHI",
+          "event": "PAT",
+          "elapsed_seconds": 1333.0,
+          "score_away": 6,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "NYG",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1654.0,
+          "score_away": 12,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "NYG",
+          "event": "PAT",
+          "elapsed_seconds": 1654.0,
+          "score_away": 13,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "PHI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2003.0,
+          "score_away": 13,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "NYG",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2256.0,
+          "score_away": 16,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "NYG",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2838.0,
+          "score_away": 22,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "NYG",
+          "event": "PAT",
+          "elapsed_seconds": 2838.0,
+          "score_away": 23,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "NYG",
+          "event": "FG_MISS",
+          "elapsed_seconds": 3386.0,
+          "score_away": 23,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "PHI",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3476.0,
+          "score_away": 23,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "PHI",
+          "event": "PAT",
+          "elapsed_seconds": 3476.0,
+          "score_away": 23,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "edc99ebce7ae1139082e1617fb4a68f22326ba3bb84287cd6ebdc8436f4c1ed9",
+      "expected_final": [
+        22.0392,
+        21.80045
+      ],
+      "expected_quarters": [
+        [
+          4.46675,
+          6.33945,
+          4.7849,
+          6.32025
+        ],
+        [
+          4.46175,
+          6.2415,
+          4.67155,
+          6.3008
+        ]
+      ],
+      "expected_overtime": [
+        0.12785,
+        0.12485
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.47855,
+            "defensive_special_td": 0.02235,
+            "field_goals": 0.32555
+          },
+          {
+            "offensive_td": 0.6623,
+            "defensive_special_td": 0.02755,
+            "field_goals": 0.51055
+          },
+          {
+            "offensive_td": 0.5171499999999999,
+            "defensive_special_td": 0.02235,
+            "field_goals": 0.34205
+          },
+          {
+            "offensive_td": 0.6899500000000001,
+            "defensive_special_td": 0.02785,
+            "field_goals": 0.43665
+          },
+          {
+            "offensive_td": 0.01425,
+            "defensive_special_td": 0.00115,
+            "field_goals": 0.0097
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.47465,
+            "defensive_special_td": 0.02255,
+            "field_goals": 0.333
+          },
+          {
+            "offensive_td": 0.6499,
+            "defensive_special_td": 0.026350000000000002,
+            "field_goals": 0.50955
+          },
+          {
+            "offensive_td": 0.5015499999999999,
+            "defensive_special_td": 0.0201,
+            "field_goals": 0.34695
+          },
+          {
+            "offensive_td": 0.68715,
+            "defensive_special_td": 0.027250000000000003,
+            "field_goals": 0.4401
+          },
+          {
+            "offensive_td": 0.0138,
+            "defensive_special_td": 0.00045000000000000004,
+            "field_goals": 0.01065
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          23,
+          20
+        ],
+        "expected": [
+          22.837776205406495,
+          20.261965310801358
+        ],
+        "raw": {
+          "away_expected_points": 22.837776205406495,
+          "home_expected_points": 20.261965310801358,
+          "model_margin": -2.5758108946051372,
+          "model_total": 43.09974151620786
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_LA_WAS",
+      "away_team": "LA",
+      "home_team": "WAS",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T17:59:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:06:17.905428+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            6,
+            6,
+            6
+          ],
+          [
+            3,
+            7,
+            6,
+            6
+          ]
+        ],
+        "regulation": [
+          21,
+          22
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          21,
+          22
+        ],
+        "draw_id": 8196,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "LA",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 247.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "WAS",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 468.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "WAS",
+          "event": "PASS_TD",
+          "elapsed_seconds": 906.0,
+          "score_away": 3,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "WAS",
+          "event": "PAT",
+          "elapsed_seconds": 906.0,
+          "score_away": 3,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "LA",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1157.0,
+          "score_away": 6,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "LA",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1488.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "LA",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2212.0,
+          "score_away": 15,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "LA",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 2212.0,
+          "score_away": 15,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "WAS",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2664.0,
+          "score_away": 15,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "WAS",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 2664.0,
+          "score_away": 15,
+          "score_home": 16
+        },
+        {
+          "quarter": 4,
+          "team": "LA",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3113.0,
+          "score_away": 21,
+          "score_home": 16
+        },
+        {
+          "quarter": 4,
+          "team": "LA",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3113.0,
+          "score_away": 21,
+          "score_home": 16
+        },
+        {
+          "quarter": 4,
+          "team": "WAS",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3568.0,
+          "score_away": 21,
+          "score_home": 22
+        },
+        {
+          "quarter": 4,
+          "team": "WAS",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3568.0,
+          "score_away": 21,
+          "score_home": 22
+        }
+      ],
+      "selected_trace_sha256": "129e213ce8f5bccefd2b2b793963843efa2442026e1f3f7d6f77ec9d974de5af",
+      "expected_final": [
+        22.88595,
+        21.49835
+      ],
+      "expected_quarters": [
+        [
+          4.63185,
+          6.59235,
+          4.9781,
+          6.55245
+        ],
+        [
+          4.39835,
+          6.15775,
+          4.59765,
+          6.21805
+        ]
+      ],
+      "expected_overtime": [
+        0.1312,
+        0.12655
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.50605,
+            "defensive_special_td": 0.0227,
+            "field_goals": 0.3164
+          },
+          {
+            "offensive_td": 0.71095,
+            "defensive_special_td": 0.028499999999999998,
+            "field_goals": 0.4809
+          },
+          {
+            "offensive_td": 0.5468999999999999,
+            "defensive_special_td": 0.0215,
+            "field_goals": 0.33975
+          },
+          {
+            "offensive_td": 0.72645,
+            "defensive_special_td": 0.029649999999999996,
+            "field_goals": 0.4263
+          },
+          {
+            "offensive_td": 0.0152,
+            "defensive_special_td": 0.0006000000000000001,
+            "field_goals": 0.00955
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.45285,
+            "defensive_special_td": 0.032150000000000005,
+            "field_goals": 0.3407
+          },
+          {
+            "offensive_td": 0.61975,
+            "defensive_special_td": 0.0363,
+            "field_goals": 0.52905
+          },
+          {
+            "offensive_td": 0.48325,
+            "defensive_special_td": 0.02435,
+            "field_goals": 0.35485
+          },
+          {
+            "offensive_td": 0.6656000000000001,
+            "defensive_special_td": 0.034550000000000004,
+            "field_goals": 0.44435
+          },
+          {
+            "offensive_td": 0.01415,
+            "defensive_special_td": 0.0008000000000000001,
+            "field_goals": 0.00985
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          22,
+          23
+        ],
+        "expected": [
+          22.633185096721725,
+          22.693209695046598
+        ],
+        "raw": {
+          "away_expected_points": 22.633185096721725,
+          "home_expected_points": 22.693209695046598,
+          "model_margin": 0.06002459832487261,
+          "model_total": 45.32639479176832
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_HOU_LAC",
+      "away_team": "HOU",
+      "home_team": "LAC",
+      "kickoff_utc": "2026-11-08T21:05:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T21:04:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:06:30.563780+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            7,
+            7
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          24,
+          20
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          24,
+          20
+        ],
+        "draw_id": 798,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "HOU",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 476.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "LAC",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 730.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "HOU",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1123.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "HOU",
+          "event": "PAT",
+          "elapsed_seconds": 1123.0,
+          "score_away": 10,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "LAC",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1783.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "LAC",
+          "event": "PAT",
+          "elapsed_seconds": 1783.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "HOU",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2282.0,
+          "score_away": 16,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "HOU",
+          "event": "PAT",
+          "elapsed_seconds": 2282.0,
+          "score_away": 17,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "LAC",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2514.0,
+          "score_away": 17,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "LAC",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3214.0,
+          "score_away": 17,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "LAC",
+          "event": "PAT",
+          "elapsed_seconds": 3214.0,
+          "score_away": 17,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "HOU",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3410.0,
+          "score_away": 23,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "HOU",
+          "event": "PAT",
+          "elapsed_seconds": 3410.0,
+          "score_away": 24,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "98756e0d8eca9b8340bc7eb949dbbba28ce84103d3091a7768d5a7d4a4ff8eea",
+      "expected_final": [
+        22.52985,
+        20.61675
+      ],
+      "expected_quarters": [
+        [
+          4.64645,
+          6.4942,
+          4.84775,
+          6.40875
+        ],
+        [
+          4.20925,
+          5.942,
+          4.41635,
+          5.93515
+        ]
+      ],
+      "expected_overtime": [
+        0.1327,
+        0.114
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.49474999999999997,
+            "defensive_special_td": 0.027399999999999997,
+            "field_goals": 0.3363
+          },
+          {
+            "offensive_td": 0.6807,
+            "defensive_special_td": 0.0318,
+            "field_goals": 0.5103
+          },
+          {
+            "offensive_td": 0.5172,
+            "defensive_special_td": 0.024799999999999996,
+            "field_goals": 0.3585
+          },
+          {
+            "offensive_td": 0.68985,
+            "defensive_special_td": 0.033100000000000004,
+            "field_goals": 0.4545
+          },
+          {
+            "offensive_td": 0.014599999999999998,
+            "defensive_special_td": 0.0008000000000000001,
+            "field_goals": 0.0111
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.43955,
+            "defensive_special_td": 0.021349999999999997,
+            "field_goals": 0.33285
+          },
+          {
+            "offensive_td": 0.60215,
+            "defensive_special_td": 0.02985,
+            "field_goals": 0.51435
+          },
+          {
+            "offensive_td": 0.4649,
+            "defensive_special_td": 0.021500000000000002,
+            "field_goals": 0.342
+          },
+          {
+            "offensive_td": 0.63975,
+            "defensive_special_td": 0.02735,
+            "field_goals": 0.4271
+          },
+          {
+            "offensive_td": 0.01205,
+            "defensive_special_td": 0.00055,
+            "field_goals": 0.0106
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          23,
+          19
+        ],
+        "expected": [
+          22.740862907108763,
+          19.13556451098551
+        ],
+        "raw": {
+          "away_expected_points": 22.740862907108763,
+          "home_expected_points": 19.13556451098551,
+          "model_margin": -3.6052983961232528,
+          "model_total": 41.87642741809427
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_LV_SF",
+      "away_team": "LV",
+      "home_team": "SF",
+      "kickoff_utc": "2026-11-08T21:05:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T21:04:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:06:43.889140+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            6,
+            6,
+            3,
+            7
+          ],
+          [
+            3,
+            7,
+            7,
+            6
+          ]
+        ],
+        "regulation": [
+          22,
+          23
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          22,
+          23
+        ],
+        "draw_id": 12326,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "SF",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 376.0,
+          "score_away": 0,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "LV",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 607.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 1,
+          "team": "LV",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 801.0,
+          "score_away": 6,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "LV",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1065.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "SF",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 1370.0,
+          "score_away": 9,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "SF",
+          "event": "PAT",
+          "elapsed_seconds": 1370.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "LV",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1797.0,
+          "score_away": 12,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "LV",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2332.0,
+          "score_away": 15,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "SF",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2625.0,
+          "score_away": 15,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "SF",
+          "event": "PAT",
+          "elapsed_seconds": 2625.0,
+          "score_away": 15,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "LV",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2853.0,
+          "score_away": 21,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "LV",
+          "event": "PAT",
+          "elapsed_seconds": 2853.0,
+          "score_away": 22,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "SF",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3137.0,
+          "score_away": 22,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "SF",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3137.0,
+          "score_away": 22,
+          "score_home": 23
+        }
+      ],
+      "selected_trace_sha256": "2824ef6782dad7e07a91ffa329e6de83b0e1322a9abedf104debd1366ad3d729",
+      "expected_final": [
+        22.5963,
+        23.6624
+      ],
+      "expected_quarters": [
+        [
+          4.53475,
+          6.4563,
+          4.8838,
+          6.5861
+        ],
+        [
+          4.85035,
+          6.75225,
+          5.08925,
+          6.8465
+        ]
+      ],
+      "expected_overtime": [
+        0.13535,
+        0.12405
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.49025,
+            "defensive_special_td": 0.019700000000000002,
+            "field_goals": 0.3271
+          },
+          {
+            "offensive_td": 0.67805,
+            "defensive_special_td": 0.02535,
+            "field_goals": 0.5188
+          },
+          {
+            "offensive_td": 0.5308999999999999,
+            "defensive_special_td": 0.01995,
+            "field_goals": 0.34915
+          },
+          {
+            "offensive_td": 0.7273000000000001,
+            "defensive_special_td": 0.027400000000000004,
+            "field_goals": 0.4402
+          },
+          {
+            "offensive_td": 0.01515,
+            "defensive_special_td": 0.00065,
+            "field_goals": 0.01085
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.5425500000000001,
+            "defensive_special_td": 0.025650000000000003,
+            "field_goals": 0.2969
+          },
+          {
+            "offensive_td": 0.7391500000000001,
+            "defensive_special_td": 0.03145,
+            "field_goals": 0.46245
+          },
+          {
+            "offensive_td": 0.5681499999999999,
+            "defensive_special_td": 0.025949999999999997,
+            "field_goals": 0.3174
+          },
+          {
+            "offensive_td": 0.77135,
+            "defensive_special_td": 0.0356,
+            "field_goals": 0.40485
+          },
+          {
+            "offensive_td": 0.0144,
+            "defensive_special_td": 0.00065,
+            "field_goals": 0.00875
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          22,
+          27
+        ],
+        "expected": [
+          22.041099850231603,
+          26.85056006519228
+        ],
+        "raw": {
+          "away_expected_points": 22.041099850231603,
+          "home_expected_points": 26.85056006519228,
+          "model_margin": 4.809460214960676,
+          "model_total": 48.89165991542389
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_GB_NE",
+      "away_team": "GB",
+      "home_team": "NE",
+      "kickoff_utc": "2026-11-08T21:25:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T21:24:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:06:58.798822+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            7,
+            6
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          23,
+          20
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          23,
+          20
+        ],
+        "draw_id": 15954,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "GB",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 320.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "NE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 711.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "GB",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1270.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "GB",
+          "event": "PAT",
+          "elapsed_seconds": 1270.0,
+          "score_away": 10,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "NE",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1549.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "NE",
+          "event": "PAT",
+          "elapsed_seconds": 1549.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "NE",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2053.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "GB",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2351.0,
+          "score_away": 16,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "GB",
+          "event": "PAT",
+          "elapsed_seconds": 2351.0,
+          "score_away": 17,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "GB",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3213.0,
+          "score_away": 23,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "GB",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3213.0,
+          "score_away": 23,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "NE",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3378.0,
+          "score_away": 23,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "NE",
+          "event": "PAT",
+          "elapsed_seconds": 3378.0,
+          "score_away": 23,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "15b54c2a9cdd410377f6db50f2de46a93cc2bae1a9c76ba96ecb20732a255da4",
+      "expected_final": [
+        22.299,
+        21.94875
+      ],
+      "expected_quarters": [
+        [
+          4.5248,
+          6.401,
+          4.84205,
+          6.39975
+        ],
+        [
+          4.4898,
+          6.25845,
+          4.8067,
+          6.2735
+        ]
+      ],
+      "expected_overtime": [
+        0.1314,
+        0.1203
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.48485,
+            "defensive_special_td": 0.0224,
+            "field_goals": 0.3311
+          },
+          {
+            "offensive_td": 0.6718000000000001,
+            "defensive_special_td": 0.027600000000000003,
+            "field_goals": 0.5091
+          },
+          {
+            "offensive_td": 0.5233,
+            "defensive_special_td": 0.02065,
+            "field_goals": 0.3505
+          },
+          {
+            "offensive_td": 0.69305,
+            "defensive_special_td": 0.028099999999999997,
+            "field_goals": 0.4551
+          },
+          {
+            "offensive_td": 0.0148,
+            "defensive_special_td": 0.0007999999999999999,
+            "field_goals": 0.0101
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.48564999999999997,
+            "defensive_special_td": 0.023100000000000002,
+            "field_goals": 0.3158
+          },
+          {
+            "offensive_td": 0.6574000000000001,
+            "defensive_special_td": 0.0304,
+            "field_goals": 0.4888
+          },
+          {
+            "offensive_td": 0.5226999999999999,
+            "defensive_special_td": 0.02275,
+            "field_goals": 0.336
+          },
+          {
+            "offensive_td": 0.68835,
+            "defensive_special_td": 0.0317,
+            "field_goals": 0.41715
+          },
+          {
+            "offensive_td": 0.0141,
+            "defensive_special_td": 0.00030000000000000003,
+            "field_goals": 0.00875
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          20,
+          24
+        ],
+        "expected": [
+          20.498434523333046,
+          23.699632457168725
+        ],
+        "raw": {
+          "away_expected_points": 20.498434523333046,
+          "home_expected_points": 23.699632457168725,
+          "model_margin": 3.2011979338356795,
+          "model_total": 44.19806698050177
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_ARI_SEA",
+      "away_team": "ARI",
+      "home_team": "SEA",
+      "kickoff_utc": "2026-11-08T21:25:00+00:00",
+      "fixture_cutoff_utc": "2026-11-08T21:24:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:07:12.571717+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            6,
+            3,
+            6
+          ],
+          [
+            7,
+            7,
+            3,
+            8
+          ]
+        ],
+        "regulation": [
+          18,
+          25
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          18,
+          25
+        ],
+        "draw_id": 5504,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "SEA",
+          "event": "PASS_TD",
+          "elapsed_seconds": 228.0,
+          "score_away": 0,
+          "score_home": 6
+        },
+        {
+          "quarter": 1,
+          "team": "SEA",
+          "event": "PAT",
+          "elapsed_seconds": 228.0,
+          "score_away": 0,
+          "score_home": 7
+        },
+        {
+          "quarter": 1,
+          "team": "ARI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 447.0,
+          "score_away": 3,
+          "score_home": 7
+        },
+        {
+          "quarter": 1,
+          "team": "SEA",
+          "event": "FG_MISS",
+          "elapsed_seconds": 728.0,
+          "score_away": 3,
+          "score_home": 7
+        },
+        {
+          "quarter": 2,
+          "team": "ARI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1403.0,
+          "score_away": 6,
+          "score_home": 7
+        },
+        {
+          "quarter": 2,
+          "team": "SEA",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1614.0,
+          "score_away": 6,
+          "score_home": 13
+        },
+        {
+          "quarter": 2,
+          "team": "SEA",
+          "event": "PAT",
+          "elapsed_seconds": 1614.0,
+          "score_away": 6,
+          "score_home": 14
+        },
+        {
+          "quarter": 2,
+          "team": "ARI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1718.0,
+          "score_away": 9,
+          "score_home": 14
+        },
+        {
+          "quarter": 3,
+          "team": "ARI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1965.0,
+          "score_away": 12,
+          "score_home": 14
+        },
+        {
+          "quarter": 3,
+          "team": "SEA",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2251.0,
+          "score_away": 12,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "ARI",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2955.0,
+          "score_away": 18,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "ARI",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 2955.0,
+          "score_away": 18,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "SEA",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 3254.0,
+          "score_away": 18,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "SEA",
+          "event": "TWO_POINT",
+          "elapsed_seconds": 3254.0,
+          "score_away": 18,
+          "score_home": 25
+        }
+      ],
+      "selected_trace_sha256": "6ddac03e45eb866a2aa9b5965fab1bb48ef3c5c5dbc785e057ae285037c50cfd",
+      "expected_final": [
+        20.833,
+        22.26205
+      ],
+      "expected_quarters": [
+        [
+          4.2829,
+          6.00455,
+          4.4826,
+          5.9429
+        ],
+        [
+          4.53835,
+          6.4375,
+          4.7829,
+          6.3821
+        ]
+      ],
+      "expected_overtime": [
+        0.12005,
+        0.1212
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.43655,
+            "defensive_special_td": 0.0294,
+            "field_goals": 0.34565
+          },
+          {
+            "offensive_td": 0.59905,
+            "defensive_special_td": 0.038349999999999995,
+            "field_goals": 0.5219
+          },
+          {
+            "offensive_td": 0.45985,
+            "defensive_special_td": 0.028650000000000002,
+            "field_goals": 0.35985
+          },
+          {
+            "offensive_td": 0.6243500000000001,
+            "defensive_special_td": 0.03555,
+            "field_goals": 0.44715
+          },
+          {
+            "offensive_td": 0.012750000000000001,
+            "defensive_special_td": 0.00095,
+            "field_goals": 0.0105
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.48624999999999996,
+            "defensive_special_td": 0.02425,
+            "field_goals": 0.32735
+          },
+          {
+            "offensive_td": 0.67905,
+            "defensive_special_td": 0.0273,
+            "field_goals": 0.5066
+          },
+          {
+            "offensive_td": 0.5147,
+            "defensive_special_td": 0.021,
+            "field_goals": 0.3499
+          },
+          {
+            "offensive_td": 0.6978,
+            "defensive_special_td": 0.026949999999999998,
+            "field_goals": 0.44215
+          },
+          {
+            "offensive_td": 0.01385,
+            "defensive_special_td": 0.0006000000000000001,
+            "field_goals": 0.0092
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          19,
+          27
+        ],
+        "expected": [
+          19.14197749388977,
+          26.98637781453993
+        ],
+        "raw": {
+          "away_expected_points": 19.14197749388977,
+          "home_expected_points": 26.98637781453993,
+          "model_margin": 7.844400320650163,
+          "model_total": 46.128355308429704
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_TB_CHI",
+      "away_team": "TB",
+      "home_team": "CHI",
+      "kickoff_utc": "2026-11-09T01:20:00+00:00",
+      "fixture_cutoff_utc": "2026-11-09T01:19:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:07:24.836545+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            6,
+            6,
+            6
+          ],
+          [
+            3,
+            7,
+            7,
+            6
+          ]
+        ],
+        "regulation": [
+          21,
+          23
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          21,
+          23
+        ],
+        "draw_id": 14053,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "TB",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 310.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "CHI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 610.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "CHI",
+          "event": "FG_MISS",
+          "elapsed_seconds": 954.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "TB",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1443.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "TB",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 1443.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "CHI",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1755.0,
+          "score_away": 9,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "CHI",
+          "event": "PAT",
+          "elapsed_seconds": 1755.0,
+          "score_away": 9,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "CHI",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2227.0,
+          "score_away": 9,
+          "score_home": 16
+        },
+        {
+          "quarter": 3,
+          "team": "CHI",
+          "event": "PAT",
+          "elapsed_seconds": 2227.0,
+          "score_away": 9,
+          "score_home": 17
+        },
+        {
+          "quarter": 3,
+          "team": "TB",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2521.0,
+          "score_away": 15,
+          "score_home": 17
+        },
+        {
+          "quarter": 3,
+          "team": "TB",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 2521.0,
+          "score_away": 15,
+          "score_home": 17
+        },
+        {
+          "quarter": 4,
+          "team": "CHI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2877.0,
+          "score_away": 15,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "CHI",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3103.0,
+          "score_away": 15,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "TB",
+          "event": "PASS_TD",
+          "elapsed_seconds": 3287.0,
+          "score_away": 21,
+          "score_home": 23
+        },
+        {
+          "quarter": 4,
+          "team": "TB",
+          "event": "TWO_POINT_FAIL",
+          "elapsed_seconds": 3287.0,
+          "score_away": 21,
+          "score_home": 23
+        }
+      ],
+      "selected_trace_sha256": "ea98d41d4bfc0c0888a5da82334595c6a4980148c3f171650f2ef9820125d152",
+      "expected_final": [
+        22.09525,
+        20.7563
+      ],
+      "expected_quarters": [
+        [
+          4.51755,
+          6.34505,
+          4.79175,
+          6.31445
+        ],
+        [
+          4.2335,
+          5.95805,
+          4.45815,
+          5.98615
+        ]
+      ],
+      "expected_overtime": [
+        0.12645,
+        0.12045
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.4757,
+            "defensive_special_td": 0.02855,
+            "field_goals": 0.33565
+          },
+          {
+            "offensive_td": 0.6484000000000001,
+            "defensive_special_td": 0.037500000000000006,
+            "field_goals": 0.5229
+          },
+          {
+            "offensive_td": 0.5099,
+            "defensive_special_td": 0.0266,
+            "field_goals": 0.35365
+          },
+          {
+            "offensive_td": 0.6717,
+            "defensive_special_td": 0.0353,
+            "field_goals": 0.4615
+          },
+          {
+            "offensive_td": 0.0143,
+            "defensive_special_td": 0.0007500000000000001,
+            "field_goals": 0.0099
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.44179999999999997,
+            "defensive_special_td": 0.02455,
+            "field_goals": 0.3289
+          },
+          {
+            "offensive_td": 0.603,
+            "defensive_special_td": 0.030299999999999997,
+            "field_goals": 0.51355
+          },
+          {
+            "offensive_td": 0.4673999999999999,
+            "defensive_special_td": 0.021699999999999997,
+            "field_goals": 0.35075
+          },
+          {
+            "offensive_td": 0.63995,
+            "defensive_special_td": 0.03025,
+            "field_goals": 0.43445
+          },
+          {
+            "offensive_td": 0.01235,
+            "defensive_special_td": 0.0007000000000000001,
+            "field_goals": 0.012
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          21,
+          24
+        ],
+        "expected": [
+          20.95082670651902,
+          23.94292859672212
+        ],
+        "raw": {
+          "away_expected_points": 20.95082670651902,
+          "home_expected_points": 23.94292859672212,
+          "model_margin": 2.9921018902030987,
+          "model_total": 44.893755303241136
+        }
+      }
+    },
+    {
+      "game_id": "2026_09_BUF_MIN",
+      "away_team": "BUF",
+      "home_team": "MIN",
+      "kickoff_utc": "2026-11-10T01:15:00+00:00",
+      "fixture_cutoff_utc": "2026-11-10T01:14:00+00:00",
+      "feature_asof_utc": "2026-11-04T20:04:22.016654+00:00",
+      "created_at_utc": "2026-11-04T20:07:37.434777+00:00",
+      "actionable": false,
+      "draws": 20000,
+      "scenario": {
+        "quarters": [
+          [
+            3,
+            7,
+            6,
+            6
+          ],
+          [
+            3,
+            7,
+            3,
+            7
+          ]
+        ],
+        "regulation": [
+          22,
+          20
+        ],
+        "overtime": [
+          0,
+          0
+        ],
+        "final": [
+          22,
+          20
+        ],
+        "draw_id": 4498,
+        "overtime_reached": false
+      },
+      "scoring_events": [
+        {
+          "quarter": 1,
+          "team": "BUF",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 345.0,
+          "score_away": 3,
+          "score_home": 0
+        },
+        {
+          "quarter": 1,
+          "team": "MIN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 662.0,
+          "score_away": 3,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "BUF",
+          "event": "PASS_TD",
+          "elapsed_seconds": 992.0,
+          "score_away": 9,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "BUF",
+          "event": "PAT",
+          "elapsed_seconds": 992.0,
+          "score_away": 10,
+          "score_home": 3
+        },
+        {
+          "quarter": 2,
+          "team": "MIN",
+          "event": "PASS_TD",
+          "elapsed_seconds": 1493.0,
+          "score_away": 10,
+          "score_home": 9
+        },
+        {
+          "quarter": 2,
+          "team": "MIN",
+          "event": "PAT",
+          "elapsed_seconds": 1493.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 2,
+          "team": "MIN",
+          "event": "FG_MISS",
+          "elapsed_seconds": 1762.0,
+          "score_away": 10,
+          "score_home": 10
+        },
+        {
+          "quarter": 3,
+          "team": "MIN",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 1928.0,
+          "score_away": 10,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "BUF",
+          "event": "PASS_TD",
+          "elapsed_seconds": 2079.0,
+          "score_away": 16,
+          "score_home": 13
+        },
+        {
+          "quarter": 3,
+          "team": "BUF",
+          "event": "PAT_MISS",
+          "elapsed_seconds": 2079.0,
+          "score_away": 16,
+          "score_home": 13
+        },
+        {
+          "quarter": 4,
+          "team": "MIN",
+          "event": "RUSH_TD",
+          "elapsed_seconds": 2779.0,
+          "score_away": 16,
+          "score_home": 19
+        },
+        {
+          "quarter": 4,
+          "team": "MIN",
+          "event": "PAT",
+          "elapsed_seconds": 2779.0,
+          "score_away": 16,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "BUF",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 2972.0,
+          "score_away": 19,
+          "score_home": 20
+        },
+        {
+          "quarter": 4,
+          "team": "BUF",
+          "event": "FIELD_GOAL",
+          "elapsed_seconds": 3528.0,
+          "score_away": 22,
+          "score_home": 20
+        }
+      ],
+      "selected_trace_sha256": "8599e5394acd4ab27c97caeb0d6c5c19ff59bd4e71d0626e654fe03af96e8ca8",
+      "expected_final": [
+        22.04395,
+        21.946
+      ],
+      "expected_quarters": [
+        [
+          4.4714,
+          6.32705,
+          4.78435,
+          6.33235
+        ],
+        [
+          4.5157,
+          6.29965,
+          4.6978,
+          6.3107
+        ]
+      ],
+      "expected_overtime": [
+        0.1288,
+        0.12215
+      ],
+      "expected_events": [
+        [
+          {
+            "offensive_td": 0.4786500000000001,
+            "defensive_special_td": 0.02415,
+            "field_goals": 0.3236
+          },
+          {
+            "offensive_td": 0.6573499999999999,
+            "defensive_special_td": 0.0314,
+            "field_goals": 0.51015
+          },
+          {
+            "offensive_td": 0.51455,
+            "defensive_special_td": 0.02515,
+            "field_goals": 0.34265
+          },
+          {
+            "offensive_td": 0.68595,
+            "defensive_special_td": 0.0351,
+            "field_goals": 0.43525
+          },
+          {
+            "offensive_td": 0.01435,
+            "defensive_special_td": 0.00075,
+            "field_goals": 0.01035
+          }
+        ],
+        [
+          {
+            "offensive_td": 0.48424999999999996,
+            "defensive_special_td": 0.022350000000000002,
+            "field_goals": 0.32935
+          },
+          {
+            "offensive_td": 0.65455,
+            "defensive_special_td": 0.027549999999999998,
+            "field_goals": 0.51585
+          },
+          {
+            "offensive_td": 0.5009,
+            "defensive_special_td": 0.02135,
+            "field_goals": 0.3539
+          },
+          {
+            "offensive_td": 0.68445,
+            "defensive_special_td": 0.02675,
+            "field_goals": 0.4498
+          },
+          {
+            "offensive_td": 0.0143,
+            "defensive_special_td": 0.00030000000000000003,
+            "field_goals": 0.00925
+          }
+        ]
+      ],
+      "model_A": {
+        "integer": [
+          24,
+          23
+        ],
+        "expected": [
+          23.439928147300797,
+          23.234024513808844
+        ],
+        "raw": {
+          "away_expected_points": 23.439928147300797,
+          "home_expected_points": 23.234024513808844,
+          "model_margin": -0.2059036334919533,
+          "model_total": 46.67395266110964
+        }
+      }
+    }
+  ]
+}

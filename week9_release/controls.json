@@ -1,0 +1,7 @@
+{
+  "schema": "week9-exact-static-postmerge-approval-v1",
+  "files": {
+    "scripts/verify_week9_publication.py": "d40e76e13e6a827ee1bd2cd1691a98bbb3c9fb4fea8a185fd0f236fb4bb67374",
+    "week9_release/review_request.json": "89e7ae9f184be69a9112b50695c294a476ad58bdff703007fe2048336cb60674"
+  }
+}
