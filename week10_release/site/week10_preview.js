@@ -14,7 +14,7 @@ const Week10 = (() => {
     const bytes = await response.arrayBuffer();
     const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)))
       .map(x => x.toString(16).padStart(2,'0')).join('');
-    if (hash !== '01f0ff36963845425ff35c0b2c085f002adc8230faafc95b134b3453892165c4') throw Error('Week 10 context hash differs');
+    if (hash !== '0ef1119ad63c0ae5fbf2419a9af32c492be74136a0a609f73dfc8e7a96e1b7c3') throw Error('Week 10 context hash differs');
     data = JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
     if (data.schema !== 'week10-context-v1' || data.actionable !== false ||
         data.matches.length !== 14 || data.completed.length !== 15) {
@@ -117,8 +117,12 @@ const Week10 = (() => {
       e(g.home_team)+' '+odds(line)+'</strong><small>'+odds(spread.american_odds)+'</small></div>'+
       '<div class="comparison-bookmaker"><small>BOOKMAKER TOTAL</small><strong>'+n(m.bookmaker_total,1)+
       '</strong><small>'+total.map(x=>e(x.selection)+' '+odds(x.american_odds)).join(' · ')+'</small></div>'+
-      '<p class="comparison-market-note">DraftKings via AgentBets · '+e(uk(spread.provider_updated_at_utc))+
-      ' UK feed timestamp. Bookmaker quote-update time unknown. Reference only.</p>'+comparison;
+      '<p class="comparison-market-note market-source-reference" data-provider-updated-at="'+e(spread.provider_updated_at_utc||'')+
+      '" data-retrieved-at="'+e(spread.retrieved_at_utc||'')+'"><a href="'+e(spread.source_url)+
+      '" target="_blank" rel="noopener noreferrer">DraftKings via AgentBets</a><br>Feed updated '+
+      e(spread.provider_updated_at_utc?uk(spread.provider_updated_at_utc)+' GMT':'Unknown')+
+      ' · Retrieved '+e(spread.retrieved_at_utc?uk(spread.retrieved_at_utc)+' GMT':'Unknown')+
+      '<br>Bookmaker quote-update time unknown. Reference only.</p>'+comparison;
   }
 
   function evaluation() {
