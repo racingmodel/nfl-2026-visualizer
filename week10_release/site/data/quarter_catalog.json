@@ -1,0 +1,17 @@
+{
+  "8": {
+    "path": "data/quarter_simulation_week8.json",
+    "sha256": "2174aa14331dc5970d29ba55e5348ac2e97612f9f0113323294d421d888bc87e",
+    "fixtures": 14
+  },
+  "9": {
+    "path": "data/quarter_simulation_week9.json",
+    "sha256": "11c5da73a91433601939a3f0dd9e3da467bd151ae182948faa584012ca6e7461",
+    "fixtures": 15
+  },
+  "10": {
+    "path": "data/quarter_simulation_week10.json",
+    "sha256": "70e4aed82f3f33c38ab3d3ad36c1d0630213dffa8eec2f12106fc6cfef2f5caa",
+    "fixtures": 14
+  }
+}

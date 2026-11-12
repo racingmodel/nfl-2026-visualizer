@@ -1,0 +1,13 @@
+{
+  "schema": "controlled-week10-final-site-v1",
+  "release_id": "frontend-week10-final-bbf8e10133b9118f",
+  "created_at_utc": "2026-11-12T09:16:51.274711+00:00",
+  "prior_live_release": "frontend-week9-tidy-29466c12d79894cf",
+  "first_cutoff_utc": "2026-11-13T01:14:00+00:00",
+  "forecast_issue_utc": "2026-11-12T09:14:37.672478+00:00",
+  "model_c_id": "paired-residual-history8-v1",
+  "model_c_edition_manifest_sha256": "6ca77310c073847d0d1348457fb5a9fa3c63fe2661076178c490eca530f77eeb",
+  "production_certified": false,
+  "publication_authorized": false,
+  "actionable": false
+}

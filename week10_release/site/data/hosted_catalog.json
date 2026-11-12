@@ -1,0 +1,323 @@
+{
+  "current_week": 10,
+  "model_hashes": {
+    "player": "397b4353d921511f29252f28851578285ed6b6b82208a5c0bdc0da6ace171d3a",
+    "team": "3c31726c7ca9bea5a4683128b5b0befe0f7d4635608a1d6e7ac43af8b2268fec"
+  },
+  "periods": {
+    "8": {
+      "fixture_count": 14,
+      "fixtures": [
+        {
+          "away_team": "ARI",
+          "game_id": "2026_08_ARI_DAL",
+          "home_team": "DAL",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "AT&T Stadium"
+        },
+        {
+          "away_team": "ATL",
+          "game_id": "2026_08_ATL_TB",
+          "home_team": "TB",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "Raymond James Stadium"
+        },
+        {
+          "away_team": "BAL",
+          "game_id": "2026_08_BAL_BUF",
+          "home_team": "BUF",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "Highmark Stadium"
+        },
+        {
+          "away_team": "CAR",
+          "game_id": "2026_08_CAR_GB",
+          "home_team": "GB",
+          "kickoff_utc": "2026-10-30T00:15:00+00:00",
+          "stadium": "Lambeau Field"
+        },
+        {
+          "away_team": "CHI",
+          "game_id": "2026_08_CHI_SEA",
+          "home_team": "SEA",
+          "kickoff_utc": "2026-11-03T01:15:00+00:00",
+          "stadium": "Lumen Field"
+        },
+        {
+          "away_team": "CLE",
+          "game_id": "2026_08_CLE_PIT",
+          "home_team": "PIT",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "Acrisure Stadium"
+        },
+        {
+          "away_team": "IND",
+          "game_id": "2026_08_IND_JAX",
+          "home_team": "JAX",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "EverBank Stadium"
+        },
+        {
+          "away_team": "KC",
+          "game_id": "2026_08_KC_DEN",
+          "home_team": "DEN",
+          "kickoff_utc": "2026-11-01T21:25:00+00:00",
+          "stadium": "Empower Field at Mile High"
+        },
+        {
+          "away_team": "LAC",
+          "game_id": "2026_08_LAC_LA",
+          "home_team": "LA",
+          "kickoff_utc": "2026-11-01T21:05:00+00:00",
+          "stadium": "SoFi Stadium"
+        },
+        {
+          "away_team": "LV",
+          "game_id": "2026_08_LV_NYJ",
+          "home_team": "NYJ",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "MetLife Stadium"
+        },
+        {
+          "away_team": "MIN",
+          "game_id": "2026_08_MIN_DET",
+          "home_team": "DET",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "Ford Field"
+        },
+        {
+          "away_team": "NE",
+          "game_id": "2026_08_NE_MIA",
+          "home_team": "MIA",
+          "kickoff_utc": "2026-11-01T21:25:00+00:00",
+          "stadium": "Hard Rock Stadium"
+        },
+        {
+          "away_team": "PHI",
+          "game_id": "2026_08_PHI_WAS",
+          "home_team": "WAS",
+          "kickoff_utc": "2026-11-02T01:20:00+00:00",
+          "stadium": "Northwest Stadium"
+        },
+        {
+          "away_team": "TEN",
+          "game_id": "2026_08_TEN_CIN",
+          "home_team": "CIN",
+          "kickoff_utc": "2026-11-01T18:00:00+00:00",
+          "stadium": "Paycor Stadium"
+        }
+      ],
+      "path": "data/research/2026-w08.json",
+      "player_count": 409,
+      "sha256": "25cf91d77a70c6ae05a94230e0245d97f11a886d62a98c158bc22446b5866ad8"
+    },
+    "9": {
+      "path": "data/research/2026-w09.json",
+      "sha256": "d0b8dfb6a73f6b9bd3fe8f2069e8fe43f3ca52d2e51b887012eb489202c20146",
+      "fixture_count": 15,
+      "player_count": 465,
+      "fixtures": [
+        {
+          "game_id": "2026_09_JAX_BAL",
+          "away_team": "JAX",
+          "home_team": "BAL",
+          "kickoff_utc": "2026-11-06T01:15:00+00:00"
+        },
+        {
+          "game_id": "2026_09_CIN_ATL",
+          "away_team": "CIN",
+          "home_team": "ATL",
+          "kickoff_utc": "2026-11-08T14:30:00+00:00"
+        },
+        {
+          "game_id": "2026_09_DEN_CAR",
+          "away_team": "DEN",
+          "home_team": "CAR",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_DAL_IND",
+          "away_team": "DAL",
+          "home_team": "IND",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_NYJ_KC",
+          "away_team": "NYJ",
+          "home_team": "KC",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_DET_MIA",
+          "away_team": "DET",
+          "home_team": "MIA",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_CLE_NO",
+          "away_team": "CLE",
+          "home_team": "NO",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_NYG_PHI",
+          "away_team": "NYG",
+          "home_team": "PHI",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_LA_WAS",
+          "away_team": "LA",
+          "home_team": "WAS",
+          "kickoff_utc": "2026-11-08T18:00:00+00:00"
+        },
+        {
+          "game_id": "2026_09_HOU_LAC",
+          "away_team": "HOU",
+          "home_team": "LAC",
+          "kickoff_utc": "2026-11-08T21:05:00+00:00"
+        },
+        {
+          "game_id": "2026_09_LV_SF",
+          "away_team": "LV",
+          "home_team": "SF",
+          "kickoff_utc": "2026-11-08T21:05:00+00:00"
+        },
+        {
+          "game_id": "2026_09_GB_NE",
+          "away_team": "GB",
+          "home_team": "NE",
+          "kickoff_utc": "2026-11-08T21:25:00+00:00"
+        },
+        {
+          "game_id": "2026_09_ARI_SEA",
+          "away_team": "ARI",
+          "home_team": "SEA",
+          "kickoff_utc": "2026-11-08T21:25:00+00:00"
+        },
+        {
+          "game_id": "2026_09_TB_CHI",
+          "away_team": "TB",
+          "home_team": "CHI",
+          "kickoff_utc": "2026-11-09T01:20:00+00:00"
+        },
+        {
+          "game_id": "2026_09_BUF_MIN",
+          "away_team": "BUF",
+          "home_team": "MIN",
+          "kickoff_utc": "2026-11-10T01:15:00+00:00"
+        }
+      ]
+    },
+    "10": {
+      "path": "data/research/2026-w10.json",
+      "sha256": "4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e",
+      "fixture_count": 14,
+      "player_count": 424,
+      "fixtures": [
+        {
+          "game_id": "2026_10_WAS_NYG",
+          "away_team": "WAS",
+          "home_team": "NYG",
+          "kickoff_utc": "2026-11-13T01:15:00+00:00",
+          "stadium": "MetLife Stadium"
+        },
+        {
+          "game_id": "2026_10_NE_DET",
+          "away_team": "NE",
+          "home_team": "DET",
+          "kickoff_utc": "2026-11-15T14:30:00+00:00",
+          "stadium": "FC Bayern Munich Stadium"
+        },
+        {
+          "game_id": "2026_10_KC_ATL",
+          "away_team": "KC",
+          "home_team": "ATL",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Mercedes-Benz Stadium"
+        },
+        {
+          "game_id": "2026_10_HOU_CLE",
+          "away_team": "HOU",
+          "home_team": "CLE",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Huntington Bank Field"
+        },
+        {
+          "game_id": "2026_10_MIN_GB",
+          "away_team": "MIN",
+          "home_team": "GB",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Lambeau Field"
+        },
+        {
+          "game_id": "2026_10_MIA_IND",
+          "away_team": "MIA",
+          "home_team": "IND",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Lucas Oil Stadium"
+        },
+        {
+          "game_id": "2026_10_CAR_NO",
+          "away_team": "CAR",
+          "home_team": "NO",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Caesars Superdome"
+        },
+        {
+          "game_id": "2026_10_BUF_NYJ",
+          "away_team": "BUF",
+          "home_team": "NYJ",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "MetLife Stadium"
+        },
+        {
+          "game_id": "2026_10_JAX_TEN",
+          "away_team": "JAX",
+          "home_team": "TEN",
+          "kickoff_utc": "2026-11-15T18:00:00+00:00",
+          "stadium": "Nissan Stadium"
+        },
+        {
+          "game_id": "2026_10_LA_ARI",
+          "away_team": "LA",
+          "home_team": "ARI",
+          "kickoff_utc": "2026-11-15T21:05:00+00:00",
+          "stadium": "State Farm Stadium"
+        },
+        {
+          "game_id": "2026_10_SEA_LV",
+          "away_team": "SEA",
+          "home_team": "LV",
+          "kickoff_utc": "2026-11-15T21:05:00+00:00",
+          "stadium": "Allegiant Stadium"
+        },
+        {
+          "game_id": "2026_10_SF_DAL",
+          "away_team": "SF",
+          "home_team": "DAL",
+          "kickoff_utc": "2026-11-15T21:25:00+00:00",
+          "stadium": "AT&T Stadium"
+        },
+        {
+          "game_id": "2026_10_PIT_CIN",
+          "away_team": "PIT",
+          "home_team": "CIN",
+          "kickoff_utc": "2026-11-16T01:20:00+00:00",
+          "stadium": "Paycor Stadium"
+        },
+        {
+          "game_id": "2026_10_LAC_BAL",
+          "away_team": "LAC",
+          "home_team": "BAL",
+          "kickoff_utc": "2026-11-17T01:15:00+00:00",
+          "stadium": "M&T Bank Stadium"
+        }
+      ]
+    }
+  },
+  "publication": false,
+  "schema": "hosted-classic-catalog-v1",
+  "season": 2026,
+  "static_parent_release": "frontend-classic-week8-974591f0e1ca648d"
+}
