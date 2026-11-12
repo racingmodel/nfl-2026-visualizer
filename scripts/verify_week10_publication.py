@@ -23,7 +23,7 @@ WORKFLOW_ID = "399724330"
 RELEASE_ID = 'frontend-week10-final-bbf8e10133b9118f'
 MANIFEST_SHA256 = '3f941c63beb60c79891891503b2dc9000982e04ac1bf71fbf3deac7af7815f03'
 PARENT_ASSETS_SHA256 = '29466c12d79894cf18c3490c8bb4cb2687ae561717d1c9bddfc21305942e9227'
-REVIEW_BRANCH = 'codex/week10-final-controls-bbf8e10133b9118f'
+REVIEW_BRANCH = 'codex/week10-guard-self-deployment-20261112'
 APPROVAL_SCOPE = 'WEEK10_FINAL_MODEL_C_STATIC_ONCE'
 TIDY_HASHES = {'classic_research.js': '2c8040af068a3efdb1e6b3325dde16013d35788a597fdb49ea82f3a0a3f69587', 'data/hosted_catalog.json': '8ca4461db20547aa80563bfef945b0864038dce22eb734a1dfdf34a9164d0c13', 'data/model_c_week10.json': '71e819237db60e7b1bbf861a7db49b97e4ddcc749cf1abb558e3fc369aedcf2f', 'data/original_td_week10.json': '980136715f31d1b5fba3fe49b21def6153a29fd0541ca97b0e5e52d8576d29bf', 'data/quarter_catalog.json': '2b98f1b881b18132ae43c320d48a02a16c163b58d1c70a680364148aa8ac138e', 'data/quarter_simulation_week10.json': '70e4aed82f3f33c38ab3d3ad36c1d0630213dffa8eec2f12106fc6cfef2f5caa', 'data/research/2026-w10.json': '4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e', 'data/td_catalog.json': '350765bdfd61cf3755367d5febb4094dfdff73ad32a01a3277bc449e9e951f4f', 'data/week10_context.json': '01f0ff36963845425ff35c0b2c085f002adc8230faafc95b134b3453892165c4', 'data/week10_fixture_comparison.csv': 'd81e774f784fb3dc1e50d399403cb8f90479b9b24a10fdfd21912ee5b021d29f', 'data/week10_market_observations.csv': 'aefce77a5d5b8ee53ac3e3a5610fb702637954d995f19e29847dd04f7e14ebb8', 'data/week10_public_prop_observations.csv': '8e5a0cbac2c943e34b7c28204ea58c2d4e74fbd8aa9b76b45ef320bb7215b58f', 'data/week9_quarter_metrics.csv': 'eac84914cfaea3626eab1deaafea51a02974d6ec79ba83ccd461ddcbebf94528', 'data/week9_td_metrics.csv': 'fc3e5c61ad5dd6329bdc2f9a85633bbc9ecdf520f82eee0d68d13c7d4e9bf9a6', 'data/week9_yardage_metrics.csv': 'ff4317e9b53375a428856d101dd796a5f85ebac1cefff3c183fe5ae650b91f92', 'data/weeks1_9_team_metrics.csv': 'fd68a9048296412e295fc180339e6bfac9aa61b515ec8345427c39059a10bc1a', 'index.html': '06139a1031cec53d33defa7f6767ed6bfbe489e5ff208cd60d907940d51770b7', 'model.html': 'd726317aee0afac31d9424271bc4f3a16f2d197d5e75475f519da4d5dedcf72b', 'performance.html': '17f4473ebca020ce0b3c8c0a90a7196b9a28cf80c52481e4ac04d2b33ddc7d47', 'player_roles.js': 'ffb8cdbbb60870d46793640def8ed116dbc188467aea7abe59e00c016df75588', 'players.html': 'ef2c1750d2489c4ecf819a6477c0bb4d550d532a2a0009769315f69c208d1356', 'prediction_display.js': '291e4869fecd15ab3d317590471f003150aa2e4945a7cca05930a43eb6cdf2c0', 'release_receipt.json': 'f095d159e7403a9b1cb0ca0d2c13cb91ed87507234651257b335c446303f8498', 'value.html': '4156aa26782d4e2f2f4cf369ac588429c574d0669cd17e07ceddafda1eb09ced', 'week10_preview.js': '233428a045dc2176447e5b46ae4f4249089cc926ce7b45ee7919b3ce41f2400b'}
 EXPECTED_HISTORY = ['2026_09_ARI_SEA', '2026_09_BUF_MIN', '2026_09_CIN_ATL', '2026_09_CLE_NO', '2026_09_DAL_IND', '2026_09_DEN_CAR', '2026_09_DET_MIA', '2026_09_GB_NE', '2026_09_HOU_LAC', '2026_09_JAX_BAL', '2026_09_LA_WAS', '2026_09_LV_SF', '2026_09_NYG_PHI', '2026_09_NYJ_KC', '2026_09_TB_CHI']
@@ -251,6 +251,102 @@ def verify_live_parent(manifest, phase, run_id):
     return result
 
 
+# GitHub's server-side CheckRun.deployment relationship is required. Caller-supplied
+# deployment payloads, matching SHAs, timestamps and status URLs cannot prove ownership.
+CHECK_RUN_DEPLOYMENT_QUERY = """query($id:ID!) {
+  node(id:$id) { ... on CheckRun {
+    id databaseId name status repository { nameWithOwner }
+    checkSuite { databaseId app { databaseId slug } }
+    deployment { id databaseId environment commitOid repository { nameWithOwner } }
+  } }
+}"""
+
+
+def graphql(query, variables):
+    request = Request("https://api.github.com/graphql", data=json.dumps({"query": query, "variables": variables}).encode("utf-8"),
+                      headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"], "Content-Type": "application/json"})
+    with urlopen(request, timeout=20) as handle:
+        result = json.load(handle)
+    require(not result.get("errors") and isinstance(result.get("data"), dict), "CheckRun deployment identity unavailable")
+    return result["data"]
+
+
+def current_publish_deployment(env):
+    """Authenticate the running job, then follow GitHub's server-side check-run edge."""
+    run_id = env.get("GITHUB_RUN_ID", "")
+    require(run_id.isascii() and run_id.isdecimal() and 0 < len(run_id) <= 20
+            and env.get("GITHUB_JOB") == "publish" and env.get("GITHUB_RUN_ATTEMPT") == "1",
+            "Current publish job identity missing")
+    run = api("actions/runs/" + run_id)
+    require(str(run.get("id")) == run_id and run.get("workflow_id") == int(WORKFLOW_ID)
+            and run.get("path") == ".github/workflows/manual-frontend-correction.yml"
+            and isinstance(run.get("check_suite_id"), int) and run["check_suite_id"] > 0
+            and run.get("repository", {}).get("full_name") == REPO
+            and run.get("head_sha") == env["GITHUB_SHA"] and run.get("head_branch") == "main"
+            and run.get("event") == "workflow_dispatch" and run.get("run_attempt") == 1
+            and run.get("status") == "in_progress" and run.get("conclusion") is None
+            and run.get("actor", {}).get("login") == run.get("triggering_actor", {}).get("login") == "racingmodel",
+            "Current workflow run identity differs")
+    result = api(f"actions/runs/{run_id}/attempts/1/jobs", per_page=100)
+    require(isinstance(result.get("total_count"), int) and result["total_count"] <= 100
+            and result["total_count"] == len(result.get("jobs", [])), "Current job history incomplete")
+    matches = [j for j in result["jobs"] if j.get("name") == "publish"]
+    require(len(matches) == 1, "Current publish job is ambiguous")
+    job = matches[0]
+    job_id = job.get("id")
+    require(isinstance(job_id, int) and job_id > 0 and job.get("run_id") == run["id"]
+            and job.get("run_attempt") == 1 and job.get("head_sha") == env["GITHUB_SHA"]
+            and job.get("head_branch") == "main" and job.get("status") == "in_progress"
+            and job.get("conclusion") is None and bool(job.get("node_id"))
+            and job.get("check_run_url") == f"https://api.github.com/repos/{REPO}/check-runs/{job_id}"
+            and job.get("html_url") == f"https://github.com/{REPO}/actions/runs/{run_id}/job/{job_id}",
+            "Current check-run job differs")
+    check = graphql(CHECK_RUN_DEPLOYMENT_QUERY, {"id": job["node_id"]}).get("node") or {}
+    suite = check.get("checkSuite") or {}
+    require(check.get("id") == job["node_id"] and check.get("databaseId") == job_id
+            and check.get("name") == "publish" and check.get("status") == "IN_PROGRESS"
+            and check.get("repository", {}).get("nameWithOwner") == REPO
+            and suite.get("databaseId") == run.get("check_suite_id")
+            and suite.get("app", {}).get("databaseId") == 15368
+            and suite.get("app", {}).get("slug") == "github-actions", "CheckRun does not bind the current job")
+    deployment = check.get("deployment") or {}
+    require(isinstance(deployment.get("databaseId"), int) and deployment["databaseId"] > 0
+            and bool(deployment.get("id")) and deployment.get("environment") == "github-pages"
+            and deployment.get("commitOid") == env["GITHUB_SHA"]
+            and deployment.get("repository", {}).get("nameWithOwner") == REPO,
+            "CheckRun deployment identity unavailable")
+    return job, deployment
+
+
+def verify_deployments(deployments, env, phase):
+    """Allow only the current job's server-bound in-progress record in pre-deploy."""
+    own = current_publish_deployment(env) if phase == "pre-deploy" else None
+    recognised = []
+    for deployment in deployments:
+        states = api(f"deployments/{deployment['id']}/statuses", per_page=1)
+        require(bool(states), "An active or ambiguous Pages deployment exists")
+        status = states[0]
+        if status.get("state") in {"success", "failure", "error", "inactive"}:
+            continue
+        require(own is not None and status.get("state") == "in_progress", "An active or ambiguous Pages deployment exists")
+        job, linked = own
+        require(deployment.get("id") == linked["databaseId"] and deployment.get("node_id") == linked["id"]
+                and deployment.get("environment") == deployment.get("original_environment") == "github-pages"
+                and deployment.get("sha") == env["GITHUB_SHA"] and deployment.get("ref") == "main"
+                and deployment.get("task") == "deploy"
+                and deployment.get("repository_url") == f"https://api.github.com/repos/{REPO}"
+                and (deployment.get("performed_via_github_app") or {}).get("id") == 15368
+                and (deployment.get("performed_via_github_app") or {}).get("slug") == "github-actions",
+                "Active deployment is not bound to this publish job")
+        require(status.get("environment") == "github-pages"
+                and status.get("deployment_url") == f"https://api.github.com/repos/{REPO}/deployments/{deployment['id']}"
+                and status.get("log_url") == status.get("target_url") == job["html_url"],
+                "Active deployment status does not bind this job")
+        recognised.append(deployment["id"])
+    require(phase != "pre-deploy" or len(recognised) == 1, "Exactly one authenticated current deployment is required")
+    return {"phase": phase, "authenticated_current_deployment_ids": recognised}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("phase", choices=["review", "pre-deploy", "live"])
@@ -274,10 +370,7 @@ def main():
         require(api("pages").get("build_type") == "workflow", "Pages configuration differs")
         deployments = api("deployments", environment="github-pages", per_page=100)
         require(len(deployments) < 100, "Deployment history incomplete")
-        for deployment in deployments:
-            states = api(f"deployments/{deployment['id']}/statuses", per_page=1)
-            require(states and states[0]["state"] in {"success", "failure", "error", "inactive"},
-                    "An active or ambiguous Pages deployment exists")
+        result["deployment_check"] = verify_deployments(deployments, env, args.phase)
         check_first_dispatch(env, read(BASE / "review_request.json")["created_at_utc"])
         prior_check = verify_live_parent(manifest, args.phase, env["GITHUB_RUN_ID"])
         schedule = download(SCHEDULE)
