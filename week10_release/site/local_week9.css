@@ -1,0 +1,14 @@
+.local-market,.local-source-note{margin:12px 14px;padding:12px;border:1px solid var(--line,#294154);border-radius:10px;overflow-wrap:anywhere}.local-market h3{font-size:15px;margin:0 0 8px}.local-market h3 span{font-size:11px;font-weight:400}.local-market p,.local-source-note p{font-size:12px;line-height:1.55}.local-source-note{border-left:3px solid #dfaa4d}.local-table-wrap{max-width:100%;overflow-x:auto}.local-table-wrap table{width:100%;border-collapse:collapse;font-size:12px}.local-table-wrap th,.local-table-wrap td{text-align:left;padding:9px 7px;border-bottom:1px solid var(--line,#294154)}.local-week8-results p{line-height:1.6}.local-week8-results details{margin-top:14px}#local-readiness{min-width:0;margin-bottom:18px}.local-market a,.local-week8-results a,#local-readiness a{color:var(--mint,#67d0bc)}
+
+.primary-model-label,.compact-model-b {text-align:center;margin:10px 14px 0;font-size:.72rem;color:var(--muted)}
+.primary-model-label,.compact-model-b small {letter-spacing:.08em;font-weight:700}
+.compact-model-b {margin:0 14px 8px;padding:6px 4px;border-block:1px solid var(--line)}
+.compact-model-b b {display:block;color:var(--text);font-size:1rem;font-variant-numeric:tabular-nums}
+.week9-comparisons {grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
+.week9-comparisons .comparison-bookmaker {background:var(--panel);box-shadow:inset 0 2px 0 var(--line);min-width:0}
+.week9-comparisons .comparison-bookmaker strong {font-size:.9rem}
+.recorded-spread {display:flex;flex-wrap:wrap;justify-content:center;column-gap:.65rem;line-height:1.45}
+.recorded-spread span {white-space:nowrap}
+.comparison-market-note {grid-column:1/-1;background:var(--panel);text-align:center;margin:0;padding:6px 8px;color:var(--muted);font-size:.68rem}
+.week9-quarter-details>.expanded {padding-inline:10px}
+.week9-quarter-details .quarter-simulation {margin:0}

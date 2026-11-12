@@ -1,0 +1,26 @@
+{
+  "8": {
+    "path": "data/original_td_week8.json",
+    "sha256": "413d7f2b6729bbb6e31cec84dade08847dc69cbc0dbabbeb494a36d746507c34",
+    "parent_path": "data/research/2026-w08.json",
+    "parent_sha256": "25cf91d77a70c6ae05a94230e0245d97f11a886d62a98c158bc22446b5866ad8",
+    "rows": 409,
+    "teams": 26
+  },
+  "9": {
+    "path": "data/original_td_week9.json",
+    "sha256": "21d83d445cab5e61c18b6e968e2691575834b2596ec66847bccf550611b82cc8",
+    "parent_path": "data/research/2026-w09.json",
+    "parent_sha256": "d0b8dfb6a73f6b9bd3fe8f2069e8fe43f3ca52d2e51b887012eb489202c20146",
+    "rows": 346,
+    "teams": 22
+  },
+  "10": {
+    "path": "data/original_td_week10.json",
+    "sha256": "980136715f31d1b5fba3fe49b21def6153a29fd0541ca97b0e5e52d8576d29bf",
+    "parent_path": "data/research/2026-w10.json",
+    "parent_sha256": "4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e",
+    "rows": 220,
+    "teams": 14
+  }
+}

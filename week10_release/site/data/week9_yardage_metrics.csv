@@ -1,0 +1,272 @@
+vintage,metric,segment,band,n,missing,mae,rmse,bias
+yardage original preparation,rushing_yards,all,all,318,145,6.410557829235535,12.254452110788163,0.8240227296908804
+yardage original preparation,rushing_yards,position,QB,37,42,12.340559393000001,15.556224465372534,4.059960228864865
+yardage original preparation,rushing_yards,position,RB,77,26,17.478977518324676,21.980002989740374,1.6539996315948053
+yardage original preparation,rushing_yards,position,TE,74,40,0.2869354790283784,1.013888157553956,-0.13238793999864865
+yardage original preparation,rushing_yards,position,WR,130,37,1.6526322907446154,3.4243029969628584,-0.04415818845538467
+yardage original preparation,rushing_yards,depth_role,QB1,25,4,12.769909544312,16.225324164515687,2.8165942490719997
+yardage original preparation,rushing_yards,depth_role,QB2,11,18,11.812545830536363,14.514401202989,6.580792494900001
+yardage original preparation,rushing_yards,depth_role,QB3,1,18,7.4149547973,7.4149547973,7.4149547973
+yardage original preparation,rushing_yards,depth_role,QB4,0,2,,,
+yardage original preparation,rushing_yards,depth_role,RB1,29,1,18.019374208551724,21.44305263589186,1.601803590448275
+yardage original preparation,rushing_yards,depth_role,RB2,21,8,21.68865002637619,27.933785368808163,-2.60944353845238
+yardage original preparation,rushing_yards,depth_role,RB3,18,5,12.888014303511111,14.735707130622705,7.485223291477778
+yardage original preparation,rushing_yards,depth_role,RB4+,5,4,20.392759466679998,25.554624918560737,-6.587949788360001
+yardage original preparation,rushing_yards,depth_role,TE1,30,0,0.60050931871,1.5883539852585948,-0.4338217815566666
+yardage original preparation,rushing_yards,depth_role,TE2,22,8,0.0849969463,0.10399281407297079,0.0849969463
+yardage original preparation,rushing_yards,depth_role,TE3+,22,31,0.06127332128181819,0.08139407872805514,0.06127332128181819
+yardage original preparation,rushing_yards,depth_role,WR1,25,5,2.535519150488,4.994631991379673,-0.7118186200479998
+yardage original preparation,rushing_yards,depth_role,WR2,26,4,1.6257273449076923,2.9915308868514203,-0.14192821625384605
+yardage original preparation,rushing_yards,depth_role,WR3,27,3,1.8021488110333335,3.702703099658586,-0.0280685291814815
+yardage original preparation,rushing_yards,depth_role,WR4+,52,23,1.1639863494057692,2.393303775049742,0.31736317139423076
+yardage original preparation,rushing_yards,depth_role,nan,4,11,8.477427878124999,8.746329704705152,8.477427878124999
+yardage original preparation,rushing_yards,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,9.074859454491667,11.490152320065167,9.074859454491667
+yardage original preparation,rushing_yards,participation,OFFENSIVE_SNAPS,306,39,6.306075412558823,12.283455648187314,0.500460505188889
+yardage original preparation,rushing_yards,participation,SNAPS_UNKNOWN,0,101,,,
+yardage original preparation,rushing_yards,snap_band,zero,12,5,9.074859454491667,11.490152320065167,9.074859454491667
+yardage original preparation,rushing_yards,snap_band,1–20,92,30,7.440555021552174,14.189558240155867,2.5665698065173914
+yardage original preparation,rushing_yards,snap_band,21–40,92,8,5.263552508491305,11.807159700876527,-0.2794104342826089
+yardage original preparation,rushing_yards,snap_band,41+,122,1,6.2367310121229504,11.02197761070431,-0.4694897349000002
+yardage original preparation,rushing_yards,snap_band,nan,0,101,,,
+yardage original preparation,rushing_yards,volume_band,up to 5,205,78,1.1796100176614632,2.822756938648114,-0.047768983821463426
+yardage original preparation,rushing_yards,volume_band,5–20,56,52,13.163565932701784,18.57786265724809,0.4404554173089283
+yardage original preparation,rushing_yards,volume_band,20–50,34,12,16.678930030108827,19.19380679800283,2.82666232437353
+yardage original preparation,rushing_yards,volume_band,50–100,23,3,21.412783600926087,24.9065995943228,6.5678194490043476
+yardage original preparation,receiving_yards,all,all,318,145,14.512019227248427,22.50986009875889,0.8305299167660378
+yardage original preparation,receiving_yards,position,QB,37,42,0.05920595122702703,0.18366378621815901,0.05920595122702703
+yardage original preparation,receiving_yards,position,RB,77,26,10.88640421608961,14.608137765474222,1.9309273408246745
+yardage original preparation,receiving_yards,position,TE,74,40,13.047980430666218,17.519566551538915,2.4327242310040536
+yardage original preparation,receiving_yards,position,WR,130,37,21.606367827395385,30.632129070500497,-0.5137315769353847
+yardage original preparation,receiving_yards,depth_role,QB1,25,4,0.025157965039999997,0.044949420784616285,0.025157965039999997
+yardage original preparation,receiving_yards,depth_role,QB2,11,18,0.1300782389818182,0.3275911619858783,0.1300782389818182
+yardage original preparation,receiving_yards,depth_role,QB3,1,18,0.1308104406,0.1308104406,0.1308104406
+yardage original preparation,receiving_yards,depth_role,QB4,0,2,,,
+yardage original preparation,receiving_yards,depth_role,RB1,29,1,13.471298643306897,16.171819800205473,3.850340346693103
+yardage original preparation,receiving_yards,depth_role,RB2,21,8,12.207810173590477,17.095435547347318,-3.4299118766190473
+yardage original preparation,receiving_yards,depth_role,RB3,18,5,7.387970279344444,11.264519411093525,2.822872182722222
+yardage original preparation,receiving_yards,depth_role,RB4+,5,4,5.369864016279999,5.426444477115852,5.369864016279999
+yardage original preparation,receiving_yards,depth_role,TE1,30,0,14.317368684816666,18.717874175921704,3.4896321051033334
+yardage original preparation,receiving_yards,depth_role,TE2,22,8,15.865293359236363,21.66283566663654,-2.7550407263545456
+yardage original preparation,receiving_yards,depth_role,TE3+,22,31,8.499683519163638,9.240020190795482,6.17925117822727
+yardage original preparation,receiving_yards,depth_role,WR1,25,5,28.994939788359996,44.206455507681966,-9.403333359496001
+yardage original preparation,receiving_yards,depth_role,WR2,26,4,23.295690250623075,30.89096160749993,-3.8210216067461533
+yardage original preparation,receiving_yards,depth_role,WR3,27,3,20.002954293807402,23.964098576788135,3.698964702407408
+yardage original preparation,receiving_yards,depth_role,WR4+,52,23,18.042050200065383,25.119422295550418,3.2263989191576923
+yardage original preparation,receiving_yards,depth_role,nan,4,11,7.847166307,8.347817606259488,7.847166307
+yardage original preparation,receiving_yards,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,9.307728712208332,10.390251857201843,9.307728712208332
+yardage original preparation,receiving_yards,participation,OFFENSIVE_SNAPS,306,39,14.716109051367651,22.854551535774412,0.4980907483173204
+yardage original preparation,receiving_yards,participation,SNAPS_UNKNOWN,0,101,,,
+yardage original preparation,receiving_yards,snap_band,zero,12,5,9.307728712208332,10.390251857201843,9.307728712208332
+yardage original preparation,receiving_yards,snap_band,1–20,92,30,10.625751554084783,13.941771296595574,6.340208318134782
+yardage original preparation,receiving_yards,snap_band,21–40,92,8,17.145474045279347,24.154615828093572,0.1364754148967395
+yardage original preparation,receiving_yards,snap_band,41+,122,1,15.96866077522131,26.898997982190316,-3.634747003719673
+yardage original preparation,receiving_yards,snap_band,nan,0,101,,,
+yardage original preparation,receiving_yards,volume_band,up to 5,48,44,1.892229706975,6.31737673464953,0.18031792074166683
+yardage original preparation,receiving_yards,volume_band,5–20,142,78,11.495177458881692,14.766404379541251,3.2120857646154928
+yardage original preparation,receiving_yards,volume_band,20–50,101,18,19.18497332708713,25.173667069196366,1.6214081839188126
+yardage original preparation,receiving_yards,volume_band,50–100,27,5,35.33324381974814,48.77965914248067,-13.497227845007407
+yardage original preparation,carries,all,all,318,145,1.206658624411006,2.377325124570382,-0.04940096084937105
+yardage original preparation,carries,position,QB,37,42,1.8664510424351355,2.436562989853235,0.30090211058108113
+yardage original preparation,carries,position,RB,77,26,3.508234245153247,4.463490619396985,-0.23773251190129857
+yardage original preparation,carries,position,TE,74,40,0.17578514664594594,0.49894512257478685,-0.10402990659729729
+yardage original preparation,carries,position,WR,130,37,0.24243550972307693,0.43936897638880607,-0.006455901053846151
+yardage original preparation,carries,depth_role,QB1,25,4,1.6357822991320001,2.138074601183652,0.3606122527880001
+yardage original preparation,carries,depth_role,QB2,11,18,2.3668720777545458,3.027875049968294,-0.0009514967909090819
+yardage original preparation,carries,depth_role,QB3,1,18,2.1285382365,2.1285382365,2.1285382365
+yardage original preparation,carries,depth_role,QB4,0,2,,,
+yardage original preparation,carries,depth_role,RB1,29,1,3.8121695362103445,4.863237959810254,-1.063069619989655
+yardage original preparation,carries,depth_role,RB2,21,8,3.8644635242238103,5.0513446575683965,-0.8887946237285711
+yardage original preparation,carries,depth_role,RB3,18,5,2.751292611811111,3.0529914142413266,1.6207669489444443
+yardage original preparation,carries,depth_role,RB4+,5,4,4.33133421212,5.110464124345604,-1.04659013284
+yardage original preparation,carries,depth_role,TE1,30,0,0.35033225316666666,0.7636524096388939,-0.2781680310666667
+yardage original preparation,carries,depth_role,TE2,22,8,0.07542760757727271,0.20105409636310667,-0.008722638468181814
+yardage original preparation,carries,depth_role,TE3+,22,31,0.038123904095454554,0.04143496558757977,0.038123904095454554
+yardage original preparation,carries,depth_role,WR1,25,5,0.35036052668799994,0.6511063244818525,-0.09171205075999996
+yardage original preparation,carries,depth_role,WR2,26,4,0.24547356658846153,0.37424143035562923,-0.04498153236538461
+yardage original preparation,carries,depth_role,WR3,27,3,0.2615221672814815,0.5248279437861828,-0.028071497237037033
+yardage original preparation,carries,depth_role,WR4+,52,23,0.17911907401730773,0.2564140904447509,0.06501893074807692
+yardage original preparation,carries,depth_role,nan,4,11,1.8118620612,1.8691334248451368,1.8118620612
+yardage original preparation,carries,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,2.0995436264833334,2.7244633011185875,2.0995436264833334
+yardage original preparation,carries,participation,OFFENSIVE_SNAPS,306,39,1.171643526290523,2.3626728013622165,-0.13367329760751628
+yardage original preparation,carries,participation,SNAPS_UNKNOWN,0,101,,,
+yardage original preparation,carries,snap_band,zero,12,5,2.0995436264833334,2.7244633011185875,2.0995436264833334
+yardage original preparation,carries,snap_band,1–20,92,30,1.166683732978261,2.18143568839109,0.5234602657913044
+yardage original preparation,carries,snap_band,21–40,92,8,1.0809190103597826,2.1183963578195515,-0.14374572375543476
+yardage original preparation,carries,snap_band,41+,122,1,1.2437989070311477,2.651173272093911,-0.6216210404524588
+yardage original preparation,carries,snap_band,nan,0,101,,,
+yardage original preparation,carries,volume_band,up to 5,267,133,0.7269751232505618,1.5149815461274083,0.05258506822659178
+yardage original preparation,carries,volume_band,5–20,51,12,3.7179428363686275,4.819125345978881,-0.583327818952941
+yardage original preparation,targets,all,all,318,145,1.3302478554974841,1.8287452989807798,0.24837018272201256
+yardage original preparation,targets,position,QB,37,42,0.01952339023513513,0.028201112598821843,0.01952339023513513
+yardage original preparation,targets,position,RB,77,26,1.1981996307675327,1.4602633860304406,0.2983031564662337
+yardage original preparation,targets,position,TE,74,40,1.319559784031081,1.7095569059660034,0.40675115623918917
+yardage original preparation,targets,position,WR,130,37,1.7875973617084613,2.292122381697229,0.19377249274846153
+yardage original preparation,targets,depth_role,QB1,25,4,0.016393467516,0.0190258506766246,0.016393467516
+yardage original preparation,targets,depth_role,QB2,11,18,0.027269907190909094,0.042872834270916614,0.027269907190909094
+yardage original preparation,targets,depth_role,QB3,1,18,0.0125597717,0.0125597717,0.0125597717
+yardage original preparation,targets,depth_role,QB4,0,2,,,
+yardage original preparation,targets,depth_role,RB1,29,1,1.5854342890896553,1.8472981502839168,0.19716014515862063
+yardage original preparation,targets,depth_role,RB2,21,8,1.1074350382047615,1.3511549127251523,-0.04128354797619046
+yardage original preparation,targets,depth_role,RB3,18,5,0.7958222349888888,0.9302134900114435,0.5231006773555555
+yardage original preparation,targets,depth_role,RB4+,5,4,0.6374016944,0.7203839963491777,0.6374016944
+yardage original preparation,targets,depth_role,TE1,30,0,1.5592373417500005,1.880091586714026,0.48050069474999985
+yardage original preparation,targets,depth_role,TE2,22,8,1.3691840572727272,1.9573957167235048,-0.13509061903636366
+yardage original preparation,targets,depth_role,TE3+,22,31,0.9431024775363638,1.0858216251642772,0.848025379
+yardage original preparation,targets,depth_role,WR1,25,5,2.132655572388,3.0479754038935596,-0.421757295852
+yardage original preparation,targets,depth_role,WR2,26,4,1.9930182253115385,2.457836396164446,-0.20105145780384615
+yardage original preparation,targets,depth_role,WR3,27,3,1.6144668554296298,1.9055620303658698,0.043421572081481494
+yardage original preparation,targets,depth_role,WR4+,52,23,1.6088882453403845,1.939651767809373,0.7651790751980768
+yardage original preparation,targets,depth_role,nan,4,11,1.3789581703499998,1.4766089777544504,1.3789581703499998
+yardage original preparation,targets,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,1.3395663096083334,1.4339973436540876,1.3395663096083334
+yardage original preparation,targets,participation,OFFENSIVE_SNAPS,306,39,1.3298824259245097,1.8425030915962783,0.20557817774607845
+yardage original preparation,targets,participation,SNAPS_UNKNOWN,0,101,,,
+yardage original preparation,targets,snap_band,zero,12,5,1.3395663096083334,1.4339973436540876,1.3395663096083334
+yardage original preparation,targets,snap_band,1–20,92,30,1.1183111947391304,1.4406349976964323,0.9616328351913043
+yardage original preparation,targets,snap_band,21–40,92,8,1.4853508730500002,1.844265673016709,0.1987512980543478
+yardage original preparation,targets,snap_band,41+,122,1,1.3721894434122952,2.0940071637935675,-0.35941326121557393
+yardage original preparation,targets,snap_band,nan,0,101,,,
+yardage original preparation,targets,volume_band,up to 5,253,140,1.1436206618470357,1.5248539685175506,0.3080230241395257
+yardage original preparation,targets,volume_band,5–20,65,5,2.056658316936923,2.703900129002395,0.01618296920461538
+yardage approved Week 9,rushing_yards,all,all,319,146,6.493103965252666,12.371807498315302,0.7187976577523513
+yardage approved Week 9,rushing_yards,position,QB,37,42,12.340559393000001,15.556224465372534,4.059960228864865
+yardage approved Week 9,rushing_yards,position,RB,78,27,17.67466723243205,22.151104113552062,1.2130153386423077
+yardage approved Week 9,rushing_yards,position,TE,74,40,0.2869354790283784,1.013888157553956,-0.13238793999864865
+yardage approved Week 9,rushing_yards,position,WR,130,37,1.6526322907446154,3.4243029969628584,-0.04415818845538467
+yardage approved Week 9,rushing_yards,depth_role,QB1,25,4,12.769909544312,16.225324164515687,2.8165942490719997
+yardage approved Week 9,rushing_yards,depth_role,QB2,11,18,11.812545830536363,14.514401202989,6.580792494900001
+yardage approved Week 9,rushing_yards,depth_role,QB3,1,18,7.4149547973,7.4149547973,7.4149547973
+yardage approved Week 9,rushing_yards,depth_role,QB4,0,2,,,
+yardage approved Week 9,rushing_yards,depth_role,RB1,29,1,18.019374208551724,21.44305263589186,1.601803590448275
+yardage approved Week 9,rushing_yards,depth_role,RB2,21,8,21.68865002637619,27.933785368808163,-2.60944353845238
+yardage approved Week 9,rushing_yards,depth_role,RB3,18,6,12.888014303511111,14.735707130622705,7.485223291477778
+yardage approved Week 9,rushing_yards,depth_role,RB4+,6,4,22.45109542535,26.886438969190216,-10.947087360083332
+yardage approved Week 9,rushing_yards,depth_role,TE1,30,0,0.60050931871,1.5883539852585948,-0.4338217815566666
+yardage approved Week 9,rushing_yards,depth_role,TE2,22,8,0.0849969463,0.10399281407297079,0.0849969463
+yardage approved Week 9,rushing_yards,depth_role,TE3+,22,31,0.06127332128181819,0.08139407872805514,0.06127332128181819
+yardage approved Week 9,rushing_yards,depth_role,WR1,25,5,2.535519150488,4.994631991379673,-0.7118186200479998
+yardage approved Week 9,rushing_yards,depth_role,WR2,26,4,1.6257273449076923,2.9915308868514203,-0.14192821625384605
+yardage approved Week 9,rushing_yards,depth_role,WR3,27,3,1.8021488110333335,3.702703099658586,-0.0280685291814815
+yardage approved Week 9,rushing_yards,depth_role,WR4+,52,23,1.1639863494057692,2.393303775049742,0.31736317139423076
+yardage approved Week 9,rushing_yards,depth_role,nan,4,11,8.477427878124999,8.746329704705152,8.477427878124999
+yardage approved Week 9,rushing_yards,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,9.074859454491667,11.490152320065167,9.074859454491667
+yardage approved Week 9,rushing_yards,participation,OFFENSIVE_SNAPS,307,39,6.392188441243323,12.404997131066613,0.3921763497364821
+yardage approved Week 9,rushing_yards,participation,SNAPS_UNKNOWN,0,102,,,
+yardage approved Week 9,rushing_yards,snap_band,zero,12,5,9.074859454491667,11.490152320065167,9.074859454491667
+yardage approved Week 9,rushing_yards,snap_band,1–20,92,30,7.440555021552174,14.189558240155867,2.5665698065173914
+yardage approved Week 9,rushing_yards,snap_band,21–40,93,8,5.559028021504302,12.224477114664344,-0.6284788728247315
+yardage approved Week 9,rushing_yards,snap_band,41+,122,1,6.2367310121229504,11.02197761070431,-0.4694897349000002
+yardage approved Week 9,rushing_yards,snap_band,nan,0,102,,,
+yardage approved Week 9,rushing_yards,volume_band,up to 5,205,78,1.1796100176614632,2.822756938648114,-0.047768983821463426
+yardage approved Week 9,rushing_yards,volume_band,5–20,56,52,13.163565932701784,18.57786265724809,0.4404554173089283
+yardage approved Week 9,rushing_yards,volume_band,20–50,35,13,17.13789703549714,19.710595257076726,1.8103926802857149
+yardage approved Week 9,rushing_yards,volume_band,50–100,23,3,21.412783600926087,24.9065995943228,6.5678194490043476
+yardage approved Week 9,receiving_yards,all,all,319,146,14.491884358481506,22.47911331400422,0.8532837292231972
+yardage approved Week 9,receiving_yards,position,QB,37,42,0.05920595122702703,0.18366378621815901,0.05920595122702703
+yardage approved Week 9,receiving_yards,position,RB,78,27,10.850540009352565,14.543063334074539,2.0098769401807695
+yardage approved Week 9,receiving_yards,position,TE,74,40,13.047980430666218,17.519566551538915,2.4327242310040536
+yardage approved Week 9,receiving_yards,position,WR,130,37,21.606367827395385,30.632129070500497,-0.5137315769353847
+yardage approved Week 9,receiving_yards,depth_role,QB1,25,4,0.025157965039999997,0.044949420784616285,0.025157965039999997
+yardage approved Week 9,receiving_yards,depth_role,QB2,11,18,0.1300782389818182,0.3275911619858783,0.1300782389818182
+yardage approved Week 9,receiving_yards,depth_role,QB3,1,18,0.1308104406,0.1308104406,0.1308104406
+yardage approved Week 9,receiving_yards,depth_role,QB4,0,2,,,
+yardage approved Week 9,receiving_yards,depth_role,RB1,29,1,13.471298643306897,16.171819800205473,3.850340346693103
+yardage approved Week 9,receiving_yards,depth_role,RB2,21,8,12.207810173590477,17.095435547347318,-3.4299118766190473
+yardage approved Week 9,receiving_yards,depth_role,RB3,18,6,7.387970279344444,11.264519411093525,2.822872182722222
+yardage approved Week 9,receiving_yards,depth_role,RB4+,6,4,5.823052695333334,5.953477360191097,5.823052695333334
+yardage approved Week 9,receiving_yards,depth_role,TE1,30,0,14.317368684816666,18.717874175921704,3.4896321051033334
+yardage approved Week 9,receiving_yards,depth_role,TE2,22,8,15.865293359236363,21.66283566663654,-2.7550407263545456
+yardage approved Week 9,receiving_yards,depth_role,TE3+,22,31,8.499683519163638,9.240020190795482,6.17925117822727
+yardage approved Week 9,receiving_yards,depth_role,WR1,25,5,28.994939788359996,44.206455507681966,-9.403333359496001
+yardage approved Week 9,receiving_yards,depth_role,WR2,26,4,23.295690250623075,30.89096160749993,-3.8210216067461533
+yardage approved Week 9,receiving_yards,depth_role,WR3,27,3,20.002954293807402,23.964098576788135,3.698964702407408
+yardage approved Week 9,receiving_yards,depth_role,WR4+,52,23,18.042050200065383,25.119422295550418,3.2263989191576923
+yardage approved Week 9,receiving_yards,depth_role,nan,4,11,7.847166307,8.347817606259488,7.847166307
+yardage approved Week 9,receiving_yards,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,9.307728712208332,10.390251857201843,9.307728712208332
+yardage approved Week 9,receiving_yards,participation,OFFENSIVE_SNAPS,307,39,14.694522364199022,22.8219687280483,0.5228168243508144
+yardage approved Week 9,receiving_yards,participation,SNAPS_UNKNOWN,0,102,,,
+yardage approved Week 9,receiving_yards,snap_band,zero,12,5,9.307728712208332,10.390251857201843,9.307728712208332
+yardage approved Week 9,receiving_yards,snap_band,1–20,92,30,10.625751554084783,13.941771296595574,6.340208318134782
+yardage approved Week 9,receiving_yards,snap_band,21–40,93,8,17.048092561895697,24.039039644015773,0.22198638990430106
+yardage approved Week 9,receiving_yards,snap_band,41+,122,1,15.96866077522131,26.898997982190316,-3.634747003719673
+yardage approved Week 9,receiving_yards,snap_band,nan,0,102,,,
+yardage approved Week 9,receiving_yards,volume_band,up to 5,48,44,1.892229706975,6.31737673464953,0.18031792074166683
+yardage approved Week 9,receiving_yards,volume_band,5–20,143,79,11.471358008753846,14.730222729237921,3.246190032629371
+yardage approved Week 9,receiving_yards,volume_band,20–50,101,18,19.18497332708713,25.173667069196366,1.6214081839188126
+yardage approved Week 9,receiving_yards,volume_band,50–100,27,5,35.33324381974814,48.77965914248067,-13.497227845007407
+yardage approved Week 9,carries,all,all,319,146,1.2193190909460814,2.391695559212554,-0.06568919435485893
+yardage approved Week 9,carries,position,QB,37,42,1.8664510424351355,2.436562989853235,0.30090211058108113
+yardage approved Week 9,carries,position,RB,78,27,3.530504927255128,4.474379064625839,-0.301932703403846
+yardage approved Week 9,carries,position,TE,74,40,0.17578514664594594,0.49894512257478685,-0.10402990659729729
+yardage approved Week 9,carries,position,WR,130,37,0.24243550972307693,0.43936897638880607,-0.006455901053846151
+yardage approved Week 9,carries,depth_role,QB1,25,4,1.6357822991320001,2.138074601183652,0.3606122527880001
+yardage approved Week 9,carries,depth_role,QB2,11,18,2.3668720777545458,3.027875049968294,-0.0009514967909090819
+yardage approved Week 9,carries,depth_role,QB3,1,18,2.1285382365,2.1285382365,2.1285382365
+yardage approved Week 9,carries,depth_role,QB4,0,2,,,
+yardage approved Week 9,carries,depth_role,RB1,29,1,3.8121695362103445,4.863237959810254,-1.063069619989655
+yardage approved Week 9,carries,depth_role,RB2,21,8,3.8644635242238103,5.0513446575683965,-0.8887946237285711
+yardage approved Week 9,carries,depth_role,RB3,18,6,2.751292611811111,3.0529914142413266,1.6207669489444443
+yardage approved Week 9,carries,depth_role,RB4+,6,4,4.4836697516166675,5.133190815547014,-1.7463830188833336
+yardage approved Week 9,carries,depth_role,TE1,30,0,0.35033225316666666,0.7636524096388939,-0.2781680310666667
+yardage approved Week 9,carries,depth_role,TE2,22,8,0.07542760757727271,0.20105409636310667,-0.008722638468181814
+yardage approved Week 9,carries,depth_role,TE3+,22,31,0.038123904095454554,0.04143496558757977,0.038123904095454554
+yardage approved Week 9,carries,depth_role,WR1,25,5,0.35036052668799994,0.6511063244818525,-0.09171205075999996
+yardage approved Week 9,carries,depth_role,WR2,26,4,0.24547356658846153,0.37424143035562923,-0.04498153236538461
+yardage approved Week 9,carries,depth_role,WR3,27,3,0.2615221672814815,0.5248279437861828,-0.028071497237037033
+yardage approved Week 9,carries,depth_role,WR4+,52,23,0.17911907401730773,0.2564140904447509,0.06501893074807692
+yardage approved Week 9,carries,depth_role,nan,4,11,1.8118620612,1.8691334248451368,1.8118620612
+yardage approved Week 9,carries,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,2.0995436264833334,2.7244633011185875,2.0995436264833334
+yardage approved Week 9,carries,participation,OFFENSIVE_SNAPS,307,39,1.184912920175896,2.377742775137494,-0.15032370200977194
+yardage approved Week 9,carries,participation,SNAPS_UNKNOWN,0,102,,,
+yardage approved Week 9,carries,snap_band,zero,12,5,2.0995436264833334,2.7244633011185875,2.0995436264833334
+yardage approved Week 9,carries,snap_band,1–20,92,30,1.166683732978261,2.18143568839109,0.5234602657913044
+yardage approved Week 9,carries,snap_band,21–40,93,8,1.1256978107763442,2.1760503772273467,-0.1986016562860215
+yardage approved Week 9,carries,snap_band,41+,122,1,1.2437989070311477,2.651173272093911,-0.6216210404524588
+yardage approved Week 9,carries,snap_band,nan,0,102,,,
+yardage approved Week 9,carries,volume_band,up to 5,267,134,0.7269751232505618,1.5149815461274083,0.05258506822659178
+yardage approved Week 9,carries,volume_band,5–20,52,12,3.7473160019980774,4.827676806256814,-0.6729820426096151
+yardage approved Week 9,targets,all,all,319,146,1.3297251769382443,1.8270384266879998,0.25123897022163005
+yardage approved Week 9,targets,position,QB,37,42,0.01952339023513513,0.028201112598821843,0.01952339023513513
+yardage approved Week 9,targets,position,RB,78,27,1.1977549354384616,1.4568414573180308,0.3093955954230769
+yardage approved Week 9,targets,position,TE,74,40,1.319559784031081,1.7095569059660034,0.40675115623918917
+yardage approved Week 9,targets,position,WR,130,37,1.7875973617084613,2.292122381697229,0.19377249274846153
+yardage approved Week 9,targets,depth_role,QB1,25,4,0.016393467516,0.0190258506766246,0.016393467516
+yardage approved Week 9,targets,depth_role,QB2,11,18,0.027269907190909094,0.042872834270916614,0.027269907190909094
+yardage approved Week 9,targets,depth_role,QB3,1,18,0.0125597717,0.0125597717,0.0125597717
+yardage approved Week 9,targets,depth_role,QB4,0,2,,,
+yardage approved Week 9,targets,depth_role,RB1,29,1,1.5854342890896553,1.8472981502839168,0.19716014515862063
+yardage approved Week 9,targets,depth_role,RB2,21,8,1.1074350382047615,1.3511549127251523,-0.04128354797619046
+yardage approved Week 9,targets,depth_role,RB3,18,6,0.7958222349888888,0.9302134900114435,0.5231006773555555
+yardage approved Week 9,targets,depth_role,RB4+,6,4,0.7250869778499999,0.8112263280118142,0.7250869778499999
+yardage approved Week 9,targets,depth_role,TE1,30,0,1.5592373417500005,1.880091586714026,0.48050069474999985
+yardage approved Week 9,targets,depth_role,TE2,22,8,1.3691840572727272,1.9573957167235048,-0.13509061903636366
+yardage approved Week 9,targets,depth_role,TE3+,22,31,0.9431024775363638,1.0858216251642772,0.848025379
+yardage approved Week 9,targets,depth_role,WR1,25,5,2.132655572388,3.0479754038935596,-0.421757295852
+yardage approved Week 9,targets,depth_role,WR2,26,4,1.9930182253115385,2.457836396164446,-0.20105145780384615
+yardage approved Week 9,targets,depth_role,WR3,27,3,1.6144668554296298,1.9055620303658698,0.043421572081481494
+yardage approved Week 9,targets,depth_role,WR4+,52,23,1.6088882453403845,1.939651767809373,0.7651790751980768
+yardage approved Week 9,targets,depth_role,nan,4,11,1.3789581703499998,1.4766089777544504,1.3789581703499998
+yardage approved Week 9,targets,participation,NO_OFFENSIVE_SNAPS_RECORDED,12,5,1.3395663096083334,1.4339973436540876,1.3395663096083334
+yardage approved Week 9,targets,participation,OFFENSIVE_SNAPS,307,39,1.329340507257329,1.8406980353806028,0.20869848790032572
+yardage approved Week 9,targets,participation,SNAPS_UNKNOWN,0,102,,,
+yardage approved Week 9,targets,snap_band,zero,12,5,1.3395663096083334,1.4339973436540876,1.3395663096083334
+yardage approved Week 9,targets,snap_band,1–20,92,30,1.1183111947391304,1.4406349976964323,0.9616328351913043
+yardage approved Week 9,targets,snap_band,21–40,93,8,1.481890255007527,1.8382870231915749,0.20912508404408603
+yardage approved Week 9,targets,snap_band,41+,122,1,1.3721894434122952,2.0940071637935675,-0.35941326121557393
+yardage approved Week 9,targets,snap_band,nan,0,102,,,
+yardage approved Week 9,targets,volume_band,up to 5,254,141,1.143698979694488,1.523599406686931,0.3113910964661417
+yardage approved Week 9,targets,volume_band,5–20,65,5,2.056658316936923,2.703900129002395,0.01618296920461538
+passing original,passing_yards,all,all,25,3,46.055,58.87561570803315,-4.365
+passing original,passing_yards,position,QB,25,3,46.055,58.87561570803315,-4.365
+passing original,passing_yards,depth_role,QB1,25,3,46.055,58.87561570803315,-4.365
+passing original,passing_yards,participation,OFFENSIVE_SNAPS,25,0,46.055,58.87561570803315,-4.365
+passing original,passing_yards,participation,SNAPS_UNKNOWN,0,3,,,
+passing original,passing_yards,snap_band,41+,25,0,46.055,58.87561570803315,-4.365
+passing original,passing_yards,snap_band,nan,0,3,,,
+passing original,passing_yards,volume_band,over 100,25,3,46.055,58.87561570803315,-4.365
+passing Sunday conditional,passing_yards,all,all,2,0,65.0625,83.72037722382765,65.0625
+passing Sunday conditional,passing_yards,position,QB,2,0,65.0625,83.72037722382765,65.0625
+passing Sunday conditional,passing_yards,depth_role,QB2,2,0,65.0625,83.72037722382765,65.0625
+passing Sunday conditional,passing_yards,participation,OFFENSIVE_SNAPS,2,0,65.0625,83.72037722382765,65.0625
+passing Sunday conditional,passing_yards,snap_band,21–40,1,0,117.75,117.75,117.75
+passing Sunday conditional,passing_yards,snap_band,41+,1,0,12.375,12.375,12.375
+passing Sunday conditional,passing_yards,volume_band,over 100,2,0,65.0625,83.72037722382765,65.0625

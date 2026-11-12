@@ -1,0 +1,1761 @@
+{
+  "schema": "week10-model-c-preview-v1",
+  "edition": "FINAL",
+  "model_c_id": "paired-residual-history8-v1",
+  "parent_a_sha256": "4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e",
+  "edition_manifest_sha256": "6ca77310c073847d0d1348457fb5a9fa3c63fe2661076178c490eca530f77eeb",
+  "actionable": false,
+  "publication": false,
+  "fixtures": [
+    {
+      "game_id": "2026_10_WAS_NYG",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          20.1328125,
+          24.0
+        ],
+        "median": [
+          20.0,
+          23.0
+        ],
+        "away_interval80": [
+          8.0,
+          33.0
+        ],
+        "home_interval80": [
+          13.0,
+          37.0
+        ],
+        "total_interval80": [
+          29.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -15.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 44.1328125,
+        "expected_home_margin": 3.8671875,
+        "probabilities": {
+          "away_35": 0.0859375,
+          "home_35": 0.1171875,
+          "away_10": 0.1484375,
+          "home_10": 0.046875,
+          "total_60": 0.140625,
+          "total_under_30": 0.1015625,
+          "margin_17": 0.2578125,
+          "margin_24": 0.0859375,
+          "within_3": 0.203125,
+          "either_35": 0.1875,
+          "either_10": 0.1875
+        },
+        "score_correlation": -0.08420434629747513,
+        "typical": [
+          19,
+          23
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          31,
+          34
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          20.4365234375,
+          24.666015625
+        ],
+        "median": [
+          19.0,
+          24.0
+        ],
+        "away_interval80": [
+          10.0,
+          32.700000000000045
+        ],
+        "home_interval80": [
+          13.0,
+          38.0
+        ],
+        "total_interval80": [
+          29.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          21.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 45.1025390625,
+        "expected_home_margin": 4.2294921875,
+        "probabilities": {
+          "away_35": 0.0751953125,
+          "home_35": 0.1533203125,
+          "away_10": 0.1201171875,
+          "home_10": 0.0458984375,
+          "total_60": 0.1435546875,
+          "total_under_30": 0.1123046875,
+          "margin_17": 0.224609375,
+          "margin_24": 0.08984375,
+          "within_3": 0.2060546875,
+          "either_35": 0.216796875,
+          "either_10": 0.16015625
+        },
+        "score_correlation": 0.00044179750875847975,
+        "typical": [
+          20,
+          24
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          29,
+          33
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.921308442860962,
+      "context_drives": 11.375
+    },
+    {
+      "game_id": "2026_10_NE_DET",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          24.1484375,
+          25.59375
+        ],
+        "median": [
+          23.0,
+          25.5
+        ],
+        "away_interval80": [
+          13.0,
+          36.0
+        ],
+        "home_interval80": [
+          15.0,
+          38.0
+        ],
+        "total_interval80": [
+          35.0,
+          68.0
+        ],
+        "home_margin_interval80": [
+          -17.0,
+          21.0
+        ],
+        "absolute_margin_interval80": [
+          3.0,
+          22.0
+        ],
+        "expected_total": 49.7421875,
+        "expected_home_margin": 1.4453125,
+        "probabilities": {
+          "away_35": 0.15625,
+          "home_35": 0.1640625,
+          "away_10": 0.0703125,
+          "home_10": 0.0625,
+          "total_60": 0.234375,
+          "total_under_30": 0.0390625,
+          "margin_17": 0.25,
+          "margin_24": 0.0703125,
+          "within_3": 0.1796875,
+          "either_35": 0.28125,
+          "either_10": 0.1328125
+        },
+        "score_correlation": -0.06839295299909716,
+        "typical": [
+          23,
+          28
+        ],
+        "low": [
+          15,
+          21
+        ],
+        "high": [
+          35,
+          35
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          22.376953125,
+          26.345703125
+        ],
+        "median": [
+          21.0,
+          25.0
+        ],
+        "away_interval80": [
+          11.0,
+          35.700000000000045
+        ],
+        "home_interval80": [
+          14.0,
+          40.0
+        ],
+        "total_interval80": [
+          31.0,
+          68.0
+        ],
+        "home_margin_interval80": [
+          -14.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 48.72265625,
+        "expected_home_margin": 3.96875,
+        "probabilities": {
+          "away_35": 0.1142578125,
+          "home_35": 0.2001953125,
+          "away_10": 0.08984375,
+          "home_10": 0.0341796875,
+          "total_60": 0.2109375,
+          "total_under_30": 0.0712890625,
+          "margin_17": 0.2568359375,
+          "margin_24": 0.111328125,
+          "within_3": 0.1923828125,
+          "either_35": 0.291015625,
+          "either_10": 0.12109375
+        },
+        "score_correlation": -0.00024334524829610864,
+        "typical": [
+          22,
+          25
+        ],
+        "low": [
+          13,
+          18
+        ],
+        "high": [
+          32,
+          37
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 9.156444020400407,
+      "context_drives": 10.625
+    },
+    {
+      "game_id": "2026_10_KC_ATL",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          25.375,
+          20.640625
+        ],
+        "median": [
+          25.0,
+          21.0
+        ],
+        "away_interval80": [
+          14.0,
+          38.0
+        ],
+        "home_interval80": [
+          10.0,
+          32.0
+        ],
+        "total_interval80": [
+          31.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -23.0,
+          13.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          24.0
+        ],
+        "expected_total": 46.015625,
+        "expected_home_margin": -4.734375,
+        "probabilities": {
+          "away_35": 0.1640625,
+          "home_35": 0.0625,
+          "away_10": 0.0625,
+          "home_10": 0.109375,
+          "total_60": 0.1484375,
+          "total_under_30": 0.078125,
+          "margin_17": 0.25,
+          "margin_24": 0.1015625,
+          "within_3": 0.21875,
+          "either_35": 0.203125,
+          "either_10": 0.171875
+        },
+        "score_correlation": -0.04991887298439683,
+        "typical": [
+          25,
+          22
+        ],
+        "low": [
+          16,
+          14
+        ],
+        "high": [
+          32,
+          30
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          23.4638671875,
+          21.271484375
+        ],
+        "median": [
+          22.0,
+          20.0
+        ],
+        "away_interval80": [
+          11.300000000000011,
+          37.0
+        ],
+        "home_interval80": [
+          11.0,
+          33.0
+        ],
+        "total_interval80": [
+          29.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -19.0,
+          14.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          22.700000000000045
+        ],
+        "expected_total": 44.7353515625,
+        "expected_home_margin": -2.1923828125,
+        "probabilities": {
+          "away_35": 0.1396484375,
+          "home_35": 0.07421875,
+          "away_10": 0.076171875,
+          "home_10": 0.083984375,
+          "total_60": 0.134765625,
+          "total_under_30": 0.1162109375,
+          "margin_17": 0.212890625,
+          "margin_24": 0.0830078125,
+          "within_3": 0.21875,
+          "either_35": 0.203125,
+          "either_10": 0.1533203125
+        },
+        "score_correlation": 0.000607017060802488,
+        "typical": [
+          23,
+          21
+        ],
+        "low": [
+          16,
+          13
+        ],
+        "high": [
+          33,
+          29
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 11.854422961494162,
+      "context_drives": 10.25
+    },
+    {
+      "game_id": "2026_10_HOU_CLE",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          23.5234375,
+          20.6171875
+        ],
+        "median": [
+          23.0,
+          20.0
+        ],
+        "away_interval80": [
+          12.0,
+          36.0
+        ],
+        "home_interval80": [
+          10.0,
+          32.0
+        ],
+        "total_interval80": [
+          29.0,
+          59.0
+        ],
+        "home_margin_interval80": [
+          -21.0,
+          11.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          23.0
+        ],
+        "expected_total": 44.140625,
+        "expected_home_margin": -2.90625,
+        "probabilities": {
+          "away_35": 0.1328125,
+          "home_35": 0.0625,
+          "away_10": 0.0703125,
+          "home_10": 0.1015625,
+          "total_60": 0.09375,
+          "total_under_30": 0.1015625,
+          "margin_17": 0.2109375,
+          "margin_24": 0.078125,
+          "within_3": 0.25,
+          "either_35": 0.1640625,
+          "either_10": 0.1640625
+        },
+        "score_correlation": 0.03310324113248606,
+        "typical": [
+          23,
+          20
+        ],
+        "low": [
+          16,
+          13
+        ],
+        "high": [
+          31,
+          28
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          22.162109375,
+          22.205078125
+        ],
+        "median": [
+          21.0,
+          21.0
+        ],
+        "away_interval80": [
+          11.0,
+          35.0
+        ],
+        "home_interval80": [
+          12.0,
+          34.0
+        ],
+        "total_interval80": [
+          28.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -17.0,
+          16.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          22.0
+        ],
+        "expected_total": 44.3671875,
+        "expected_home_margin": 0.04296875,
+        "probabilities": {
+          "away_35": 0.1103515625,
+          "home_35": 0.09375,
+          "away_10": 0.0927734375,
+          "home_10": 0.0712890625,
+          "total_60": 0.12890625,
+          "total_under_30": 0.1142578125,
+          "margin_17": 0.2021484375,
+          "margin_24": 0.0771484375,
+          "within_3": 0.2197265625,
+          "either_35": 0.193359375,
+          "either_10": 0.1572265625
+        },
+        "score_correlation": 0.0006263184166981285,
+        "typical": [
+          22,
+          21
+        ],
+        "low": [
+          14,
+          14
+        ],
+        "high": [
+          30,
+          32
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 8.988348510330882,
+      "context_drives": 10.625
+    },
+    {
+      "game_id": "2026_10_MIN_GB",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          20.984375,
+          22.859375
+        ],
+        "median": [
+          20.0,
+          23.0
+        ],
+        "away_interval80": [
+          10.0,
+          32.0
+        ],
+        "home_interval80": [
+          12.0,
+          35.0
+        ],
+        "total_interval80": [
+          29.0,
+          59.0
+        ],
+        "home_margin_interval80": [
+          -16.0,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          21.0
+        ],
+        "expected_total": 43.84375,
+        "expected_home_margin": 1.875,
+        "probabilities": {
+          "away_35": 0.0546875,
+          "home_35": 0.1015625,
+          "away_10": 0.109375,
+          "home_10": 0.078125,
+          "total_60": 0.09375,
+          "total_under_30": 0.1171875,
+          "margin_17": 0.1796875,
+          "margin_24": 0.0703125,
+          "within_3": 0.2421875,
+          "either_35": 0.1328125,
+          "either_10": 0.1796875
+        },
+        "score_correlation": -0.014106361381866831,
+        "typical": [
+          20,
+          23
+        ],
+        "low": [
+          13,
+          15
+        ],
+        "high": [
+          28,
+          32
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          19.5078125,
+          23.21875
+        ],
+        "median": [
+          18.0,
+          22.0
+        ],
+        "away_interval80": [
+          9.0,
+          31.0
+        ],
+        "home_interval80": [
+          12.0,
+          35.700000000000045
+        ],
+        "total_interval80": [
+          27.0,
+          59.700000000000045
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          19.700000000000045
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          21.0
+        ],
+        "expected_total": 42.7265625,
+        "expected_home_margin": 3.7109375,
+        "probabilities": {
+          "away_35": 0.05859375,
+          "home_35": 0.1171875,
+          "away_10": 0.1396484375,
+          "home_10": 0.0595703125,
+          "total_60": 0.1005859375,
+          "total_under_30": 0.1494140625,
+          "margin_17": 0.2001953125,
+          "margin_24": 0.076171875,
+          "within_3": 0.216796875,
+          "either_35": 0.16796875,
+          "either_10": 0.19140625
+        },
+        "score_correlation": -0.000611729255408015,
+        "typical": [
+          19,
+          23
+        ],
+        "low": [
+          11,
+          16
+        ],
+        "high": [
+          28,
+          33
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 9.522672784298905,
+      "context_drives": 10.625
+    },
+    {
+      "game_id": "2026_10_MIA_IND",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          19.09375,
+          22.2734375
+        ],
+        "median": [
+          19.0,
+          23.0
+        ],
+        "away_interval80": [
+          6.0,
+          30.0
+        ],
+        "home_interval80": [
+          9.0,
+          33.0
+        ],
+        "total_interval80": [
+          27.0,
+          58.0
+        ],
+        "home_margin_interval80": [
+          -15.0,
+          20.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          22.0
+        ],
+        "expected_total": 41.3671875,
+        "expected_home_margin": 3.1796875,
+        "probabilities": {
+          "away_35": 0.03125,
+          "home_35": 0.078125,
+          "away_10": 0.21875,
+          "home_10": 0.125,
+          "total_60": 0.09375,
+          "total_under_30": 0.1640625,
+          "margin_17": 0.1953125,
+          "margin_24": 0.0859375,
+          "within_3": 0.2421875,
+          "either_35": 0.09375,
+          "either_10": 0.3125
+        },
+        "score_correlation": 0.049183187286309,
+        "typical": [
+          18,
+          23
+        ],
+        "low": [
+          12,
+          15
+        ],
+        "high": [
+          27,
+          31
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          19.244140625,
+          22.9306640625
+        ],
+        "median": [
+          18.0,
+          22.0
+        ],
+        "away_interval80": [
+          9.0,
+          31.0
+        ],
+        "home_interval80": [
+          12.0,
+          35.0
+        ],
+        "total_interval80": [
+          27.0,
+          59.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          19.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          21.0
+        ],
+        "expected_total": 42.1748046875,
+        "expected_home_margin": 3.6865234375,
+        "probabilities": {
+          "away_35": 0.0546875,
+          "home_35": 0.109375,
+          "away_10": 0.14453125,
+          "home_10": 0.0625,
+          "total_60": 0.0927734375,
+          "total_under_30": 0.154296875,
+          "margin_17": 0.1982421875,
+          "margin_24": 0.0751953125,
+          "within_3": 0.212890625,
+          "either_35": 0.158203125,
+          "either_10": 0.1982421875
+        },
+        "score_correlation": -0.0006483320208857135,
+        "typical": [
+          19,
+          22
+        ],
+        "low": [
+          12,
+          15
+        ],
+        "high": [
+          27,
+          31
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.217637714808429,
+      "context_drives": 10.5
+    },
+    {
+      "game_id": "2026_10_CAR_NO",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          24.21875,
+          22.4765625
+        ],
+        "median": [
+          24.0,
+          22.0
+        ],
+        "away_interval80": [
+          11.0,
+          37.0
+        ],
+        "home_interval80": [
+          9.0,
+          36.0
+        ],
+        "total_interval80": [
+          30.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -20.0,
+          19.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 46.6953125,
+        "expected_home_margin": -1.7421875,
+        "probabilities": {
+          "away_35": 0.1796875,
+          "home_35": 0.1171875,
+          "away_10": 0.09375,
+          "home_10": 0.1328125,
+          "total_60": 0.1875,
+          "total_under_30": 0.09375,
+          "margin_17": 0.3046875,
+          "margin_24": 0.109375,
+          "within_3": 0.2265625,
+          "either_35": 0.265625,
+          "either_10": 0.21875
+        },
+        "score_correlation": -0.04741960106953275,
+        "typical": [
+          24,
+          21
+        ],
+        "low": [
+          18,
+          13
+        ],
+        "high": [
+          31,
+          32
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          22.8310546875,
+          24.111328125
+        ],
+        "median": [
+          22.0,
+          23.0
+        ],
+        "away_interval80": [
+          11.0,
+          36.0
+        ],
+        "home_interval80": [
+          13.0,
+          37.0
+        ],
+        "total_interval80": [
+          30.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -16.0,
+          18.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 46.9423828125,
+        "expected_home_margin": 1.2802734375,
+        "probabilities": {
+          "away_35": 0.125,
+          "home_35": 0.138671875,
+          "away_10": 0.083984375,
+          "home_10": 0.05078125,
+          "total_60": 0.177734375,
+          "total_under_30": 0.0908203125,
+          "margin_17": 0.224609375,
+          "margin_24": 0.0888671875,
+          "within_3": 0.2109375,
+          "either_35": 0.24609375,
+          "either_10": 0.130859375
+        },
+        "score_correlation": 0.0003377265454300955,
+        "typical": [
+          22,
+          24
+        ],
+        "low": [
+          14,
+          16
+        ],
+        "high": [
+          31,
+          34
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.8053031670091135,
+      "context_drives": 10.375
+    },
+    {
+      "game_id": "2026_10_BUF_NYJ",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          25.5703125,
+          22.234375
+        ],
+        "median": [
+          24.0,
+          22.0
+        ],
+        "away_interval80": [
+          14.0,
+          40.0
+        ],
+        "home_interval80": [
+          9.0,
+          35.0
+        ],
+        "total_interval80": [
+          31.0,
+          67.0
+        ],
+        "home_margin_interval80": [
+          -21.0,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          26.0
+        ],
+        "expected_total": 47.8046875,
+        "expected_home_margin": -3.3359375,
+        "probabilities": {
+          "away_35": 0.2109375,
+          "home_35": 0.109375,
+          "away_10": 0.0234375,
+          "home_10": 0.125,
+          "total_60": 0.2265625,
+          "total_under_30": 0.0703125,
+          "margin_17": 0.265625,
+          "margin_24": 0.109375,
+          "within_3": 0.15625,
+          "either_35": 0.296875,
+          "either_10": 0.1484375
+        },
+        "score_correlation": -0.05961942607894143,
+        "typical": [
+          28,
+          20
+        ],
+        "low": [
+          16,
+          16
+        ],
+        "high": [
+          37,
+          32
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          26.447265625,
+          20.9775390625
+        ],
+        "median": [
+          25.0,
+          20.0
+        ],
+        "away_interval80": [
+          13.0,
+          42.0
+        ],
+        "home_interval80": [
+          11.0,
+          32.0
+        ],
+        "total_interval80": [
+          30.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -24.0,
+          12.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          25.0
+        ],
+        "expected_total": 47.4248046875,
+        "expected_home_margin": -5.4697265625,
+        "probabilities": {
+          "away_35": 0.21875,
+          "home_35": 0.0693359375,
+          "away_10": 0.048828125,
+          "home_10": 0.0888671875,
+          "total_60": 0.181640625,
+          "total_under_30": 0.0888671875,
+          "margin_17": 0.2578125,
+          "margin_24": 0.1220703125,
+          "within_3": 0.197265625,
+          "either_35": 0.2734375,
+          "either_10": 0.1328125
+        },
+        "score_correlation": 0.0011887391656582645,
+        "typical": [
+          26,
+          20
+        ],
+        "low": [
+          17,
+          13
+        ],
+        "high": [
+          36,
+          31
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 6.5017901620165155,
+      "context_drives": 10.25
+    },
+    {
+      "game_id": "2026_10_JAX_TEN",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          26.1953125,
+          19.3515625
+        ],
+        "median": [
+          26.0,
+          20.0
+        ],
+        "away_interval80": [
+          16.0,
+          38.0
+        ],
+        "home_interval80": [
+          7.0,
+          31.0
+        ],
+        "total_interval80": [
+          31.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -26.0,
+          11.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          26.0
+        ],
+        "expected_total": 45.546875,
+        "expected_home_margin": -6.84375,
+        "probabilities": {
+          "away_35": 0.1875,
+          "home_35": 0.0546875,
+          "away_10": 0.0390625,
+          "home_10": 0.1953125,
+          "total_60": 0.140625,
+          "total_under_30": 0.0703125,
+          "margin_17": 0.25,
+          "margin_24": 0.140625,
+          "within_3": 0.1328125,
+          "either_35": 0.2421875,
+          "either_10": 0.234375
+        },
+        "score_correlation": -0.14301951750076808,
+        "typical": [
+          24,
+          19
+        ],
+        "low": [
+          17,
+          14
+        ],
+        "high": [
+          37,
+          26
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          25.1796875,
+          18.7978515625
+        ],
+        "median": [
+          24.0,
+          18.0
+        ],
+        "away_interval80": [
+          12.0,
+          40.0
+        ],
+        "home_interval80": [
+          10.0,
+          29.0
+        ],
+        "total_interval80": [
+          28.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -24.0,
+          10.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          25.0
+        ],
+        "expected_total": 43.9775390625,
+        "expected_home_margin": -6.3818359375,
+        "probabilities": {
+          "away_35": 0.18359375,
+          "home_35": 0.0361328125,
+          "away_10": 0.0595703125,
+          "home_10": 0.130859375,
+          "total_60": 0.1259765625,
+          "total_under_30": 0.1318359375,
+          "margin_17": 0.2451171875,
+          "margin_24": 0.1123046875,
+          "within_3": 0.201171875,
+          "either_35": 0.2119140625,
+          "either_10": 0.1826171875
+        },
+        "score_correlation": 0.0017852848524184653,
+        "typical": [
+          25,
+          18
+        ],
+        "low": [
+          17,
+          11
+        ],
+        "high": [
+          35,
+          27
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 9.637725649738051,
+      "context_drives": 10.75
+    },
+    {
+      "game_id": "2026_10_LA_ARI",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          26.0234375,
+          19.6953125
+        ],
+        "median": [
+          25.5,
+          20.0
+        ],
+        "away_interval80": [
+          13.0,
+          40.0
+        ],
+        "home_interval80": [
+          7.0,
+          32.0
+        ],
+        "total_interval80": [
+          29.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -25.0,
+          10.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          25.0
+        ],
+        "expected_total": 45.71875,
+        "expected_home_margin": -6.328125,
+        "probabilities": {
+          "away_35": 0.21875,
+          "home_35": 0.046875,
+          "away_10": 0.0390625,
+          "home_10": 0.171875,
+          "total_60": 0.1796875,
+          "total_under_30": 0.1015625,
+          "margin_17": 0.234375,
+          "margin_24": 0.125,
+          "within_3": 0.2109375,
+          "either_35": 0.234375,
+          "either_10": 0.2109375
+        },
+        "score_correlation": 0.051851091516407634,
+        "typical": [
+          24,
+          18
+        ],
+        "low": [
+          18,
+          12
+        ],
+        "high": [
+          35,
+          29
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          24.818359375,
+          19.5380859375
+        ],
+        "median": [
+          23.0,
+          19.0
+        ],
+        "away_interval80": [
+          12.0,
+          39.0
+        ],
+        "home_interval80": [
+          10.0,
+          30.0
+        ],
+        "total_interval80": [
+          28.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -23.0,
+          11.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 44.3564453125,
+        "expected_home_margin": -5.2802734375,
+        "probabilities": {
+          "away_35": 0.1748046875,
+          "home_35": 0.0458984375,
+          "away_10": 0.0625,
+          "home_10": 0.1142578125,
+          "total_60": 0.1318359375,
+          "total_under_30": 0.1240234375,
+          "margin_17": 0.2392578125,
+          "margin_24": 0.1015625,
+          "within_3": 0.2080078125,
+          "either_35": 0.212890625,
+          "either_10": 0.1689453125
+        },
+        "score_correlation": 0.00038456995491961855,
+        "typical": [
+          24,
+          19
+        ],
+        "low": [
+          17,
+          11
+        ],
+        "high": [
+          34,
+          29
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.885839601376132,
+      "context_drives": 10.75
+    },
+    {
+      "game_id": "2026_10_SEA_LV",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          24.734375,
+          21.90625
+        ],
+        "median": [
+          24.0,
+          22.0
+        ],
+        "away_interval80": [
+          11.0,
+          38.0
+        ],
+        "home_interval80": [
+          9.0,
+          35.0
+        ],
+        "total_interval80": [
+          29.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -22.0,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          23.0
+        ],
+        "expected_total": 46.640625,
+        "expected_home_margin": -2.828125,
+        "probabilities": {
+          "away_35": 0.171875,
+          "home_35": 0.1171875,
+          "away_10": 0.0859375,
+          "home_10": 0.140625,
+          "total_60": 0.1796875,
+          "total_under_30": 0.109375,
+          "margin_17": 0.2578125,
+          "margin_24": 0.0859375,
+          "within_3": 0.265625,
+          "either_35": 0.2578125,
+          "either_10": 0.2265625
+        },
+        "score_correlation": 0.05661409825876607,
+        "typical": [
+          26,
+          22
+        ],
+        "low": [
+          18,
+          10
+        ],
+        "high": [
+          34,
+          30
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          24.1513671875,
+          22.7080078125
+        ],
+        "median": [
+          23.0,
+          22.0
+        ],
+        "away_interval80": [
+          12.0,
+          38.0
+        ],
+        "home_interval80": [
+          12.0,
+          35.0
+        ],
+        "total_interval80": [
+          30.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -19.0,
+          15.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 46.859375,
+        "expected_home_margin": -1.443359375,
+        "probabilities": {
+          "away_35": 0.15625,
+          "home_35": 0.10546875,
+          "away_10": 0.068359375,
+          "home_10": 0.064453125,
+          "total_60": 0.1767578125,
+          "total_under_30": 0.09375,
+          "margin_17": 0.228515625,
+          "margin_24": 0.0986328125,
+          "within_3": 0.216796875,
+          "either_35": 0.2451171875,
+          "either_10": 0.1279296875
+        },
+        "score_correlation": 0.0004195098464719473,
+        "typical": [
+          24,
+          22
+        ],
+        "low": [
+          15,
+          15
+        ],
+        "high": [
+          34,
+          31
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.065623154901179,
+      "context_drives": 9.75
+    },
+    {
+      "game_id": "2026_10_SF_DAL",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          26.484375,
+          23.09375
+        ],
+        "median": [
+          25.0,
+          22.0
+        ],
+        "away_interval80": [
+          13.0,
+          38.0
+        ],
+        "home_interval80": [
+          10.0,
+          37.0
+        ],
+        "total_interval80": [
+          34.0,
+          70.0
+        ],
+        "home_margin_interval80": [
+          -22.0,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          26.0
+        ],
+        "expected_total": 49.578125,
+        "expected_home_margin": -3.390625,
+        "probabilities": {
+          "away_35": 0.2109375,
+          "home_35": 0.1484375,
+          "away_10": 0.0390625,
+          "home_10": 0.1171875,
+          "total_60": 0.2421875,
+          "total_under_30": 0.0546875,
+          "margin_17": 0.28125,
+          "margin_24": 0.1328125,
+          "within_3": 0.2734375,
+          "either_35": 0.3046875,
+          "either_10": 0.15625
+        },
+        "score_correlation": 0.007000562774578566,
+        "typical": [
+          24,
+          22
+        ],
+        "low": [
+          17,
+          17
+        ],
+        "high": [
+          38,
+          33
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          25.2763671875,
+          24.3642578125
+        ],
+        "median": [
+          24.0,
+          23.0
+        ],
+        "away_interval80": [
+          12.300000000000011,
+          40.0
+        ],
+        "home_interval80": [
+          13.0,
+          37.0
+        ],
+        "total_interval80": [
+          32.0,
+          69.0
+        ],
+        "home_margin_interval80": [
+          -19.69999999999999,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 49.640625,
+        "expected_home_margin": -0.912109375,
+        "probabilities": {
+          "away_35": 0.1865234375,
+          "home_35": 0.1455078125,
+          "away_10": 0.05859375,
+          "home_10": 0.048828125,
+          "total_60": 0.2314453125,
+          "total_under_30": 0.064453125,
+          "margin_17": 0.251953125,
+          "margin_24": 0.1103515625,
+          "within_3": 0.1962890625,
+          "either_35": 0.3046875,
+          "either_10": 0.10546875
+        },
+        "score_correlation": -0.00014774257339273357,
+        "typical": [
+          25,
+          23
+        ],
+        "low": [
+          16,
+          16
+        ],
+        "high": [
+          35,
+          35
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.48998239078063,
+      "context_drives": 10.5
+    },
+    {
+      "game_id": "2026_10_PIT_CIN",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          22.3125,
+          26.75
+        ],
+        "median": [
+          21.0,
+          27.0
+        ],
+        "away_interval80": [
+          10.0,
+          35.0
+        ],
+        "home_interval80": [
+          15.0,
+          39.0
+        ],
+        "total_interval80": [
+          34.0,
+          67.0
+        ],
+        "home_margin_interval80": [
+          -16.0,
+          24.0
+        ],
+        "absolute_margin_interval80": [
+          3.0,
+          26.0
+        ],
+        "expected_total": 49.0625,
+        "expected_home_margin": 4.4375,
+        "probabilities": {
+          "away_35": 0.1171875,
+          "home_35": 0.1875,
+          "away_10": 0.1015625,
+          "home_10": 0.046875,
+          "total_60": 0.2265625,
+          "total_under_30": 0.0390625,
+          "margin_17": 0.296875,
+          "margin_24": 0.1171875,
+          "within_3": 0.125,
+          "either_35": 0.2890625,
+          "either_10": 0.1484375
+        },
+        "score_correlation": -0.13024596752643314,
+        "typical": [
+          20,
+          26
+        ],
+        "low": [
+          14,
+          21
+        ],
+        "high": [
+          30,
+          39
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          21.4052734375,
+          26.333984375
+        ],
+        "median": [
+          20.0,
+          25.0
+        ],
+        "away_interval80": [
+          10.0,
+          34.0
+        ],
+        "home_interval80": [
+          14.0,
+          40.0
+        ],
+        "total_interval80": [
+          31.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 47.7392578125,
+        "expected_home_margin": 4.9287109375,
+        "probabilities": {
+          "away_35": 0.09375,
+          "home_35": 0.2001953125,
+          "away_10": 0.103515625,
+          "home_10": 0.03515625,
+          "total_60": 0.1904296875,
+          "total_under_30": 0.080078125,
+          "margin_17": 0.25390625,
+          "margin_24": 0.1123046875,
+          "within_3": 0.185546875,
+          "either_35": 0.2744140625,
+          "either_10": 0.1357421875
+        },
+        "score_correlation": 0.0006004520795742751,
+        "typical": [
+          21,
+          26
+        ],
+        "low": [
+          13,
+          18
+        ],
+        "high": [
+          30,
+          35
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 8.458800980831821,
+      "context_drives": 10.5
+    },
+    {
+      "game_id": "2026_10_LAC_BAL",
+      "a_features_asof_utc": "2026-11-12T09:06:52.092774+00:00",
+      "C": {
+        "draws": 1024,
+        "expected": [
+          18.328125,
+          22.078125
+        ],
+        "median": [
+          17.5,
+          22.0
+        ],
+        "away_interval80": [
+          6.0,
+          30.0
+        ],
+        "home_interval80": [
+          12.0,
+          32.0
+        ],
+        "total_interval80": [
+          27.0,
+          56.0
+        ],
+        "home_margin_interval80": [
+          -15.0,
+          21.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 40.40625,
+        "expected_home_margin": 3.75,
+        "probabilities": {
+          "away_35": 0.046875,
+          "home_35": 0.0703125,
+          "away_10": 0.21875,
+          "home_10": 0.0859375,
+          "total_60": 0.0859375,
+          "total_under_30": 0.171875,
+          "margin_17": 0.234375,
+          "margin_24": 0.078125,
+          "within_3": 0.2265625,
+          "either_35": 0.109375,
+          "either_10": 0.2890625
+        },
+        "score_correlation": -0.05783635555621425,
+        "typical": [
+          18,
+          22
+        ],
+        "low": [
+          10,
+          15
+        ],
+        "high": [
+          27,
+          28
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          18.9873046875,
+          22.703125
+        ],
+        "median": [
+          18.0,
+          22.0
+        ],
+        "away_interval80": [
+          9.0,
+          30.0
+        ],
+        "home_interval80": [
+          12.0,
+          35.0
+        ],
+        "total_interval80": [
+          27.0,
+          58.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          19.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          21.0
+        ],
+        "expected_total": 41.6904296875,
+        "expected_home_margin": 3.7158203125,
+        "probabilities": {
+          "away_35": 0.05078125,
+          "home_35": 0.10546875,
+          "away_10": 0.150390625,
+          "home_10": 0.064453125,
+          "total_60": 0.087890625,
+          "total_under_30": 0.1591796875,
+          "margin_17": 0.19140625,
+          "margin_24": 0.0732421875,
+          "within_3": 0.21875,
+          "either_35": 0.1513671875,
+          "either_10": 0.205078125
+        },
+        "score_correlation": 0.00031619915239941516,
+        "typical": [
+          19,
+          22
+        ],
+        "low": [
+          12,
+          15
+        ],
+        "high": [
+          27,
+          31
+        ]
+      },
+      "alerts": [],
+      "context_score_sd": 7.234592378776812,
+      "context_drives": 11.5
+    }
+  ]
+}
