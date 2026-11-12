@@ -1,10 +1,10 @@
-# Exact Week 9 static package. Deployment requires a fresh owner comment after merge.
+# Exact Week 10 static package. Deployment requires a fresh owner comment after merge.
 name: Exact manual frontend correction (one-time approval)
 on:
   workflow_dispatch:
     inputs:
       release_id:
-        description: Exact approved Week 9 release identity
+        description: Exact approved Week 10 release identity
         required: true
         type: string
       review_request_sha256:
@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CONTROL_SHA256: "b5342a46235fb10066406faf9359ade48ffe13155aedd7c0edf7e26cf9dee1e6"
+  CONTROL_SHA256: "92ad7ca5653bd057acf67af5c3828fa7021cc9601e86a09d63a3417a39a58848"
   APPROVAL_COMMENT_ID: "${{ inputs.approval_comment_id }}"
   REQUESTED_RELEASE: ${{ inputs.release_id }}
   REQUESTED_SHA: ${{ inputs.review_request_sha256 }}
@@ -47,6 +47,7 @@ jobs:
       actions: read
       issues: read
       pull-requests: read
+      pages: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -57,16 +58,16 @@ jobs:
       - name: Verify new owner approval, frozen assets and fixture clocks
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python -B scripts/verify_week9_publication.py review --out week9_review.json
+        run: python -B scripts/verify_week10_publication.py review --out week10_review.json
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
-          path: week9_release/site
+          path: week10_release/site
           include-hidden-files: true
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: week9-review-${{ github.run_id }}
-          path: week9_review.json
+          name: week10-review-${{ github.run_id }}
+          path: week10_review.json
 
   publish:
     needs: review
@@ -91,16 +92,16 @@ jobs:
       - name: Recheck authority and fresh schedule immediately before deployment
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python -B scripts/verify_week9_publication.py pre-deploy --out week9_pre_deploy.json
-      - name: Deploy the reviewed Week 9 Pages artifact
+        run: python -B scripts/verify_week10_publication.py pre-deploy --out week10_pre_deploy.json
+      - name: Deploy the reviewed Week 10 Pages artifact
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
       - name: Verify the public assets
-        run: python -B scripts/verify_week9_publication.py live --out week9_live.json
+        run: python -B scripts/verify_week10_publication.py live --out week10_live.json
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: week9-deployment-verification-${{ github.run_id }}
+          name: week10-deployment-verification-${{ github.run_id }}
           path: |
-            week9_pre_deploy.json
-            week9_live.json
+            week10_pre_deploy.json
+            week10_live.json

@@ -1,0 +1,7 @@
+{
+  "schema": "controlled-week10-final-controls-v1",
+  "files": {
+    "scripts/verify_week10_publication.py": "46f96cf4c5d25e43f7c4f6a3f28d786daaf209480dc1c32206bdbae9cdaaf279",
+    "week10_release/review_request.json": "5886b999548c2e19390d067eccc24ab24bddec5cfb78a7e44abfc5468f672210"
+  }
+}

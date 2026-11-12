@@ -1,0 +1,15 @@
+{
+  "schema": "controlled-week10-final-request-v1",
+  "release_id": "frontend-week10-final-bbf8e10133b9118f",
+  "manifest_sha256": "3f941c63beb60c79891891503b2dc9000982e04ac1bf71fbf3deac7af7815f03",
+  "repository": "racingmodel/nfl-2026-visualizer",
+  "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
+  "scope": "WEEK10_FINAL_MODEL_C_STATIC_ONCE",
+  "created_at_utc": "2026-11-12T09:19:55.353417+00:00",
+  "unattended": false,
+  "first_cutoff_utc": "2026-11-13T01:14:00+00:00",
+  "required_installation_branch": "codex/week10-final-controls-bbf8e10133b9118f",
+  "required_live_parent": "frontend-week9-tidy-29466c12d79894cf",
+  "allowed_dispatches": 1,
+  "max_approval_seconds": 7200
+}
