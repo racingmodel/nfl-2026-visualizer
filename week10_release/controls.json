@@ -1,7 +1,7 @@
 {
   "schema": "controlled-week10-final-controls-v1",
   "files": {
-    "scripts/verify_week10_publication.py": "46f96cf4c5d25e43f7c4f6a3f28d786daaf209480dc1c32206bdbae9cdaaf279",
-    "week10_release/review_request.json": "5886b999548c2e19390d067eccc24ab24bddec5cfb78a7e44abfc5468f672210"
+    "scripts/verify_week10_publication.py": "82e8c5b835ac8472744ff5c9b4e30296a3b8c4d68feafc7ebc3486ed45ce59b2",
+    "week10_release/review_request.json": "a3e58051a1a2fb49a9cb9160754fac176c0789e0ffc23ee014fef2399900113c"
   }
 }

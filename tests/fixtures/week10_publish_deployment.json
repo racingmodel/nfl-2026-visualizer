@@ -1,0 +1,88 @@
+{
+  "source": "Authenticated GitHub API capture after failed run 43226774165",
+  "note": "Run/job/check statuses were observed completed after failure. Tests reconstruct their in-progress state; the deployment in_progress status and direct CheckRun deployment edge are actual captured API evidence.",
+  "run": {
+    "id": 43226774165,
+    "workflow_id": 399724330,
+    "repository": {
+      "full_name": "racingmodel/nfl-2026-visualizer"
+    },
+    "head_sha": "9fc569f07af90182b77e7510267411222eed338f",
+    "head_branch": "main",
+    "event": "workflow_dispatch",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "failure",
+    "actor": {
+      "login": "racingmodel"
+    },
+    "triggering_actor": {
+      "login": "racingmodel"
+    },
+    "check_suite_id": 117054092946,
+    "path": ".github/workflows/manual-frontend-correction.yml"
+  },
+  "job": {
+    "id": 131212200884,
+    "run_id": 43226774165,
+    "run_attempt": 1,
+    "head_sha": "9fc569f07af90182b77e7510267411222eed338f",
+    "head_branch": "main",
+    "status": "completed",
+    "conclusion": "failure",
+    "name": "publish",
+    "node_id": "CR_kwDOUTlf6c8AAAAejNtLtA",
+    "check_run_url": "https://api.github.com/repos/racingmodel/nfl-2026-visualizer/check-runs/131212200884",
+    "html_url": "https://github.com/racingmodel/nfl-2026-visualizer/actions/runs/43226774165/job/131212200884"
+  },
+  "deployment": {
+    "id": 7738461993,
+    "node_id": "DE_kwDOUTlf6c8AAAABzT-PKQ",
+    "environment": "github-pages",
+    "original_environment": "github-pages",
+    "sha": "9fc569f07af90182b77e7510267411222eed338f",
+    "ref": "main",
+    "task": "deploy",
+    "repository_url": "https://api.github.com/repos/racingmodel/nfl-2026-visualizer",
+    "performed_via_github_app": {
+      "id": 15368,
+      "slug": "github-actions"
+    },
+    "created_at": "2026-11-12T13:23:43Z"
+  },
+  "in_progress_status": {
+    "state": "in_progress",
+    "environment": "github-pages",
+    "deployment_url": "https://api.github.com/repos/racingmodel/nfl-2026-visualizer/deployments/7738461993",
+    "log_url": "https://github.com/racingmodel/nfl-2026-visualizer/actions/runs/43226774165/job/131212200884",
+    "target_url": "https://github.com/racingmodel/nfl-2026-visualizer/actions/runs/43226774165/job/131212200884",
+    "created_at": "2026-11-12T13:23:49Z"
+  },
+  "graphql": {
+    "node": {
+      "id": "CR_kwDOUTlf6c8AAAAejNtLtA",
+      "databaseId": 131212200884,
+      "name": "publish",
+      "status": "COMPLETED",
+      "repository": {
+        "nameWithOwner": "racingmodel/nfl-2026-visualizer"
+      },
+      "checkSuite": {
+        "databaseId": 117054092946,
+        "app": {
+          "databaseId": 15368,
+          "slug": "github-actions"
+        }
+      },
+      "deployment": {
+        "id": "DE_kwDOUTlf6c8AAAABzT-PKQ",
+        "databaseId": 7738461993,
+        "environment": "github-pages",
+        "commitOid": "9fc569f07af90182b77e7510267411222eed338f",
+        "repository": {
+          "nameWithOwner": "racingmodel/nfl-2026-visualizer"
+        }
+      }
+    }
+  }
+}
