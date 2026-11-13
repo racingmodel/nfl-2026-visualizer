@@ -1,71 +1,73 @@
-# Supervised final Week 10 publication
+# Supervised Week 10 mixed archival/pregame recovery
 
-The staged release is `frontend-week10-refresh-6060d616be7e911b`. This package has local validation and no deployment authority.
+Release `frontend-week10-recovery-bd0913766051f62c`. **Preparation only. No deployment authority is granted by this file.** Existing public URL: https://racingmodel.github.io/nfl-2026-visualizer/
 
-The refreshed 430-asset candidate is under `artifacts/research/week10_closeout_20261112T152815Z/candidate/week10_release/site/`. Four market/source-clock/release files change from the preceding sealed Week 10 package; all frozen model forecasts, roles and historical data remain unchanged. Use the new reviewed manifest and installed guard after merge. Private weights, raw captures and preparation data remain outside the public release.
+## Scope and exact pins
 
-The publishing route remains workflow **399724330**, `.github/workflows/manual-frontend-correction.yml`, at the existing GitHub Pages URL.
+This new authority is **WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE**, not the expired pregame-only Week 10 scope. The original WAS-NYG cutoff stays **13 November 2026 01:14 GMT**. Exactly that fixture may be published late, only with byte-identical pre-cutoff team, TD, Model B/C, source and price records. It is labelled **ARCHIVED PREGAME**; no post-kickoff forecasts, live odds or silent actuals ingestion. The remaining 13 fixtures must still pass fresh independent pregame/individual-cutoff checks.
 
-## Exact review pins
+The new publication deadline is the earliest remaining fixture cutoff, **15 November 2026 14:29 GMT**, never an extension of any original prediction cutoff. If any other fixture closes or becomes live/final/ambiguous, stop: this request cannot silently archive another game. All market observations remain captured references with separately preserved feed/retrieval clocks and unknown bookmaker update time.
 
-| File | SHA-256 |
-| --- | --- |
-| week10_release/publication_manifest.json | `674adaf8ff579c0a219a7c02b5235b087a6353f480eef0a09d489cb0fb669ff0` |
-| week10_release/review_request.json | `52f421532f739fefa08e0ffa132c19dda790d45fb949469cbf0739bd02aa5321` |
-| week10_release/controls.json | `339d12c72dc97289a9369c07730f0f1620a1e92a5312a5e853a3c646b75aa0d6` |
-| scripts/verify_week10_publication.py | `2cf513c67922f6feeb30415dae671e0b851a0ca9c51bd6e2c50c5bcbd81af84d` |
-| .github/workflows/manual-frontend-correction.yml | `6fc5eb64fa3a1d6f4b586a8b8670029fb131bf3ff755bb97c0fe08e196f1e754` |
+431 exact static files; 426 served files after excluding five .nojekyll markers. Frozen original team, player, Model C and negative-binomial data are pinned. The current live parent remains Week 9 `frontend-week9-tidy-29466c12d79894cf` at `99debb21c2fc067fff1e3d4c9b3a0c1aec25c869`. The original accepted HTTP-500 run 43257307848 and suite 117139170263 must remain completed/cancelled with zero jobs. The authenticated server-side CheckRun deployment binding is unchanged.
 
-The current live parent is `frontend-week9-tidy-29466c12d79894cf`, main `99debb21c2fc067fff1e3d4c9b3a0c1aec25c869`. The first fixture cutoff is **13 November 2026 at 01:14 GMT**. Every runtime check uses its actual clock.
+| Pin | SHA256 |
+|---|---|
+| Manifest | `6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e` |
+| Review request | `10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6` |
+| Controls | `d9b3b7779bec7926066b44b4b1e2efe05130895535f4b241916a5b35d1af5307` |
+| Guard | `fc46946df9fa670065336d716159ef59871eedd7217a9d5da19d0a23e46fc17a` |
+| Workflow | `8757155daaf0b9bd7e0eda51876e5153bd93fa110e86a02a367ca98f71c763ff` |
+| Focused tests | `15b59c66ccd4a32fa4deb885a60d57165fc8a91f9fd09e6a2c9e9f4d0cd07997` |
 
-## Review and installation
+## Staged review and merge — requires separate owner authority
 
-The self-deployment guard fix from PR #12 is installed on main `94050a87317ca3ebfe030d4148d8bfff15388181`. This follow-up changes four site files for fresh quote observations, displayed source/retrieval clocks and release identity. Spread point lines and totals did not change; ten prices across four fixtures did. All Model A/B/C, TD, rushing, receiving, passing, roles and historical forecast data remain unchanged.
+1. Review assets [PR #14](https://github.com/racingmodel/nfl-2026-visualizer/pull/14), head `93efb870405d96f8b65660c1040195773dbc48e5`. Its nine paths contain eight changed/new site assets and the new manifest. Merge with a **merge commit**, retain the branch, and verify all 431 assets against the manifest. All workflows remain disabled; a merge must not publish.
+2. Retarget the stacked controls PR from `codex/week10-recovery-assets-bd0913766051f62c` to main. Keep its reviewed head unchanged. Its diff must contain only the six reviewed control/document/test paths. Recheck the actual asset merge and manifest, then merge controls with a **merge commit** and retain its branch. No squash/rebase or intervening main commits: the guard binds the exact asset head and two-stage merge lineage.
+3. Independently verify actual final main, source branch `codex/week10-recovery-controls-bd0913766051f62c`, disabled workflows, false routine flags, no active run/deployment, fresh schedule, unchanged Week 9 live parent and these exact pins. Do not reuse old approvals 6824322618 or 6829182348 or rerun either old failed/cancelled run.
 
-Review this release from `codex/week10-market-refresh-6060d616be7e911b` to main. Its 430-file package must match the new manifest. Verify the four market/presentation changes and separate manifest/control/request/guide pins. Preserve the authenticated CheckRun deployment checks and all owner, exact-commit, single-dispatch, expiry and cutoff gates.
+## Fresh authenticated owner approval — only after the controls merge
 
-After separately authorised review and merge, verify the actual new main merge SHA and obtain a fresh unedited owner comment on that merged release PR. Neither consumed approval `6824322618` nor any previous request authorises this revision. Require separate permission to enable only workflow 399724330 and dispatch once. Keep other workflows and routine flags disabled/false. Preserve the Week 9 live parent until supervised publication succeeds.
-
-First cutoff: **13 November 2026 at 01:14 GMT**. Stop this pregame route after cutoff; do not extend or backdate. Verify all 425 served files and the Week 10 display after deployment, then disable the publishing workflow again.
-
-## New authenticated owner approval
-
-Only after the exact installation PR is merged, the repository owner must post one new, unedited comment on that merged correction PR. The comment must contain exactly one fenced JSON block beginning with a newline after `json`. Fill the two placeholders with the verified merged main SHA and a real UTC expiry. The expiry must be after the intended dispatch, at most two hours after the comment, and no later than the first cutoff.
+Post one new **unedited** comment on the merged controls PR, using exactly one fenced JSON block. Replace the two placeholders below with the actual final merged main SHA and a real UTC expiry. The expiry must be after dispatch, no later than two hours after comment creation, and no later than **15 November 14:29 GMT**. Owner association, authorship, merge/creation/edit clocks, branch, scope, hashes, exact asset parent and actual main are verified through authenticated GitHub APIs. The following is a template, not approval:
 
 ```json
 {
   "decision": "APPROVED",
   "repository": "racingmodel/nfl-2026-visualizer",
   "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
-  "release_id": "frontend-week10-refresh-6060d616be7e911b",
-  "manifest_sha256": "674adaf8ff579c0a219a7c02b5235b087a6353f480eef0a09d489cb0fb669ff0",
-  "request_sha256": "52f421532f739fefa08e0ffa132c19dda790d45fb949469cbf0739bd02aa5321",
-  "installation_head": "<VERIFIED_MERGED_MAIN_SHA>",
-  "scope": "WEEK10_FINAL_MODEL_C_STATIC_ONCE",
-  "expires_at_utc": "<ACTUAL_UTC_EXPIRY>",
-  "unattended": false
+  "release_id": "frontend-week10-recovery-bd0913766051f62c",
+  "manifest_sha256": "6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e",
+  "request_sha256": "10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6",
+  "installation_head": "<VERIFIED_FINAL_MERGED_MAIN_SHA>",
+  "scope": "WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE",
+  "expires_at_utc": "<ACTUAL_UTC_EXPIRY_MAX_TWO_HOURS_AFTER_COMMENT>",
+  "unattended": false,
+  "publication_mode": "MIXED_ARCHIVE_AND_PREGAME",
+  "archived_fixture_ids": [
+    "2026_10_WAS_NYG"
+  ],
+  "publication_deadline_utc": "2026-11-15T14:29:00+00:00"
 }
 ```
 
-The installed guard authenticates the comment's owner association, author, creation/edit times, exact merged correction PR, source branch, repository, installation commit, scope, hashes and expiry through GitHub. Neither Week 9 approval nor consumed Week 10 comment `6824322618` can satisfy this new request.
+Using the OS-backed CLI, post the completed block from a UTF-8 body file via `gh pr comment $controlsPrNumber --repo racingmodel/nfl-2026-visualizer --body-file $approvalFile`. Obtain the actual comment ID and validate it through the installed guard; do not fabricate it.
 
-## One separately authorised dispatch
+## One separate deployment authorisation — not granted by merging or commenting
 
-After the owner grants separate permission to enable and dispatch, use the following PowerShell commands with the verified main SHA and new approval comment ID. These are instructions only.
+After fresh owner approval passes and the owner separately authorises one dispatch:
 
 ```powershell
-$installationHead = '<VERIFIED_MERGED_MAIN_SHA>'
-$approvalCommentId = '<NEW_OWNER_COMMENT_ID>'
+$installationHead = '<ACTUAL_FINAL_MERGED_MAIN_SHA>'
+$approvalCommentId = '<NEW_VERIFIED_OWNER_COMMENT_ID>'
 gh workflow enable 399724330 --repo racingmodel/nfl-2026-visualizer
-gh workflow run 399724330 --repo racingmodel/nfl-2026-visualizer --ref main --field release_id=frontend-week10-refresh-6060d616be7e911b --field review_request_sha256=52f421532f739fefa08e0ffa132c19dda790d45fb949469cbf0739bd02aa5321 --field installation_head=$installationHead --field approval_comment_id=$approvalCommentId
+gh workflow run 399724330 --repo racingmodel/nfl-2026-visualizer --ref main --field release_id=frontend-week10-recovery-bd0913766051f62c --field review_request_sha256=10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6 --field installation_head=$installationHead --field approval_comment_id=$approvalCommentId
 ```
 
-Only this workflow may be enabled for the approved operation. The other four workflows and routine flags retain their reviewed settings. The guard permits one workflow attempt and rejects another dispatch for the same installation commit. A failed first attempt requires a new reviewed correction and authority.
+Only workflow 399724330 may be enabled. The review job runs the focused tests, then actual approval/platform/asset/fresh-fixture checks. The publish job repeats checks immediately before Pages deployment, recognising only its authenticated own deployment via CheckRun.deployment. Unrelated active or ambiguous deployments fail closed.
 
-## Actions, Pages and live verification
+One-time checks use complete **unfiltered** repository/workflow inventories plus direct current/predecessor IDs, not filtered zero counts. Missing/inconsistent inventories fail closed. A second dispatch on the installation SHA or run_attempt > 1 is rejected. If dispatch returns HTTP 500 or any uncertain response, **do not retry**. Disable the manual workflow, reconcile direct/unfiltered run and deployment records, and request a new explicit diagnosis/authority before any replacement.
 
-Verify that the run is bound to the exact merged main SHA and new owner comment. The review job must pass package, current parent, authenticated authority, one-time, platform and fresh fixture checks. The publish job repeats those checks immediately before deployment. Its Pages deployment must succeed for the same commit.
+Monitor the one run, verify the successful Pages deployment and all **426 served asset hashes**, and confirm Week 10 plus the archived WAS-NYG label and correct original TD/odds timestamps. Disable workflow 399724330 again. All other workflows and routine flags remain disabled/false throughout. No model rebuild, promotion, paid odds, alternative hosting or racing-model change is authorised.
 
-The live check compares all **425 served files** against the exact 430-file package, with the five `.nojekyll` markers excluded from HTTP verification. Check the new `release_receipt.json`, all historical forecast hashes, the Model C asset, current role filters and the desktop/mobile views. A partial or failed live check leaves publication completion unverified.
+## Job-token permission review
 
-This document grants no owner approval, workflow enablement, dispatch or deployment authority. The correction PR must be reviewed and separately authorised for merge before the new publication procedure begins.
+The review job explicitly requests checks/deployments read for the cleared-suite and deployment evidence. The publish job retains its existing read and Pages/OIDC permissions. Routine flags remain strictly false through the original authenticated GitHub vars environment checks; the job does not require repository Variables API access. Owner CLI preflight separately verifies the current repository flags. [GitHub Variables API permissions](https://docs.github.com/en/rest/actions/variables#list-repository-variables) and [job token permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions).

@@ -1,18 +1,31 @@
 {
-  "schema": "controlled-week10-final-request-v1",
-  "release_id": "frontend-week10-refresh-6060d616be7e911b",
-  "manifest_sha256": "674adaf8ff579c0a219a7c02b5235b087a6353f480eef0a09d489cb0fb669ff0",
+  "schema": "controlled-week10-mixed-request-v1",
+  "release_id": "frontend-week10-recovery-bd0913766051f62c",
+  "manifest_sha256": "6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e",
   "repository": "racingmodel/nfl-2026-visualizer",
   "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
-  "scope": "WEEK10_FINAL_MODEL_C_STATIC_ONCE",
-  "created_at_utc": "2026-11-12T15:44:24.791191+00:00",
+  "scope": "WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE",
+  "created_at_utc": "2026-11-13T09:32:56.346910+00:00",
   "unattended": false,
   "first_cutoff_utc": "2026-11-13T01:14:00+00:00",
-  "required_installation_branch": "codex/week10-market-refresh-6060d616be7e911b",
+  "publication_deadline_utc": "2026-11-15T14:29:00+00:00",
+  "publication_mode": "MIXED_ARCHIVE_AND_PREGAME",
+  "archived_fixture_ids": [
+    "2026_10_WAS_NYG"
+  ],
+  "required_installation_branch": "codex/week10-recovery-controls-bd0913766051f62c",
+  "asset_review_branch": "codex/week10-recovery-assets-bd0913766051f62c",
+  "asset_pr_number": 14,
+  "asset_pr_head_sha": "93efb870405d96f8b65660c1040195773dbc48e5",
+  "base_main": "75856d8414383f1185af21623866bd288682a5ff",
   "required_live_parent": "frontend-week9-tidy-29466c12d79894cf",
   "allowed_dispatches": 1,
   "max_approval_seconds": 7200,
-  "guard_revision": "week10-checkrun-owned-deployment-market-refresh-v1",
-  "supersedes_request_sha256": "a3e58051a1a2fb49a9cb9160754fac176c0789e0ffc23ee014fef2399900113c",
-  "consumed_prior_run_id": 43226774165
+  "guard_revision": "week10-immutable-archive-unfiltered-history-v1",
+  "supersedes_request_sha256": "52f421532f739fefa08e0ffa132c19dda790d45fb949469cbf0739bd02aa5321",
+  "cleared_prior_run_id": 43257307848,
+  "consumed_prior_approval_ids": [
+    6824322618,
+    6829182348
+  ]
 }
