@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CONTROL_SHA256: "d9b3b7779bec7926066b44b4b1e2efe05130895535f4b241916a5b35d1af5307"
+  CONTROL_SHA256: "73f7416a0451af567e0fe254c5dc06e5f1ac7cc6c7d5010fa7aae6d7fbb6a1dd"
   APPROVAL_COMMENT_ID: "${{ inputs.approval_comment_id }}"
   REQUESTED_RELEASE: ${{ inputs.release_id }}
   REQUESTED_SHA: ${{ inputs.review_request_sha256 }}

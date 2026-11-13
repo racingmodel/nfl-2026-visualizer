@@ -14,12 +14,12 @@ GAMES={r['game_id']:r for r in g.read(BASE/'site/data/research/2026-w10.json')['
 class RecoveryTests(unittest.TestCase):
     def setUp(self):
         self.instant=g.clock(Q['created_at_utc'])+timedelta(minutes=2)
-        self.head='c'*40;self.asset_merge='a'*40;self.control_head='b'*40;self.run_id=999001
+        self.head='c'*40;self.asset_merge=g.REVIEW_RECOVERY['source_asset_merge'];self.control_head='b'*40;self.run_id=999001
         self.env=dict(GITHUB_REPOSITORY=g.REPO,GITHUB_REF='refs/heads/main',GITHUB_EVENT_NAME='workflow_dispatch',GITHUB_RUN_ATTEMPT='1',
             GITHUB_ACTOR='racingmodel',GITHUB_TRIGGERING_ACTOR='racingmodel',GITHUB_SHA=self.head,INSTALLATION_HEAD=self.head,
             REQUESTED_RELEASE=g.RELEASE_ID,REQUESTED_SHA=g.sha(BASE/'review_request.json'),CONTROL_SHA256=g.sha(BASE/'controls.json'),
             APPROVAL_COMMENT_ID='9876543210',GITHUB_RUN_ID=str(self.run_id),GITHUB_JOB='review',**{f:'false' for f in g.FLAGS})
-        self.grant=dict(decision='APPROVED',repository=g.REPO,destination=g.SITE,release_id=g.RELEASE_ID,manifest_sha256=g.MANIFEST_SHA256,
+        self.grant=dict(recovery_id=g.REVIEW_RECOVERY['recovery_id'],supersedes_request_sha256=g.REVIEW_RECOVERY['supersedes_request_sha256'],superseded_run_ids=[43409067582,43416065208],decision='APPROVED',repository=g.REPO,destination=g.SITE,release_id=g.RELEASE_ID,manifest_sha256=g.MANIFEST_SHA256,
             request_sha256=self.env['REQUESTED_SHA'],installation_head=self.head,scope=g.APPROVAL_SCOPE,
             expires_at_utc=(self.instant+timedelta(hours=1)).isoformat(),unattended=False,publication_mode='MIXED_ARCHIVE_AND_PREGAME',
             archived_fixture_ids=['2026_10_WAS_NYG'],publication_deadline_utc=M['archival_policy']['publication_deadline_utc'])
@@ -28,9 +28,15 @@ class RecoveryTests(unittest.TestCase):
             issue_url='https://api.github.com/repos/'+g.REPO+'/issues/99999',html_url='https://github.com/'+g.REPO+'/pull/99999#issuecomment-9876543210')
         self.asset_pr=dict(merged=True,merge_commit_sha=self.asset_merge,head=dict(sha=Q['asset_pr_head_sha'],ref=Q['asset_review_branch'],repo=dict(full_name=g.REPO)),base=dict(ref='main',repo=dict(full_name=g.REPO)))
         self.control_pr=dict(merged=True,merge_commit_sha=self.head,merged_at=(self.instant-timedelta(seconds=90)).isoformat(),head=dict(sha=self.control_head,ref=g.REVIEW_BRANCH,repo=dict(full_name=g.REPO)),base=dict(ref='main',repo=dict(full_name=g.REPO)))
-        self.current=dict(id=self.run_id,workflow_id=int(g.WORKFLOW_ID),head_sha=self.head,event='workflow_dispatch',run_attempt=1,head_branch='main',status='in_progress',conclusion=None,repository=dict(full_name=g.REPO),actor=dict(login='racingmodel'),triggering_actor=dict(login='racingmodel'))
-        self.cleared=dict(self.current,id=43257307848,head_sha=g.BASE_MAIN_SHA,check_suite_id=117139170263,status='completed',conclusion='cancelled')
-        self.repo=[self.cleared,self.current];self.workflow=list(self.repo)
+        self.current=dict(created_at=self.instant.isoformat(),id=self.run_id,workflow_id=int(g.WORKFLOW_ID),head_sha=self.head,event='workflow_dispatch',run_attempt=1,head_branch='main',status='in_progress',conclusion=None,repository=dict(full_name=g.REPO),actor=dict(login='racingmodel'),triggering_actor=dict(login='racingmodel'))
+        self.cleared=dict(self.current,created_at='2026-11-12T16:00:00Z',id=43257307848,head_sha=g.BASE_MAIN_SHA,check_suite_id=117139170263,status='completed',conclusion='cancelled')
+        self.failed=copy.deepcopy(g.read(ROOT/'tests/fixtures/week10_review_failures.json')['responses'])
+        self.body_override=None
+        self.deployments=[dict(id=7738461993,sha='9'*40)]
+        self.prior_pr=dict(merged=True,merge_commit_sha=g.REVIEW_RECOVERY['source_installation_sha'],
+            head=dict(sha=g.REVIEW_RECOVERY['source_control_head'],ref='codex/week10-recovery-controls-bd0913766051f62c',repo=dict(full_name=g.REPO)),
+            base=dict(ref='main',repo=dict(full_name=g.REPO)))
+        self.repo=[self.cleared]+[self.failed['actions/runs/'+str(r)] for r in (43409067582,43416065208)]+[self.current];self.workflow=list(self.repo)
         self.workflows=[dict(id=int(g.WORKFLOW_ID),state='active')]+[dict(id=i,state='disabled_manually') for i in range(4)]
         self.suite=dict(id=117139170263,status='completed',conclusion='cancelled')
         self.records=[]
@@ -49,16 +55,19 @@ class RecoveryTests(unittest.TestCase):
         if path=='check-suites/117139170263':return self.suite
         if path=='actions/runs/43257307848/jobs':return dict(total_count=0,jobs=[])
         if path=='actions/runs/'+str(self.run_id):return self.current
-        if path=='issues/comments/9876543210':return dict(self.comment,body='```json\n'+json.dumps(self.grant)+'\n```')
+        if path=='issues/comments/9876543210':return dict(self.comment,body=self.body_override if self.body_override is not None else '```json\n'+json.dumps(self.grant)+'\n```')
+        if path in self.failed:return self.failed[path]
         if path=='pulls/99999':return self.control_pr
+        if path=='pulls/15':return self.prior_pr
         if path=='pulls/'+str(Q['asset_pr_number']):return self.asset_pr
         if path=='commits/'+self.asset_merge:return dict(parents=[dict(sha=g.BASE_MAIN_SHA),dict(sha=Q['asset_pr_head_sha'])])
-        if path=='commits/'+self.head:return dict(parents=[dict(sha=self.asset_merge),dict(sha=self.control_head)])
+        if path=='commits/'+self.head:return dict(parents=[dict(sha=g.REVIEW_RECOVERY['source_installation_sha']),dict(sha=self.control_head)])
+        if path=='commits/'+g.REVIEW_RECOVERY['source_installation_sha']:return dict(parents=[dict(sha=self.asset_merge),dict(sha=g.REVIEW_RECOVERY['source_control_head'])])
         if path=='git/ref/heads/main':return dict(object=dict(sha=self.head))
         if path=='actions/workflows':return dict(total_count=5,workflows=self.workflows)
         if path=='actions/variables':return dict(total_count=4,variables=[dict(name=f,value='false') for f in g.FLAGS])
         if path=='pages':return dict(build_type='workflow')
-        if path=='deployments':return [dict(id=7738461993)]
+        if path=='deployments':return self.deployments
         if path=='deployments/7738461993/statuses':return [dict(state='failure')]
         raise AssertionError('Unexpected offline API route '+path)
     def authority(self):
@@ -180,6 +189,90 @@ class RecoveryTests(unittest.TestCase):
         review=source.split('  review:',1)[1].split('  publish:',1)[0]
         self.assertIn('checks: read',review);self.assertIn('deployments: read',review)
         self.assertNotIn("api('actions/variables'",(ROOT/'scripts/verify_week10_publication.py').read_text(encoding='utf-8'))
+
+    def test_windows_crlf_owner_json_is_equivalent_to_lf(self):
+        lf=self.authority();self.body_override=('```json\n'+json.dumps(self.grant,indent=2)+'\n```').replace('\n','\r\n')
+        self.assertEqual(lf,self.authority())
+    def test_lone_cr_multiple_blocks_prose_and_oversized_body_rejected(self):
+        valid='```json\n'+json.dumps(self.grant)+'\n```'
+        for body in [valid.replace('\n','\r'),valid+'\n'+valid,'Please approve\n'+valid,valid+' '*4097]:
+            with self.subTest(body=body[:24]):
+                self.body_override=body
+                with self.assertRaises(ValueError):self.authority()
+    def test_crlf_does_not_relax_owner_edited_or_expiry_checks(self):
+        self.body_override=('```json\n'+json.dumps(self.grant)+'\n```').replace('\n','\r\n')
+        self.comment['updated_at']=self.instant.isoformat()
+        with self.assertRaises(ValueError):self.authority()
+    def test_old_correctly_formatted_approval_cannot_authorise_new_recovery(self):
+        for key,value in [('scope','WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE'),('recovery_id','old'),
+                          ('supersedes_request_sha256','0'*64),('superseded_run_ids',[43409067582])]:
+            with self.subTest(key=key):
+                saved=self.grant[key];self.grant[key]=value
+                with self.assertRaises(ValueError):self.authority()
+                self.grant[key]=saved
+    def test_reviewed_two_failed_reviews_allow_only_new_explicit_authority(self):
+        self.assertEqual(self.inventory()['review_only_failures_reverified'],[43409067582,43416065208])
+        self.assertGreater(self.authority()[1],self.instant)
+    def test_attempt_to_publish_on_consumed_source_commit_is_rejected(self):
+        self.env['GITHUB_SHA']=g.REVIEW_RECOVERY['source_installation_sha']
+        self.env['INSTALLATION_HEAD']=self.env['GITHUB_SHA']
+        with self.assertRaises(ValueError):self.authority()
+    def test_previous_publish_started_or_succeeded_is_not_recoverable(self):
+        path='actions/runs/43409067582/attempts/1/jobs';original=copy.deepcopy(self.failed[path])
+        for key,value in [('conclusion','success'),('conclusion','failure'),('steps',[dict(name='Deploy',conclusion='skipped')]),('runner_id',123)]:
+            with self.subTest(key=key,value=value):
+                self.failed[path]=copy.deepcopy(original);self.failed[path]['jobs'][1][key]=value
+                with self.assertRaises(ValueError):self.inventory()
+    def test_previous_pages_upload_must_be_skipped(self):
+        review=self.failed['actions/runs/43409067582/attempts/1/jobs']['jobs'][0]
+        step=next(s for s in review['steps'] if s['name'].startswith('Run actions/upload-pages-artifact@'))
+        step['conclusion']='success'
+        with self.assertRaises(ValueError):self.inventory()
+    def test_previous_failure_in_different_step_is_rejected(self):
+        review=self.failed['actions/runs/43409067582/attempts/1/jobs']['jobs'][0]
+        step=next(s for s in review['steps'] if s['name']=='Verify new owner approval, frozen assets and fixture clocks')
+        step['conclusion']='success'
+        with self.assertRaises(ValueError):self.inventory()
+    def test_prior_artifact_or_any_source_deployment_is_rejected(self):
+        self.failed['actions/runs/43409067582/artifacts']=dict(total_count=1,artifacts=[dict(name='github-pages')])
+        with self.assertRaises(ValueError):self.inventory()
+        self.failed['actions/runs/43409067582/artifacts']=dict(total_count=0,artifacts=[])
+        self.deployments.append(dict(id=999,sha=g.REVIEW_RECOVERY['source_installation_sha']))
+        with self.assertRaises(ValueError):self.inventory()
+    def test_old_run_rerun_success_or_identity_change_is_rejected(self):
+        run=self.failed['actions/runs/43416065208']
+        for key,value in [('run_attempt',2),('conclusion','success'),('head_sha','1'*40),('workflow_id',1),('path','other.yml')]:
+            with self.subTest(key=key):
+                saved=run[key];run[key]=value
+                with self.assertRaises(ValueError):self.inventory()
+                run[key]=saved
+    def test_old_job_wrong_identity_or_incomplete_jobs_rejected(self):
+        result=self.failed['actions/runs/43416065208/attempts/1/jobs'];result['jobs'][0]['id']=1
+        with self.assertRaises(ValueError):self.inventory()
+    def test_changed_historical_control_source_rejected(self):
+        record=self.failed['contents/scripts/verify_week10_publication.py'];record['content']='Y2hhbmdlZA=='
+        with self.assertRaises(ValueError):self.inventory()
+    def test_unlisted_failed_or_successful_dispatch_even_on_other_commit_blocks(self):
+        for conclusion in ['failure','success','cancelled']:
+            with self.subTest(conclusion=conclusion):
+                extra=dict(self.current,id=111,head_sha='d'*40,status='completed',conclusion=conclusion)
+                self.repo.append(extra);self.workflow.append(extra)
+                with self.assertRaisesRegex(ValueError,'Unreviewed dispatch'):self.inventory()
+                self.repo.pop();self.workflow.pop()
+    def test_no_automatic_third_retry_or_changed_sha_reset(self):
+        extra=dict(self.current,id=111,head_sha='d'*40,status='completed',conclusion='failure')
+        self.repo.append(extra);self.workflow.append(extra)
+        with self.assertRaises(ValueError):self.inventory()
+    def test_missing_prior_review_from_inventory_fails_closed(self):
+        self.repo=[r for r in self.repo if r['id']!=43409067582];self.workflow=list(self.repo)
+        with self.assertRaises(ValueError):self.inventory()
+    def test_altered_prior_merge_lineage_rejected(self):
+        self.prior_pr['head']['sha']='0'*40
+        with self.assertRaises(ValueError):self.authority()
+    def test_recovery_deployment_history_must_be_complete(self):
+        self.deployments=[dict(id=i,sha='e'*40) for i in range(100)]
+        with self.assertRaises(ValueError):self.inventory()
+
 
 def load_tests(loader,tests,pattern):
     # Reuse the 19 unchanged authenticated self-deployment function regressions.
