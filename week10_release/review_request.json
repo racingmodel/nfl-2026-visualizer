@@ -1,11 +1,11 @@
 {
-  "schema": "controlled-week10-mixed-request-v1",
+  "schema": "controlled-week10-reviewed-recovery-request-v2",
   "release_id": "frontend-week10-recovery-bd0913766051f62c",
   "manifest_sha256": "6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e",
   "repository": "racingmodel/nfl-2026-visualizer",
   "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
-  "scope": "WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE",
-  "created_at_utc": "2026-11-13T09:32:56.346910+00:00",
+  "scope": "WEEK10_MIXED_ARCHIVAL_REVIEW_RECOVERY_STATIC_ONCE",
+  "created_at_utc": "2026-11-13T11:42:54.483001+00:00",
   "unattended": false,
   "first_cutoff_utc": "2026-11-13T01:14:00+00:00",
   "publication_deadline_utc": "2026-11-15T14:29:00+00:00",
@@ -13,7 +13,7 @@
   "archived_fixture_ids": [
     "2026_10_WAS_NYG"
   ],
-  "required_installation_branch": "codex/week10-recovery-controls-bd0913766051f62c",
+  "required_installation_branch": "codex/week10-reviewed-prepublish-recovery",
   "asset_review_branch": "codex/week10-recovery-assets-bd0913766051f62c",
   "asset_pr_number": 14,
   "asset_pr_head_sha": "93efb870405d96f8b65660c1040195773dbc48e5",
@@ -21,11 +21,42 @@
   "required_live_parent": "frontend-week9-tidy-29466c12d79894cf",
   "allowed_dispatches": 1,
   "max_approval_seconds": 7200,
-  "guard_revision": "week10-immutable-archive-unfiltered-history-v1",
-  "supersedes_request_sha256": "52f421532f739fefa08e0ffa132c19dda790d45fb949469cbf0739bd02aa5321",
+  "guard_revision": "week10-enumerated-failed-review-recovery-v2",
+  "supersedes_request_sha256": "10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6",
   "cleared_prior_run_id": 43257307848,
   "consumed_prior_approval_ids": [
     6824322618,
-    6829182348
-  ]
+    6829182348,
+    6850045671,
+    6850428064
+  ],
+  "review_recovery": {
+    "recovery_id": "week10-review-only-recovery-20261113-v1",
+    "source_installation_sha": "920b3fd2d684a68c777e9b804c9a84a665c75ccd",
+    "supersedes_request_sha256": "10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6",
+    "source_request_created_at_utc": "2026-11-13T09:32:56.346910+00:00",
+    "source_workflow_sha256": "8757155daaf0b9bd7e0eda51876e5153bd93fa110e86a02a367ca98f71c763ff",
+    "source_guard_sha256": "fc46946df9fa670065336d716159ef59871eedd7217a9d5da19d0a23e46fc17a",
+    "source_control_pr": 15,
+    "source_control_head": "db06329434ca0e5177070e1aacd7152f88805839",
+    "source_asset_merge": "258c0ef1044bdc3cc9ce9a5b8610c0a99ef765de",
+    "superseded_approval_comment_ids": [
+      6850045671,
+      6850428064
+    ],
+    "reviewed_failed_runs": [
+      {
+        "run_id": 43409067582,
+        "check_suite_id": 117543033122,
+        "review_job_id": 131830624207,
+        "publish_job_id": 131830717338
+      },
+      {
+        "run_id": 43416065208,
+        "check_suite_id": 117561906791,
+        "review_job_id": 131854177208,
+        "publish_job_id": 131854428556
+      }
+    ]
+  }
 }

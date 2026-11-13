@@ -7,6 +7,7 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 import argparse
+import base64
 import csv
 import hashlib
 import io
@@ -23,8 +24,9 @@ WORKFLOW_ID = "399724330"
 RELEASE_ID = 'frontend-week10-recovery-bd0913766051f62c'
 MANIFEST_SHA256 = '6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e'
 PARENT_ASSETS_SHA256 = '29466c12d79894cf18c3490c8bb4cb2687ae561717d1c9bddfc21305942e9227'
-REVIEW_BRANCH = 'codex/week10-recovery-controls-bd0913766051f62c'
-APPROVAL_SCOPE = 'WEEK10_MIXED_ARCHIVAL_PREGAME_STATIC_ONCE'
+REVIEW_BRANCH = 'codex/week10-reviewed-prepublish-recovery'
+APPROVAL_SCOPE = 'WEEK10_MIXED_ARCHIVAL_REVIEW_RECOVERY_STATIC_ONCE'
+REVIEW_RECOVERY = {'recovery_id': 'week10-review-only-recovery-20261113-v1', 'source_installation_sha': '920b3fd2d684a68c777e9b804c9a84a665c75ccd', 'supersedes_request_sha256': '10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6', 'source_request_created_at_utc': '2026-11-13T09:32:56.346910+00:00', 'source_workflow_sha256': '8757155daaf0b9bd7e0eda51876e5153bd93fa110e86a02a367ca98f71c763ff', 'source_guard_sha256': 'fc46946df9fa670065336d716159ef59871eedd7217a9d5da19d0a23e46fc17a', 'source_control_pr': 15, 'source_control_head': 'db06329434ca0e5177070e1aacd7152f88805839', 'source_asset_merge': '258c0ef1044bdc3cc9ce9a5b8610c0a99ef765de', 'superseded_approval_comment_ids': [6850045671, 6850428064], 'reviewed_failed_runs': [{'run_id': 43409067582, 'check_suite_id': 117543033122, 'review_job_id': 131830624207, 'publish_job_id': 131830717338}, {'run_id': 43416065208, 'check_suite_id': 117561906791, 'review_job_id': 131854177208, 'publish_job_id': 131854428556}]}
 TIDY_HASHES = {'classic_research.js': '593f219cebdfedf77f9e3e5670e79380ba454cd6059bd1d90a652861ad5b1476', 'index.html': '06139a1031cec53d33defa7f6767ed6bfbe489e5ff208cd60d907940d51770b7', 'local_week9.css': '04e42703d4163e83f0d350b1fb111ca96bf7474da104ff339308d5e88ab5b60f', 'model.html': 'd726317aee0afac31d9424271bc4f3a16f2d197d5e75475f519da4d5dedcf72b', 'performance.html': '17f4473ebca020ce0b3c8c0a90a7196b9a28cf80c52481e4ac04d2b33ddc7d47', 'players.html': 'ef2c1750d2489c4ecf819a6477c0bb4d550d532a2a0009769315f69c208d1356', 'player_roles.js': 'ffb8cdbbb60870d46793640def8ed116dbc188467aea7abe59e00c016df75588', 'prediction_display.js': '291e4869fecd15ab3d317590471f003150aa2e4945a7cca05930a43eb6cdf2c0', 'release_receipt.json': '2c8a3995a8f7e907619d6a45182b41a07545f93ffe42cba918d053891ce1dc51', 'value.html': '4156aa26782d4e2f2f4cf369ac588429c574d0669cd17e07ceddafda1eb09ced', 'week10_preview.js': '0f2c9e79a86a62bcba1d17d558115a618f58599d87676b0b0482d5df6640a745', 'data/hosted_catalog.json': '8ca4461db20547aa80563bfef945b0864038dce22eb734a1dfdf34a9164d0c13', 'data/model_c_week10.json': '71e819237db60e7b1bbf861a7db49b97e4ddcc749cf1abb558e3fc369aedcf2f', 'data/original_td_week10.json': 'd4310402a02c4a5e143665e472801c261b2366dac0cfa56efe9a8dfac408f36d', 'data/quarter_catalog.json': '2b98f1b881b18132ae43c320d48a02a16c163b58d1c70a680364148aa8ac138e', 'data/quarter_simulation_week10.json': '70e4aed82f3f33c38ab3d3ad36c1d0630213dffa8eec2f12106fc6cfef2f5caa', 'data/td_catalog.json': '70fee9ac00078b5bb31e5281fec4eb868ad645370cb90571f02e479cca4d206b', 'data/week10_context.json': '67e690a077b50e9d75dba4af03f176dcdd4d42b325c553027e59b907e9ee7821', 'data/week10_fixture_comparison.csv': 'd81e774f784fb3dc1e50d399403cb8f90479b9b24a10fdfd21912ee5b021d29f', 'data/week10_market_observations.csv': '85f653a62b671b77f3c6b25c93badeadcc46d98341c12ad10581198fae33c0e5', 'data/week10_publication_context.json': '3ac25116409abf80ef923e1f8de9d09473d737555f693c9f03d5ab5e7480510d', 'data/week10_public_prop_observations.csv': '8e5a0cbac2c943e34b7c28204ea58c2d4e74fbd8aa9b76b45ef320bb7215b58f', 'data/week9_quarter_metrics.csv': 'eac84914cfaea3626eab1deaafea51a02974d6ec79ba83ccd461ddcbebf94528', 'data/week9_td_metrics.csv': 'fc3e5c61ad5dd6329bdc2f9a85633bbc9ecdf520f82eee0d68d13c7d4e9bf9a6', 'data/week9_yardage_metrics.csv': 'ff4317e9b53375a428856d101dd796a5f85ebac1cefff3c183fe5ae650b91f92', 'data/weeks1_9_team_metrics.csv': 'fd68a9048296412e295fc180339e6bfac9aa61b515ec8345427c39059a10bc1a', 'data/research/2026-w10.json': '4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e'}
 EXPECTED_HISTORY = ['2026_09_ARI_SEA', '2026_09_BUF_MIN', '2026_09_CIN_ATL', '2026_09_CLE_NO', '2026_09_DAL_IND', '2026_09_DEN_CAR', '2026_09_DET_MIA', '2026_09_GB_NE', '2026_09_HOU_LAC', '2026_09_JAX_BAL', '2026_09_LA_WAS', '2026_09_LV_SF', '2026_09_NYG_PHI', '2026_09_NYJ_KC', '2026_09_TB_CHI']
 BASE_MAIN_SHA = '75856d8414383f1185af21623866bd288682a5ff'
@@ -155,8 +157,15 @@ def approval_document(env, base=BASE):
             and pr["head"]["repo"]["full_name"] == REPO, "Approval must be on the exact merged Week 10 installation PR")
     observed = clock(comment["created_at"])
     require(clock(pr["merged_at"]) <= observed, "Approval comment predates the merge")
-    body = comment.get("body", "").strip()
-    require(len(body) <= 4096 and body.startswith("```json\n") and body.endswith("\n```"), "Expected one JSON approval block")
+    require(int(comment_id) not in REVIEW_RECOVERY['superseded_approval_comment_ids'], "Consumed owner approval cannot be replayed")
+    raw_body = comment.get("body", "")
+    require(isinstance(raw_body, str) and len(raw_body) <= 4096, "Expected one JSON approval block")
+    # Windows and Unix newline encodings are equivalent; a lone CR is malformed.
+    body = raw_body.replace("\r\n", "\n")
+    require("\r" not in body, "Lone carriage return in approval")
+    body = body.strip()
+    require(body.startswith("```json\n") and body.endswith("\n```") and body.count("```") == 2,
+            "Expected one JSON approval block")
     grant = json.loads(body[len("```json\n"):-len("\n```")])
     require(grant.get("installation_head") == env["GITHUB_SHA"], "Owner approval binds a different commit")
     return grant | {"approved_at_utc": observed.isoformat(), "human_approval_reference": comment["html_url"]}
@@ -174,14 +183,23 @@ def authority(manifest, env, instant, base=BASE):
     request_path = base / "review_request.json"
     require(sha(control_path) == env.get("CONTROL_SHA256"), "Controls differ")
     controls = read(control_path)
-    require(set(controls["files"]) == {"scripts/verify_week10_publication.py", "week10_release/review_request.json", "tests/test_week10_recovery_publication.py"}, "Wrong control inventory")
+    require(set(controls["files"]) == {"scripts/verify_week10_publication.py", "week10_release/review_request.json", "tests/test_week10_recovery_publication.py", "tests/test_week10_publication_deployments.py", "tests/fixtures/week10_publish_deployment.json", "tests/fixtures/week10_review_failures.json"}, "Wrong control inventory")
     require(all(sha(base.parent / name) == expected for name, expected in controls["files"].items()), "Control bytes differ")
     request = read(request_path)
     request_sha = sha(request_path)
     manifest_sha = sha(base / "publication_manifest.json")
     require(request_sha == env.get("REQUESTED_SHA"), "Wrong reviewed request")
+    require(request.get('schema') == 'controlled-week10-reviewed-recovery-request-v2'
+            and request.get('review_recovery') == REVIEW_RECOVERY
+            and request.get('required_installation_branch') == REVIEW_BRANCH
+            and request.get('allowed_dispatches') == 1 and request.get('max_approval_seconds') == 7200,
+            'Exact separately reviewed recovery authority required')
     verify_asset_merge(request,env)
     grant = approval_document(env, base)
+    require(grant.get('recovery_id') == REVIEW_RECOVERY['recovery_id']
+            and grant.get('supersedes_request_sha256') == REVIEW_RECOVERY['supersedes_request_sha256']
+            and grant.get('superseded_run_ids') == [r['run_id'] for r in REVIEW_RECOVERY['reviewed_failed_runs']],
+            'Fresh approval must explicitly bind the two reviewed failures')
     for doc in (request, grant):
         require(doc["release_id"] == manifest["release_id"] and doc["manifest_sha256"] == manifest_sha
                 and doc["repository"] == REPO and doc["destination"] == SITE and doc["scope"] == APPROVAL_SCOPE
@@ -462,11 +480,63 @@ def check_cleared_predecessor():
             'Original accepted dispatch is not conclusively cleared')
 
 
+def verify_review_only_failures():
+    """Finite exception proof, re-fetched in review AND pre-deploy. Never a retry policy."""
+    origin = REVIEW_RECOVERY['source_installation_sha']
+    for name, expected in (
+        ('.github/workflows/manual-frontend-correction.yml', REVIEW_RECOVERY['source_workflow_sha256']),
+        ('scripts/verify_week10_publication.py', REVIEW_RECOVERY['source_guard_sha256']),
+        ('week10_release/review_request.json', REVIEW_RECOVERY['supersedes_request_sha256'])):
+        record = api('contents/' + name, ref=origin)
+        require(record.get('encoding') == 'base64' and digest(base64.b64decode(record['content'])) == expected,
+                'Reviewed failed-attempt control source differs')
+    proven = []
+    for item in REVIEW_RECOVERY['reviewed_failed_runs']:
+        rid = item['run_id']; run = api('actions/runs/' + str(rid))
+        require(run.get('id') == rid and run.get('workflow_id') == int(WORKFLOW_ID)
+                and run.get('check_suite_id') == item['check_suite_id'] and run.get('head_sha') == origin
+                and run.get('path') == '.github/workflows/manual-frontend-correction.yml'
+                and run.get('event') == 'workflow_dispatch' and run.get('head_branch') == 'main'
+                and run.get('run_attempt') == 1 and run.get('status') == 'completed' and run.get('conclusion') == 'failure'
+                and run.get('repository', {}).get('full_name') == REPO
+                and run.get('actor', {}).get('login') == run.get('triggering_actor', {}).get('login') == 'racingmodel',
+                'Reviewed prior run is no longer a failed first review')
+        result = api(f'actions/runs/{rid}/attempts/1/jobs', per_page=100)
+        jobs = result.get('jobs', [])
+        require(result.get('total_count') == len(jobs) == 2 and {j.get('name') for j in jobs} == {'review', 'publish'},
+                'Reviewed attempt jobs incomplete or ambiguous')
+        for job in jobs:
+            require(job.get('id') == item[job['name'] + '_job_id'] and job.get('run_id') == rid
+                    and job.get('run_attempt') == 1 and job.get('head_sha') == origin and job.get('status') == 'completed',
+                    'Reviewed job identity differs')
+        review = next(j for j in jobs if j['name'] == 'review')
+        publish = next(j for j in jobs if j['name'] == 'publish')
+        require(review.get('conclusion') == 'failure' and publish.get('conclusion') == 'skipped'
+                and publish.get('steps') == [] and publish.get('runner_id') is None,
+                'A prior publish job ran or its identity is ambiguous')
+        steps = review.get('steps', [])
+        gate = [s for s in steps if s.get('name') == 'Verify new owner approval, frozen assets and fixture clocks']
+        upload = [s for s in steps if s.get('name') == 'Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9']
+        require(len(gate) == len(upload) == 1 and gate[0].get('conclusion') == 'failure'
+                and upload[0].get('conclusion') == 'skipped', 'Prior attempt reached artifact preparation or failed elsewhere')
+        artifacts = api(f'actions/runs/{rid}/artifacts', per_page=100)
+        require(artifacts.get('total_count') == 0 and artifacts.get('artifacts') == [],
+                'A reviewed failure has an artifact or incomplete artifact history')
+        proven.append(rid)
+    deployments = api('deployments', per_page=100)
+    require(isinstance(deployments, list) and len(deployments) < 100
+            and all(isinstance(d.get('sha'), str) and len(d['sha']) == 40 for d in deployments),
+            'Deployment history incomplete or ambiguous')
+    require(not any(d['sha'] == origin for d in deployments), 'A reviewed failure created a deployment')
+    return proven
+
+
 def check_first_dispatch(env, request_created):
     del request_created  # Never use filtered history as proof of no dispatch.
     rid=env.get('GITHUB_RUN_ID','')
     require(rid.isascii() and rid.isdecimal() and env.get('GITHUB_RUN_ATTEMPT')=='1', 'One authenticated run attempt required')
     check_cleared_predecessor()
+    proven = verify_review_only_failures()
     current=api('actions/runs/'+rid)
     require(str(current.get('id'))==rid and current.get('workflow_id')==int(WORKFLOW_ID)
             and current.get('head_sha')==env.get('GITHUB_SHA') and current.get('event')=='workflow_dispatch'
@@ -487,7 +557,14 @@ def check_first_dispatch(env, request_created):
     require(not any(str(r['id'])!=rid and r['status']!='completed' for r in repository), 'Other repository workflow activity')
     require(not any(str(r['id'])!=rid and r['head_sha']==env['GITHUB_SHA'] for r in repository),
             'One-time dispatch already attempted for this commit')
-    return {'unfiltered_repository_runs':len(repository),'unfiltered_workflow_runs':len(workflow),'direct_current_run':int(rid),'cleared_predecessor':43257307848}
+    # Changing a commit, rolling back controls or using another approval cannot reset this release.
+    boundary = clock(REVIEW_RECOVERY['source_request_created_at_utc'])
+    relevant = {r['id'] for r in workflow if clock(r.get('created_at', '1970-01-01T00:00:00Z')) >= boundary}
+    require(all(r.get('created_at') for r in workflow), 'Run creation time unavailable')
+    require(relevant == set(proven) | {int(rid)}, 'Unreviewed dispatch consumed this release authority')
+    return {'unfiltered_repository_runs':len(repository),'unfiltered_workflow_runs':len(workflow),
+            'direct_current_run':int(rid),'cleared_predecessor':43257307848,'review_only_failures_reverified':proven,
+            'recovery_id':REVIEW_RECOVERY['recovery_id']}
 
 
 def verify_dispatch_workflow_states():
@@ -501,18 +578,31 @@ def verify_dispatch_workflow_states():
 
 
 def verify_asset_merge(request, env):
-    number=request.get('asset_pr_number')
-    require(isinstance(number,int) and number>0 and request.get('base_main')==BASE_MAIN_SHA, 'Reviewed asset parent missing')
-    asset_pr=api('pulls/'+str(number))
-    require(asset_pr.get('merged') is True and asset_pr['base']['ref']=='main'
-            and asset_pr['base']['repo']['full_name']==asset_pr['head']['repo']['full_name']==REPO
-            and asset_pr['head']['sha']==request.get('asset_pr_head_sha')
-            and asset_pr['head']['ref']==request.get('asset_review_branch'), 'Asset PR/head differs or is unmerged')
-    commit=api('commits/'+asset_pr['merge_commit_sha'])
-    require([r['sha'] for r in commit.get('parents',[])]==[BASE_MAIN_SHA,request['asset_pr_head_sha']], 'Asset PR must use the reviewed merge-commit parent')
-    installed=api('commits/'+env['GITHUB_SHA'])
-    require(len(installed.get('parents',[]))==2 and installed['parents'][0]['sha']==asset_pr['merge_commit_sha'],
-            'Controls installation is not directly above the reviewed asset merge')
+    """Preserve both reviewed merges; the meaningful fix must sit directly above them."""
+    require(request.get('asset_pr_number') == 14 and request.get('base_main') == BASE_MAIN_SHA,
+            'Reviewed asset parent missing')
+    asset_pr = api('pulls/14')
+    require(asset_pr.get('merged') is True and asset_pr['base']['ref'] == 'main'
+            and asset_pr['base']['repo']['full_name'] == asset_pr['head']['repo']['full_name'] == REPO
+            and asset_pr['head']['sha'] == request.get('asset_pr_head_sha')
+            and asset_pr['head']['ref'] == request.get('asset_review_branch')
+            and asset_pr['merge_commit_sha'] == REVIEW_RECOVERY['source_asset_merge'],
+            'Asset PR/head differs or is unmerged')
+    commit = api('commits/' + asset_pr['merge_commit_sha'])
+    require([r['sha'] for r in commit.get('parents', [])] == [BASE_MAIN_SHA, request['asset_pr_head_sha']],
+            'Asset PR must use the reviewed merge-commit parent')
+    prior_pr = api('pulls/15')
+    require(prior_pr.get('merged') is True and prior_pr.get('merge_commit_sha') == REVIEW_RECOVERY['source_installation_sha']
+            and prior_pr['base']['ref'] == 'main'
+            and prior_pr['base']['repo']['full_name'] == prior_pr['head']['repo']['full_name'] == REPO
+            and prior_pr['head']['sha'] == REVIEW_RECOVERY['source_control_head'], 'Prior controls PR differs')
+    prior = api('commits/' + REVIEW_RECOVERY['source_installation_sha'])
+    require([r['sha'] for r in prior.get('parents', [])] == [asset_pr['merge_commit_sha'], REVIEW_RECOVERY['source_control_head']],
+            'Prior controls lineage differs')
+    installed = api('commits/' + env['GITHUB_SHA'])
+    require(len(installed.get('parents', [])) == 2
+            and installed['parents'][0]['sha'] == REVIEW_RECOVERY['source_installation_sha'],
+            'Reviewed recovery is not directly above the consumed installation')
     return asset_pr['merge_commit_sha']
 
 
