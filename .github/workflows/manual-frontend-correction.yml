@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CONTROL_SHA256: "339d12c72dc97289a9369c07730f0f1620a1e92a5312a5e853a3c646b75aa0d6"
+  CONTROL_SHA256: "a344a30ddc992c937cd2db210e434e75523505840e24727b8da49b70c5832031"
   APPROVAL_COMMENT_ID: "${{ inputs.approval_comment_id }}"
   REQUESTED_RELEASE: ${{ inputs.release_id }}
   REQUESTED_SHA: ${{ inputs.review_request_sha256 }}
@@ -55,6 +55,8 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: '3.12'
+      - name: Test archival and one-time publication safeguards
+        run: python -B -m unittest discover -s tests -p test_week10_recovery_publication.py -q
       - name: Verify new owner approval, frozen assets and fixture clocks
         env:
           GH_TOKEN: ${{ github.token }}
