@@ -1,7 +1,7 @@
 {
   "schema": "controlled-week10-final-site-v1",
-  "release_id": "frontend-week10-refresh-6060d616be7e911b",
-  "created_at_utc": "2026-11-12T15:41:44.849349+00:00",
+  "release_id": "frontend-week10-recovery-bd0913766051f62c",
+  "created_at_utc": "2026-11-12T18:00:06.177455+00:00",
   "prior_live_release": "frontend-week9-tidy-29466c12d79894cf",
   "first_cutoff_utc": "2026-11-13T01:14:00+00:00",
   "forecast_issue_utc": "2026-11-12T09:14:37.672478+00:00",
@@ -10,10 +10,21 @@
   "production_certified": false,
   "publication_authorized": false,
   "actionable": false,
-  "supersedes_unpublished_release": "frontend-week10-final-bbf8e10133b9118f",
+  "supersedes_unpublished_release": "frontend-week10-refresh-6060d616be7e911b",
   "forecast_features_unchanged": true,
   "market_provider_updated_at_utc": "2026-11-12T15:00:00+00:00",
   "market_retrieved_at_utc": "2026-11-12T15:31:19.605176+00:00",
   "bookmaker_updated_at_utc": null,
-  "forecasts_revalidated_at_utc": "2026-11-12T15:39:35.565324+00:00"
+  "forecasts_revalidated_at_utc": "2026-11-12T15:39:35.565324+00:00",
+  "publication": false,
+  "publication_authority": false,
+  "parent_release": "frontend-week10-refresh-6060d616be7e911b",
+  "fixture_only_td_review": true,
+  "prepared_at_utc": "2026-11-13T09:14:54.934857+00:00",
+  "publication_mode": "MIXED_ARCHIVE_AND_PREGAME",
+  "archived_fixture_ids": [
+    "2026_10_WAS_NYG"
+  ],
+  "forecast_timestamps_preserved": true,
+  "market_prices_are_captured_references": true
 }

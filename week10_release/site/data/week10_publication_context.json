@@ -1,0 +1,45 @@
+{
+  "schema": "week10-mixed-publication-context-v1",
+  "prepared_at_utc": "2026-11-13T09:14:54.906730+00:00",
+  "publication_mode": "MIXED_ARCHIVE_AND_PREGAME",
+  "archived": [
+    {
+      "game_id": "2026_10_WAS_NYG",
+      "kickoff_utc": "2026-11-13T01:15:00+00:00",
+      "original_pregame_cutoff_utc": "2026-11-13T01:14:00+00:00",
+      "forecast_issued_at_utc": "2026-11-12T09:07:18.219644+00:00",
+      "td_issued_at_utc": "2026-11-12T18:00:06.177455+00:00",
+      "market_retrieved_at_utc": "2026-11-12T15:31:19.605176+00:00",
+      "market_feed_at_utc": "2026-11-12T15:00:00+00:00",
+      "bookmaker_updated_at_utc": null,
+      "forecast_record_sha256": "5ae0116baaef7e42e705ddaf920d9a3035a0d7e1d3653912bf3df0ef68ffbd9a",
+      "td_rows_sha256": "0993a4e5c38b8685239e5c393af326f4fe3eb5bf1e2d29be5077dde48dfe1122",
+      "display_status": "ARCHIVED_PREGAME",
+      "actuals_included": false,
+      "interpretation": "Frozen pregame forecast first published after cutoff. Original issues and reference market observations are historical, never live after kickoff."
+    }
+  ],
+  "pregame_fixture_ids": [
+    "2026_10_NE_DET",
+    "2026_10_KC_ATL",
+    "2026_10_HOU_CLE",
+    "2026_10_MIN_GB",
+    "2026_10_MIA_IND",
+    "2026_10_CAR_NO",
+    "2026_10_BUF_NYJ",
+    "2026_10_JAX_TEN",
+    "2026_10_LA_ARI",
+    "2026_10_SEA_LV",
+    "2026_10_SF_DAL",
+    "2026_10_PIT_CIN",
+    "2026_10_LAC_BAL"
+  ],
+  "next_publication_deadline_utc": "2026-11-15T14:29:00+00:00",
+  "publication_authorized": false,
+  "market_status": "CAPTURED_REFERENCE_NOT_LIVE",
+  "source_snapshot_seals": {
+    "compact": "fe9028f188807b7e57256fc97dface5aac3ebb8fe759dede0a7f14da11e14e50",
+    "td": "9561ec1eff5ebe3f4ff3d0138aa1053556c062d72aa138cb8070b0c09707270a"
+  },
+  "release_id": "frontend-week10-recovery-bd0913766051f62c"
+}

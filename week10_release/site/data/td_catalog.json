@@ -17,10 +17,10 @@
   },
   "10": {
     "path": "data/original_td_week10.json",
-    "sha256": "980136715f31d1b5fba3fe49b21def6153a29fd0541ca97b0e5e52d8576d29bf",
+    "sha256": "d4310402a02c4a5e143665e472801c261b2366dac0cfa56efe9a8dfac408f36d",
     "parent_path": "data/research/2026-w10.json",
     "parent_sha256": "4a37a8c515ea9d00b299471c5ecac95d86e76d66c3f77a8037b43a1fa7a6454e",
-    "rows": 220,
-    "teams": 14
+    "rows": 249,
+    "teams": 16
   }
 }
