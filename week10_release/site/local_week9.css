@@ -12,3 +12,38 @@
 .comparison-market-note {grid-column:1/-1;background:var(--panel);text-align:center;margin:0;padding:6px 8px;color:var(--muted);font-size:.68rem}
 .week9-quarter-details>.expanded {padding-inline:10px}
 .week9-quarter-details .quarter-simulation {margin:0}
+
+/* Week 10 only: retain the approved Week 9 score/market spacing. */
+.week10-compact .quick.week9-comparisons{margin-top:0}
+.week10-compact .market-source-reference{font-size:10px;line-height:1.5;padding:6px 10px;overflow-wrap:anywhere}
+.week10-compact .market-source-reference a{color:inherit}
+.w10-model-c-summary{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.w10-model-c-summary small{display:block;font-size:10px;letter-spacing:.06em;color:var(--muted)}
+.w10-model-c-summary b{display:block;margin-top:2px;font-size:14px;color:var(--text)}
+.w10-model-c-summary>span{font-size:11px;text-align:right;color:var(--muted)}
+.w10-model-c-summary>span strong{display:block;font-weight:500;color:var(--text)}
+.w10-card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 14px 9px;font-size:10px;color:var(--muted);min-height:32px}
+.w10-meta-indicators{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.w10-disagreement,.w10-hold-tag{font:inherit;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);padding:3px 7px;white-space:nowrap}
+.w10-disagreement{cursor:pointer;min-height:26px}
+.week10-compact>details{border-top:1px solid var(--line);margin:0}
+.week10-compact>details>summary{padding:12px 14px;font-size:12px;line-height:1.5;min-height:44px;box-sizing:border-box}
+.w10-advanced-body{padding:0 14px 12px;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+.w10-advanced-body h4{font-size:13px;margin:14px 0 8px}
+.w10-advanced-body section+section{border-top:1px solid var(--line);margin-top:14px}
+.w10-detail-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:11px}
+.w10-detail-table th,.w10-detail-table td{padding:7px 5px;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;vertical-align:top}
+.w10-detail-table th:first-child{width:42%;font-weight:500}
+.w10-detail-table thead th{font-weight:700}
+.w10-injury-table th:first-child{width:34%}
+.week10-compact .w10-forecast-history .row{gap:8px;flex-wrap:wrap}
+.week10-compact .w10-detail-group{margin:0}
+.week10-compact .quarter-simulation{overflow-wrap:anywhere}
+@media(max-width:600px){
+ .w10-card-meta{font-size:10px}
+ .w10-model-c-summary{padding-block:8px}
+ .w10-model-c-summary b{font-size:13px}
+ .w10-advanced-body{padding-inline:10px}
+ .w10-detail-table{font-size:10px}
+ .week10-compact .market-source-reference{font-size:10px}
+}
