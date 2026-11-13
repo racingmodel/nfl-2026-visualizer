@@ -14,10 +14,10 @@ The new publication deadline is the earliest remaining fixture cutoff, **15 Nove
 |---|---|
 | Manifest | `6cc743b046f98d7d53b57895faced2edca167f86ee571eef2af973691612ca5e` |
 | Review request | `10ee96fe4935fe3d9e6bdc50276b25c61ef4f89b4fb4cb6ed0a2a5183d38d2d6` |
-| Controls | `a344a30ddc992c937cd2db210e434e75523505840e24727b8da49b70c5832031` |
-| Guard | `0fa37cecb59a14fc257afd9c5f0cd9d0f0ada8a6dfdf054ddda14dcdecb22e41` |
-| Workflow | `6f91ba3c64cbc552325744d237d0a8ceae1b375af2d458199bf62959ef0fd59a` |
-| Focused tests | `5f5d463e83f8b47efd013fc3c552d5afbcab1a5d56653a4a865976fb84ef80f2` |
+| Controls | `d9b3b7779bec7926066b44b4b1e2efe05130895535f4b241916a5b35d1af5307` |
+| Guard | `fc46946df9fa670065336d716159ef59871eedd7217a9d5da19d0a23e46fc17a` |
+| Workflow | `8757155daaf0b9bd7e0eda51876e5153bd93fa110e86a02a367ca98f71c763ff` |
+| Focused tests | `15b59c66ccd4a32fa4deb885a60d57165fc8a91f9fd09e6a2c9e9f4d0cd07997` |
 
 ## Staged review and merge — requires separate owner authority
 
@@ -67,3 +67,7 @@ Only workflow 399724330 may be enabled. The review job runs the focused tests, t
 One-time checks use complete **unfiltered** repository/workflow inventories plus direct current/predecessor IDs, not filtered zero counts. Missing/inconsistent inventories fail closed. A second dispatch on the installation SHA or run_attempt > 1 is rejected. If dispatch returns HTTP 500 or any uncertain response, **do not retry**. Disable the manual workflow, reconcile direct/unfiltered run and deployment records, and request a new explicit diagnosis/authority before any replacement.
 
 Monitor the one run, verify the successful Pages deployment and all **426 served asset hashes**, and confirm Week 10 plus the archived WAS-NYG label and correct original TD/odds timestamps. Disable workflow 399724330 again. All other workflows and routine flags remain disabled/false throughout. No model rebuild, promotion, paid odds, alternative hosting or racing-model change is authorised.
+
+## Job-token permission review
+
+The review job explicitly requests checks/deployments read for the cleared-suite and deployment evidence. The publish job retains its existing read and Pages/OIDC permissions. Routine flags remain strictly false through the original authenticated GitHub vars environment checks; the job does not require repository Variables API access. Owner CLI preflight separately verifies the current repository flags. [GitHub Variables API permissions](https://docs.github.com/en/rest/actions/variables#list-repository-variables) and [job token permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions).

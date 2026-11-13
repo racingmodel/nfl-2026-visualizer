@@ -157,6 +157,8 @@ class RecoveryTests(unittest.TestCase):
         with patch.object(g,'api',side_effect=self.api):g.verify_dispatch_workflow_states()
         self.workflows[1]['state']='active'
         with patch.object(g,'api',side_effect=self.api),self.assertRaises(ValueError):g.verify_dispatch_workflow_states()
+        self.workflows=[dict(id=i,state='disabled_manually') for i in range(5)]
+        with patch.object(g,'api',side_effect=self.api),self.assertRaises(ValueError):g.verify_dispatch_workflow_states()
     def test_changed_or_extra_assets_fail_real_package_inventory(self):
         temp_root=Path(os.environ.get('WEEK10_TEST_TMP_ROOT',ROOT/'.tmp'));temp_root.mkdir(exist_ok=True,parents=True)
         for name in ['data/model_c_week10.json','data/original_td_week10.json','data/week10_publication_context.json','extra.js']:
@@ -175,6 +177,9 @@ class RecoveryTests(unittest.TestCase):
         self.assertIn('\n  workflow_dispatch:',source)
         for event in ['push','schedule','pull_request']:self.assertNotIn('\n  '+event+':',source)
         for permission in ['checks: read','deployments: read','pages: write','id-token: write']:self.assertIn(permission,source)
+        review=source.split('  review:',1)[1].split('  publish:',1)[0]
+        self.assertIn('checks: read',review);self.assertIn('deployments: read',review)
+        self.assertNotIn("api('actions/variables'",(ROOT/'scripts/verify_week10_publication.py').read_text(encoding='utf-8'))
 
 def load_tests(loader,tests,pattern):
     # Reuse the 19 unchanged authenticated self-deployment function regressions.

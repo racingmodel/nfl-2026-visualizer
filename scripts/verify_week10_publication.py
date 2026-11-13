@@ -493,12 +493,11 @@ def check_first_dispatch(env, request_created):
 def verify_dispatch_workflow_states():
     workflows=api('actions/workflows',per_page=100)
     require(workflows.get('total_count')==len(workflows.get('workflows',[]))==5, 'Workflow inventory differs')
+    require(len({w.get('id') for w in workflows['workflows']})==5 and int(WORKFLOW_ID) in {w.get('id') for w in workflows['workflows']}, 'Manual workflow identity missing or duplicated')
     require(all(w.get('state')==('active' if str(w.get('id'))==WORKFLOW_ID else 'disabled_manually') for w in workflows['workflows']),
             'Only the authorised manual workflow may be enabled')
-    variables=api('actions/variables',per_page=100)
-    require(variables.get('total_count',len(variables.get('variables',[])))<=100, 'Variable inventory incomplete')
-    flags={v['name']:v['value'] for v in variables.get('variables',[])}
-    require(all(flags.get(name)=='false' for name in FLAGS), 'A routine flag changed')
+    # Routine flags are checked from the authenticated GitHub vars environment
+    # by authority(); GITHUB_TOKEN does not need repository Variables API access.
 
 
 def verify_asset_merge(request, env):
