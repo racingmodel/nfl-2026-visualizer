@@ -1,0 +1,290 @@
+{
+  "finals": 14,
+  "teams": [
+    {
+      "cohort": "Model A original",
+      "games": 14,
+      "score_mae": 7.801138397909278,
+      "margin_mae": 11.491889966736718,
+      "total_mae": 8.344263327046523,
+      "winners": 10,
+      "winner_denominator": 14,
+      "total_bias": -2.904369303818622
+    },
+    {
+      "cohort": "Model B expected",
+      "games": 14,
+      "score_mae": 7.993248214285714,
+      "margin_mae": 12.205996428571426,
+      "total_mae": 8.17209642857143,
+      "winners": 9,
+      "winner_denominator": 14,
+      "total_bias": -4.313703571428572
+    },
+    {
+      "cohort": "Model B scenario",
+      "games": 14,
+      "score_mae": 8.571428571428571,
+      "margin_mae": 12.428571428571429,
+      "total_mae": 9.571428571428571,
+      "winners": 9,
+      "winner_denominator": 14,
+      "total_bias": -4.428571428571429
+    },
+    {
+      "cohort": "Model C expected",
+      "games": 14,
+      "score_mae": 7.746930803571429,
+      "margin_mae": 11.106584821428571,
+      "total_mae": 8.513950892857142,
+      "winners": 10,
+      "winner_denominator": 14,
+      "total_bias": -2.593191964285714
+    }
+  ],
+  "distribution": [
+    {
+      "model": "C",
+      "metric": "away",
+      "crps": 5.197762625558036,
+      "coverage80": 0.785714285714286
+    },
+    {
+      "model": "C",
+      "metric": "home",
+      "crps": 5.298614501953125,
+      "coverage80": 0.785714285714286
+    },
+    {
+      "model": "C",
+      "metric": "margin",
+      "crps": 7.819314139229911,
+      "coverage80": 0.785714285714286
+    },
+    {
+      "model": "C",
+      "metric": "total",
+      "crps": 6.378526960100446,
+      "coverage80": 0.928571428571429
+    },
+    {
+      "model": "Negative binomial",
+      "metric": "away",
+      "crps": 5.443872383662632,
+      "coverage80": 0.857142857142857
+    },
+    {
+      "model": "Negative binomial",
+      "metric": "home",
+      "crps": 5.2974579674857,
+      "coverage80": 0.785714285714286
+    },
+    {
+      "model": "Negative binomial",
+      "metric": "margin",
+      "crps": 7.987463474273682,
+      "coverage80": 0.714285714285714
+    },
+    {
+      "model": "Negative binomial",
+      "metric": "total",
+      "crps": 6.523151057107108,
+      "coverage80": 0.857142857142857
+    }
+  ],
+  "quarter_expected_mae": 3.8276424107142857,
+  "players": [
+    {
+      "vintage": "Published TD",
+      "target": "offensive_td",
+      "rows": 249,
+      "fixtures": 8,
+      "matched": 171,
+      "missing_stat_rows": 69,
+      "outside_observed_participation": 78,
+      "brier": 0.1558364832159136,
+      "expected": 30.028662712327733,
+      "actual": 39,
+      "top5_known": 73,
+      "top5_hits": 30,
+      "scorers_missing": 0
+    },
+    {
+      "vintage": "Original model TD issue",
+      "target": "offensive_td",
+      "rows": 220,
+      "fixtures": 7,
+      "matched": 150,
+      "missing_stat_rows": 63,
+      "outside_observed_participation": 70,
+      "brier": 0.15459987523820692,
+      "expected": 26.157746393900517,
+      "actual": 34,
+      "top5_known": 63,
+      "top5_hits": 26,
+      "scorers_missing": 0
+    },
+    {
+      "vintage": "Separate game-day TD",
+      "target": "offensive_td",
+      "rows": 374,
+      "fixtures": 13,
+      "matched": 279,
+      "missing_stat_rows": 83,
+      "outside_observed_participation": 95,
+      "brier": 0.14602332338793075,
+      "expected": 51.0047172737154,
+      "actual": 55,
+      "top5_known": 124,
+      "top5_hits": 38,
+      "scorers_missing": 2
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "rushing_yards",
+      "cohort": "Matched stats",
+      "rows": 424,
+      "matched": 303,
+      "missing": 121,
+      "mae": 7.592728890832652
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "rushing_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 330,
+      "matched": 292,
+      "missing": 38,
+      "mae": 7.591404520666718
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "receiving_yards",
+      "cohort": "Matched stats",
+      "rows": 424,
+      "matched": 303,
+      "missing": 121,
+      "mae": 16.494595768150575
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "receiving_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 330,
+      "matched": 292,
+      "missing": 38,
+      "mae": 16.81087472226923
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "passing_yards",
+      "cohort": "Matched stats",
+      "rows": 424,
+      "matched": 0,
+      "missing": 424,
+      "mae": null
+    },
+    {
+      "vintage": "Frozen yardage",
+      "target": "passing_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 330,
+      "matched": 0,
+      "missing": 330,
+      "mae": null
+    },
+    {
+      "vintage": "Additional game-day yardage",
+      "target": "rushing_yards",
+      "cohort": "Matched stats",
+      "rows": 7,
+      "matched": 5,
+      "missing": 2,
+      "mae": 1.3865340562425856
+    },
+    {
+      "vintage": "Additional game-day yardage",
+      "target": "rushing_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 3,
+      "matched": 3,
+      "missing": 0,
+      "mae": 1.8977339300615326
+    },
+    {
+      "vintage": "Additional game-day yardage",
+      "target": "receiving_yards",
+      "cohort": "Matched stats",
+      "rows": 7,
+      "matched": 5,
+      "missing": 2,
+      "mae": 13.684207174571663
+    },
+    {
+      "vintage": "Additional game-day yardage",
+      "target": "receiving_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 3,
+      "matched": 3,
+      "missing": 0,
+      "mae": 12.042913391728831
+    },
+    {
+      "vintage": "Frozen passing",
+      "target": "passing_yards",
+      "cohort": "Matched stats",
+      "rows": 22,
+      "matched": 22,
+      "missing": 0,
+      "mae": 84.25
+    },
+    {
+      "vintage": "Frozen passing",
+      "target": "passing_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 22,
+      "matched": 22,
+      "missing": 0,
+      "mae": 84.25
+    },
+    {
+      "vintage": "Additional game-day passing",
+      "target": "passing_yards",
+      "cohort": "Matched stats",
+      "rows": 3,
+      "matched": 3,
+      "missing": 0,
+      "mae": 81.20833333333333
+    },
+    {
+      "vintage": "Additional game-day passing",
+      "target": "passing_yards",
+      "cohort": "Observed offensive participation",
+      "rows": 3,
+      "matched": 3,
+      "missing": 0,
+      "mae": 81.20833333333333
+    }
+  ],
+  "missing_scorers": {
+    "Published TD": [],
+    "Original model TD issue": [],
+    "Separate game-day TD": [
+      {
+        "game_id": "2026_10_PIT_CIN",
+        "team": "CIN",
+        "player_id": "00-0033526",
+        "player_display_name": "Samaje Perine"
+      },
+      {
+        "game_id": "2026_10_PIT_CIN",
+        "team": "CIN",
+        "player_id": "00-0038597",
+        "player_display_name": "Chase Brown"
+      }
+    ]
+  },
+  "market_close_comparison": "WITHHELD: authenticated synchronized closing quotes unavailable",
+  "game_day_team_scores": "Unchanged; no duplicate score cohort",
+  "calibration": "Single-week diagnostics, insufficient for certification"
+}

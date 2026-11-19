@@ -1,0 +1,4068 @@
+{
+  "schema": "week11-model-c-preview-v1",
+  "actionable": false,
+  "parent_a_sha256": "041b90daf29f78901ff765d095bda82690b987709bf9fbf0cdaf5a732b836da6",
+  "parent_b_sha256": "49dc183481a671f2d903475b6f2dbeb825ab477be4c47a3b8f6331e9f82b8f43",
+  "model_c_id": "paired-residual-history8-v1",
+  "nb_id": "negative-binomial-history8-v1",
+  "win_publicly_supported": false,
+  "fixtures": [
+    {
+      "game_id": "2026_11_IND_HOU",
+      "away_team": "IND",
+      "home_team": "HOU",
+      "kickoff_utc": "2026-11-20T01:15:00+00:00",
+      "cutoff_utc": "2026-11-20T01:14:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.375276+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 11.625,
+      "context_score_sd": 8.848473593881907,
+      "history_lineage": {
+        "IND": {
+          "history_games": [
+            "2026_03_HOU_IND",
+            "2026_04_IND_WAS",
+            "2026_05_IND_PIT",
+            "2026_06_TEN_IND",
+            "2026_07_IND_MIN",
+            "2026_08_IND_JAX",
+            "2026_09_DAL_IND",
+            "2026_10_MIA_IND"
+          ],
+          "drives_games": [
+            "2026_07_IND_MIN",
+            "2026_08_IND_JAX",
+            "2026_09_DAL_IND",
+            "2026_10_MIA_IND"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 12.0,
+          "score_sd": 7.034513131695753
+        },
+        "HOU": {
+          "history_games": [
+            "2026_02_CIN_HOU",
+            "2026_03_HOU_IND",
+            "2026_04_DAL_HOU",
+            "2026_05_HOU_TEN",
+            "2026_06_HOU_JAX",
+            "2026_07_NYG_HOU",
+            "2026_09_HOU_LAC",
+            "2026_10_HOU_CLE"
+          ],
+          "drives_games": [
+            "2026_06_HOU_JAX",
+            "2026_07_NYG_HOU",
+            "2026_09_HOU_LAC",
+            "2026_10_HOU_CLE"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 11.25,
+          "score_sd": 10.662434056068061
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2025_15_CLE_CHI",
+          "2023_03_HOU_JAX",
+          "2023_15_WAS_LA",
+          "2023_10_CLE_BAL",
+          "2023_11_ARI_HOU",
+          "2024_07_HOU_GB",
+          "2023_04_WAS_PHI",
+          "2023_16_JAX_TB",
+          "2026_04_ATL_NO",
+          "2023_05_CAR_DET",
+          "2023_03_DAL_ARI",
+          "2026_07_KC_SEA",
+          "2023_11_NYJ_BUF",
+          "2024_14_CIN_DAL",
+          "2024_03_NYG_CLE",
+          "2026_03_HOU_IND",
+          "2023_17_SF_WAS",
+          "2023_01_TB_MIN",
+          "2025_10_JAX_HOU",
+          "2023_04_NE_DAL",
+          "2026_06_LAC_KC",
+          "2026_05_IND_PIT",
+          "2024_16_CLE_CIN",
+          "2026_08_LAC_LA",
+          "2023_13_MIA_WAS",
+          "2024_07_TEN_BUF",
+          "2024_17_MIA_CLE",
+          "2023_04_ATL_JAX",
+          "2024_08_TEN_DET",
+          "2024_15_WAS_NO",
+          "2023_11_PIT_CLE",
+          "2024_13_TEN_WAS",
+          "2023_02_SEA_DET",
+          "2023_15_NYJ_MIA",
+          "2024_17_ATL_WAS",
+          "2023_09_ARI_CLE",
+          "2023_05_CHI_WAS",
+          "2025_13_LV_LAC",
+          "2024_08_IND_HOU",
+          "2026_02_NO_BAL",
+          "2024_02_CLE_JAX",
+          "2024_12_DET_IND",
+          "2025_15_NYJ_JAX",
+          "2023_17_TEN_HOU",
+          "2023_08_CLE_SEA",
+          "2025_13_HOU_IND",
+          "2023_15_CHI_CLE",
+          "2026_09_NYG_PHI",
+          "2023_03_PHI_TB",
+          "2024_14_CLE_PIT",
+          "2024_15_CIN_TEN",
+          "2023_10_NYG_DAL",
+          "2025_01_MIA_IND",
+          "2024_06_JAX_CHI",
+          "2023_05_JAX_BUF",
+          "2026_08_CLE_PIT",
+          "2026_06_ARI_LA",
+          "2025_14_PHI_LAC",
+          "2025_15_LV_PHI",
+          "2023_03_IND_BAL",
+          "2025_11_HOU_TEN",
+          "2023_18_DEN_LV",
+          "2025_12_SEA_TEN",
+          "2023_02_IND_HOU",
+          "2026_03_NYJ_DET",
+          "2023_15_NYG_NO",
+          "2024_13_HOU_JAX",
+          "2024_15_BAL_NYG",
+          "2024_09_WAS_NYG",
+          "2026_03_LAC_BUF",
+          "2023_17_NE_BUF",
+          "2026_07_TB_CAR",
+          "2025_16_BUF_CLE",
+          "2023_09_CHI_NO",
+          "2025_08_NYG_PHI",
+          "2023_14_LA_BAL",
+          "2024_12_TEN_HOU",
+          "2023_12_JAX_HOU",
+          "2023_10_WAS_SEA",
+          "2023_04_MIN_CAR",
+          "2023_12_TB_IND",
+          "2024_09_LV_CIN",
+          "2024_10_ATL_NO",
+          "2023_17_LAC_DEN",
+          "2025_14_DEN_LV",
+          "2024_11_HOU_DAL",
+          "2024_16_TB_DAL",
+          "2025_15_LAC_KC",
+          "2025_15_ATL_TB",
+          "2026_03_ATL_GB",
+          "2023_17_CAR_JAX",
+          "2023_16_ARI_CHI",
+          "2026_07_PIT_NO",
+          "2026_04_LAC_SEA",
+          "2025_13_CHI_PHI",
+          "2024_02_NYJ_TEN",
+          "2025_06_SEA_JAX",
+          "2023_13_DEN_HOU",
+          "2023_02_BAL_CIN",
+          "2024_02_ATL_PHI",
+          "2025_11_CIN_PIT",
+          "2024_10_DET_HOU",
+          "2023_10_SF_JAX",
+          "2023_06_IND_JAX",
+          "2023_16_SEA_TEN",
+          "2024_18_KC_DEN",
+          "2023_16_BUF_LAC",
+          "2023_08_NO_IND",
+          "2026_07_IND_MIN",
+          "2023_03_CAR_SEA",
+          "2023_06_WAS_ATL",
+          "2025_01_CIN_CLE",
+          "2024_02_NYG_WAS",
+          "2025_09_DEN_HOU",
+          "2023_07_BUF_NE",
+          "2025_10_CLE_NYJ",
+          "2025_14_SEA_ATL",
+          "2023_05_TEN_IND",
+          "2023_14_IND_CIN",
+          "2024_18_WAS_DAL",
+          "2024_10_NE_CHI",
+          "2024_01_NE_CIN",
+          "2024_01_DAL_CLE",
+          "2026_09_JAX_BAL",
+          "2025_01_SF_SEA",
+          "2024_09_IND_MIN",
+          "2026_09_DEN_CAR",
+          "2025_15_TEN_SF"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          19.40625,
+          25.453125
+        ],
+        "median": [
+          19.5,
+          25.0
+        ],
+        "away_interval80": [
+          7.0,
+          32.0
+        ],
+        "home_interval80": [
+          15.0,
+          37.0
+        ],
+        "total_interval80": [
+          30.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -8.0,
+          25.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          26.0
+        ],
+        "expected_total": 44.859375,
+        "expected_home_margin": 6.046875,
+        "probabilities": {
+          "away_35": 0.0546875,
+          "home_35": 0.1484375,
+          "away_10": 0.1484375,
+          "home_10": 0.0234375,
+          "total_60": 0.140625,
+          "total_under_30": 0.078125,
+          "margin_17": 0.3125,
+          "margin_24": 0.1171875,
+          "within_3": 0.1484375,
+          "either_35": 0.203125,
+          "either_10": 0.171875
+        },
+        "score_correlation": -0.12224615327690908,
+        "typical": [
+          19,
+          24
+        ],
+        "low": [
+          11,
+          16
+        ],
+        "high": [
+          31,
+          33
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          19.9365234375,
+          25.767578125
+        ],
+        "median": [
+          19.0,
+          25.0
+        ],
+        "away_interval80": [
+          10.0,
+          32.0
+        ],
+        "home_interval80": [
+          14.0,
+          39.0
+        ],
+        "total_interval80": [
+          29.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -11.0,
+          23.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 45.7041015625,
+        "expected_home_margin": 5.8310546875,
+        "probabilities": {
+          "away_35": 0.06640625,
+          "home_35": 0.18359375,
+          "away_10": 0.1298828125,
+          "home_10": 0.0380859375,
+          "total_60": 0.1552734375,
+          "total_under_30": 0.1044921875,
+          "margin_17": 0.25,
+          "margin_24": 0.10546875,
+          "within_3": 0.1962890625,
+          "either_35": 0.23828125,
+          "either_10": 0.1630859375
+        },
+        "score_correlation": 0.00022555158121151552,
+        "typical": [
+          19,
+          25
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          28,
+          35
+        ]
+      },
+      "joint_sha256": "f91ed198860c44dbea6aefb9ed4f06f55ea988b525aa3e8175c017527930f29c"
+    },
+    {
+      "game_id": "2026_11_ARI_KC",
+      "away_team": "ARI",
+      "home_team": "KC",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.476834+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.75,
+      "context_score_sd": 9.87539460315378,
+      "history_lineage": {
+        "ARI": {
+          "history_games": [
+            "2026_03_ARI_SF",
+            "2026_04_ARI_NYG",
+            "2026_05_DET_ARI",
+            "2026_06_ARI_LA",
+            "2026_07_DEN_ARI",
+            "2026_08_ARI_DAL",
+            "2026_09_ARI_SEA",
+            "2026_10_LA_ARI"
+          ],
+          "drives_games": [
+            "2026_07_DEN_ARI",
+            "2026_08_ARI_DAL",
+            "2026_09_ARI_SEA",
+            "2026_10_LA_ARI"
+          ],
+          "latest_available_utc": "2026-11-17T21:05:00+00:00",
+          "prior_drives": 10.5,
+          "score_sd": 9.879745695107744
+        },
+        "KC": {
+          "history_games": [
+            "2026_02_IND_KC",
+            "2026_03_KC_MIA",
+            "2026_04_KC_LV",
+            "2026_06_LAC_KC",
+            "2026_07_KC_SEA",
+            "2026_08_KC_DEN",
+            "2026_09_NYJ_KC",
+            "2026_10_KC_ATL"
+          ],
+          "drives_games": [
+            "2026_07_KC_SEA",
+            "2026_08_KC_DEN",
+            "2026_09_NYJ_KC",
+            "2026_10_KC_ATL"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 11.0,
+          "score_sd": 9.871043511199817
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2025_18_NYJ_BUF",
+          "2024_01_NYJ_SF",
+          "2026_06_NYJ_NE",
+          "2024_18_NO_TB",
+          "2023_13_SEA_DAL",
+          "2023_14_SEA_SF",
+          "2023_14_TEN_MIA",
+          "2023_12_WAS_DAL",
+          "2025_11_NYJ_NE",
+          "2025_10_LV_DEN",
+          "2026_03_LAC_BUF",
+          "2023_14_LA_BAL",
+          "2024_08_TEN_DET",
+          "2024_09_MIA_BUF",
+          "2026_02_PIT_NE",
+          "2025_06_CIN_GB",
+          "2025_12_NE_CIN",
+          "2023_18_PIT_BAL",
+          "2023_05_JAX_BUF",
+          "2023_18_LA_SF",
+          "2025_10_ATL_IND",
+          "2025_02_CLE_BAL",
+          "2026_02_MIA_SF",
+          "2025_01_TEN_DEN",
+          "2026_06_WAS_SF",
+          "2023_10_DEN_BUF",
+          "2026_03_NYJ_DET",
+          "2025_05_TEN_ARI",
+          "2026_04_LAC_SEA",
+          "2023_18_DAL_WAS",
+          "2026_04_NYJ_CHI",
+          "2023_15_NYJ_MIA",
+          "2026_04_MIA_MIN",
+          "2025_16_LV_HOU",
+          "2023_06_NYG_BUF",
+          "2024_12_DET_IND",
+          "2024_16_DET_CHI",
+          "2025_15_TEN_SF",
+          "2024_18_CLE_BAL",
+          "2024_11_JAX_DET",
+          "2023_02_NYJ_DAL",
+          "2025_01_DAL_PHI",
+          "2024_12_DAL_WAS",
+          "2026_06_HOU_JAX",
+          "2025_09_MIN_DET",
+          "2023_03_NYG_SF",
+          "2023_08_CIN_SF",
+          "2023_11_TB_SF",
+          "2023_04_WAS_PHI",
+          "2025_12_NYG_DET",
+          "2026_04_TEN_BAL",
+          "2024_07_TEN_BUF",
+          "2025_15_NYJ_JAX",
+          "2023_11_CIN_BAL",
+          "2025_13_MIN_SEA",
+          "2024_18_NYG_PHI",
+          "2025_15_IND_SEA",
+          "2025_03_NYJ_TB",
+          "2025_09_ATL_NE",
+          "2023_11_LV_MIA",
+          "2025_02_ATL_MIN",
+          "2025_12_SEA_TEN",
+          "2025_15_DET_LA",
+          "2026_08_IND_JAX",
+          "2025_02_CHI_DET",
+          "2023_18_MIN_DET",
+          "2025_07_NYG_DEN",
+          "2025_01_NYG_WAS",
+          "2023_08_TB_BUF",
+          "2024_13_CLE_DEN",
+          "2023_07_BUF_NE",
+          "2025_03_MIA_BUF",
+          "2025_06_CHI_WAS",
+          "2024_07_DEN_NO",
+          "2025_09_CAR_GB",
+          "2025_15_MIN_DAL",
+          "2026_05_LV_NE",
+          "2026_06_ARI_LA",
+          "2023_10_NYG_DAL",
+          "2023_11_CHI_DET",
+          "2025_01_SF_SEA",
+          "2025_04_NO_BUF",
+          "2023_15_WAS_LA",
+          "2023_03_DAL_ARI",
+          "2023_11_ARI_HOU",
+          "2025_18_TEN_JAX",
+          "2025_12_TB_LA",
+          "2024_01_WAS_TB",
+          "2025_11_CIN_PIT",
+          "2024_06_JAX_CHI",
+          "2025_18_CLE_CIN",
+          "2024_03_PHI_NO",
+          "2023_03_HOU_JAX",
+          "2026_09_JAX_BAL",
+          "2025_08_CLE_NE",
+          "2024_08_ATL_TB",
+          "2023_17_SF_WAS",
+          "2024_15_IND_DEN",
+          "2024_01_CAR_NO",
+          "2024_08_CAR_DEN",
+          "2025_13_CIN_BAL",
+          "2024_16_CLE_CIN",
+          "2025_17_ARI_CIN",
+          "2023_02_SEA_DET",
+          "2026_05_PHI_JAX",
+          "2026_02_DET_BUF",
+          "2025_14_CIN_BUF",
+          "2024_17_DAL_PHI",
+          "2023_05_CAR_DET",
+          "2026_01_CLE_JAX",
+          "2024_06_ARI_GB",
+          "2026_08_BAL_BUF",
+          "2024_13_TEN_WAS",
+          "2026_05_CHI_GB",
+          "2025_05_HOU_BAL",
+          "2023_12_JAX_HOU",
+          "2024_16_SF_MIA",
+          "2023_17_ARI_PHI",
+          "2024_12_TEN_HOU",
+          "2025_05_NE_BUF",
+          "2026_08_LAC_LA",
+          "2025_05_DET_CIN",
+          "2024_14_GB_DET",
+          "2023_11_NYJ_BUF",
+          "2026_08_ARI_DAL",
+          "2023_08_NE_MIA",
+          "2025_06_SF_TB",
+          "2025_08_DAL_DEN"
+        ],
+        "neighbor_max_available": "2026-11-08T01:15:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          18.546875,
+          29.9609375
+        ],
+        "median": [
+          18.0,
+          30.5
+        ],
+        "away_interval80": [
+          6.0,
+          31.0
+        ],
+        "home_interval80": [
+          17.0,
+          42.0
+        ],
+        "total_interval80": [
+          30.0,
+          67.0
+        ],
+        "home_margin_interval80": [
+          -3.0,
+          32.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          32.0
+        ],
+        "expected_total": 48.5078125,
+        "expected_home_margin": 11.4140625,
+        "probabilities": {
+          "away_35": 0.03125,
+          "home_35": 0.3125,
+          "away_10": 0.171875,
+          "home_10": 0.03125,
+          "total_60": 0.21875,
+          "total_under_30": 0.0859375,
+          "margin_17": 0.359375,
+          "margin_24": 0.203125,
+          "within_3": 0.234375,
+          "either_35": 0.3359375,
+          "either_10": 0.203125
+        },
+        "score_correlation": -0.07910088510998231,
+        "typical": [
+          19,
+          28
+        ],
+        "low": [
+          12,
+          18
+        ],
+        "high": [
+          30,
+          37
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          18.4267578125,
+          28.939453125
+        ],
+        "median": [
+          17.0,
+          28.0
+        ],
+        "away_interval80": [
+          9.0,
+          29.700000000000045
+        ],
+        "home_interval80": [
+          16.0,
+          44.0
+        ],
+        "total_interval80": [
+          30.30000000000001,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -7.0,
+          28.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          28.0
+        ],
+        "expected_total": 47.3662109375,
+        "expected_home_margin": 10.5126953125,
+        "probabilities": {
+          "away_35": 0.04296875,
+          "home_35": 0.2802734375,
+          "away_10": 0.1640625,
+          "home_10": 0.0224609375,
+          "total_60": 0.18359375,
+          "total_under_30": 0.08984375,
+          "margin_17": 0.33984375,
+          "margin_24": 0.1728515625,
+          "within_3": 0.1572265625,
+          "either_35": 0.3115234375,
+          "either_10": 0.181640625
+        },
+        "score_correlation": 0.0013410701676557933,
+        "typical": [
+          18,
+          28
+        ],
+        "low": [
+          10,
+          20
+        ],
+        "high": [
+          29,
+          37
+        ]
+      },
+      "joint_sha256": "2a0bbba7d31357d069d7183cc6898d13c48f1ad6fb4f5c8476d507eb624e820a"
+    },
+    {
+      "game_id": "2026_11_BAL_CAR",
+      "away_team": "BAL",
+      "home_team": "CAR",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.578143+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.875,
+      "context_score_sd": 7.861743510267594,
+      "history_lineage": {
+        "BAL": {
+          "history_games": [
+            "2026_03_BAL_DAL",
+            "2026_04_TEN_BAL",
+            "2026_05_BAL_ATL",
+            "2026_06_BAL_CLE",
+            "2026_07_CIN_BAL",
+            "2026_08_BAL_BUF",
+            "2026_09_JAX_BAL",
+            "2026_10_LAC_BAL"
+          ],
+          "drives_games": [
+            "2026_07_CIN_BAL",
+            "2026_08_BAL_BUF",
+            "2026_09_JAX_BAL",
+            "2026_10_LAC_BAL"
+          ],
+          "latest_available_utc": "2026-11-19T01:15:00+00:00",
+          "prior_drives": 11.25,
+          "score_sd": 9.019943181639228
+        },
+        "CAR": {
+          "history_games": [
+            "2026_02_CAR_ATL",
+            "2026_03_CAR_CLE",
+            "2026_04_DET_CAR",
+            "2026_06_CAR_PHI",
+            "2026_07_TB_CAR",
+            "2026_08_CAR_GB",
+            "2026_09_DEN_CAR",
+            "2026_10_CAR_NO"
+          ],
+          "drives_games": [
+            "2026_07_TB_CAR",
+            "2026_08_CAR_GB",
+            "2026_09_DEN_CAR",
+            "2026_10_CAR_NO"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.5,
+          "score_sd": 6.703543838895961
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2023_05_CHI_WAS",
+          "2023_02_SEA_DET",
+          "2023_06_IND_JAX",
+          "2023_05_CAR_DET",
+          "2025_01_CIN_CLE",
+          "2024_15_CIN_TEN",
+          "2024_09_LV_CIN",
+          "2023_12_GB_DET",
+          "2024_15_BAL_NYG",
+          "2025_08_NYG_PHI",
+          "2023_03_ATL_DET",
+          "2023_09_SEA_BAL",
+          "2026_04_ATL_NO",
+          "2023_04_NE_DAL",
+          "2024_06_JAX_CHI",
+          "2023_16_NYG_PHI",
+          "2025_15_ATL_TB",
+          "2024_17_ATL_WAS",
+          "2024_10_NE_CHI",
+          "2026_03_LV_NO",
+          "2023_07_ARI_SEA",
+          "2026_07_IND_MIN",
+          "2026_02_NO_BAL",
+          "2024_17_MIA_CLE",
+          "2025_05_SF_LA",
+          "2023_12_TB_IND",
+          "2024_07_TEN_BUF",
+          "2026_08_CLE_PIT",
+          "2025_12_SEA_TEN",
+          "2023_03_IND_BAL",
+          "2023_13_DEN_HOU",
+          "2024_09_WAS_NYG",
+          "2023_16_ARI_CHI",
+          "2023_04_ATL_JAX",
+          "2025_14_SEA_ATL",
+          "2025_17_TB_MIA",
+          "2023_15_NYG_NO",
+          "2024_03_DEN_TB",
+          "2024_05_DAL_PIT",
+          "2025_15_LAC_KC",
+          "2023_17_SF_WAS",
+          "2025_11_HOU_TEN",
+          "2026_03_HOU_IND",
+          "2023_14_CAR_NO",
+          "2025_17_NE_NYJ",
+          "2023_15_WAS_LA",
+          "2023_11_PIT_CLE",
+          "2024_08_GB_JAX",
+          "2023_03_DAL_ARI",
+          "2023_18_HOU_IND",
+          "2026_02_IND_KC",
+          "2025_08_SF_HOU",
+          "2023_10_DET_LAC",
+          "2026_02_CAR_ATL",
+          "2025_14_NO_TB",
+          "2025_15_TEN_SF",
+          "2024_16_NO_GB",
+          "2026_03_NYJ_DET",
+          "2024_03_NYG_CLE",
+          "2023_12_JAX_HOU",
+          "2025_14_PHI_LAC",
+          "2024_11_CIN_LAC",
+          "2024_08_PHI_CIN",
+          "2024_07_HOU_GB",
+          "2025_03_DAL_CHI",
+          "2026_03_ATL_GB",
+          "2023_13_MIA_WAS",
+          "2026_08_LAC_LA",
+          "2023_11_CIN_BAL",
+          "2024_01_TEN_CHI",
+          "2023_08_BAL_ARI",
+          "2024_06_ARI_GB",
+          "2024_13_TEN_WAS",
+          "2024_15_DAL_CAR",
+          "2023_09_CHI_NO",
+          "2025_01_SF_SEA",
+          "2024_05_NYJ_MIN",
+          "2024_12_TEN_HOU",
+          "2025_10_JAX_HOU",
+          "2026_05_IND_PIT",
+          "2024_13_CLE_DEN",
+          "2023_12_CHI_MIN",
+          "2025_10_CLE_NYJ",
+          "2025_15_LV_PHI",
+          "2023_14_IND_CIN",
+          "2023_10_CAR_CHI",
+          "2023_11_NYJ_BUF",
+          "2023_06_WAS_ATL",
+          "2024_02_NYG_WAS",
+          "2025_13_LV_LAC",
+          "2026_01_NYJ_TEN",
+          "2026_04_LAC_SEA",
+          "2023_16_SEA_TEN",
+          "2026_08_ARI_DAL",
+          "2025_06_TEN_LV",
+          "2024_04_NE_SF",
+          "2023_03_NO_GB",
+          "2025_01_MIN_CHI",
+          "2023_11_TB_SF",
+          "2025_16_KC_TEN",
+          "2023_17_CIN_KC",
+          "2024_02_ATL_PHI",
+          "2024_08_IND_HOU",
+          "2024_18_WAS_DAL",
+          "2024_16_TEN_IND",
+          "2025_11_TB_BUF",
+          "2024_01_WAS_TB",
+          "2024_08_NYG_PIT",
+          "2025_18_IND_HOU",
+          "2023_15_MIN_CIN",
+          "2023_10_NO_MIN",
+          "2024_18_KC_DEN",
+          "2024_13_HOU_JAX",
+          "2025_15_CLE_CHI",
+          "2025_04_GB_DAL",
+          "2026_09_CLE_NO",
+          "2023_03_BUF_WAS",
+          "2024_01_MIN_NYG",
+          "2024_07_MIA_IND",
+          "2023_10_IND_NE",
+          "2025_02_NE_MIA",
+          "2024_15_IND_DEN",
+          "2023_15_NYJ_MIA",
+          "2024_16_TB_DAL",
+          "2025_15_MIN_DAL",
+          "2025_04_CHI_LV",
+          "2023_01_TB_MIN",
+          "2024_03_MIA_SEA"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          20.0,
+          25.7734375
+        ],
+        "median": [
+          20.0,
+          26.0
+        ],
+        "away_interval80": [
+          7.0,
+          33.0
+        ],
+        "home_interval80": [
+          15.0,
+          37.0
+        ],
+        "total_interval80": [
+          30.0,
+          64.0
+        ],
+        "home_margin_interval80": [
+          -13.0,
+          23.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          25.0
+        ],
+        "expected_total": 45.7734375,
+        "expected_home_margin": 5.7734375,
+        "probabilities": {
+          "away_35": 0.0703125,
+          "home_35": 0.1640625,
+          "away_10": 0.1875,
+          "home_10": 0.046875,
+          "total_60": 0.15625,
+          "total_under_30": 0.078125,
+          "margin_17": 0.296875,
+          "margin_24": 0.109375,
+          "within_3": 0.1484375,
+          "either_35": 0.21875,
+          "either_10": 0.234375
+        },
+        "score_correlation": -0.07500716750675654,
+        "typical": [
+          19,
+          25
+        ],
+        "low": [
+          13,
+          17
+        ],
+        "high": [
+          30,
+          34
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          19.486328125,
+          25.1455078125
+        ],
+        "median": [
+          18.0,
+          24.0
+        ],
+        "away_interval80": [
+          9.0,
+          31.0
+        ],
+        "home_interval80": [
+          13.0,
+          38.0
+        ],
+        "total_interval80": [
+          28.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -11.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 44.6318359375,
+        "expected_home_margin": 5.6591796875,
+        "probabilities": {
+          "away_35": 0.05859375,
+          "home_35": 0.166015625,
+          "away_10": 0.1396484375,
+          "home_10": 0.04296875,
+          "total_60": 0.130859375,
+          "total_under_30": 0.1171875,
+          "margin_17": 0.2421875,
+          "margin_24": 0.0947265625,
+          "within_3": 0.1953125,
+          "either_35": 0.2138671875,
+          "either_10": 0.1767578125
+        },
+        "score_correlation": -0.0006572650956703618,
+        "typical": [
+          20,
+          24
+        ],
+        "low": [
+          11,
+          17
+        ],
+        "high": [
+          29,
+          33
+        ]
+      },
+      "joint_sha256": "3c665518ff3d3ed9e4ec974fae010c9145881852bda085e2c27a07395e9ad254"
+    },
+    {
+      "game_id": "2026_11_MIA_BUF",
+      "away_team": "MIA",
+      "home_team": "BUF",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.673388+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.25,
+      "context_score_sd": 6.50322907214949,
+      "history_lineage": {
+        "MIA": {
+          "history_games": [
+            "2026_02_MIA_SF",
+            "2026_03_KC_MIA",
+            "2026_04_MIA_MIN",
+            "2026_05_CIN_MIA",
+            "2026_07_MIA_NYJ",
+            "2026_08_NE_MIA",
+            "2026_09_DET_MIA",
+            "2026_10_MIA_IND"
+          ],
+          "drives_games": [
+            "2026_07_MIA_NYJ",
+            "2026_08_NE_MIA",
+            "2026_09_DET_MIA",
+            "2026_10_MIA_IND"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 9.75,
+          "score_sd": 6.863626956646173
+        },
+        "BUF": {
+          "history_games": [
+            "2026_02_DET_BUF",
+            "2026_03_LAC_BUF",
+            "2026_04_NE_BUF",
+            "2026_05_BUF_LA",
+            "2026_06_BUF_LV",
+            "2026_08_BAL_BUF",
+            "2026_09_BUF_MIN",
+            "2026_10_BUF_NYJ"
+          ],
+          "drives_games": [
+            "2026_06_BUF_LV",
+            "2026_08_BAL_BUF",
+            "2026_09_BUF_MIN",
+            "2026_10_BUF_NYJ"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.75,
+          "score_sd": 6.142831187652807
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2025_05_HOU_BAL",
+          "2024_14_CAR_PHI",
+          "2023_06_DEN_KC",
+          "2023_04_ARI_SF",
+          "2025_13_MIN_SEA",
+          "2025_08_TEN_IND",
+          "2023_03_NYG_SF",
+          "2024_17_DAL_PHI",
+          "2025_01_DAL_PHI",
+          "2024_14_LV_TB",
+          "2026_08_IND_JAX",
+          "2025_01_TEN_DEN",
+          "2025_04_NO_BUF",
+          "2025_18_MIA_NE",
+          "2026_01_CLE_JAX",
+          "2025_02_CHI_DET",
+          "2024_18_CHI_GB",
+          "2025_09_NO_LA",
+          "2025_06_CHI_WAS",
+          "2025_02_CLE_BAL",
+          "2025_04_CLE_DET",
+          "2025_13_NYG_NE",
+          "2025_10_ATL_IND",
+          "2024_18_NYG_PHI",
+          "2024_16_NE_BUF",
+          "2025_15_IND_SEA",
+          "2025_06_SF_TB",
+          "2025_18_IND_HOU",
+          "2024_03_JAX_BUF",
+          "2026_04_MIA_MIN",
+          "2024_18_BUF_NE",
+          "2023_14_TEN_MIA",
+          "2024_12_DAL_WAS",
+          "2024_18_CLE_BAL",
+          "2025_02_WAS_GB",
+          "2025_03_NYJ_TB",
+          "2025_10_ARI_SEA",
+          "2025_03_MIA_BUF",
+          "2024_18_NO_TB",
+          "2025_06_CIN_GB",
+          "2024_01_ARI_BUF",
+          "2026_04_TEN_BAL",
+          "2023_03_CHI_KC",
+          "2024_13_CLE_DEN",
+          "2024_17_NYJ_BUF",
+          "2025_08_CLE_NE",
+          "2025_12_TB_LA",
+          "2025_12_NYG_DET",
+          "2025_18_TEN_JAX",
+          "2025_05_LV_IND",
+          "2025_11_NYJ_NE",
+          "2024_09_MIA_BUF",
+          "2024_01_WAS_TB",
+          "2025_15_TEN_SF",
+          "2025_18_NYJ_BUF",
+          "2025_02_JAX_CIN",
+          "2023_10_DEN_BUF",
+          "2026_02_PIT_NE",
+          "2026_03_NYJ_DET",
+          "2026_08_TEN_CIN",
+          "2026_06_WAS_SF",
+          "2025_09_CAR_GB",
+          "2024_16_NO_GB",
+          "2026_05_PHI_JAX",
+          "2024_12_TEN_HOU",
+          "2024_17_CAR_TB",
+          "2025_17_NE_NYJ",
+          "2025_17_JAX_IND",
+          "2026_06_HOU_JAX",
+          "2025_17_LA_ATL",
+          "2025_16_LV_HOU",
+          "2026_01_ARI_LAC",
+          "2023_14_SEA_SF",
+          "2024_06_ARI_GB",
+          "2023_04_LV_LAC",
+          "2025_04_CIN_DEN",
+          "2026_02_JAX_DEN",
+          "2026_07_IND_MIN",
+          "2025_10_LV_DEN",
+          "2026_06_ARI_LA",
+          "2025_03_LV_WAS",
+          "2024_16_DET_CHI",
+          "2025_18_ARI_LA",
+          "2025_12_NE_CIN",
+          "2024_13_TEN_WAS",
+          "2023_18_LA_SF",
+          "2024_13_TB_CAR",
+          "2024_15_PIT_PHI",
+          "2024_03_WAS_CIN",
+          "2025_12_SEA_TEN",
+          "2023_14_CAR_NO",
+          "2026_03_LV_NO",
+          "2025_15_MIN_DAL",
+          "2024_03_PHI_NO",
+          "2025_14_LA_ARI",
+          "2026_03_LAC_BUF",
+          "2026_06_NYJ_NE",
+          "2023_12_GB_DET",
+          "2026_02_MIA_SF",
+          "2025_06_ARI_IND",
+          "2026_04_LAC_SEA",
+          "2023_08_CIN_SF",
+          "2025_01_NYG_WAS",
+          "2023_13_SEA_DAL",
+          "2026_08_ARI_DAL",
+          "2025_05_TEN_ARI",
+          "2023_11_CIN_BAL",
+          "2024_01_NYJ_SF",
+          "2025_17_ARI_CIN",
+          "2023_18_DAL_WAS",
+          "2023_17_SF_WAS",
+          "2024_15_IND_DEN",
+          "2026_02_SEA_ARI",
+          "2025_01_CIN_CLE",
+          "2023_18_PIT_BAL",
+          "2025_02_ATL_MIN",
+          "2024_04_NE_SF",
+          "2026_04_ARI_NYG",
+          "2024_14_GB_DET",
+          "2023_05_JAX_BUF",
+          "2023_02_SEA_DET",
+          "2023_08_CHI_LAC",
+          "2024_02_IND_GB",
+          "2024_03_DEN_TB",
+          "2026_09_DET_MIA",
+          "2023_12_WAS_DAL",
+          "2023_11_TB_SF",
+          "2025_15_ARI_HOU"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          18.1328125,
+          30.5625
+        ],
+        "median": [
+          17.0,
+          31.0
+        ],
+        "away_interval80": [
+          7.0,
+          32.0
+        ],
+        "home_interval80": [
+          19.0,
+          43.0
+        ],
+        "total_interval80": [
+          31.0,
+          64.0
+        ],
+        "home_margin_interval80": [
+          -4.0,
+          31.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          32.0
+        ],
+        "expected_total": 48.6953125,
+        "expected_home_margin": 12.4296875,
+        "probabilities": {
+          "away_35": 0.0625,
+          "home_35": 0.34375,
+          "away_10": 0.1875,
+          "home_10": 0.0234375,
+          "total_60": 0.2109375,
+          "total_under_30": 0.0859375,
+          "margin_17": 0.3828125,
+          "margin_24": 0.203125,
+          "within_3": 0.1484375,
+          "either_35": 0.375,
+          "either_10": 0.2109375
+        },
+        "score_correlation": -0.07362782669929147,
+        "typical": [
+          19,
+          29
+        ],
+        "low": [
+          9,
+          20
+        ],
+        "high": [
+          27,
+          37
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          18.607421875,
+          30.0947265625
+        ],
+        "median": [
+          18.0,
+          29.0
+        ],
+        "away_interval80": [
+          9.0,
+          30.0
+        ],
+        "home_interval80": [
+          16.0,
+          46.0
+        ],
+        "total_interval80": [
+          31.0,
+          68.0
+        ],
+        "home_margin_interval80": [
+          -6.0,
+          29.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          30.0
+        ],
+        "expected_total": 48.7021484375,
+        "expected_home_margin": 11.4873046875,
+        "probabilities": {
+          "away_35": 0.044921875,
+          "home_35": 0.31640625,
+          "away_10": 0.16015625,
+          "home_10": 0.0185546875,
+          "total_60": 0.2099609375,
+          "total_under_30": 0.07421875,
+          "margin_17": 0.3662109375,
+          "margin_24": 0.1982421875,
+          "within_3": 0.15234375,
+          "either_35": 0.3466796875,
+          "either_10": 0.17578125
+        },
+        "score_correlation": 0.0014407636887196504,
+        "typical": [
+          18,
+          29
+        ],
+        "low": [
+          10,
+          21
+        ],
+        "high": [
+          29,
+          39
+        ]
+      },
+      "joint_sha256": "af7f24c3b46a0f08ac75c59ecfb279187fb509ea65b14975edf6ef7c4192d905"
+    },
+    {
+      "game_id": "2026_11_NO_CHI",
+      "away_team": "NO",
+      "home_team": "CHI",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.767976+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 11.375,
+      "context_score_sd": 9.014901863248026,
+      "history_lineage": {
+        "NO": {
+          "history_games": [
+            "2026_02_NO_BAL",
+            "2026_03_LV_NO",
+            "2026_04_ATL_NO",
+            "2026_05_MIN_NO",
+            "2026_06_NO_NYG",
+            "2026_07_PIT_NO",
+            "2026_09_CLE_NO",
+            "2026_10_CAR_NO"
+          ],
+          "drives_games": [
+            "2026_06_NO_NYG",
+            "2026_07_PIT_NO",
+            "2026_09_CLE_NO",
+            "2026_10_CAR_NO"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.75,
+          "score_sd": 7.297259759663212
+        },
+        "CHI": {
+          "history_games": [
+            "2026_02_MIN_CHI",
+            "2026_03_PHI_CHI",
+            "2026_04_NYJ_CHI",
+            "2026_05_CHI_GB",
+            "2026_06_CHI_ATL",
+            "2026_07_NE_CHI",
+            "2026_08_CHI_SEA",
+            "2026_09_TB_CHI"
+          ],
+          "drives_games": [
+            "2026_06_CHI_ATL",
+            "2026_07_NE_CHI",
+            "2026_08_CHI_SEA",
+            "2026_09_TB_CHI"
+          ],
+          "latest_available_utc": "2026-11-11T01:20:00+00:00",
+          "prior_drives": 12.0,
+          "score_sd": 10.732543966832841
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2023_15_WAS_LA",
+          "2025_15_CLE_CHI",
+          "2023_03_HOU_JAX",
+          "2023_05_CAR_DET",
+          "2023_16_JAX_TB",
+          "2023_03_DAL_ARI",
+          "2023_04_WAS_PHI",
+          "2025_10_JAX_HOU",
+          "2023_10_CLE_BAL",
+          "2023_11_NYJ_BUF",
+          "2024_03_NYG_CLE",
+          "2026_04_ATL_NO",
+          "2024_07_TEN_BUF",
+          "2023_04_ATL_JAX",
+          "2023_11_ARI_HOU",
+          "2024_17_MIA_CLE",
+          "2024_07_HOU_GB",
+          "2026_03_HOU_IND",
+          "2025_13_LV_LAC",
+          "2023_11_PIT_CLE",
+          "2024_17_ATL_WAS",
+          "2026_07_KC_SEA",
+          "2023_05_CHI_WAS",
+          "2023_02_SEA_DET",
+          "2026_06_LAC_KC",
+          "2025_15_NYJ_JAX",
+          "2023_13_MIA_WAS",
+          "2023_01_TB_MIN",
+          "2023_08_CLE_SEA",
+          "2023_17_SF_WAS",
+          "2023_04_NE_DAL",
+          "2023_15_NYJ_MIA",
+          "2026_02_NO_BAL",
+          "2026_05_IND_PIT",
+          "2024_06_JAX_CHI",
+          "2024_15_WAS_NO",
+          "2023_03_IND_BAL",
+          "2024_15_CIN_TEN",
+          "2025_14_PHI_LAC",
+          "2023_09_CHI_NO",
+          "2026_08_LAC_LA",
+          "2024_02_CLE_JAX",
+          "2024_09_WAS_NYG",
+          "2024_14_CIN_DAL",
+          "2024_08_IND_HOU",
+          "2025_11_HOU_TEN",
+          "2025_16_BUF_CLE",
+          "2023_12_JAX_HOU",
+          "2024_08_TEN_DET",
+          "2025_08_NYG_PHI",
+          "2023_03_PHI_TB",
+          "2024_13_HOU_JAX",
+          "2024_12_DET_IND",
+          "2023_05_JAX_BUF",
+          "2026_08_CLE_PIT",
+          "2023_12_TB_IND",
+          "2023_18_DEN_LV",
+          "2024_15_BAL_NYG",
+          "2025_15_LV_PHI",
+          "2024_13_TEN_WAS",
+          "2023_15_NYG_NO",
+          "2026_09_NYG_PHI",
+          "2023_10_WAS_SEA",
+          "2025_12_SEA_TEN",
+          "2023_14_LA_BAL",
+          "2023_02_IND_HOU",
+          "2026_03_ATL_GB",
+          "2023_06_WAS_ATL",
+          "2025_15_ATL_TB",
+          "2026_03_NYJ_DET",
+          "2026_03_LAC_BUF",
+          "2025_13_HOU_IND",
+          "2024_16_CLE_CIN",
+          "2023_06_IND_JAX",
+          "2024_10_ATL_NO",
+          "2023_10_NYG_DAL",
+          "2023_15_CHI_CLE",
+          "2023_16_ARI_CHI",
+          "2024_02_ATL_PHI",
+          "2025_01_SF_SEA",
+          "2023_16_SEA_TEN",
+          "2023_17_TEN_HOU",
+          "2023_07_BUF_NE",
+          "2025_10_CLE_NYJ",
+          "2024_09_LV_CIN",
+          "2023_16_NYG_PHI",
+          "2023_09_ARI_CLE",
+          "2025_09_DEN_HOU",
+          "2026_04_LAC_SEA",
+          "2025_15_LAC_KC",
+          "2025_13_CHI_PHI",
+          "2025_11_CIN_PIT",
+          "2025_01_CIN_CLE",
+          "2026_09_JAX_BAL",
+          "2024_10_DET_HOU",
+          "2023_10_SF_JAX",
+          "2024_02_NYJ_TEN",
+          "2024_10_NE_CHI",
+          "2024_18_WAS_DAL",
+          "2023_09_SEA_BAL",
+          "2025_14_DEN_LV",
+          "2023_16_DET_MIN",
+          "2023_02_BAL_CIN",
+          "2026_07_PIT_NO",
+          "2024_11_HOU_DAL",
+          "2023_13_DEN_HOU",
+          "2024_02_NYG_WAS",
+          "2025_06_SEA_JAX",
+          "2023_04_MIN_CAR",
+          "2023_06_DAL_LAC",
+          "2025_03_DAL_CHI",
+          "2024_01_DAL_CLE",
+          "2023_17_NE_BUF",
+          "2024_16_TB_DAL",
+          "2023_17_CAR_JAX",
+          "2023_15_MIN_CIN",
+          "2023_14_IND_CIN",
+          "2024_12_TEN_HOU",
+          "2023_07_GB_DEN",
+          "2025_01_MIA_IND",
+          "2026_07_TB_CAR",
+          "2025_14_SEA_ATL",
+          "2023_11_CIN_BAL",
+          "2024_18_KC_DEN",
+          "2025_04_MIN_PIT",
+          "2025_15_TEN_SF",
+          "2023_11_TB_SF",
+          "2023_12_GB_DET"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          19.2421875,
+          25.5859375
+        ],
+        "median": [
+          19.0,
+          25.0
+        ],
+        "away_interval80": [
+          6.0,
+          31.0
+        ],
+        "home_interval80": [
+          15.0,
+          37.0
+        ],
+        "total_interval80": [
+          31.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -8.0,
+          25.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          27.0
+        ],
+        "expected_total": 44.828125,
+        "expected_home_margin": 6.34375,
+        "probabilities": {
+          "away_35": 0.046875,
+          "home_35": 0.15625,
+          "away_10": 0.15625,
+          "home_10": 0.0234375,
+          "total_60": 0.1171875,
+          "total_under_30": 0.0703125,
+          "margin_17": 0.3203125,
+          "margin_24": 0.1328125,
+          "within_3": 0.171875,
+          "either_35": 0.203125,
+          "either_10": 0.1796875
+        },
+        "score_correlation": -0.19935954278477047,
+        "typical": [
+          19,
+          25
+        ],
+        "low": [
+          12,
+          20
+        ],
+        "high": [
+          26,
+          36
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          19.76953125,
+          25.376953125
+        ],
+        "median": [
+          19.0,
+          24.0
+        ],
+        "away_interval80": [
+          9.0,
+          31.700000000000045
+        ],
+        "home_interval80": [
+          13.300000000000011,
+          39.0
+        ],
+        "total_interval80": [
+          29.0,
+          63.0
+        ],
+        "home_margin_interval80": [
+          -11.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 45.146484375,
+        "expected_home_margin": 5.607421875,
+        "probabilities": {
+          "away_35": 0.0625,
+          "home_35": 0.171875,
+          "away_10": 0.1337890625,
+          "home_10": 0.041015625,
+          "total_60": 0.1435546875,
+          "total_under_30": 0.111328125,
+          "margin_17": 0.2421875,
+          "margin_24": 0.1025390625,
+          "within_3": 0.1962890625,
+          "either_35": 0.2236328125,
+          "either_10": 0.1689453125
+        },
+        "score_correlation": -0.0006728478724995824,
+        "typical": [
+          20,
+          24
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          29,
+          33
+        ]
+      },
+      "joint_sha256": "6a91df9f32387982224688140704918b05b2967bb574e8ebbd306b09c71275fe"
+    },
+    {
+      "game_id": "2026_11_PIT_PHI",
+      "away_team": "PIT",
+      "home_team": "PHI",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.860385+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.75,
+      "context_score_sd": 7.355444058613412,
+      "history_lineage": {
+        "PIT": {
+          "history_games": [
+            "2026_02_PIT_NE",
+            "2026_03_CIN_PIT",
+            "2026_04_PIT_CLE",
+            "2026_05_IND_PIT",
+            "2026_06_PIT_TB",
+            "2026_07_PIT_NO",
+            "2026_08_CLE_PIT",
+            "2026_10_PIT_CIN"
+          ],
+          "drives_games": [
+            "2026_06_PIT_TB",
+            "2026_07_PIT_NO",
+            "2026_08_CLE_PIT",
+            "2026_10_PIT_CIN"
+          ],
+          "latest_available_utc": "2026-11-18T01:20:00+00:00",
+          "prior_drives": 10.25,
+          "score_sd": 9.12071817347735
+        },
+        "PHI": {
+          "history_games": [
+            "2026_02_PHI_TEN",
+            "2026_03_PHI_CHI",
+            "2026_04_LA_PHI",
+            "2026_05_PHI_JAX",
+            "2026_06_CAR_PHI",
+            "2026_07_DAL_PHI",
+            "2026_08_PHI_WAS",
+            "2026_09_NYG_PHI"
+          ],
+          "drives_games": [
+            "2026_06_CAR_PHI",
+            "2026_07_DAL_PHI",
+            "2026_08_PHI_WAS",
+            "2026_09_NYG_PHI"
+          ],
+          "latest_available_utc": "2026-11-10T18:00:00+00:00",
+          "prior_drives": 11.25,
+          "score_sd": 5.5901699437494745
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2024_04_DEN_NYJ",
+          "2023_07_PIT_LA",
+          "2024_04_TEN_MIA",
+          "2023_14_DEN_LAC",
+          "2024_07_NE_JAX",
+          "2025_04_CHI_LV",
+          "2024_16_TEN_IND",
+          "2024_01_HOU_IND",
+          "2024_08_ARI_MIA",
+          "2023_04_CIN_TEN",
+          "2024_04_JAX_HOU",
+          "2024_01_MIN_NYG",
+          "2023_12_PIT_CIN",
+          "2023_01_BUF_NYJ",
+          "2023_01_HOU_BAL",
+          "2023_08_BAL_ARI",
+          "2025_08_SF_HOU",
+          "2024_17_IND_NYG",
+          "2023_14_TB_ATL",
+          "2025_09_JAX_LV",
+          "2025_16_KC_TEN",
+          "2023_17_CIN_KC",
+          "2023_06_PHI_NYJ",
+          "2025_16_NYJ_NO",
+          "2023_18_HOU_IND",
+          "2023_10_IND_NE",
+          "2026_09_CLE_NO",
+          "2024_02_SEA_NE",
+          "2023_07_ATL_TB",
+          "2023_15_PIT_IND",
+          "2025_06_TEN_LV",
+          "2025_04_TEN_HOU",
+          "2023_12_LA_ARI",
+          "2024_01_PIT_ATL",
+          "2025_17_NO_TEN",
+          "2025_04_JAX_SF",
+          "2023_18_TB_CAR",
+          "2024_15_DAL_CAR",
+          "2025_03_DAL_CHI",
+          "2023_06_NE_LV",
+          "2024_06_LAC_DEN",
+          "2026_05_DEN_LAC",
+          "2023_15_MIN_CIN",
+          "2024_13_NYG_DAL",
+          "2024_02_NYG_WAS",
+          "2026_06_PIT_TB",
+          "2024_05_MIA_NE",
+          "2023_02_NYG_ARI",
+          "2024_04_PIT_IND",
+          "2023_09_TB_HOU",
+          "2023_14_HOU_NYJ",
+          "2023_08_JAX_PIT",
+          "2024_03_LAC_PIT",
+          "2023_16_CIN_PIT",
+          "2026_01_MIA_LV",
+          "2023_16_SEA_TEN",
+          "2026_08_KC_DEN",
+          "2024_11_MIN_TEN",
+          "2026_03_KC_MIA",
+          "2025_15_ATL_TB",
+          "2025_17_PIT_CLE",
+          "2023_01_TEN_NO",
+          "2024_17_LV_NO",
+          "2025_10_CLE_NYJ",
+          "2024_16_NYG_ATL",
+          "2023_07_JAX_NO",
+          "2025_14_TEN_CLE",
+          "2024_05_DAL_PIT",
+          "2024_15_KC_CLE",
+          "2023_14_BUF_KC",
+          "2024_17_SEA_CHI",
+          "2024_13_IND_NE",
+          "2023_13_ATL_NYJ",
+          "2026_06_CAR_PHI",
+          "2024_18_JAX_IND",
+          "2023_05_NYJ_DEN",
+          "2026_07_CLE_TEN",
+          "2023_08_HOU_CAR",
+          "2024_06_HOU_NE",
+          "2023_12_TB_IND",
+          "2026_07_DEN_ARI",
+          "2023_10_NO_MIN",
+          "2026_08_CLE_PIT",
+          "2024_18_LAC_LV",
+          "2024_05_IND_JAX",
+          "2023_09_LAC_NYJ",
+          "2023_15_NYG_NO",
+          "2023_13_DEN_HOU",
+          "2023_15_HOU_TEN",
+          "2025_12_CLE_LV",
+          "2023_13_LAC_NE",
+          "2023_02_WAS_DEN",
+          "2023_13_KC_GB",
+          "2024_17_TEN_JAX",
+          "2023_15_TB_GB",
+          "2024_06_BUF_NYJ",
+          "2023_17_PIT_SEA",
+          "2024_08_GB_JAX",
+          "2024_11_LA_NE",
+          "2024_03_HOU_MIN",
+          "2024_15_BAL_NYG",
+          "2023_04_PIT_HOU",
+          "2026_02_IND_KC",
+          "2024_16_JAX_LV",
+          "2024_04_DAL_NYG",
+          "2024_02_PIT_DEN",
+          "2026_02_PHI_TEN",
+          "2023_06_BAL_TEN",
+          "2023_04_KC_NYJ",
+          "2025_12_ATL_NO",
+          "2023_14_GB_NYG",
+          "2026_03_ATL_GB",
+          "2023_16_ARI_CHI",
+          "2023_01_CAR_ATL",
+          "2023_16_IND_ATL",
+          "2023_09_NYG_LV",
+          "2023_03_BUF_WAS",
+          "2024_11_HOU_DAL",
+          "2023_09_LA_GB",
+          "2024_13_LA_NO",
+          "2026_05_MIN_NO",
+          "2024_02_CHI_HOU",
+          "2026_01_DEN_KC",
+          "2025_01_MIN_CHI",
+          "2023_10_GB_PIT",
+          "2023_10_NYJ_LV",
+          "2023_18_KC_LAC",
+          "2023_15_DEN_DET"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          21.75,
+          19.1015625
+        ],
+        "median": [
+          22.0,
+          20.0
+        ],
+        "away_interval80": [
+          9.0,
+          33.0
+        ],
+        "home_interval80": [
+          7.0,
+          29.0
+        ],
+        "total_interval80": [
+          26.0,
+          56.0
+        ],
+        "home_margin_interval80": [
+          -18.0,
+          17.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          21.0
+        ],
+        "expected_total": 40.8515625,
+        "expected_home_margin": -2.6484375,
+        "probabilities": {
+          "away_35": 0.078125,
+          "home_35": 0.0390625,
+          "away_10": 0.1328125,
+          "home_10": 0.1875,
+          "total_60": 0.0703125,
+          "total_under_30": 0.140625,
+          "margin_17": 0.2109375,
+          "margin_24": 0.0703125,
+          "within_3": 0.234375,
+          "either_35": 0.1015625,
+          "either_10": 0.2890625
+        },
+        "score_correlation": 0.035260036887638874,
+        "typical": [
+          23,
+          18
+        ],
+        "low": [
+          13,
+          12
+        ],
+        "high": [
+          29,
+          27
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          21.865234375,
+          19.55078125
+        ],
+        "median": [
+          21.0,
+          19.0
+        ],
+        "away_interval80": [
+          11.0,
+          35.0
+        ],
+        "home_interval80": [
+          10.0,
+          30.0
+        ],
+        "total_interval80": [
+          26.0,
+          58.0
+        ],
+        "home_margin_interval80": [
+          -18.0,
+          13.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          21.0
+        ],
+        "expected_total": 41.416015625,
+        "expected_home_margin": -2.314453125,
+        "probabilities": {
+          "away_35": 0.103515625,
+          "home_35": 0.046875,
+          "away_10": 0.0966796875,
+          "home_10": 0.1142578125,
+          "total_60": 0.0849609375,
+          "total_under_30": 0.16796875,
+          "margin_17": 0.18359375,
+          "margin_24": 0.064453125,
+          "within_3": 0.224609375,
+          "either_35": 0.146484375,
+          "either_10": 0.19921875
+        },
+        "score_correlation": -0.0005302645432370466,
+        "typical": [
+          21,
+          19
+        ],
+        "low": [
+          14,
+          12
+        ],
+        "high": [
+          29,
+          29
+        ]
+      },
+      "joint_sha256": "daf421add88246d484d12c3c629611a288e84c01df9f9050a79c4ad8dcd257ff"
+    },
+    {
+      "game_id": "2026_11_TB_DET",
+      "away_team": "TB",
+      "home_team": "DET",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:54.950507+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 11.25,
+      "context_score_sd": 8.617973541822085,
+      "history_lineage": {
+        "TB": {
+          "history_games": [
+            "2026_02_CLE_TB",
+            "2026_03_MIN_TB",
+            "2026_04_GB_TB",
+            "2026_05_TB_DAL",
+            "2026_06_PIT_TB",
+            "2026_07_TB_CAR",
+            "2026_08_ATL_TB",
+            "2026_09_TB_CHI"
+          ],
+          "drives_games": [
+            "2026_06_PIT_TB",
+            "2026_07_TB_CAR",
+            "2026_08_ATL_TB",
+            "2026_09_TB_CHI"
+          ],
+          "latest_available_utc": "2026-11-11T01:20:00+00:00",
+          "prior_drives": 12.25,
+          "score_sd": 8.680977767509832
+        },
+        "DET": {
+          "history_games": [
+            "2026_02_DET_BUF",
+            "2026_03_NYJ_DET",
+            "2026_04_DET_CAR",
+            "2026_05_DET_ARI",
+            "2026_07_GB_DET",
+            "2026_08_MIN_DET",
+            "2026_09_DET_MIA",
+            "2026_10_NE_DET"
+          ],
+          "drives_games": [
+            "2026_07_GB_DET",
+            "2026_08_MIN_DET",
+            "2026_09_DET_MIA",
+            "2026_10_NE_DET"
+          ],
+          "latest_available_utc": "2026-11-17T14:30:00+00:00",
+          "prior_drives": 10.25,
+          "score_sd": 8.554969316134336
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2023_03_DAL_ARI",
+          "2026_03_HOU_IND",
+          "2024_17_ATL_WAS",
+          "2026_02_NO_BAL",
+          "2023_16_JAX_TB",
+          "2025_15_CLE_CHI",
+          "2026_04_ATL_NO",
+          "2024_07_HOU_GB",
+          "2026_05_IND_PIT",
+          "2025_13_HOU_IND",
+          "2023_17_SF_WAS",
+          "2023_05_CAR_DET",
+          "2023_15_WAS_LA",
+          "2023_03_PHI_TB",
+          "2023_04_NE_DAL",
+          "2023_02_SEA_DET",
+          "2023_13_MIA_WAS",
+          "2023_05_CHI_WAS",
+          "2024_15_CIN_TEN",
+          "2024_14_CIN_DAL",
+          "2023_01_TB_MIN",
+          "2023_04_MIN_CAR",
+          "2024_13_HOU_JAX",
+          "2024_15_WAS_NO",
+          "2024_12_DET_IND",
+          "2025_15_LAC_KC",
+          "2025_13_CHI_PHI",
+          "2024_08_IND_HOU",
+          "2025_08_NYG_PHI",
+          "2024_03_NYG_CLE",
+          "2023_14_IND_CIN",
+          "2024_17_MIA_CLE",
+          "2025_16_BUF_CLE",
+          "2023_04_WAS_PHI",
+          "2024_07_TEN_BUF",
+          "2024_02_CLE_JAX",
+          "2024_16_TB_DAL",
+          "2025_14_PHI_LAC",
+          "2024_18_WAS_DAL",
+          "2025_10_JAX_HOU",
+          "2023_03_HOU_JAX",
+          "2024_18_KC_DEN",
+          "2025_11_CIN_PIT",
+          "2023_12_JAX_HOU",
+          "2024_16_CLE_CIN",
+          "2023_07_GB_DEN",
+          "2025_14_SEA_ATL",
+          "2026_07_PIT_NO",
+          "2024_13_TEN_WAS",
+          "2025_06_SEA_JAX",
+          "2024_10_ATL_NO",
+          "2025_06_LA_BAL",
+          "2023_11_PIT_CLE",
+          "2023_05_JAX_BUF",
+          "2024_02_ATL_PHI",
+          "2023_15_BAL_JAX",
+          "2024_09_LV_CIN",
+          "2026_07_KC_SEA",
+          "2023_04_ATL_JAX",
+          "2023_06_DAL_LAC",
+          "2023_10_SF_JAX",
+          "2023_10_DET_LAC",
+          "2026_03_ATL_GB",
+          "2023_12_TB_IND",
+          "2026_08_ARI_DAL",
+          "2026_04_IND_WAS",
+          "2026_09_DAL_IND",
+          "2026_03_NYJ_DET",
+          "2023_09_CHI_NO",
+          "2024_13_PIT_CIN",
+          "2025_15_ATL_TB",
+          "2026_08_CLE_PIT",
+          "2023_10_CLE_BAL",
+          "2024_11_CIN_LAC",
+          "2025_09_DEN_HOU",
+          "2026_09_NYG_PHI",
+          "2026_03_LAC_BUF",
+          "2024_09_DEN_BAL",
+          "2026_09_DEN_CAR",
+          "2025_11_TB_BUF",
+          "2023_03_IND_BAL",
+          "2026_06_ARI_LA",
+          "2024_08_PHI_CIN",
+          "2024_15_MIA_HOU",
+          "2024_06_JAX_CHI",
+          "2025_15_NYJ_JAX",
+          "2025_12_PIT_CHI",
+          "2023_11_ARI_HOU",
+          "2026_06_BUF_LV",
+          "2023_13_DEN_HOU",
+          "2023_11_NYJ_BUF",
+          "2025_08_DAL_DEN",
+          "2024_09_WAS_NYG",
+          "2023_02_MIN_PHI",
+          "2023_08_CLE_SEA",
+          "2024_08_GB_JAX",
+          "2025_10_BUF_MIA",
+          "2024_10_DET_HOU",
+          "2023_01_PHI_NE",
+          "2025_01_MIA_IND",
+          "2023_15_CHI_CLE",
+          "2024_01_DAL_CLE",
+          "2023_06_WAS_ATL",
+          "2024_12_BAL_LAC",
+          "2024_15_BAL_NYG",
+          "2025_03_DAL_CHI",
+          "2023_02_IND_HOU",
+          "2025_17_HOU_LAC",
+          "2023_06_IND_JAX",
+          "2023_16_NYG_PHI",
+          "2023_03_BUF_WAS",
+          "2023_18_CHI_GB",
+          "2026_09_JAX_BAL",
+          "2023_14_LA_BAL",
+          "2023_03_ATL_DET",
+          "2024_06_ARI_GB",
+          "2023_18_MIN_DET",
+          "2024_11_WAS_PHI",
+          "2025_04_CIN_DEN",
+          "2024_18_CIN_PIT",
+          "2025_13_LV_LAC",
+          "2026_07_TB_CAR",
+          "2024_08_TEN_DET",
+          "2025_17_TB_MIA",
+          "2023_09_SEA_BAL",
+          "2026_08_LAC_LA",
+          "2023_15_NYG_NO",
+          "2024_11_HOU_DAL"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          21.2265625,
+          25.4921875
+        ],
+        "median": [
+          20.5,
+          24.0
+        ],
+        "away_interval80": [
+          9.0,
+          34.0
+        ],
+        "home_interval80": [
+          14.0,
+          38.0
+        ],
+        "total_interval80": [
+          31.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -14.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 46.71875,
+        "expected_home_margin": 4.265625,
+        "probabilities": {
+          "away_35": 0.09375,
+          "home_35": 0.1796875,
+          "away_10": 0.125,
+          "home_10": 0.0390625,
+          "total_60": 0.1953125,
+          "total_under_30": 0.0859375,
+          "margin_17": 0.2890625,
+          "margin_24": 0.109375,
+          "within_3": 0.203125,
+          "either_35": 0.2578125,
+          "either_10": 0.1640625
+        },
+        "score_correlation": -0.09229178097994885,
+        "typical": [
+          20,
+          25
+        ],
+        "low": [
+          16,
+          14
+        ],
+        "high": [
+          30,
+          37
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          21.0087890625,
+          25.603515625
+        ],
+        "median": [
+          20.0,
+          24.0
+        ],
+        "away_interval80": [
+          10.0,
+          33.0
+        ],
+        "home_interval80": [
+          14.0,
+          39.0
+        ],
+        "total_interval80": [
+          30.0,
+          65.0
+        ],
+        "home_margin_interval80": [
+          -13.0,
+          22.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 46.6123046875,
+        "expected_home_margin": 4.5947265625,
+        "probabilities": {
+          "away_35": 0.0849609375,
+          "home_35": 0.1796875,
+          "away_10": 0.1103515625,
+          "home_10": 0.0400390625,
+          "total_60": 0.1689453125,
+          "total_under_30": 0.0927734375,
+          "margin_17": 0.244140625,
+          "margin_24": 0.099609375,
+          "within_3": 0.2021484375,
+          "either_35": 0.2490234375,
+          "either_10": 0.1455078125
+        },
+        "score_correlation": -0.0006885778290450985,
+        "typical": [
+          20,
+          25
+        ],
+        "low": [
+          13,
+          17
+        ],
+        "high": [
+          31,
+          33
+        ]
+      },
+      "joint_sha256": "42e8ae8ce58880024f694b085528db8bcf7feb618a79a3bfd9de8c806fbb7e31"
+    },
+    {
+      "game_id": "2026_11_TEN_DAL",
+      "away_team": "TEN",
+      "home_team": "DAL",
+      "kickoff_utc": "2026-11-22T18:00:00+00:00",
+      "cutoff_utc": "2026-11-22T17:59:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.039269+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 11.125,
+      "context_score_sd": 9.471420052253961,
+      "history_lineage": {
+        "TEN": {
+          "history_games": [
+            "2026_02_PHI_TEN",
+            "2026_03_TEN_NYG",
+            "2026_04_TEN_BAL",
+            "2026_05_HOU_TEN",
+            "2026_06_TEN_IND",
+            "2026_07_CLE_TEN",
+            "2026_08_TEN_CIN",
+            "2026_10_JAX_TEN"
+          ],
+          "drives_games": [
+            "2026_06_TEN_IND",
+            "2026_07_CLE_TEN",
+            "2026_08_TEN_CIN",
+            "2026_10_JAX_TEN"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.75,
+          "score_sd": 9.860749210886564
+        },
+        "DAL": {
+          "history_games": [
+            "2026_03_BAL_DAL",
+            "2026_04_DAL_HOU",
+            "2026_05_TB_DAL",
+            "2026_06_DAL_GB",
+            "2026_07_DAL_PHI",
+            "2026_08_ARI_DAL",
+            "2026_09_DAL_IND",
+            "2026_10_SF_DAL"
+          ],
+          "drives_games": [
+            "2026_07_DAL_PHI",
+            "2026_08_ARI_DAL",
+            "2026_09_DAL_IND",
+            "2026_10_SF_DAL"
+          ],
+          "latest_available_utc": "2026-11-17T21:25:00+00:00",
+          "prior_drives": 11.5,
+          "score_sd": 9.082090893621357
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2024_12_DET_IND",
+          "2023_03_DAL_ARI",
+          "2023_05_JAX_BUF",
+          "2025_11_CIN_PIT",
+          "2026_03_LAC_BUF",
+          "2023_04_WAS_PHI",
+          "2026_02_DET_BUF",
+          "2023_18_LA_SF",
+          "2024_16_CLE_CIN",
+          "2025_08_DAL_DEN",
+          "2025_05_DET_CIN",
+          "2023_02_MIN_PHI",
+          "2023_17_SF_WAS",
+          "2025_13_HOU_IND",
+          "2024_17_ATL_WAS",
+          "2023_14_LA_BAL",
+          "2023_15_WAS_LA",
+          "2026_03_NYJ_DET",
+          "2026_06_ARI_LA",
+          "2023_12_WAS_DAL",
+          "2024_08_TEN_DET",
+          "2024_07_TEN_BUF",
+          "2026_02_NO_BAL",
+          "2024_16_PIT_BAL",
+          "2025_15_NYJ_JAX",
+          "2026_09_JAX_BAL",
+          "2023_18_MIN_DET",
+          "2026_02_PIT_NE",
+          "2025_16_BUF_CLE",
+          "2025_06_DET_KC",
+          "2023_02_SEA_DET",
+          "2025_06_LA_BAL",
+          "2025_18_DET_CHI",
+          "2025_11_NYJ_NE",
+          "2026_08_BAL_BUF",
+          "2023_03_HOU_JAX",
+          "2023_12_JAX_HOU",
+          "2025_12_NE_CIN",
+          "2026_08_ARI_DAL",
+          "2025_12_TB_LA",
+          "2026_04_ATL_NO",
+          "2023_05_CAR_DET",
+          "2025_15_CLE_CHI",
+          "2023_16_JAX_TB",
+          "2024_10_DET_HOU",
+          "2025_02_ATL_MIN",
+          "2024_14_CIN_DAL",
+          "2025_06_CIN_GB",
+          "2025_08_NYG_PHI",
+          "2026_03_HOU_IND",
+          "2025_04_CIN_DEN",
+          "2024_18_WAS_DAL",
+          "2024_13_TEN_WAS",
+          "2025_14_CIN_BUF",
+          "2025_13_CIN_BAL",
+          "2025_11_TB_BUF",
+          "2023_05_CHI_WAS",
+          "2023_07_GB_DEN",
+          "2023_04_NE_DAL",
+          "2023_11_ARI_HOU",
+          "2023_03_PHI_TB",
+          "2025_12_BUF_HOU",
+          "2023_15_NYJ_MIA",
+          "2025_15_MIN_DAL",
+          "2024_13_HOU_JAX",
+          "2025_12_NYG_DET",
+          "2024_07_HOU_GB",
+          "2026_02_CIN_HOU",
+          "2024_06_ARI_GB",
+          "2025_10_BUF_MIA",
+          "2023_11_CIN_BAL",
+          "2025_18_CLE_CIN",
+          "2024_01_DAL_CLE",
+          "2026_06_WAS_SF",
+          "2025_10_NYG_CHI",
+          "2025_02_DEN_IND",
+          "2024_07_DEN_NO",
+          "2025_10_JAX_HOU",
+          "2024_09_DEN_BAL",
+          "2023_11_CHI_DET",
+          "2025_13_CHI_PHI",
+          "2023_09_CHI_NO",
+          "2023_18_DAL_WAS",
+          "2023_01_DAL_NYG",
+          "2024_18_CIN_PIT",
+          "2025_17_ARI_CIN",
+          "2026_09_DAL_IND",
+          "2024_08_ATL_TB",
+          "2023_14_TEN_MIA",
+          "2023_06_DAL_LAC",
+          "2025_09_ARI_DAL",
+          "2024_08_PHI_CIN",
+          "2023_11_TB_SF",
+          "2023_14_IND_CIN",
+          "2024_06_JAX_CHI",
+          "2026_05_IND_PIT",
+          "2026_04_DAL_HOU",
+          "2025_07_NYG_DEN",
+          "2025_01_SF_SEA",
+          "2024_10_SF_TB",
+          "2024_02_NO_DAL",
+          "2025_14_PHI_LAC",
+          "2023_10_WAS_SEA",
+          "2024_10_ATL_NO",
+          "2023_16_BAL_SF",
+          "2024_15_CIN_TEN",
+          "2026_06_BUF_LV",
+          "2026_05_LV_NE",
+          "2025_15_IND_SEA",
+          "2024_01_NYJ_SF",
+          "2023_15_BAL_JAX",
+          "2023_13_MIA_WAS",
+          "2023_17_ARI_PHI",
+          "2025_17_HOU_LAC",
+          "2023_17_MIA_BAL",
+          "2025_10_DET_WAS",
+          "2023_04_MIN_CAR",
+          "2026_04_LAC_SEA",
+          "2024_15_MIA_HOU",
+          "2025_12_PIT_CHI",
+          "2023_05_PHI_LA",
+          "2023_11_NYJ_BUF",
+          "2025_10_ARI_SEA",
+          "2025_12_SEA_TEN",
+          "2025_06_SF_TB",
+          "2025_15_LAC_KC",
+          "2025_01_KC_LAC",
+          "2025_06_PHI_NYG"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          21.9609375,
+          27.7265625
+        ],
+        "median": [
+          21.0,
+          27.5
+        ],
+        "away_interval80": [
+          11.0,
+          34.0
+        ],
+        "home_interval80": [
+          16.0,
+          40.0
+        ],
+        "total_interval80": [
+          33.0,
+          68.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          26.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          26.0
+        ],
+        "expected_total": 49.6875,
+        "expected_home_margin": 5.765625,
+        "probabilities": {
+          "away_35": 0.0859375,
+          "home_35": 0.2421875,
+          "away_10": 0.0859375,
+          "home_10": 0.03125,
+          "total_60": 0.25,
+          "total_under_30": 0.0390625,
+          "margin_17": 0.3203125,
+          "margin_24": 0.125,
+          "within_3": 0.1640625,
+          "either_35": 0.328125,
+          "either_10": 0.1171875
+        },
+        "score_correlation": -0.12538308137271345,
+        "typical": [
+          23,
+          26
+        ],
+        "low": [
+          14,
+          21
+        ],
+        "high": [
+          33,
+          35
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          21.1416015625,
+          27.0703125
+        ],
+        "median": [
+          20.0,
+          26.0
+        ],
+        "away_interval80": [
+          10.0,
+          34.0
+        ],
+        "home_interval80": [
+          14.300000000000011,
+          41.0
+        ],
+        "total_interval80": [
+          31.0,
+          67.0
+        ],
+        "home_margin_interval80": [
+          -12.0,
+          24.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          25.0
+        ],
+        "expected_total": 48.2119140625,
+        "expected_home_margin": 5.9287109375,
+        "probabilities": {
+          "away_35": 0.087890625,
+          "home_35": 0.22265625,
+          "away_10": 0.1083984375,
+          "home_10": 0.0302734375,
+          "total_60": 0.19921875,
+          "total_under_30": 0.07421875,
+          "margin_17": 0.271484375,
+          "margin_24": 0.1220703125,
+          "within_3": 0.1845703125,
+          "either_35": 0.291015625,
+          "either_10": 0.134765625
+        },
+        "score_correlation": 0.0003516911778408604,
+        "typical": [
+          21,
+          26
+        ],
+        "low": [
+          13,
+          18
+        ],
+        "high": [
+          30,
+          36
+        ]
+      },
+      "joint_sha256": "52456504979c6449687332ebfa740310f0a8ae9813bb57bdc045b391d631cf34"
+    },
+    {
+      "game_id": "2026_11_NYJ_LAC",
+      "away_team": "NYJ",
+      "home_team": "LAC",
+      "kickoff_utc": "2026-11-22T21:05:00+00:00",
+      "cutoff_utc": "2026-11-22T21:04:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.125726+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.75,
+      "context_score_sd": 6.5659203079754995,
+      "history_lineage": {
+        "NYJ": {
+          "history_games": [
+            "2026_03_NYJ_DET",
+            "2026_04_NYJ_CHI",
+            "2026_05_CLE_NYJ",
+            "2026_06_NYJ_NE",
+            "2026_07_MIA_NYJ",
+            "2026_08_LV_NYJ",
+            "2026_09_NYJ_KC",
+            "2026_10_BUF_NYJ"
+          ],
+          "drives_games": [
+            "2026_07_MIA_NYJ",
+            "2026_08_LV_NYJ",
+            "2026_09_NYJ_KC",
+            "2026_10_BUF_NYJ"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.0,
+          "score_sd": 7.137051211810099
+        },
+        "LAC": {
+          "history_games": [
+            "2026_02_LV_LAC",
+            "2026_03_LAC_BUF",
+            "2026_04_LAC_SEA",
+            "2026_05_DEN_LAC",
+            "2026_06_LAC_KC",
+            "2026_08_LAC_LA",
+            "2026_09_HOU_LAC",
+            "2026_10_LAC_BAL"
+          ],
+          "drives_games": [
+            "2026_06_LAC_KC",
+            "2026_08_LAC_LA",
+            "2026_09_HOU_LAC",
+            "2026_10_LAC_BAL"
+          ],
+          "latest_available_utc": "2026-11-19T01:15:00+00:00",
+          "prior_drives": 11.5,
+          "score_sd": 5.994789404140899
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2023_16_CIN_PIT",
+          "2023_02_NYG_ARI",
+          "2024_13_IND_NE",
+          "2023_13_KC_GB",
+          "2024_01_HOU_IND",
+          "2024_06_PIT_LV",
+          "2024_11_LA_NE",
+          "2024_15_KC_CLE",
+          "2023_02_WAS_DEN",
+          "2024_17_IND_NYG",
+          "2023_15_PIT_IND",
+          "2023_04_CIN_TEN",
+          "2024_04_PIT_IND",
+          "2023_10_IND_NE",
+          "2024_08_ARI_MIA",
+          "2024_13_LA_NO",
+          "2023_09_LAC_NYJ",
+          "2023_14_TB_ATL",
+          "2026_05_DEN_LAC",
+          "2023_01_BUF_NYJ",
+          "2024_05_IND_JAX",
+          "2026_06_PIT_TB",
+          "2024_16_TEN_IND",
+          "2023_13_ATL_NYJ",
+          "2024_08_MIN_LA",
+          "2023_03_NE_NYJ",
+          "2024_16_JAX_LV",
+          "2026_07_DEN_ARI",
+          "2023_07_PIT_LA",
+          "2025_04_CHI_LV",
+          "2024_02_PIT_DEN",
+          "2024_11_MIN_TEN",
+          "2024_08_KC_LV",
+          "2023_14_BUF_KC",
+          "2024_12_PHI_LA",
+          "2024_18_LAC_LV",
+          "2023_02_MIA_NE",
+          "2023_17_CIN_KC",
+          "2024_01_PIT_ATL",
+          "2026_07_DAL_PHI",
+          "2023_14_DEN_LAC",
+          "2025_04_JAX_SF",
+          "2023_10_NO_MIN",
+          "2024_04_TEN_MIA",
+          "2023_12_LA_ARI",
+          "2025_07_LA_JAX",
+          "2026_05_MIN_NO",
+          "2026_09_CLE_NO",
+          "2025_08_TB_NO",
+          "2023_01_CIN_CLE",
+          "2024_06_HOU_NE",
+          "2024_17_SEA_CHI",
+          "2024_15_DAL_CAR",
+          "2023_18_HOU_IND",
+          "2024_04_DEN_NYJ",
+          "2024_02_SEA_NE",
+          "2023_05_NYJ_DEN",
+          "2024_17_LV_NO",
+          "2024_07_NE_JAX",
+          "2023_08_JAX_PIT",
+          "2023_06_BAL_TEN",
+          "2024_11_LV_MIA",
+          "2023_11_LAC_GB",
+          "2023_09_LA_GB",
+          "2025_09_JAX_LV",
+          "2026_06_CAR_PHI",
+          "2024_11_IND_NYJ",
+          "2025_17_NO_TEN",
+          "2026_01_DEN_KC",
+          "2026_01_MIA_LV",
+          "2023_15_TB_GB",
+          "2026_03_KC_MIA",
+          "2024_04_JAX_HOU",
+          "2024_06_BUF_NYJ",
+          "2024_09_LAC_CLE",
+          "2024_03_KC_ATL",
+          "2023_06_SF_CLE",
+          "2023_06_NE_LV",
+          "2025_03_DAL_CHI",
+          "2024_03_GB_TEN",
+          "2023_08_BAL_ARI",
+          "2025_16_KC_TEN",
+          "2023_07_ATL_TB",
+          "2023_09_NYG_LV",
+          "2026_07_CLE_TEN",
+          "2023_03_BUF_WAS",
+          "2025_08_SF_HOU",
+          "2023_05_NO_NE",
+          "2024_02_CHI_HOU",
+          "2024_08_BAL_CLE",
+          "2023_09_IND_CAR",
+          "2023_12_KC_LV",
+          "2025_07_MIA_CLE",
+          "2023_12_PIT_CIN",
+          "2024_04_DAL_NYG",
+          "2023_16_IND_ATL",
+          "2024_03_HOU_MIN",
+          "2024_01_MIN_NYG",
+          "2025_04_TEN_HOU",
+          "2023_14_GB_NYG",
+          "2024_08_GB_JAX",
+          "2023_01_HOU_BAL",
+          "2023_10_NYJ_LV",
+          "2023_07_JAX_NO",
+          "2024_17_TEN_JAX",
+          "2024_05_GB_LA",
+          "2024_17_KC_PIT",
+          "2024_16_NYG_ATL",
+          "2023_13_DEN_HOU",
+          "2023_01_TEN_NO",
+          "2025_12_CLE_LV",
+          "2024_05_MIA_NE",
+          "2023_15_MIN_CIN",
+          "2025_06_TEN_LV",
+          "2024_04_KC_LAC",
+          "2024_13_NYG_DAL",
+          "2026_02_IND_KC",
+          "2025_13_SF_CLE",
+          "2025_16_NYJ_NO",
+          "2023_14_HOU_NYJ",
+          "2023_15_HOU_TEN",
+          "2023_15_DEN_DET",
+          "2024_07_LV_LA",
+          "2023_06_PHI_NYJ",
+          "2023_17_PIT_SEA",
+          "2024_10_PHI_DAL",
+          "2026_04_GB_TB",
+          "2026_08_KC_DEN"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          21.2890625,
+          20.328125
+        ],
+        "median": [
+          22.0,
+          20.0
+        ],
+        "away_interval80": [
+          9.0,
+          32.0
+        ],
+        "home_interval80": [
+          8.0,
+          32.0
+        ],
+        "total_interval80": [
+          28.0,
+          56.0
+        ],
+        "home_margin_interval80": [
+          -18.0,
+          21.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 41.6171875,
+        "expected_home_margin": -0.9609375,
+        "probabilities": {
+          "away_35": 0.0703125,
+          "home_35": 0.046875,
+          "away_10": 0.125,
+          "home_10": 0.15625,
+          "total_60": 0.0703125,
+          "total_under_30": 0.1328125,
+          "margin_17": 0.2421875,
+          "margin_24": 0.1015625,
+          "within_3": 0.203125,
+          "either_35": 0.1171875,
+          "either_10": 0.265625
+        },
+        "score_correlation": -0.13125101465624733,
+        "typical": [
+          22,
+          19
+        ],
+        "low": [
+          17,
+          12
+        ],
+        "high": [
+          30,
+          26
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          20.498046875,
+          21.462890625
+        ],
+        "median": [
+          19.0,
+          20.0
+        ],
+        "away_interval80": [
+          10.0,
+          33.0
+        ],
+        "home_interval80": [
+          11.0,
+          33.0
+        ],
+        "total_interval80": [
+          27.0,
+          59.0
+        ],
+        "home_margin_interval80": [
+          -15.0,
+          16.700000000000045
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          21.0
+        ],
+        "expected_total": 41.9609375,
+        "expected_home_margin": 0.96484375,
+        "probabilities": {
+          "away_35": 0.076171875,
+          "home_35": 0.078125,
+          "away_10": 0.119140625,
+          "home_10": 0.0810546875,
+          "total_60": 0.091796875,
+          "total_under_30": 0.1572265625,
+          "margin_17": 0.1826171875,
+          "margin_24": 0.06640625,
+          "within_3": 0.2275390625,
+          "either_35": 0.1484375,
+          "either_10": 0.1904296875
+        },
+        "score_correlation": 0.0015423044559011178,
+        "typical": [
+          20,
+          21
+        ],
+        "low": [
+          13,
+          14
+        ],
+        "high": [
+          28,
+          31
+        ]
+      },
+      "joint_sha256": "6cb54833295e0ce6dc79d82e0edbefde3380f3d51a3cfb595dce78ecb1c76032"
+    },
+    {
+      "game_id": "2026_11_JAX_NYG",
+      "away_team": "JAX",
+      "home_team": "NYG",
+      "kickoff_utc": "2026-11-22T21:25:00+00:00",
+      "cutoff_utc": "2026-11-22T21:24:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.219517+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 11.25,
+      "context_score_sd": 9.302030023868546,
+      "history_lineage": {
+        "JAX": {
+          "history_games": [
+            "2026_02_JAX_DEN",
+            "2026_03_NE_JAX",
+            "2026_04_JAX_CIN",
+            "2026_05_PHI_JAX",
+            "2026_06_HOU_JAX",
+            "2026_08_IND_JAX",
+            "2026_09_JAX_BAL",
+            "2026_10_JAX_TEN"
+          ],
+          "drives_games": [
+            "2026_06_HOU_JAX",
+            "2026_08_IND_JAX",
+            "2026_09_JAX_BAL",
+            "2026_10_JAX_TEN"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.75,
+          "score_sd": 9.681651460365634
+        },
+        "NYG": {
+          "history_games": [
+            "2026_02_NYG_LA",
+            "2026_03_TEN_NYG",
+            "2026_04_ARI_NYG",
+            "2026_05_NYG_WAS",
+            "2026_06_NO_NYG",
+            "2026_07_NYG_HOU",
+            "2026_09_NYG_PHI",
+            "2026_10_WAS_NYG"
+          ],
+          "drives_games": [
+            "2026_06_NO_NYG",
+            "2026_07_NYG_HOU",
+            "2026_09_NYG_PHI",
+            "2026_10_WAS_NYG"
+          ],
+          "latest_available_utc": "2026-11-15T01:15:00+00:00",
+          "prior_drives": 11.75,
+          "score_sd": 8.92240858737146
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2023_16_JAX_TB",
+          "2023_03_PHI_TB",
+          "2024_10_ATL_NO",
+          "2024_13_HOU_JAX",
+          "2023_13_MIA_WAS",
+          "2026_03_HOU_IND",
+          "2024_15_WAS_NO",
+          "2025_14_PHI_LAC",
+          "2023_03_DAL_ARI",
+          "2025_13_CHI_PHI",
+          "2025_16_BUF_CLE",
+          "2026_07_PIT_NO",
+          "2024_02_CLE_JAX",
+          "2025_10_JAX_HOU",
+          "2025_09_DEN_HOU",
+          "2024_17_ATL_WAS",
+          "2024_14_CIN_DAL",
+          "2026_02_NO_BAL",
+          "2024_01_DAL_CLE",
+          "2025_13_HOU_IND",
+          "2023_01_TB_MIN",
+          "2023_10_SF_JAX",
+          "2025_15_CLE_CHI",
+          "2024_02_ATL_PHI",
+          "2024_03_NYG_CLE",
+          "2025_06_SEA_JAX",
+          "2026_05_IND_PIT",
+          "2024_17_MIA_CLE",
+          "2023_15_WAS_LA",
+          "2024_10_DET_HOU",
+          "2023_02_IND_HOU",
+          "2024_08_IND_HOU",
+          "2023_06_DAL_LAC",
+          "2024_18_WAS_DAL",
+          "2026_03_ATL_GB",
+          "2023_01_PHI_NE",
+          "2023_04_MIN_CAR",
+          "2023_07_GB_DEN",
+          "2023_12_JAX_HOU",
+          "2024_15_CIN_TEN",
+          "2023_09_CHI_NO",
+          "2023_16_DET_MIN",
+          "2023_11_PIT_CLE",
+          "2024_01_BAL_KC",
+          "2023_08_CLE_SEA",
+          "2026_07_NYG_HOU",
+          "2025_04_MIN_PIT",
+          "2023_04_ATL_JAX",
+          "2023_05_PHI_LA",
+          "2024_07_HOU_GB",
+          "2025_08_NYG_PHI",
+          "2023_06_WAS_ATL",
+          "2023_10_WAS_SEA",
+          "2023_12_TB_IND",
+          "2023_13_DET_NO",
+          "2026_07_KC_SEA",
+          "2026_09_DEN_CAR",
+          "2025_01_MIA_IND",
+          "2023_05_CAR_DET",
+          "2023_14_IND_CIN",
+          "2023_04_WAS_PHI",
+          "2023_05_CHI_WAS",
+          "2024_12_BAL_LAC",
+          "2024_07_DET_MIN",
+          "2025_07_PHI_MIN",
+          "2025_15_LAC_KC",
+          "2023_03_IND_BAL",
+          "2023_03_HOU_JAX",
+          "2024_18_KC_DEN",
+          "2024_09_WAS_NYG",
+          "2024_07_TEN_BUF",
+          "2026_09_NYG_PHI",
+          "2025_11_CIN_PIT",
+          "2026_04_ATL_NO",
+          "2023_17_LA_NYG",
+          "2023_12_CLE_DEN",
+          "2023_15_BAL_JAX",
+          "2023_02_SEA_DET",
+          "2023_16_BUF_LAC",
+          "2025_12_BUF_HOU",
+          "2023_01_LV_DEN",
+          "2023_10_DET_LAC",
+          "2024_16_TB_DAL",
+          "2026_09_JAX_BAL",
+          "2025_10_CLE_NYJ",
+          "2023_18_DEN_LV",
+          "2023_15_CHI_CLE",
+          "2023_15_MIN_CIN",
+          "2025_15_NYJ_JAX",
+          "2026_09_DAL_IND",
+          "2025_15_ATL_TB",
+          "2023_03_CAR_SEA",
+          "2023_04_NE_DAL",
+          "2023_16_SEA_TEN",
+          "2025_06_PHI_NYG",
+          "2024_09_DEN_BAL",
+          "2023_14_JAX_CLE",
+          "2025_03_DAL_CHI",
+          "2025_17_HOU_LAC",
+          "2024_11_HOU_DAL",
+          "2026_08_CLE_PIT",
+          "2023_10_CLE_BAL",
+          "2023_01_DAL_NYG",
+          "2025_10_BUF_MIA",
+          "2024_12_DET_IND",
+          "2023_17_SF_WAS",
+          "2025_14_IND_JAX",
+          "2024_11_CIN_LAC",
+          "2026_05_NYG_WAS",
+          "2026_05_BAL_ATL",
+          "2023_13_CLE_LA",
+          "2023_05_TEN_IND",
+          "2026_06_BUF_LV",
+          "2024_13_PIT_CIN",
+          "2025_13_LV_LAC",
+          "2026_04_IND_WAS",
+          "2023_16_IND_ATL",
+          "2026_07_LA_LV",
+          "2023_13_SF_PHI",
+          "2025_03_CIN_MIN",
+          "2024_10_SF_TB",
+          "2025_12_NYJ_BAL",
+          "2026_06_LAC_KC",
+          "2023_16_NO_LA",
+          "2025_14_SEA_ATL",
+          "2024_08_PHI_CIN",
+          "2025_14_PIT_BAL",
+          "2023_08_PHI_WAS"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          25.59375,
+          21.34375
+        ],
+        "median": [
+          25.0,
+          20.0
+        ],
+        "away_interval80": [
+          14.0,
+          39.0
+        ],
+        "home_interval80": [
+          11.0,
+          34.0
+        ],
+        "total_interval80": [
+          33.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -21.0,
+          14.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          27.0
+        ],
+        "expected_total": 46.9375,
+        "expected_home_margin": -4.25,
+        "probabilities": {
+          "away_35": 0.1640625,
+          "home_35": 0.0703125,
+          "away_10": 0.0390625,
+          "home_10": 0.09375,
+          "total_60": 0.1484375,
+          "total_under_30": 0.0546875,
+          "margin_17": 0.1953125,
+          "margin_24": 0.1171875,
+          "within_3": 0.1875,
+          "either_35": 0.2265625,
+          "either_10": 0.1328125
+        },
+        "score_correlation": -0.19158845298246832,
+        "typical": [
+          26,
+          20
+        ],
+        "low": [
+          20,
+          12
+        ],
+        "high": [
+          33,
+          29
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          24.607421875,
+          21.228515625
+        ],
+        "median": [
+          23.0,
+          20.0
+        ],
+        "away_interval80": [
+          12.0,
+          39.0
+        ],
+        "home_interval80": [
+          11.0,
+          33.0
+        ],
+        "total_interval80": [
+          29.30000000000001,
+          64.0
+        ],
+        "home_margin_interval80": [
+          -21.0,
+          13.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          23.0
+        ],
+        "expected_total": 45.8359375,
+        "expected_home_margin": -3.37890625,
+        "probabilities": {
+          "away_35": 0.1689453125,
+          "home_35": 0.07421875,
+          "away_10": 0.064453125,
+          "home_10": 0.0849609375,
+          "total_60": 0.16015625,
+          "total_under_30": 0.1005859375,
+          "margin_17": 0.228515625,
+          "margin_24": 0.095703125,
+          "within_3": 0.212890625,
+          "either_35": 0.23046875,
+          "either_10": 0.1435546875
+        },
+        "score_correlation": 0.0007934814133745229,
+        "typical": [
+          24,
+          21
+        ],
+        "low": [
+          17,
+          13
+        ],
+        "high": [
+          34,
+          31
+        ]
+      },
+      "joint_sha256": "8c89c0812ea9e4fc3d05d33eb05fd0b8b2c260d2ff410426924d89415cebaa2e"
+    },
+    {
+      "game_id": "2026_11_LV_DEN",
+      "away_team": "LV",
+      "home_team": "DEN",
+      "kickoff_utc": "2026-11-22T21:25:00+00:00",
+      "cutoff_utc": "2026-11-22T21:24:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.314037+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.125,
+      "context_score_sd": 7.105911782813358,
+      "history_lineage": {
+        "LV": {
+          "history_games": [
+            "2026_03_LV_NO",
+            "2026_04_KC_LV",
+            "2026_05_LV_NE",
+            "2026_06_BUF_LV",
+            "2026_07_LA_LV",
+            "2026_08_LV_NYJ",
+            "2026_09_LV_SF",
+            "2026_10_SEA_LV"
+          ],
+          "drives_games": [
+            "2026_07_LA_LV",
+            "2026_08_LV_NYJ",
+            "2026_09_LV_SF",
+            "2026_10_SEA_LV"
+          ],
+          "latest_available_utc": "2026-11-17T21:05:00+00:00",
+          "prior_drives": 9.5,
+          "score_sd": 8.554969316134336
+        },
+        "DEN": {
+          "history_games": [
+            "2026_02_JAX_DEN",
+            "2026_03_LA_DEN",
+            "2026_04_DEN_SF",
+            "2026_05_DEN_LAC",
+            "2026_06_SEA_DEN",
+            "2026_07_DEN_ARI",
+            "2026_08_KC_DEN",
+            "2026_09_DEN_CAR"
+          ],
+          "drives_games": [
+            "2026_06_SEA_DEN",
+            "2026_07_DEN_ARI",
+            "2026_08_KC_DEN",
+            "2026_09_DEN_CAR"
+          ],
+          "latest_available_utc": "2026-11-10T18:00:00+00:00",
+          "prior_drives": 10.75,
+          "score_sd": 5.656854249492381
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2025_05_LV_IND",
+          "2025_18_MIA_NE",
+          "2025_06_CHI_WAS",
+          "2024_17_DAL_PHI",
+          "2026_02_JAX_DEN",
+          "2025_02_WAS_GB",
+          "2025_06_SF_TB",
+          "2026_08_IND_JAX",
+          "2024_06_ARI_GB",
+          "2025_17_JAX_IND",
+          "2024_13_TB_CAR",
+          "2025_04_CIN_DEN",
+          "2024_18_BUF_NE",
+          "2025_02_JAX_CIN",
+          "2024_03_JAX_BUF",
+          "2025_09_CAR_GB",
+          "2023_08_CHI_LAC",
+          "2024_16_NO_GB",
+          "2025_12_TB_LA",
+          "2026_08_ARI_DAL",
+          "2025_10_ARI_SEA",
+          "2024_10_PIT_WAS",
+          "2025_17_NE_NYJ",
+          "2025_12_NYG_DET",
+          "2025_01_DAL_PHI",
+          "2024_13_SF_BUF",
+          "2025_15_MIN_DAL",
+          "2023_17_MIA_BAL",
+          "2026_04_TEN_BAL",
+          "2025_05_HOU_BAL",
+          "2023_03_NYG_SF",
+          "2024_14_LV_TB",
+          "2025_17_LA_ATL",
+          "2023_04_LV_LAC",
+          "2025_13_MIN_SEA",
+          "2025_05_WAS_LAC",
+          "2024_01_ARI_BUF",
+          "2025_03_LV_WAS",
+          "2025_11_TB_BUF",
+          "2025_15_IND_SEA",
+          "2025_15_BUF_NE",
+          "2024_15_PIT_PHI",
+          "2026_04_DAL_HOU",
+          "2025_18_IND_HOU",
+          "2025_14_LA_ARI",
+          "2024_08_DAL_SF",
+          "2026_09_DET_MIA",
+          "2024_02_IND_GB",
+          "2024_17_GB_MIN",
+          "2023_17_ARI_PHI",
+          "2025_17_ARI_CIN",
+          "2025_06_LA_BAL",
+          "2025_06_CIN_GB",
+          "2024_13_CLE_DEN",
+          "2025_02_CHI_DET",
+          "2025_05_DEN_PHI",
+          "2026_06_HOU_JAX",
+          "2023_02_LV_BUF",
+          "2024_15_IND_DEN",
+          "2025_09_NO_LA",
+          "2024_11_SEA_SF",
+          "2023_12_GB_DET",
+          "2026_02_PIT_NE",
+          "2025_02_ATL_MIN",
+          "2026_03_NYJ_DET",
+          "2023_03_ATL_DET",
+          "2023_06_MIN_CHI",
+          "2026_06_NO_NYG",
+          "2023_18_BUF_MIA",
+          "2023_15_DAL_BUF",
+          "2025_12_CAR_SF",
+          "2025_08_CLE_NE",
+          "2025_06_ARI_IND",
+          "2024_18_CIN_PIT",
+          "2023_07_LAC_KC",
+          "2024_16_SF_MIA",
+          "2024_01_JAX_MIA",
+          "2023_04_DET_GB",
+          "2025_01_KC_LAC",
+          "2025_14_HOU_KC",
+          "2023_17_NO_TB",
+          "2024_08_PHI_CIN",
+          "2024_17_CAR_TB",
+          "2023_11_CIN_BAL",
+          "2024_14_ATL_MIN",
+          "2024_04_NE_SF",
+          "2025_04_PHI_TB",
+          "2023_06_ARI_LA",
+          "2025_09_IND_PIT",
+          "2024_12_SF_GB",
+          "2024_11_KC_BUF",
+          "2025_12_PIT_CHI",
+          "2026_05_DET_ARI",
+          "2026_09_NYJ_KC",
+          "2024_14_NYJ_MIA",
+          "2025_10_NYG_CHI",
+          "2023_08_KC_DEN",
+          "2025_11_NYJ_NE",
+          "2026_01_ARI_LAC",
+          "2023_02_SEA_DET",
+          "2026_07_IND_MIN",
+          "2025_02_DEN_IND",
+          "2025_12_NE_CIN",
+          "2025_06_DEN_NYJ",
+          "2023_07_SF_MIN",
+          "2025_15_TEN_SF",
+          "2023_18_MIN_DET",
+          "2026_04_ARI_NYG",
+          "2025_04_BAL_KC",
+          "2023_05_DAL_SF",
+          "2026_01_ATL_PIT",
+          "2025_01_CIN_CLE",
+          "2025_13_NYG_NE",
+          "2026_07_GB_DET",
+          "2025_17_TB_MIA",
+          "2026_02_SEA_ARI",
+          "2025_14_SEA_ATL",
+          "2024_05_ARI_SF",
+          "2024_09_TB_KC",
+          "2023_12_BUF_PHI",
+          "2025_05_SF_LA",
+          "2024_15_MIA_HOU",
+          "2026_08_BAL_BUF",
+          "2023_14_TEN_MIA",
+          "2025_10_ATL_IND",
+          "2025_02_NE_MIA",
+          "2023_18_DAL_WAS",
+          "2023_10_DEN_BUF"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          19.9140625,
+          28.8515625
+        ],
+        "median": [
+          19.0,
+          29.0
+        ],
+        "away_interval80": [
+          8.0,
+          33.0
+        ],
+        "home_interval80": [
+          17.0,
+          41.0
+        ],
+        "total_interval80": [
+          32.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -10.0,
+          28.0
+        ],
+        "absolute_margin_interval80": [
+          3.0,
+          28.0
+        ],
+        "expected_total": 48.765625,
+        "expected_home_margin": 8.9375,
+        "probabilities": {
+          "away_35": 0.0703125,
+          "home_35": 0.2265625,
+          "away_10": 0.1875,
+          "home_10": 0.0234375,
+          "total_60": 0.21875,
+          "total_under_30": 0.0625,
+          "margin_17": 0.3125,
+          "margin_24": 0.1796875,
+          "within_3": 0.1328125,
+          "either_35": 0.296875,
+          "either_10": 0.2109375
+        },
+        "score_correlation": -0.12613079729955956,
+        "typical": [
+          18,
+          29
+        ],
+        "low": [
+          10,
+          22
+        ],
+        "high": [
+          26,
+          38
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          20.6630859375,
+          27.458984375
+        ],
+        "median": [
+          19.5,
+          26.0
+        ],
+        "away_interval80": [
+          10.0,
+          33.0
+        ],
+        "home_interval80": [
+          15.0,
+          42.0
+        ],
+        "total_interval80": [
+          31.0,
+          66.70000000000005
+        ],
+        "home_margin_interval80": [
+          -11.0,
+          24.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          25.0
+        ],
+        "expected_total": 48.1220703125,
+        "expected_home_margin": 6.7958984375,
+        "probabilities": {
+          "away_35": 0.078125,
+          "home_35": 0.2333984375,
+          "away_10": 0.1171875,
+          "home_10": 0.029296875,
+          "total_60": 0.2001953125,
+          "total_under_30": 0.0791015625,
+          "margin_17": 0.2763671875,
+          "margin_24": 0.12890625,
+          "within_3": 0.1884765625,
+          "either_35": 0.29296875,
+          "either_10": 0.1435546875
+        },
+        "score_correlation": 0.00020128480497837937,
+        "typical": [
+          20,
+          27
+        ],
+        "low": [
+          12,
+          19
+        ],
+        "high": [
+          29,
+          37
+        ]
+      },
+      "joint_sha256": "0f226a9192f72c95ca79b860f3c723855f1fc85cc442c1834a7039c82a5000bb"
+    },
+    {
+      "game_id": "2026_11_MIN_SF",
+      "away_team": "MIN",
+      "home_team": "SF",
+      "kickoff_utc": "2026-11-23T01:20:00+00:00",
+      "cutoff_utc": "2026-11-23T01:19:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.408371+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 9.875,
+      "context_score_sd": 7.815226666993093,
+      "history_lineage": {
+        "MIN": {
+          "history_games": [
+            "2026_02_MIN_CHI",
+            "2026_03_MIN_TB",
+            "2026_04_MIA_MIN",
+            "2026_05_MIN_NO",
+            "2026_07_IND_MIN",
+            "2026_08_MIN_DET",
+            "2026_09_BUF_MIN",
+            "2026_10_MIN_GB"
+          ],
+          "drives_games": [
+            "2026_07_IND_MIN",
+            "2026_08_MIN_DET",
+            "2026_09_BUF_MIN",
+            "2026_10_MIN_GB"
+          ],
+          "latest_available_utc": "2026-11-17T18:00:00+00:00",
+          "prior_drives": 10.25,
+          "score_sd": 7.372881051529314
+        },
+        "SF": {
+          "history_games": [
+            "2026_02_MIA_SF",
+            "2026_03_ARI_SF",
+            "2026_04_DEN_SF",
+            "2026_05_SF_SEA",
+            "2026_06_WAS_SF",
+            "2026_07_SF_ATL",
+            "2026_09_LV_SF",
+            "2026_10_SF_DAL"
+          ],
+          "drives_games": [
+            "2026_06_WAS_SF",
+            "2026_07_SF_ATL",
+            "2026_09_LV_SF",
+            "2026_10_SF_DAL"
+          ],
+          "latest_available_utc": "2026-11-17T21:25:00+00:00",
+          "prior_drives": 9.5,
+          "score_sd": 8.257572282456872
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2024_13_TB_CAR",
+          "2025_12_CAR_SF",
+          "2024_13_SF_BUF",
+          "2026_09_DET_MIA",
+          "2023_08_CHI_LAC",
+          "2024_10_PIT_WAS",
+          "2023_02_LV_BUF",
+          "2025_02_JAX_CIN",
+          "2026_02_JAX_DEN",
+          "2025_05_LV_IND",
+          "2025_09_CAR_GB",
+          "2026_09_NYJ_KC",
+          "2024_15_IND_DEN",
+          "2024_14_ATL_MIN",
+          "2023_08_KC_DEN",
+          "2024_16_NO_GB",
+          "2023_17_ARI_PHI",
+          "2023_04_LV_LAC",
+          "2023_06_ARI_LA",
+          "2024_01_JAX_MIA",
+          "2024_08_DAL_SF",
+          "2024_16_SF_MIA",
+          "2024_09_JAX_PHI",
+          "2024_04_NE_SF",
+          "2025_17_SEA_CAR",
+          "2026_04_ARI_NYG",
+          "2025_15_MIN_DAL",
+          "2025_01_KC_LAC",
+          "2026_07_GB_DET",
+          "2025_03_LV_WAS",
+          "2026_01_ATL_PIT",
+          "2024_06_ARI_GB",
+          "2024_14_NYJ_MIA",
+          "2024_04_LA_CHI",
+          "2025_03_LA_PHI",
+          "2026_06_NO_NYG",
+          "2024_11_KC_BUF",
+          "2025_04_BAL_KC",
+          "2025_01_TB_ATL",
+          "2024_13_MIA_GB",
+          "2023_06_MIN_CHI",
+          "2024_13_ARI_MIN",
+          "2023_11_PHI_KC",
+          "2024_03_JAX_BUF",
+          "2024_10_DEN_KC",
+          "2024_04_MIN_GB",
+          "2025_07_LV_KC",
+          "2025_02_NE_MIA",
+          "2025_11_TB_BUF",
+          "2025_06_DEN_NYJ",
+          "2024_08_PHI_CIN",
+          "2025_17_TB_MIA",
+          "2025_02_TB_HOU",
+          "2024_02_IND_GB",
+          "2026_01_WAS_PHI",
+          "2025_06_CHI_WAS",
+          "2023_07_ARI_SEA",
+          "2026_04_TEN_BAL",
+          "2023_11_CIN_BAL",
+          "2023_12_GB_DET",
+          "2023_12_BUF_PHI",
+          "2023_04_DET_GB",
+          "2025_13_DEN_WAS",
+          "2025_08_CLE_NE",
+          "2024_17_GB_MIN",
+          "2023_03_ATL_DET",
+          "2025_05_SF_LA",
+          "2025_14_CHI_GB",
+          "2025_02_ATL_MIN",
+          "2026_02_SEA_ARI",
+          "2023_01_GB_CHI",
+          "2024_13_CLE_DEN",
+          "2024_15_CHI_MIN",
+          "2026_01_ARI_LAC",
+          "2023_11_DAL_CAR",
+          "2026_08_ARI_DAL",
+          "2025_10_NO_CAR",
+          "2026_06_HOU_JAX",
+          "2026_03_SEA_WAS",
+          "2026_02_CAR_ATL",
+          "2024_18_MIA_NYJ",
+          "2023_10_CAR_CHI",
+          "2023_08_LV_DET",
+          "2026_04_DAL_HOU",
+          "2024_05_NYJ_MIN",
+          "2025_18_MIA_NE",
+          "2025_15_WAS_NYG",
+          "2025_17_NE_NYJ",
+          "2023_07_LAC_KC",
+          "2025_05_WAS_LAC",
+          "2025_04_NYJ_MIA",
+          "2025_11_WAS_MIA",
+          "2024_09_DAL_ATL",
+          "2026_06_TEN_IND",
+          "2024_05_ARI_SF",
+          "2024_09_TB_KC",
+          "2023_11_TB_SF",
+          "2024_18_BUF_NE",
+          "2023_18_MIN_DET",
+          "2025_01_MIN_CHI",
+          "2023_18_BUF_MIA",
+          "2024_02_CIN_KC",
+          "2023_09_SEA_BAL",
+          "2025_15_BUF_NE",
+          "2025_08_MIA_ATL",
+          "2025_14_HOU_KC",
+          "2025_18_WAS_PHI",
+          "2024_14_SEA_ARI",
+          "2026_01_NYJ_TEN",
+          "2023_18_DAL_WAS",
+          "2023_16_NYG_PHI",
+          "2024_17_DET_SF",
+          "2024_11_ATL_DEN",
+          "2023_03_NO_GB",
+          "2023_17_NO_TB",
+          "2025_01_CIN_CLE",
+          "2025_10_PHI_GB",
+          "2025_01_HOU_LA",
+          "2025_04_CIN_DEN",
+          "2024_01_ARI_BUF",
+          "2025_13_LA_CAR",
+          "2025_08_NYG_PHI",
+          "2023_05_GB_LV",
+          "2025_12_NYG_DET",
+          "2025_01_NYG_WAS",
+          "2026_08_IND_JAX",
+          "2025_16_GB_CHI",
+          "2025_13_NO_MIA"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          19.8359375,
+          26.2109375
+        ],
+        "median": [
+          20.0,
+          27.0
+        ],
+        "away_interval80": [
+          9.0,
+          33.0
+        ],
+        "home_interval80": [
+          15.0,
+          39.0
+        ],
+        "total_interval80": [
+          29.0,
+          62.0
+        ],
+        "home_margin_interval80": [
+          -10.0,
+          25.0
+        ],
+        "absolute_margin_interval80": [
+          3.0,
+          26.0
+        ],
+        "expected_total": 46.046875,
+        "expected_home_margin": 6.375,
+        "probabilities": {
+          "away_35": 0.0234375,
+          "home_35": 0.1640625,
+          "away_10": 0.171875,
+          "home_10": 0.0390625,
+          "total_60": 0.1640625,
+          "total_under_30": 0.109375,
+          "margin_17": 0.234375,
+          "margin_24": 0.1171875,
+          "within_3": 0.125,
+          "either_35": 0.1875,
+          "either_10": 0.203125
+        },
+        "score_correlation": -0.06320699347572079,
+        "typical": [
+          20,
+          27
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          28,
+          33
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          20.0546875,
+          25.9716796875
+        ],
+        "median": [
+          19.0,
+          25.0
+        ],
+        "away_interval80": [
+          10.0,
+          32.0
+        ],
+        "home_interval80": [
+          14.0,
+          40.0
+        ],
+        "total_interval80": [
+          29.30000000000001,
+          64.0
+        ],
+        "home_margin_interval80": [
+          -11.0,
+          23.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 46.0263671875,
+        "expected_home_margin": 5.9169921875,
+        "probabilities": {
+          "away_35": 0.068359375,
+          "home_35": 0.189453125,
+          "away_10": 0.1279296875,
+          "home_10": 0.037109375,
+          "total_60": 0.16015625,
+          "total_under_30": 0.1005859375,
+          "margin_17": 0.2548828125,
+          "margin_24": 0.10546875,
+          "within_3": 0.189453125,
+          "either_35": 0.24609375,
+          "either_10": 0.16015625
+        },
+        "score_correlation": -0.0011339033471902229,
+        "typical": [
+          20,
+          25
+        ],
+        "low": [
+          12,
+          17
+        ],
+        "high": [
+          30,
+          34
+        ]
+      },
+      "joint_sha256": "8973a90e68f436ab51218073e5f7c95155f9b187b44b2b2793f7b0ed2f4135ee"
+    },
+    {
+      "game_id": "2026_11_CIN_WAS",
+      "away_team": "CIN",
+      "home_team": "WAS",
+      "kickoff_utc": "2026-11-24T01:15:00+00:00",
+      "cutoff_utc": "2026-11-24T01:14:00+00:00",
+      "created_at_utc": "2026-11-19T16:16:55.500363+00:00",
+      "a_features_asof_utc": "2026-11-19T16:16:31.267608+00:00",
+      "context_drives": 10.5,
+      "context_score_sd": 7.524936308346551,
+      "history_lineage": {
+        "CIN": {
+          "history_games": [
+            "2026_02_CIN_HOU",
+            "2026_03_CIN_PIT",
+            "2026_04_JAX_CIN",
+            "2026_05_CIN_MIA",
+            "2026_07_CIN_BAL",
+            "2026_08_TEN_CIN",
+            "2026_09_CIN_ATL",
+            "2026_10_PIT_CIN"
+          ],
+          "drives_games": [
+            "2026_07_CIN_BAL",
+            "2026_08_TEN_CIN",
+            "2026_09_CIN_ATL",
+            "2026_10_PIT_CIN"
+          ],
+          "latest_available_utc": "2026-11-18T01:20:00+00:00",
+          "prior_drives": 10.5,
+          "score_sd": 8.290619699395215
+        },
+        "WAS": {
+          "history_games": [
+            "2026_02_WAS_DAL",
+            "2026_03_SEA_WAS",
+            "2026_04_IND_WAS",
+            "2026_05_NYG_WAS",
+            "2026_06_WAS_SF",
+            "2026_08_PHI_WAS",
+            "2026_09_LA_WAS",
+            "2026_10_WAS_NYG"
+          ],
+          "drives_games": [
+            "2026_06_WAS_SF",
+            "2026_08_PHI_WAS",
+            "2026_09_LA_WAS",
+            "2026_10_WAS_NYG"
+          ],
+          "latest_available_utc": "2026-11-15T01:15:00+00:00",
+          "prior_drives": 10.5,
+          "score_sd": 6.7592529172978875
+        }
+      },
+      "calibration_lineage": {
+        "pool_games": 946,
+        "pool_first": "2023-09-08T00:20:00+00:00",
+        "pool_last_available": "2026-11-10T18:00:00+00:00",
+        "neighbor_ids": [
+          "2025_12_PIT_CHI",
+          "2023_18_BUF_MIA",
+          "2026_05_DET_ARI",
+          "2023_17_MIA_BAL",
+          "2024_15_MIA_HOU",
+          "2025_11_TB_BUF",
+          "2025_14_SEA_ATL",
+          "2026_08_ARI_DAL",
+          "2023_04_DET_GB",
+          "2023_17_NO_TB",
+          "2025_05_WAS_LAC",
+          "2025_06_LA_BAL",
+          "2023_14_IND_CIN",
+          "2024_17_GB_MIN",
+          "2024_18_CIN_PIT",
+          "2024_11_CIN_LAC",
+          "2026_09_DAL_IND",
+          "2023_08_CHI_LAC",
+          "2024_08_PHI_CIN",
+          "2023_15_DAL_BUF",
+          "2024_06_ARI_GB",
+          "2024_15_TB_LAC",
+          "2025_14_HOU_KC",
+          "2026_06_BUF_LV",
+          "2024_10_MIN_JAX",
+          "2023_10_DET_LAC",
+          "2025_04_CIN_DEN",
+          "2024_11_SEA_SF",
+          "2023_03_ATL_DET",
+          "2024_09_TB_KC",
+          "2026_02_NO_BAL",
+          "2025_15_LAC_KC",
+          "2025_02_DEN_IND",
+          "2024_09_DEN_BAL",
+          "2023_12_BUF_PHI",
+          "2024_08_DAL_SF",
+          "2024_01_LA_DET",
+          "2025_17_TB_MIA",
+          "2024_10_PIT_WAS",
+          "2024_17_ATL_WAS",
+          "2026_04_IND_WAS",
+          "2025_17_JAX_IND",
+          "2023_03_DEN_MIA",
+          "2023_07_GB_DEN",
+          "2024_18_WAS_DAL",
+          "2023_06_MIN_CHI",
+          "2026_02_CAR_ATL",
+          "2026_06_NO_NYG",
+          "2025_08_NYG_PHI",
+          "2025_05_LV_IND",
+          "2025_17_NE_NYJ",
+          "2025_10_BUF_MIA",
+          "2024_09_LV_CIN",
+          "2024_03_MIA_SEA",
+          "2025_06_DEN_NYJ",
+          "2025_04_GB_DAL",
+          "2023_16_BAL_SF",
+          "2025_14_CHI_GB",
+          "2023_02_SEA_DET",
+          "2025_05_DEN_PHI",
+          "2023_01_GB_CHI",
+          "2024_10_PHI_DAL",
+          "2024_18_KC_DEN",
+          "2025_13_ARI_TB",
+          "2024_08_GB_JAX",
+          "2025_16_LAC_DAL",
+          "2023_01_MIA_LAC",
+          "2023_11_PHI_KC",
+          "2025_17_HOU_LAC",
+          "2024_14_ATL_MIN",
+          "2024_11_WAS_PHI",
+          "2024_15_PIT_PHI",
+          "2024_15_CIN_TEN",
+          "2023_05_KC_MIN",
+          "2026_06_BAL_CLE",
+          "2023_05_CHI_WAS",
+          "2023_17_ARI_PHI",
+          "2025_13_BUF_PIT",
+          "2024_02_BUF_MIA",
+          "2024_02_TB_DET",
+          "2025_01_KC_LAC",
+          "2025_15_MIN_DAL",
+          "2026_01_NE_SEA",
+          "2025_16_GB_CHI",
+          "2024_16_TB_DAL",
+          "2026_04_DAL_HOU",
+          "2024_13_TB_CAR",
+          "2025_10_ARI_SEA",
+          "2025_10_NYG_CHI",
+          "2026_01_ATL_PIT",
+          "2024_16_NO_GB",
+          "2023_06_DAL_LAC",
+          "2023_12_GB_DET",
+          "2023_13_SF_PHI",
+          "2023_03_BUF_WAS",
+          "2026_09_DET_MIA",
+          "2024_13_SF_BUF",
+          "2023_07_LAC_KC",
+          "2025_13_CHI_PHI",
+          "2024_06_DET_DAL",
+          "2025_12_TB_LA",
+          "2023_06_DET_TB",
+          "2026_09_NYJ_KC",
+          "2023_06_ARI_LA",
+          "2023_10_CAR_CHI",
+          "2025_11_CIN_PIT",
+          "2024_16_SF_MIA",
+          "2023_04_NE_DAL",
+          "2023_17_SF_WAS",
+          "2023_09_SEA_BAL",
+          "2023_02_KC_JAX",
+          "2023_12_CHI_MIN",
+          "2025_09_CHI_CIN",
+          "2023_12_BAL_LAC",
+          "2026_06_TEN_IND",
+          "2024_01_JAX_MIA",
+          "2023_16_NO_LA",
+          "2025_09_SEA_WAS",
+          "2025_05_SF_LA",
+          "2026_03_HOU_IND",
+          "2025_11_KC_DEN",
+          "2023_16_NYG_PHI",
+          "2025_08_DAL_DEN",
+          "2025_01_MIN_CHI",
+          "2025_09_CAR_GB",
+          "2023_02_MIN_PHI",
+          "2023_18_MIN_DET",
+          "2025_06_SF_TB"
+        ],
+        "neighbor_max_available": "2026-11-10T18:00:00+00:00",
+        "away_dispersion": 0.14789986606879685,
+        "home_dispersion": 0.11644295972951614
+      },
+      "C": {
+        "draws": 1024,
+        "expected": [
+          26.2109375,
+          21.3359375
+        ],
+        "median": [
+          25.0,
+          21.0
+        ],
+        "away_interval80": [
+          13.0,
+          40.0
+        ],
+        "home_interval80": [
+          8.0,
+          35.0
+        ],
+        "total_interval80": [
+          30.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -25.0,
+          15.0
+        ],
+        "absolute_margin_interval80": [
+          1.0,
+          28.0
+        ],
+        "expected_total": 47.546875,
+        "expected_home_margin": -4.875,
+        "probabilities": {
+          "away_35": 0.234375,
+          "home_35": 0.109375,
+          "away_10": 0.0546875,
+          "home_10": 0.15625,
+          "total_60": 0.21875,
+          "total_under_30": 0.0859375,
+          "margin_17": 0.28125,
+          "margin_24": 0.1796875,
+          "within_3": 0.2265625,
+          "either_35": 0.3125,
+          "either_10": 0.2109375
+        },
+        "score_correlation": -0.06466319556322764,
+        "typical": [
+          23,
+          23
+        ],
+        "low": [
+          19,
+          11
+        ],
+        "high": [
+          38,
+          28
+        ]
+      },
+      "NB": {
+        "draws": 1024,
+        "expected": [
+          25.544921875,
+          21.5859375
+        ],
+        "median": [
+          24.0,
+          21.0
+        ],
+        "away_interval80": [
+          13.0,
+          40.0
+        ],
+        "home_interval80": [
+          11.0,
+          33.0
+        ],
+        "total_interval80": [
+          30.0,
+          66.0
+        ],
+        "home_margin_interval80": [
+          -22.0,
+          13.0
+        ],
+        "absolute_margin_interval80": [
+          2.0,
+          24.0
+        ],
+        "expected_total": 47.130859375,
+        "expected_home_margin": -3.958984375,
+        "probabilities": {
+          "away_35": 0.1943359375,
+          "home_35": 0.0810546875,
+          "away_10": 0.056640625,
+          "home_10": 0.0791015625,
+          "total_60": 0.1787109375,
+          "total_under_30": 0.08984375,
+          "margin_17": 0.240234375,
+          "margin_24": 0.103515625,
+          "within_3": 0.205078125,
+          "either_35": 0.259765625,
+          "either_10": 0.1318359375
+        },
+        "score_correlation": 0.0001523211780530437,
+        "typical": [
+          24,
+          22
+        ],
+        "low": [
+          16,
+          14
+        ],
+        "high": [
+          35,
+          32
+        ]
+      },
+      "joint_sha256": "debe0a92d6681260d3c44b637059dc6f06a93e1c137ec4cb76552a9dbe03374b"
+    }
+  ],
+  "source_period_sha256": "d1f53b472fc806bddd63a42b09bfdf3dd0c23d38e34718ffbc5279747db9d727"
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "week11-publication-controls-v1",
+  "files": {
+    "scripts/verify_week11_publication.py": "5022bccd15020aca6f28d0655be996483063030208c2c7a7158231d82bf71c59",
+    "scripts/verify_week10_publication.py": "3098d3981943b030d06ae7c606c6de11fa5e27f8d1a152d7d4e29bb3c1dfe1d1",
+    "week11_release/review_request.json": "82bbafeaae34c52178c932ebb662d4ced2db399938cca8f4dd84076565f9396c",
+    "tests/test_week11_publication.py": "b54356f8c29c41f083537946d84518af33ebe2eb0a9f4f7322baceb9e57a2d3c"
+  }
+}
