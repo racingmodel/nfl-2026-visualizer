@@ -26,6 +26,7 @@ class PublicationTests(unittest.TestCase):
                    REQUESTED_RELEASE=request['release_id'],REQUESTED_SHA=request_sha,APPROVAL_COMMENT_ID='99')|flags
         grant = {k:request[k] for k in ('repository','destination','release_id','manifest_sha256',
                                        'scope','publication_deadline_utc','unattended')}
+        grant.update(g.RECOVERY)
         grant.update(decision='APPROVED',installation_head=head,request_sha256=request_sha,
                      expires_at_utc='2026-11-20T00:30:00+00:00')
         ap = {'id':99,'user':{'login':'racingmodel'},'author_association':'OWNER','created_at':'2026-11-19T23:30:00Z',
@@ -86,6 +87,7 @@ class PublicationTests(unittest.TestCase):
         request,h,now,env,grant,ap,pr,api=self.approvals()
         fence='\x60'*3
         for key,replacement in [('scope','WEEK10_MIXED_ARCHIVAL_REVIEW_RECOVERY_STATIC_ONCE'),
+                                ('recovery_id','replacement'),('prior_failed_run_id',1),
                                 ('request_sha256','z'*64),('manifest_sha256','x'*64),
                                 ('expires_at_utc','2026-11-19T23:45:00Z'),('expires_at_utc','2026-11-20T01:15:00Z'),
                                 ('installation_head','z'*40),('unattended',0)]:
@@ -103,6 +105,8 @@ class PublicationTests(unittest.TestCase):
             g.approval(env|{'INSTALLATION_HEAD':'c'*40},request,h,now)
         with patch.object(g,'api',api),self.assertRaises(ValueError):
             g.approval(env|{'GITHUB_RUN_ATTEMPT':'2'},request,h,now)
+        with patch.object(g,'api',api),self.assertRaisesRegex(ValueError,'approval was consumed'):
+            g.approval(env|{'APPROVAL_COMMENT_ID':str(g.CONSUMED_COMMENT)},request,h,now)
         pr['merge_commit_sha']='c'*40
         with patch.object(g,'api',api),self.assertRaises(ValueError):
             g.approval(env,request,h,now)
@@ -122,9 +126,13 @@ class PublicationTests(unittest.TestCase):
         def verify(repository,workflow):
             def list_runs(endpoint):
                 return repository if endpoint=='actions/runs' else workflow
-            with patch.object(g,'api',return_value=current),patch.object(g.previous,'all_run_records',list_runs):
+            with patch.object(g,'api',return_value=current),patch.object(g,'verify_review_failure'),patch.object(g.previous,'all_run_records',list_runs):
                 return g.dispatch_inventory(env,request,approved)
-        self.assertEqual(verify([old,current],[old,current])['run_id'],987)
+        prior=current|{'id':g.RECOVERY['prior_failed_run_id'],'head_sha':g.PARENT,'status':'completed',
+                       'conclusion':'failure','created_at':'2026-11-19T17:31:58Z'}
+        self.assertEqual(verify([old,prior,current],[old,prior,current])['run_id'],987)
+        with self.assertRaisesRegex(ValueError,'Unreviewed dispatch'):
+            verify([old,current],[old,current])
         earlier=current|{'id':986,'status':'completed','conclusion':'failure','head_sha':'e'*40}
         for repo,workflow in [
             ([old],[old,current]),([old,current],[old]),
@@ -134,6 +142,36 @@ class PublicationTests(unittest.TestCase):
         ]:
             with self.subTest(repo=list(r['id'] for r in repo)),self.assertRaises(ValueError):
                 verify(repo,workflow)
+
+    def test_only_the_pinned_review_only_failure_is_recoverable(self):
+        rid=g.RECOVERY['prior_failed_run_id']
+        run=dict(id=rid,workflow_id=int(g.WORKFLOW_ID),check_suite_id=g.FAILED_SUITE,head_sha=g.PARENT,
+                 status='completed',conclusion='failure',event='workflow_dispatch',run_attempt=1,
+                 head_branch='main',path=g.WORKFLOW_PATH,repository={'full_name':g.REPO},
+                 actor={'login':'racingmodel'},triggering_actor={'login':'racingmodel'})
+        suite=dict(id=g.FAILED_SUITE,head_sha=g.PARENT,status='completed',conclusion='failure',app={'slug':'github-actions'})
+        common=dict(run_id=rid,run_attempt=1,head_sha=g.PARENT,status='completed')
+        review=dict(common,id=g.FAILED_JOBS['review'],name='review',conclusion='failure',steps=[
+            dict(name='Verify new owner approval, frozen assets and fixture clocks',conclusion='failure'),
+            dict(name='Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9',conclusion='skipped')])
+        publish=dict(common,id=g.FAILED_JOBS['publish'],name='publish',conclusion='skipped',steps=[],runner_id=None)
+        expected={f'actions/runs/{rid}':run,f'check-suites/{g.FAILED_SUITE}':suite,
+                  f'actions/runs/{rid}/attempts/1/jobs':{'total_count':2,'jobs':[review,publish]},
+                  f'actions/runs/{rid}/artifacts':{'total_count':0,'artifacts':[]},'deployments':[]}
+        def use(values):
+            return patch.object(g,'api',side_effect=lambda path,**_:values[path])
+        with use(expected):
+            g.verify_failed_records()
+        for path, change in [
+            (f'actions/runs/{rid}',run|{'run_attempt':2}),
+            (f'check-suites/{g.FAILED_SUITE}',suite|{'conclusion':'success'}),
+            (f'actions/runs/{rid}/attempts/1/jobs',{'total_count':2,'jobs':[review,publish|{'conclusion':'success'}]}),
+            (f'actions/runs/{rid}/attempts/1/jobs',{'total_count':2,'jobs':[review,publish|{'runner_id':3}]}),
+            (f'actions/runs/{rid}/artifacts',{'total_count':1,'artifacts':[{'name':'github-pages'}]}),
+            ('deployments',[{'sha':g.PARENT}]),
+        ]:
+            with self.subTest(path=path,change=change),use(expected|{path:change}),self.assertRaises(ValueError):
+                g.verify_failed_records()
 
     def test_cutoff_and_flex_from_frozen_sources(self):
         source_dir=os.environ.get('WEEK11_TEST_SOURCE_DIR')

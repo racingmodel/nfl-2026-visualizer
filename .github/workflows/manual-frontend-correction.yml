@@ -1,4 +1,4 @@
-# Exact Week 11 static package. Deployment requires a fresh owner comment after merge.
+# Exact Week 11 review-only recovery package. Deployment requires a fresh owner comment after merge.
 name: Exact manual frontend correction (one-time approval)
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CONTROL_SHA256: "0f13472c630a19b83d4ff53e30014caa7ddc2c6d400d7d427c07b54dae0b3d81"
+  CONTROL_SHA256: "0ec3479188fee0b590a19e58700b23335d22491669228b022947bc9fc78a5e36"
   APPROVAL_COMMENT_ID: "${{ inputs.approval_comment_id }}"
   REQUESTED_RELEASE: ${{ inputs.release_id }}
   REQUESTED_SHA: ${{ inputs.review_request_sha256 }}

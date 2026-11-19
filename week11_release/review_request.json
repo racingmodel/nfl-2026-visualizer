@@ -1,14 +1,17 @@
 {
-  "schema": "week11-owner-review-request-v1",
-  "created_at_utc": "2026-11-19T16:40:05.851707+00:00",
+  "schema": "week11-review-recovery-request-v1",
+  "created_at_utc": "2026-11-19T17:40:03.506617+00:00",
   "release_id": "frontend-week11-launch-d50cf532da14832b",
   "manifest_sha256": "65ec244da44d120f5db74d13f222c4e677be806cef27023bcd22190d9acb7770",
-  "scope": "WEEK11_PREGAME_STATIC_ONCE",
+  "scope": "WEEK11_REVIEW_RECOVERY_STATIC_ONCE",
   "repository": "racingmodel/nfl-2026-visualizer",
   "destination": "https://racingmodel.github.io/nfl-2026-visualizer/",
   "publication_deadline_utc": "2026-11-20T01:14:00+00:00",
-  "base_main": "9bb938291247ea64f004886fdff90f57bc86c753",
-  "review_branch": "codex/week11-launch-2026",
+  "base_main": "67cfd39058ef597a6e79a8dfbbc44d9f6fe03b90",
+  "review_branch": "codex/week11-review-recovery",
   "allowed_dispatches": 1,
-  "unattended": false
+  "unattended": false,
+  "recovery_id": "week11-workflow-state-review-recovery-v1",
+  "supersedes_request_sha256": "82bbafeaae34c52178c932ebb662d4ced2db399938cca8f4dd84076565f9396c",
+  "prior_failed_run_id": 44578183871
 }

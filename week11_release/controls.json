@@ -1,9 +1,11 @@
 {
   "schema": "week11-publication-controls-v1",
   "files": {
-    "scripts/verify_week11_publication.py": "5022bccd15020aca6f28d0655be996483063030208c2c7a7158231d82bf71c59",
+    "scripts/verify_week11_publication.py": "67e06669b36dff492fd2371964fbdc9ae30cfcccc9e49988d2aa9fb9ca32bc93",
     "scripts/verify_week10_publication.py": "3098d3981943b030d06ae7c606c6de11fa5e27f8d1a152d7d4e29bb3c1dfe1d1",
-    "week11_release/review_request.json": "82bbafeaae34c52178c932ebb662d4ced2db399938cca8f4dd84076565f9396c",
-    "tests/test_week11_publication.py": "b54356f8c29c41f083537946d84518af33ebe2eb0a9f4f7322baceb9e57a2d3c"
+    "week11_release/review_request.json": "500b91dd6c43841c97a63b14561dfb56711b1372195c446f02df4bf6a9514dfa",
+    "tests/test_week11_publication.py": "c64daec3298a8f9ebaf975f604af58b151f1e485b24f634aee6f5eeb329b1543",
+    "scripts/Invoke-NflPublication.ps1": "687862ed723b17e0462498a1ccebfbb69b2da040e778ad5fafb143055356ecd1",
+    "tests/test_nfl_publication_lifecycle.ps1": "52f088813a60f930a014bb47140d4e564f433929acd53e51a85f9f834cd79912"
   }
 }
