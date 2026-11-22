@@ -1,0 +1,15 @@
+{
+  "schema": "week11-gameday-review-only-v1",
+  "release_id": "frontend-week11-gameday-036e6c0460809012",
+  "manifest_sha256": "6df77fd603b58b61d8099c3586d040be000340b8f1c6cd5c75ef6f184bcdf303",
+  "site_identity_sha256": "036e6c04608090122c04c8a5d4396501f70c77237fdebc1b8dc654df6d266b1f",
+  "parent_release": "frontend-week11-launch-d50cf532da14832b",
+  "parent_public_main": "3d8b39cb85a487b71ed8674e747ea570dc315490",
+  "parent_pages_deployment": 7922183069,
+  "parent_manifest_sha256": "65ec244da44d120f5db74d13f222c4e677be806cef27023bcd22190d9acb7770",
+  "first_fixture_cutoff_utc": "2026-11-22T17:59:00+00:00",
+  "authority": "REVIEW_ONLY",
+  "installed_guard": "Week 11 launch only. Fresh exact-hash mixed archive and pregame guard and owner authority are required.",
+  "publication_authorized": false,
+  "dispatch_allowed": false
+}
